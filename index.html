@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="area710 - UNIQUE EVENT LOCATION in Holzgerlingen">
+    <title>area710 - UNIQUE EVENT LOCATION</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" href="/img/fav.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #FCAB14;
+            --red: #CD1151;
+            --blue: #009FE2;
+            --green: #AEC610;
+            --black: #000;
+            --white: #fff;
+            --gray: #222;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 45px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            font-size: 0.95rem;
+            font-weight: 400;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green));
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--orange);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.3rem;
+            margin-left: 2rem;
+            border-left: 1px solid var(--border);
+            padding-left: 2rem;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.7rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--white);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-logo {
+            font-size: clamp(4rem, 12vw, 9rem);
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--orange) 25%, var(--red) 50%, var(--blue) 75%, var(--green) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hero-tagline {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        /* BUTTON */
+        .btn {
+            padding: 1rem 3rem;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            border: 1px solid var(--white);
+            background: transparent;
+            color: var(--white);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn:hover {
+            color: var(--black);
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-primary::before {
+            background: transparent;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--white);
+        }
+
+        /* SECTION */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 300;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-title.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .vision-text {
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+        }
+
+        .vision-text.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FEATURES */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            border: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        .feature-box {
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-box.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-box:nth-child(2n) {
+            border-right: none;
+        }
+
+        .feature-box:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-box:hover::before {
+            left: 0;
+        }
+
+        .feature-box:nth-child(1)::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--orange);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-box:nth-child(2)::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--red);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-box:nth-child(3)::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--blue);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-box:nth-child(4)::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--green);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-box:hover::after {
+            opacity: 1;
+        }
+
+        .feature-image {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto 2.5rem;
+
+            border-radius: 20px;
+            overflow: hidden;
+
+            /* Rahmen */
+            border: 4px solid var(--frame-color, #ff6a00); /* Fallback-Farbe */
+
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+
+        .feature-box:hover .feature-image {
+            transform: scale(1.05);
+        }
+
+        .feature-photo {
+            width: 100%;
+            max-width: 350px;
+            height: 220px;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-box:hover .feature-photo {
+            transform: scale(1.05);
+        }
+
+        .feature-box h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ROOMS NAV */
+        .rooms-nav {
+            display: flex; /* nebeneinander statt Tabelle */
+            justify-content: center; /* zentriert */
+            flex-wrap: wrap; /* bei kleinen Bildschirmen umbrechen */
+            gap: 2rem; /* Abstand zwischen den Icons */
+            margin: 3rem 0;
+        }
+
+        .room-nav-item {
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .room-nav-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .room-nav-icon {
+            width: 300px;
+            height: 217px;
+            border-radius: 16px; /* runde Kanten */
+            overflow: hidden;
+
+            /* Rahmen mit Farbe steuerbar */
+            box-shadow: 0 0 0 3px var(--frame-color, var(--orange)),
+            0 8px 18px rgba(0, 0, 0, 0.15);
+
+            transition: transform 0.4s ease;
+        }
+
+        .room-nav-item h3 {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: var(--white);
+        }
+
+
+        .room-nav-item:last-child {
+            border-right: none;
+        }
+
+        .room-nav-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .room-nav-item:nth-child(1)::before {
+            background: rgba(252, 171, 20, 0.1);
+        }
+
+        .room-nav-item:nth-child(2)::before {
+            background: rgba(205, 17, 81, 0.1);
+        }
+
+        .room-nav-item:nth-child(3)::before {
+            background: rgba(0, 159, 226, 0.1);
+        }
+
+        .room-nav-item:nth-child(4)::before {
+            background: rgba(174, 198, 16, 0.1);
+        }
+
+        .room-nav-item:hover::before {
+            height: 100%;
+        }
+
+        .room-nav-icon {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 1rem;
+
+            border-radius: 16px;
+            overflow: hidden;
+
+            /* Rahmen über Variable */
+            box-shadow: 0 0 0 3px var(--frame-color, var(--orange));
+
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .frame-orange {
+            --frame-color: var(--orange);
+        }
+
+        .frame-blue {
+            --frame-color: var(--blue);
+        }
+
+        .frame-red {
+            --frame-color: var(--red);
+        }
+
+        .frame-green {
+            --frame-color: var(--green);
+        }
+
+
+        .room-nav-item:hover .room-nav-icon {
+            transform: translateY(-5px);
+        }
+
+        .room-nav-item h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ROOM PREVIEW */
+        .rooms-preview {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .room-card {
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+        }
+
+        .room-card.animate {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .room-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .room-card:hover .room-image {
+            transform: scale(1.1);
+        }
+
+        .room-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+            transform: translateY(20%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .room-card:hover .room-overlay {
+            transform: translateY(0);
+        }
+
+        .room-overlay h3 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .room-overlay p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--gray);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--white);
+            background: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .social-link:hover svg {
+            fill: var(--black);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0 0.5rem;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        .map-wrapper {
+            margin-top: 3rem;
+            border-radius: 20px;
+            overflow: hidden;
+
+
+        }
+
+        /* Parent */
+        .has-submenu {
+            position: relative;
+        }
+
+        /* Submenu */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            list-style: none;
+            padding: 0.5rem 0;
+            margin-top: 0.8rem;
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+
+            z-index: 1000;
+        }
+
+        /* Show on hover */
+        .has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Submenu items */
+        .submenu li a {
+            display: block;
+            padding: 0.7rem 1.2rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect */
+        .submenu li a:hover {
+            background: linear-gradient(
+                    90deg,
+                    rgba(252, 171, 20, 0.15),
+                    rgba(205, 17, 81, 0.15),
+                    rgba(0, 159, 226, 0.15),
+                    rgba(174, 198, 16, 0.15)
+            );
+            color: var(--white);
+        }
+
+        .has-submenu > a::after {
+            content: "▾";
+            margin-left: 0.0rem;
+            font-size: 0.7em;
+            opacity: 0.7;
+        }
+
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--black);
+                flex-direction: column;
+                justify-content: center;
+                transition: left 0.4s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-box {
+                border-right: none;
+            }
+
+            .rooms-nav {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .room-nav-item {
+                border-right: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
+            }
+
+            .room-nav-item:nth-child(2n) {
+                border-right: none;
+            }
+
+            .rooms-preview {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .rooms-nav {
+                grid-template-columns: 1fr;
+            }
+
+            .room-nav-item {
+                border-right: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .map-wrapper iframe {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header" id="header">
+    <nav class="nav-container">
+        <a href="index.html">
+            <img src="img/logo.jpg" alt="area710" class="logo">
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="active">area710</a></li>
+            <li class="has-submenu">
+                <a href="raueme.html">Räume</a>
+                <ul class="submenu">
+                    <li><a href="raueme.html#hall">Hall</a></li>
+                    <li><a href="raueme.html#lab">Lab</a></li>
+                    <li><a href="raueme.html#barclub">Bar & Club</a></li>
+                    <li><a href="raueme.html#outdoor">Outdoor</a></li>
+                </ul>
+            </li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="about.html">Über Uns</a></li>
+            <li><a href="booking.html">Buchungsanfrage</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="de">DE</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </ul>
+
+        <button class="mobile-toggle" id="mobileToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+</header>
+
+<section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+        <source src="img/area710_allWhite.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-logo">area710</h1>
+        <p class="hero-tagline">UNIQUE EVENT LOCATION</p>
+        <p class="hero-subtitle" data-de="Entdecke die area710 – Dein Ort für einzigartige Erlebnisse!"
+           data-en="Discover area710 – Your venue for unique experiences!">Entdecke die area710 – Dein Ort für
+            einzigartige Erlebnisse!</p>
+        <div class="hero-cta">
+            <a href="booking.html" class="btn btn-primary" data-de="Jetzt anfragen" data-en="Request now">Jetzt
+                anfragen</a>
+            <a href="events.html" class="btn" data-de="Eventkalender ansehen" data-en="View event calendar">Eventkalender
+                ansehen</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" data-de="Unsere Vision" data-en="Our Vision">Unsere Vision</h2>
+        <p class="vision-text"
+           data-de="Unsere Vision ist es, die area710 zu einem Ort zu machen, an dem einzigartige Veranstaltungen unvergessliche Erlebnisse schaffen"
+           data-en="Our vision is to make area710 a place where unique events create unforgettable experiences">
+            Unsere Vision ist es, die area710 zu einem Ort zu machen, an dem einzigartige Veranstaltungen unvergessliche
+            Erlebnisse schaffen
+        </p>
+    </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature-box">
+                <img src="img/exoerience.jpg" alt="experience" class="feature-image"
+                     style="--frame-color: var(--orange);">
+                <h3>experience</h3>
+                <p data-de="Ob im Businessbereich oder Privat, ob in großem Stile oder klein und fein, Erlebnisse aller Art werden in der unverwechselbaren area710 perfekt realisiert"
+                   data-en="Whether in the business or private sector, whether on a large scale or small and fine, experiences of all kinds are perfectly realized in the distinctive area710">
+                    Ob im Businessbereich oder Privat, ob in großem Stile oder klein und fein, Erlebnisse aller Art
+                    werden in der unverwechselbaren area710 perfekt realisiert
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <img src="img/multi-functional.jpg" alt="experience" class="feature-image"
+                     style="--frame-color: var(--red);">
+                <h3>multi-functional</h3>
+                <p data-de="Flexibilität, die wir mit unseren verschiedenen Raumkonstellationen vorweisen können, machen deren Funktionalität grenzenlos"
+                   data-en="The high degree of flexibility that we can offer with our various room constellations makes their functionality limitless">
+                    Flexibilität, die wir mit unseren verschiedenen Raumkonstellationen vorweisen können, machen deren
+                    Funktionalität grenzenlos
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <img src="img/full-service.jpg" alt="experience" class="feature-image"
+                     style="--frame-color: var(--blue);">
+                <h3>full-service</h3>
+                <p data-de="Das Team der area710 steht für einen außergewöhnlichen Service-Gedanken. Historisch aus dem Event- und Messegeschäft kommend, werden hier ausgefallenste Wünsche wahr"
+                   data-en="The area710 team stands for an exceptional service concept. Historically coming from the event and trade fair business, the most unusual wishes come true here">
+                    Das Team der area710 steht für einen außergewöhnlichen Service-Gedanken. Historisch aus dem Event-
+                    und Messegeschäft kommend, werden hier ausgefallenste Wünsche wahr</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="img/magic.jpg" alt="experience" class="feature-image" style="--frame-color: var(--green);">
+                <h3>magic</h3>
+                <p data-de="Entdecken Sie die magische Welt unterschiedlichster Veranstaltungsformate. Gerne zeigen wir Ihnen die Räumlichkeiten und deren Baukastensystem vor Ort"
+                   data-en="Discover the magical world of different event formats. We would be happy to show you the rooms and their modular system on site">
+                    Entdecken Sie die magische Welt unterschiedlichster Veranstaltungsformate. Gerne zeigen wir Ihnen
+                    die Räumlichkeiten und deren Baukastensystem vor Ort</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" data-de="Entdecke die area710 – unsere Räume" data-en="Discover area710 – our rooms">
+            Entdecke die area710 – unsere Räume</h2>
+
+        <div class="rooms-nav">
+            <a href="raueme.html#hall" class="room-nav-item frame-orange">
+                <img src="img/hall.png" alt="hall" class="room-nav-icon">
+                <h3>hall</h3>
+            </a>
+            <a href="raueme.html#lab" class="room-nav-item frame-red">
+                <img src="img/lab.png" alt="lab" class="room-nav-icon">
+                <h3>lab</h3>
+            </a>
+            <a href="raueme.html#barclub" class="room-nav-item frame-blue">
+                <img src="img/bar-club-1.png" alt="bar & club" class="room-nav-icon">
+                <h3>bar & club</h3>
+            </a>
+            <a href="raueme.html#outdoor" class="room-nav-item frame-green">
+                <img src="img/outdoor.png" alt="outdoor" class="room-nav-icon">
+                <h3>outdoor</h3>
+            </a>
+        </div>
+
+
+        <div class="rooms-preview">
+            <a href="raueme.html#hall" class="room-card">
+                <img src="img/img.png" alt="hall" class="room-image">
+                <div class="room-overlay">
+                    <h3>hall</h3>
+                    <p>Seminare, Workshops, Tagungen, Feiern – 105qm Eventfläche</p>
+                </div>
+            </a>
+
+            <a href="raueme.html#lab" class="room-card">
+                <img src="img/lab.jpg" alt="lab" class="room-image">
+                <div class="room-overlay">
+                    <h3>lab</h3>
+                    <p>150qm mit LED-Wand, Ton- und Lichttechnik</p>
+                </div>
+            </a>
+
+            <a href="raueme.html#barclub" class="room-card">
+                <img src="img/dj.jpg" alt="bar & club" class="room-image">
+                <div class="room-overlay">
+                    <h3>bar & club</h3>
+                    <p>65qm Club-Atmosphäre mit professioneller Bar</p>
+                </div>
+            </a>
+
+            <a href="raueme.html#outdoor" class="room-card">
+                <img src="img/outdoor_qual.png" alt="outdoor" class="room-image">
+                <div class="room-overlay">
+                    <h3>outdoor</h3>
+                    <p>Bis zu 750qm Freifläche mit Outdoorküche</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: var(--gray);">
+    <div class="container">
+        <h2 class="section-title">area710</h2>
+        <p class="vision-text" style="font-size: 1.1rem;"
+           data-de="Sie finden uns vor den Toren Stuttgarts, 15 min. zur Autobahn A81, 30 min. zum Flughafen Stuttgart und (fast) direkt an der Haltestelle der Schönbuchbahn. Zentral und doch in ruhiger Lage, hier darf es auch mal laut und bis in die frühen Morgenstunden gehen"
+           data-en="You will find us at the gates of Stuttgart, 15 min. to the freeway A81, 30 min. to Stuttgart airport and (almost) directly at the stop of the Schönbuchbahn. Central and yet in a quiet location, here it may also be noisy and go into the early morning hours.">
+            Sie finden uns vor den Toren Stuttgarts, 15 min. zur Autobahn A81, 30 min. zum Flughafen Stuttgart und
+            (fast) direkt an der Haltestelle der Schönbuchbahn. Zentral und doch in ruhiger Lage, hier darf es auch mal
+            laut und bis in die frühen Morgenstunden gehen
+        </p>
+        <div class="text-center" style="margin-top: 2rem;">
+            <a href="contact.html" class="btn" data-de="Anfahrt & Kontakt" data-en="Directions & Contact">Anfahrt &
+                Kontakt</a>
+        </div>
+    </div>
+    <div class="map-wrapper">
+        <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4374.553318832666!2d9.023883477638307!3d48.627195371301774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799e18dcd16aa0f%3A0xa8d4f18bb904b689!2sarea710!5e1!3m2!1sde!2sde!4v1767878696713!5m2!1sde!2sde"
+                width="100%"
+                height="400"
+                style="border:0;"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
+
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>area710</h3>
+            <p>Gottlieb-Binder-Straße 2</p>
+            <p>D-71088 Holzgerlingen</p>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-de="Öffnungszeiten Eventbüro" data-en="Office Hours">Öffnungszeiten Eventbüro</h3>
+            <p data-de="Montag–Freitag" data-en="Monday–Friday">Montag–Freitag</p>
+            <p>10:00–18:00 Uhr</p>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-de="Kontakt" data-en="Contact">Kontakt</h3>
+            <p><a href="tel:+4970314107311">+49 7031 41073-11</a></p>
+            <p><a href="mailto:info@area710.de">info@area710.de</a></p>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-de="Folge uns" data-en="Follow us">Folge uns</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100086162780846" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/area710_event/" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/1713573288?text=area710" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            area710 eine Marke der seeeye Werbung & Event GmbH
+            <br>
+            <a href="impressum.html" data-de="Impressum" data-en="Imprint">Impressum</a>
+            <a href="datenschutz.html" data-de="Datenschutzerklärung" data-en="Privacy Policy">Datenschutzerklärung</a>
+            <a href="booking.html" data-de="Buchungsanfrage" data-en="Booking Request">Buchungsanfrage</a>
+            <a href="https://ticket.area710.de" target="_blank" data-de="Ticket Verkauf" data-en="Ticket Sales">Ticket
+                Verkauf</a>
+        </p>
+    </div>
+</footer>
+
+<script>
+    // MOBILE MENU
+    document.getElementById('mobileToggle').addEventListener('click', function () {
+        document.getElementById('navMenu').classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navMenu').classList.remove('active');
+        });
+    });
+
+    // HEADER SCROLL
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        lastScroll = currentScroll;
+    });
+
+    // SCROLL ANIMATIONS
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.section-title, .vision-text, .feature-box, .room-nav-item, .room-card').forEach(el => {
+        observer.observe(el);
+    });
+
+    // PARALLAX EFFECT
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.hero-video');
+
+        parallaxElements.forEach(el => {
+            const speed = 0.5;
+            el.style.transform = `translate(-50%, calc(-50% + ${scrolled * speed}px))`;
+        });
+    });
+
+    // LANGUAGE SWITCHER
+    let currentLang = 'de';
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const targetLang = this.dataset.lang;
+
+            if (targetLang === currentLang) return;
+
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            currentLang = targetLang;
+            translatePage(targetLang);
+        });
+    });
+
+    function translatePage(lang) {
+        document.querySelectorAll('[data-de]').forEach(el => {
+            if (lang === 'de' && el.dataset.de) {
+                el.textContent = el.dataset.de;
+            } else if (lang === 'en' && el.dataset.en) {
+                el.textContent = el.dataset.en;
+            }
+        });
+
+        document.documentElement.lang = lang;
+    }
+</script>
+
+</body>
+</html>

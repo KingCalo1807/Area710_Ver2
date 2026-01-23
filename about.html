@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Über area710 - Lernen Sie unser Team und unsere Geschichte kennen">
+    <title>Über Uns - area710 - UNIQUE EVENT LOCATION</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" href="/img/fav.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #FCAB14;
+            --red: #CD1151;
+            --blue: #009FE2;
+            --green: #AEC610;
+            --black: #000;
+            --white: #fff;
+            --gray: #222;
+            --gray-light: #333;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 45px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            font-size: 0.95rem;
+            font-weight: 400;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green));
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--orange);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.3rem;
+            margin-left: 2rem;
+            border-left: 1px solid var(--border);
+            padding-left: 2rem;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.7rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--white);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 76px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(252, 171, 20, 0.3), rgba(205, 17, 81, 0.3), rgba(0, 159, 226, 0.3), rgba(174, 198, 16, 0.3)), url('img/outdoor.jpg') center/cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--orange), var(--red), var(--blue), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* STORY SECTION */
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .story-content h2 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: var(--orange);
+        }
+
+        .story-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .story-image {
+            width: 100%;
+            height: 500px;
+            background: var(--gray);
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .placeholder-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* VALUES */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: var(--gray);
+            padding: 3rem 2rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .value-card:nth-child(1) {
+            animation-delay: 0.1s;
+            border-top: 3px solid var(--orange);
+        }
+
+        .value-card:nth-child(2) {
+            animation-delay: 0.2s;
+            border-top: 3px solid var(--red);
+        }
+
+        .value-card:nth-child(3) {
+            animation-delay: 0.3s;
+            border-top: 3px solid var(--blue);
+        }
+
+        .value-card:nth-child(4) {
+            animation-delay: 0.4s;
+            border-top: 3px solid var(--green);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* TEAM SECTION */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--red), var(--red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header.section-header-blue h2 {
+            background: linear-gradient(135deg, var(--blue), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header.section-header-green h2 {
+            background: linear-gradient(135deg, var(--green), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .team-member {
+            background: var(--gray);
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .team-member:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .team-member:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .team-member:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .team-member:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 350px;
+            background: var(--gray-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .team-member:hover .team-photo img {
+            transform: scale(1.1);
+        }
+
+        .team-info {
+            padding: 2rem;
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .team-role {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .team-bio {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* STATS */
+        .stats-section {
+            background: linear-gradient(135deg, var(--gray), var(--black));
+            padding: 5rem 2rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--orange), var(--red), var(--blue), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--orange), var(--red), var(--blue), var(--green));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 4rem;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--gray);
+            padding: 2rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .timeline-year {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--orange);
+            border: 3px solid var(--black);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        /* Timeline Years */
+        .timeline-year-orange {
+            color: var(--orange);
+        }
+
+        .timeline-year-red {
+            color: var(--red);
+        }
+
+        .timeline-year-blue {
+            color: var(--blue);
+        }
+
+        .timeline-year-green {
+            color: var(--green);
+        }
+
+        /* Timeline Dots */
+        .timeline-dot-orange {
+            background: var(--orange);
+        }
+
+        .timeline-dot-red {
+            background: var(--red);
+        }
+
+        .timeline-dot-blue {
+            background: var(--blue);
+        }
+
+        .timeline-dot-green {
+            background: var(--green);
+        }
+
+
+        /* CTA SECTION */
+        .cta-section {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(252, 171, 20, 0.1), rgba(205, 17, 81, 0.1));
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--orange), var(--red));
+            color: var(--white);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(252, 171, 20, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-5px);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--gray);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--white);
+            background: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .social-link:hover svg {
+            fill: var(--black);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0 0.5rem;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        /* Parent */
+        .has-submenu {
+            position: relative;
+        }
+
+        /* Submenu */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            list-style: none;
+            padding: 0.5rem 0;
+            margin-top: 0.8rem;
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+
+            z-index: 1000;
+        }
+
+        /* Show on hover */
+        .has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Submenu items */
+        .submenu li a {
+            display: block;
+            padding: 0.7rem 1.2rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect */
+        .submenu li a:hover {
+            background: linear-gradient(
+                    90deg,
+                    rgba(252, 171, 20, 0.15),
+                    rgba(205, 17, 81, 0.15),
+                    rgba(0, 159, 226, 0.15),
+                    rgba(174, 198, 16, 0.15)
+            );
+            color: var(--white);
+        }
+
+        .has-submenu > a::after {
+            content: "▾";
+            margin-left: 0.0rem;
+            font-size: 0.7em;
+            opacity: 0.7;
+        }
+
+        /* FEATURES */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .feature-box {
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 1;
+            transform: translateY(40px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-box.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-box:nth-child(2n) {
+            border-right: none;
+        }
+
+        .feature-box:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-box:hover::before {
+            left: 0;
+        }
+
+        .feature-box:nth-child(1)::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--orange);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-box:nth-child(2)::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--red);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-box:nth-child(3)::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--blue);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-box:nth-child(4)::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--green);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-box:hover::after {
+            opacity: 1;
+        }
+
+        .feature-image {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto 2.5rem;
+
+            border-radius: 20px;
+            overflow: hidden;
+
+            /* Rahmen */
+            border: 4px solid var(--frame-color, #ff6a00); /* Fallback-Farbe */
+
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+
+        .feature-box:hover .feature-image {
+            transform: scale(1.05);
+        }
+
+        .feature-photo {
+            width: 100%;
+            max-width: 350px;
+            height: 220px;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-box:hover .feature-photo {
+            transform: scale(1.05);
+        }
+
+        .feature-box h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--black);
+                flex-direction: column;
+                justify-content: center;
+                transition: left 0.4s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .story-section {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+
+            .timeline-item:nth-child(odd), .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 60px;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header" id="header">
+    <nav class="nav-container">
+        <a href="index.html">
+            <img src="img/logo.jpg" alt="area710" class="logo">
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">area710</a></li>
+            <li class="has-submenu">
+                <a href="raueme.html" class="lang-de">Räume</a>
+                <a href="raueme.html" class="lang-en" style="display:none;">Rooms</a>
+                <ul class="submenu">
+                    <li><a href="raueme.html#hall">Hall</a></li>
+                    <li><a href="raueme.html#lab">Lab</a></li>
+                    <li><a href="raueme.html#barclub">Bar & Club</a></li>
+                    <li><a href="raueme.html#outdoor">Outdoor</a></li>
+                </ul>
+            </li>
+            <li><a href="events.html">Events</a></li>
+            <li>
+                <a href="gallery.html" class="lang-de">Galerie</a>
+                <a href="gallery.html" class="lang-en" style="display:none;">Gallery</a>
+            </li>
+            <li>
+                <a href="about.html" class="lang-de active">Über Uns</a>
+                <a href="about.html" class="lang-en active" style="display:none;">About Us</a>
+            </li>
+            <li>
+                <a href="booking.html" class="lang-de">Buchungsanfrage</a>
+                <a href="booking.html" class="lang-en" style="display:none;">Booking Request</a>
+            </li>
+            <li>
+                <a href="contact.html" class="lang-de">Kontakt</a>
+                <a href="contact.html" class="lang-en" style="display:none;">Contact</a>
+            </li>
+
+            <div class="lang-switch">
+                <button class="lang-btn" class="active" data-lang="de">DE</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </ul>
+
+        <button class="mobile-toggle" id="mobileToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="lang-de">Über area710</h1>
+        <h1 class="lang-en" style="display:none;">About area710</h1>
+        <p class="lang-de">Leidenschaft für außergewöhnliche Events seit [JAHR]</p>
+        <p class="lang-en" style="display:none;">Passion for exceptional events since [YEAR]</p>
+    </div>
+</section>
+
+<!-- STORY SECTION -->
+<section class="section">
+    <div class="container">
+        <div class="story-section">
+            <div class="story-content">
+                <h2 class="lang-de">Unsere Geschichte</h2>
+                <h2 class="lang-en" style="display:none;">Our Story</h2>
+                <p class="lang-de">
+                    [PLATZHALTER: Beschreiben Sie hier die Entstehungsgeschichte von area710. Wie hat alles angefangen?
+                    Was war die ursprüngliche Vision? Welche Herausforderungen wurden gemeistert?]
+                </p>
+                <p class="lang-en" style="display:none;">
+                    [PLACEHOLDER: Describe the origin story of area710. How did it all start? What was the original
+                    vision? What challenges were overcome?]
+                </p>
+                <p class="lang-de">
+                    [PLATZHALTER: Was macht area710 einzigartig? Welche Philosophie steht hinter der Location? Was sind
+                    die wichtigsten Meilensteine?]
+                </p>
+                <p class="lang-en" style="display:none;">
+                    [PLACEHOLDER: What makes area710 unique? What philosophy is behind the location? What are the most
+                    important milestones?]
+                </p>
+            </div>
+            <div class="story-image">
+                <img src="images/hall-p.jpg" alt="area710 Geschichte">
+                <div class="placeholder-text lang-de">[BILD: Historisches Foto oder Team-Foto]</div>
+                <div class="placeholder-text lang-en" style="display:none;">[IMAGE: Historical photo or team photo]
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VALUES -->
+<section class="section"
+         style="background: var(--gray); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="lang-de">Unsere Werte</h2>
+            <h2 class="lang-en" style="display:none;">Our Values</h2>
+            <p class="lang-de">Was uns antreibt und auszeichnet</p>
+            <p class="lang-en" style="display:none;">What drives and distinguishes us</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-box">
+                <img src="img/exoerience.jpg" alt="experience" class="feature-image"
+                     style="--frame-color: var(--orange);">
+                <h3>experience</h3>
+                <p class="lang-de">
+                    Ob im Businessbereich oder Privat, ob in großem Stile oder klein und fein, Erlebnisse aller Art
+                    werden in der unverwechselbaren area710 perfekt realisiert
+                </p>
+                <p class="lang-en" style="display:none;">
+                    Whether in the business or private sector, whether on a large scale or small and fine, experiences
+                    of all kinds are perfectly realized in the distinctive area710
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <img src="img/multi-functional.jpg" alt="multi-functional" class="feature-image"
+                     style="--frame-color: var(--red);">
+                <h3>multi-functional</h3>
+                <p class="lang-de">
+                    Flexibilität, die wir mit unseren verschiedenen Raumkonstellationen vorweisen können, machen deren
+                    Funktionalität grenzenlos
+                </p>
+                <p class="lang-en" style="display:none;">
+                    The high degree of flexibility that we can offer with our various room constellations makes their
+                    functionality limitless
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <img src="img/full-service.jpg" alt="full-service" class="feature-image"
+                     style="--frame-color: var(--blue);">
+                <h3>full-service</h3>
+                <p class="lang-de">Das Team der area710 steht für einen außergewöhnlichen Service-Gedanken. Historisch
+                    aus dem Event- und Messegeschäft kommend, werden hier ausgefallenste Wünsche wahr</p>
+                <p class="lang-en" style="display:none;">The area710 team stands for an exceptional service concept.
+                    Historically coming from the event and trade fair business, the most unusual wishes come true
+                    here</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="img/magic.jpg" alt="magic" class="feature-image" style="--frame-color: var(--green);">
+                <h3>magic</h3>
+                <p class="lang-de">Entdecken Sie die magische Welt unterschiedlichster Veranstaltungsformate. Gerne
+                    zeigen wir Ihnen die Räumlichkeiten und deren Baukastensystem vor Ort</p>
+                <p class="lang-en" style="display:none;">Discover the magical world of different event formats. We would
+                    be happy to show you the rooms and their modular system on site</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+    <div class="stats-grid">
+        <div class="stat-item">
+            <div class="stat-number">[XXX]</div>
+            <div class="stat-label lang-de">Events pro Jahr</div>
+            <div class="stat-label lang-en" style="display:none;">Events per Year</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">[XXX]</div>
+            <div class="stat-label lang-de">Quadratmeter</div>
+            <div class="stat-label lang-en" style="display:none;">Square Meters</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">[XXX]</div>
+            <div class="stat-label lang-de">Zufriedene Kunden</div>
+            <div class="stat-label lang-en" style="display:none;">Happy Clients</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">[XXX]</div>
+            <div class="stat-label lang-de">Jahre Erfahrung</div>
+            <div class="stat-label lang-en" style="display:none;">Years Experience</div>
+        </div>
+    </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section">
+    <div class="container">
+        <div class="section-header section-header-blue">
+            <h2 class="lang-de">Unsere Reise</h2>
+            <h2 class="lang-en" style="display:none;">Our Journey</h2>
+            <p class="lang-de">Die wichtigsten Meilensteine</p>
+            <p class="lang-en" style="display:none;">The most important milestones</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year timeline-year-orange">2020</div>
+                    <h3 class="timeline-title lang-de">Meilenstein 1</h3>
+                    <h3 class="timeline-title lang-en" style="display:none;">Milestone 1</h3>
+                    <p class="timeline-text lang-de">Beschreibung Meilenstein 1</p>
+                    <p class="timeline-text lang-en" style="display:none;">Description Milestone 1</p>
+                </div>
+                <div class="timeline-dot timeline-dot-orange"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year timeline-year-red">2021</div>
+                    <h3 class="timeline-title lang-de">Meilenstein 2</h3>
+                    <h3 class="timeline-title lang-en" style="display:none;">Milestone 2</h3>
+                    <p class="timeline-text lang-de">Beschreibung Meilenstein 2</p>
+                    <p class="timeline-text lang-en" style="display:none;">Description Milestone 2</p>
+                </div>
+                <div class="timeline-dot timeline-dot-red"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year timeline-year-blue">2022</div>
+                    <h3 class="timeline-title lang-de">Meilenstein 3</h3>
+                    <h3 class="timeline-title lang-en" style="display:none;">Milestone 3</h3>
+                    <p class="timeline-text lang-de">Beschreibung Meilenstein 3</p>
+                    <p class="timeline-text lang-en" style="display:none;">Description Milestone 3</p>
+                </div>
+                <div class="timeline-dot timeline-dot-blue"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year timeline-year-green">2023</div>
+                    <h3 class="timeline-title lang-de">Meilenstein 4</h3>
+                    <h3 class="timeline-title lang-en" style="display:none;">Milestone 4</h3>
+                    <p class="timeline-text lang-de">Beschreibung Meilenstein 4</p>
+                    <p class="timeline-text lang-en" style="display:none;">Description Milestone 4</p>
+                </div>
+                <div class="timeline-dot timeline-dot-green"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- TEAM -->
+<section class="section" style="background: var(--gray); border-top: 1px solid var(--border);">
+    <div class="container">
+        <div class="section-header section-header-green">
+            <h2 class="lang-de">Unser Team</h2>
+            <h2 class="lang-en" style="display:none;">Our Team</h2>
+            <p class="lang-de">Die Menschen hinter area710</p>
+            <p class="lang-en" style="display:none;">The people behind area710</p>
+        </div>
+
+
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-photo">
+                    <img src="images/team-placeholder.jpg" alt="Team Member">
+                    <div class="placeholder-text lang-de">[FOTO: Team-Mitglied 1]</div>
+                    <div class="placeholder-text lang-en" style="display:none;">[PHOTO: Team Member 1]</div>
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">[NAME]</h3>
+                    <div class="team-role">[POSITION]</div>
+                    <p class="team-bio lang-de">
+                        [PLATZHALTER: Kurze Biografie, Aufgabenbereiche, Besonderheiten]
+                    </p>
+                    <p class="team-bio lang-en" style="display:none;">
+                        [PLACEHOLDER: Short biography, responsibilities, special features]
+                    </p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="team-photo">
+                    <img src="images/team-placeholder.jpg" alt="Team Member">
+                    <div class="placeholder-text lang-de">[FOTO: Team-Mitglied 2]</div>
+                    <div class="placeholder-text lang-en" style="display:none;">[PHOTO: Team Member 2]</div>
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">[NAME]</h3>
+                    <div class="team-role">[POSITION]</div>
+                    <p class="team-bio lang-de">
+                        [PLATZHALTER: Kurze Biografie, Aufgabenbereiche, Besonderheiten]
+                    </p>
+                    <p class="team-bio lang-en" style="display:none;">
+                        [PLACEHOLDER: Short biography, responsibilities, special features]
+                    </p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="team-photo">
+                    <img src="images/team-placeholder.jpg" alt="Team Member">
+                    <div class="placeholder-text lang-de">[FOTO: Team-Mitglied 3]</div>
+                    <div class="placeholder-text lang-en" style="display:none;">[PHOTO: Team Member 3]</div>
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">[NAME]</h3>
+                    <div class="team-role">[POSITION]</div>
+                    <p class="team-bio lang-de">
+                        [PLATZHALTER: Kurze Biografie, Aufgabenbereiche, Besonderheiten]
+                    </p>
+                    <p class="team-bio lang-en" style="display:none;">
+                        [PLACEHOLDER: Short biography, responsibilities, special features]
+                    </p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="team-photo">
+                    <img src="images/team-placeholder.jpg" alt="Team Member">
+                    <div class="placeholder-text lang-de">[FOTO: Team-Mitglied 4]</div>
+                    <div class="placeholder-text lang-en" style="display:none;">[PHOTO: Team Member 4]</div>
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">[NAME]</h3>
+                    <div class="team-role">[POSITION]</div>
+                    <p class="team-bio lang-de">
+                        [PLATZHALTER: Kurze Biografie, Aufgabenbereiche, Besonderheiten]
+                    </p>
+                    <p class="team-bio lang-en" style="display:none;">
+                        [PLACEHOLDER: Short biography, responsibilities, special features]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h2 class="lang-de">Bereit für Ihr Event?</h2>
+        <h2 class="lang-en" style="display:none;">Ready for Your Event?</h2>
+        <p class="lang-de">Lassen Sie uns gemeinsam etwas Außergewöhnliches schaffen</p>
+        <p class="lang-en" style="display:none;">Let's create something extraordinary together</p>
+        <div class="cta-buttons">
+            <a href="booking.html" class="btn btn-primary lang-de">Jetzt Anfragen</a>
+            <a href="booking.html" class="btn btn-primary lang-en" style="display:none;">Request Now</a>
+            <a href="contact.html" class="btn btn-secondary lang-de">Kontakt Aufnehmen</a>
+            <a href="contact.html" class="btn btn-secondary lang-en" style="display:none;">Get in Touch</a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>area710</h3>
+            <p>Gottlieb-Binder-Straße 2</p>
+            <p>D-71088 Holzgerlingen</p>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="lang-de">Öffnungszeiten Eventbüro</h3>
+            <h3 class="lang-en" style="display:none;">Office Hours</h3>
+            <p class="lang-de">Montag–Freitag</p>
+            <p class="lang-en" style="display:none;">Monday–Friday</p>
+            <p>10:00–18:00 <span class="lang-de">Uhr</span></p>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="lang-de">Kontakt</h3>
+            <h3 class="lang-en" style="display:none;">Contact</h3>
+            <p><a href="tel:+4970314107311">+49 7031 41073-11</a></p>
+            <p><a href="mailto:info@area710.de">info@area710.de</a></p>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="lang-de">Folge uns</h3>
+            <h3 class="lang-en" style="display:none;">Follow us</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100086162780846" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/area710_event/" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/1713573288?text=area710" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p class="lang-de">
+            area710 eine Marke der seeeye Werbung & Event GmbH
+            <br>
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutzerklärung</a>
+            <a href="booking.html">Buchungsanfrage</a>
+            <a href="https://ticket.area710.de" target="_blank">Ticket Verkauf</a>
+        </p>
+        <p class="lang-en" style="display:none;">
+            area710 a brand of seeeye Werbung & Event GmbH
+            <br>
+            <a href="impressum.html">Legal Notice</a>
+            <a href="datenschutz.html">Privacy Policy</a>
+            <a href="booking.html">Booking Request</a>
+            <a href="https://ticket.area710.de" target="_blank">Ticket Sales</a>
+        </p>
+    </div>
+</footer>
+
+<script>
+    // LANGUAGE SWITCHING
+    const langBtns = document.querySelectorAll('.lang-btn');
+
+    function setLanguage(lang) {
+        // Update buttons
+        langBtns.forEach(btn => {
+            if (btn.dataset.lang === lang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Update all lang-specific elements
+        document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
+            if (el.classList.contains(`lang-${lang}`)) {
+                el.style.display = '';
+            } else {
+                el.style.display = 'none';
+            }
+        });
+
+        // Update document language
+        document.documentElement.lang = lang;
+
+        // Store preference
+        localStorage.setItem('preferred-language', lang);
+    }
+
+    // Add click listeners
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            setLanguage(btn.dataset.lang);
+        });
+    });
+
+    // Load saved language or default to DE
+    const savedLang = localStorage.getItem('preferred-language') || 'de';
+    setLanguage(savedLang);
+
+    // MOBILE MENU
+    document.getElementById('mobileToggle').addEventListener('click', function () {
+        document.getElementById('navMenu').classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navMenu').classList.remove('active');
+        });
+    });
+
+    // HEADER SCROLL
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if (window.pageYOffset > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+</script>
+
+</body>
+</html>

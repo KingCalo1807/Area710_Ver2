@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Datenschutzerklärung - area710 - Informationen zum Datenschutz">
+    <title>Datenschutzerklärung - area710 - UNIQUE EVENT LOCATION</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" href="/img/fav.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #FCAB14;
+            --red: #CD1151;
+            --blue: #009FE2;
+            --green: #AEC610;
+            --black: #000;
+            --white: #fff;
+            --gray: #222;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.8;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 45px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            font-size: 0.95rem;
+            font-weight: 400;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green));
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--orange);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.3rem;
+            margin-left: 2rem;
+            border-left: 1px solid var(--border);
+            padding-left: 2rem;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.7rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--white);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 40vh;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 76px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(252, 171, 20, 0.3), rgba(205, 17, 81, 0.3)), url('img/hall.jpg') center/cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* CONTENT SECTION */
+        .content-section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* INFO BOX */
+        .info-box {
+            background: var(--gray);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--orange);
+        }
+
+        .info-box h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .info-box p {
+            margin-bottom: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            color: var(--white);
+            font-weight: 400;
+        }
+
+        .info-value a {
+            color: var(--orange);
+            transition: color 0.3s ease;
+        }
+
+        .info-value a:hover {
+            color: var(--white);
+        }
+
+        /* LEGAL SECTION */
+        .legal-section {
+            background: var(--gray);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .legal-section h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .legal-section h4 {
+            color: var(--orange);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        .legal-section h4:not(:first-of-type) {
+            margin-top: 2rem;
+        }
+
+        .legal-section p {
+            margin-bottom: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+        }
+
+        .legal-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .legal-section li {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .legal-section a {
+            color: var(--orange);
+            transition: color 0.3s ease;
+        }
+
+        .legal-section a:hover {
+            color: var(--white);
+        }
+
+        /* ACCENT SECTIONS */
+        .accent-section {
+            border-left: 4px solid var(--red);
+        }
+
+        .accent-section.blue {
+            border-left-color: var(--blue);
+        }
+
+        .accent-section.green {
+            border-left-color: var(--green);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--gray);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--white);
+            background: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .social-link:hover svg {
+            fill: var(--black);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0 0.5rem;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        /* SUBMENU */
+        .has-submenu {
+            position: relative;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            list-style: none;
+            padding: 0.5rem 0;
+            margin-top: 0.8rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu li a {
+            display: block;
+            padding: 0.7rem 1.2rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .submenu li a:hover {
+            background: linear-gradient(90deg, rgba(252, 171, 20, 0.15), rgba(205, 17, 81, 0.15), rgba(0, 159, 226, 0.15), rgba(174, 198, 16, 0.15));
+            color: var(--white);
+        }
+
+        .has-submenu > a::after {
+            content: "▾";
+            margin-left: 0.3rem;
+            font-size: 0.7em;
+            opacity: 0.7;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--black);
+                flex-direction: column;
+                justify-content: center;
+                transition: left 0.4s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .info-box, .legal-section {
+                padding: 2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .content-section {
+                padding: 3rem 1rem;
+            }
+
+            .info-box, .legal-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header" id="header">
+    <nav class="nav-container">
+        <a href="index.html">
+            <img src="img/logo.jpg" alt="area710" class="logo">
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">area710</a></li>
+            <li class="has-submenu">
+                <a href="raueme.html" class="lang-de">Räume</a>
+                <a href="raueme.html" class="lang-en" style="display:none;">Rooms</a>
+                <ul class="submenu">
+                    <li><a href="raueme.html#hall">Hall</a></li>
+                    <li><a href="raueme.html#lab">Lab</a></li>
+                    <li><a href="raueme.html#barclub">Bar & Club</a></li>
+                    <li><a href="raueme.html#outdoor">Outdoor</a></li>
+                </ul>
+            </li>
+            <li><a href="events.html">Events</a></li>
+            <li>
+                <a href="gallery.html" class="lang-de">Galerie</a>
+                <a href="gallery.html" class="lang-en" style="display:none;">Gallery</a>
+            </li>
+            <li>
+                <a href="about.html" class="lang-de">Über Uns</a>
+                <a href="about.html" class="lang-en" style="display:none;">About Us</a>
+            </li>
+            <li>
+                <a href="booking.html" class="lang-de">Buchungsanfrage</a>
+                <a href="booking.html" class="lang-en" style="display:none;">Booking Request</a>
+            </li>
+            <li>
+                <a href="contact.html" class="lang-de">Kontakt</a>
+                <a href="contact.html" class="lang-en" style="display:none;">Contact</a>
+            </li>
+
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="de">DE</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </ul>
+
+        <button class="mobile-toggle" id="mobileToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="lang-de">Datenschutzerklärung</h1>
+        <h1 class="lang-en" style="display:none;">Privacy Policy</h1>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+
+        <!-- GERMAN CONTENT -->
+        <div class="lang-content lang-de active">
+            <!-- INTRO -->
+            <div class="info-box">
+                <h2>Datenschutzerklärung</h2>
+                <p>
+                    In dieser Datenschutzerklärung informieren wir Sie über die Verarbeitung Ihrer personenbezogenen
+                    Daten.
+                </p>
+                <p>
+                    Sofern Sie Ihre Datenschutzeinstellungen ändern möchten (Einwilligungen erteilen oder bereits
+                    erteilte Einwilligungen widerrufen), klicken Sie hier um Ihre Einstellungen zu ändern.
+                </p>
+            </div>
+
+            <!-- VERANTWORTLICH -->
+            <div class="legal-section">
+                <h3>Verantwortlich</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Unternehmen</div>
+                        <div class="info-value">seeeye Werbung & Event GmbH</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Adresse</div>
+                        <div class="info-value">
+                            Gottlieb-Binder-Str. 2<br>
+                            71088 Holzgerlingen<br>
+                            Deutschland
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">E-Mail</div>
+                        <div class="info-value">
+                            <a href="mailto:info@seeeye.de">info@seeeye.de</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Telefon</div>
+                        <div class="info-value">
+                            <a href="tel:+4970314107300">+49 7031 410 73-0</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOSTING PROVIDER -->
+            <div class="legal-section accent-section">
+                <h3>Hosting Provider</h3>
+                <p><strong>Dienst:</strong> WP SPACE</p>
+                <p><strong>Anbieter:</strong> Broll IT & Media GmbH, Am Metternicher Bahnhof 10, 56072 Koblenz,
+                    Deutschland</p>
+                <p><strong>Datenschutzerklärung:</strong> <a href="https://wp-space.de/datenschutzerklaerung/"
+                                                             target="_blank">https://wp-space.de/datenschutzerklaerung/</a>
+                </p>
+
+                <h4>Server Log Files</h4>
+                <p>
+                    Zum Zweck der Überwachung der technischen Funktion und zur Erhöhung der Betriebssicherheit unseres
+                    Webhosts werden Verbindungsdaten verarbeitet. Die Dauer der Verarbeitung ist auf 30 Tage beschränkt.
+                </p>
+                <p>
+                    Die Rechtsgrundlage für die Datenverarbeitung ist das berechtigte Interesse (unbedingte technische
+                    Notwendigkeit eines Server Log Files als grundlegende Datenbasis zur Fehleranalyse und für
+                    Sicherheitsmaßnahmen im Rahmen des durch Ihren Aufruf ausdrücklich gewünschten Dienstes „Website")
+                    gemäß Art. 6 Abs. 1 lit. f DSGVO.
+                </p>
+            </div>
+
+            <!-- KONTAKTFORMULAR -->
+            <div class="legal-section accent-section blue">
+                <h3>Kontaktformular</h3>
+                <p>
+                    Auf unserer Website besteht die Möglichkeit, durch ein Kontaktformular direkt mit uns in Kontakt zu
+                    treten. Nach Absenden des Kontaktformulars erfolgt eine Verarbeitung der von Ihnen eingegebenen
+                    personenbezogenen Daten durch den Verantwortlichen zum Zweck der Bearbeitung Ihrer Anfrage auf
+                    Grundlage der von Ihnen durch das Absenden des Formulars erteilten Einwilligung gem. Art. 6 Abs. 1
+                    lit. a DSGVO bis auf Widerruf.
+                </p>
+                <p>
+                    Es besteht keine gesetzliche oder vertragliche Verpflichtung zur Bereitstellung der
+                    personenbezogenen Daten. Die Nichtbereitstellung hat lediglich zur Folge, dass Sie Ihr Anliegen
+                    nicht übermitteln und wir dieses nicht bearbeiten können.
+                </p>
+            </div>
+
+            <!-- REGISTRIERUNGSFORMULAR -->
+            <div class="legal-section accent-section green">
+                <h3>Registrierungsformular</h3>
+                <p>
+                    Wir bieten Ihnen auf unserer Website eine Registrierungsmöglichkeit. Nach Absenden der Registrierung
+                    erfolgt eine Verarbeitung der im Registrierungsformular angeführten Daten durch uns zum Zweck der
+                    Vertragserfüllung auf Grundlage des mit der Registrierung abgeschlossenen Vertrages gem. Art. 6 Abs.
+                    1 lit. b DSGVO für die Vertragslaufzeit.
+                </p>
+                <p>
+                    Es besteht keine gesetzliche oder vertragliche Verpflichtung zur Bereitstellung der
+                    personenbezogenen Daten. Die Nichtbereitstellung hat lediglich zur Folge, dass keine Registrierung
+                    möglich ist.
+                </p>
+                <p>
+                    Eine Datenübermittlung an Dritte erfolgt nicht.
+                </p>
+            </div>
+
+            <!-- SICHERHEITSDIENSTE -->
+            <div class="legal-section">
+                <h3>Sicherheitsdienste</h3>
+                <p>
+                    Auf dieser Website nutzen wir zur Vermeidung von nicht menschlichen und automatisierten Eingaben das
+                    Angebot von Sicherheitsdienstleistern wie Captcha-Diensten.
+                </p>
+
+                <h4>Google reCAPTCHA</h4>
+                <p>
+                    Im Fall der Erteilung Ihrer Einwilligung verarbeiten wir mit dem Dienst Google reCaptcha, Google
+                    Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland als gemeinsame Verantwortliche Ihre
+                    personenbezogenen Daten zum Zweck der Vermeidung nicht menschlicher und automatisierter Eingaben.
+                    Dabei ermöglichen wir dem Dienst das Setzen von Cookies, die Erhebung von Verbindungsdaten und Daten
+                    ihres Webbrowsers. Zudem ermöglichen wir dem Dienst die Berechnung einer User-ID zur eindeutigen
+                    Identifizierung des Users im Rahmen des von Google betriebenen Werbenetzwerkes. Daten werden auf
+                    Ihrem Gerät für die Dauer von bis zu zwei Jahren gespeichert.
+                </p>
+                <p>
+                    Die Rechtsgrundlage für die Datenverarbeitung ist Ihre Einwilligung gemäß Art. 6 Abs 1 lit. a DSGVO.
+                    Die Nichterteilung der Einwilligung hat zur Folge, dass die Nutzung von reCaptcha und damit
+                    verbundenen Formularen nicht möglich ist.
+                </p>
+                <p>
+                    Eine bereits erteilte Einwilligung können Sie widerrufen, indem Sie die Datenschutzeinstellungen
+                    ändern.
+                </p>
+                <p>
+                    Der Google Konzern übermittelt Ihre personenbezogenen Daten in die USA. Die Rechtsgrundlage für die
+                    Datenübermittlung in die USA ist Ihre Einwilligung gemäß Art. 49 Abs 1 lit a iVm Art. 6 Abs 1 lit a
+                    DSGVO in Verbindung mit §25 TTDSG. Sie wurden bereits vor Erteilung Ihrer Einwilligung informiert,
+                    dass die USA über kein den Standards der EU entsprechendes Datenschutzniveau verfügt. Insbesondere
+                    können US Geheimdienste auf Ihre Daten zugreifen, ohne dass Sie darüber informiert werden und ohne
+                    dass Sie dagegen rechtlich vorgehen können. Der Europäische Gerichtshof hat aus diesem Grund in
+                    einem Urteil den früheren Angemessenheitsbeschluss (Privacy Shield) für ungültig erklärt.
+                </p>
+            </div>
+
+            <!-- WIDERSPRUCHSRECHT -->
+            <div class="legal-section accent-section">
+                <h3>Widerspruchsrecht</h3>
+                <p>
+                    Sofern die Verarbeitung Ihrer personenbezogenen Daten auf Grundlage des berechtigten Interesses
+                    erfolgt, haben Sie das Recht gegen diese Verarbeitung zu widersprechen.
+                </p>
+                <p>
+                    Sofern keine zwingenden schutzwürdigen Gründe für die Verarbeitung unsererseits vorliegen, wird die
+                    Verarbeitung Ihrer Daten auf Basis dieser Rechtsgrundlage eingestellt.
+                </p>
+                <p>
+                    Zudem haben Sie das Recht, der Verarbeitung Ihrer personenbezogenen Daten zum Zweck der
+                    Direktwerbung zu widersprechen. Im Fall des Widerspruchs werden Ihre personenbezogenen Daten nicht
+                    mehr zum Zweck der Direktwerbung verarbeitet.
+                </p>
+                <p>
+                    Die Rechtmäßigkeit der bis zum Widerspruch verarbeiteten Daten wird durch den Widerspruch nicht
+                    berührt.
+                </p>
+            </div>
+
+            <!-- WIDERRUFSRECHT -->
+            <div class="legal-section accent-section blue">
+                <h3>Widerrufsrecht</h3>
+                <p>
+                    Sie haben das Recht eine bereits erteilte Einwilligung jederzeit zu widerrufen, indem Sie die
+                    Datenschutzeinstellungen ändern.
+                </p>
+                <p>
+                    Im Fall der Einwilligung in den Erhalt elektronischer Werbung kann der Widerruf Ihrer Einwilligung
+                    durch Klick auf den Abmeldelink erfolgen. In diesem Fall wird eine Verarbeitung, sofern keine andere
+                    Rechtsgrundlage besteht, eingestellt.
+                </p>
+                <p>
+                    Die Rechtmäßigkeit der bis zum Widerruf verarbeiteten Daten wird durch den Widerruf nicht berührt.
+                </p>
+            </div>
+
+            <!-- BETROFFENENRECHTE -->
+            <div class="legal-section accent-section green">
+                <h3>Betroffenenrechte</h3>
+                <p>
+                    Sie haben zudem das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung
+                    der personenbezogenen Daten.
+                </p>
+                <p>
+                    Soweit die Rechtsgrundlage der Verarbeitung Ihrer personenbezogenen Daten in Ihrer Einwilligung oder
+                    in einem mit Ihnen abgeschlossenen Vertrag besteht, haben Sie überdies das Recht auf
+                    Datenübertragbarkeit.
+                </p>
+                <p>
+                    Weiters haben Sie das Recht auf Beschwerde bei der Aufsichtsbehörde. Nähere Informationen zu den
+                    Aufsichtsbehörden in der Europäischen Union finden Sie hier.
+                </p>
+            </div>
+        </div>
+
+        <!-- ENGLISH CONTENT -->
+        <div class="lang-content lang-en">
+            <!-- INTRO -->
+            <div class="info-box">
+                <h2>Privacy Policy</h2>
+                <p>
+                    In this privacy policy we inform you about the processing of your personal data.
+                </p>
+                <p>
+                    If you want to change your privacy settings (grant consent or revoke your previously granted
+                    consent), click here to change your settings.
+                </p>
+            </div>
+
+            <!-- RESPONSIBLE -->
+            <div class="legal-section">
+                <h3>Responsible</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Company</div>
+                        <div class="info-value">seeeye Werbung & Event GmbH</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Address</div>
+                        <div class="info-value">
+                            Gottlieb-Binder-Str. 2<br>
+                            71088 Holzgerlingen<br>
+                            Deutschland
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">E-Mail</div>
+                        <div class="info-value">
+                            <a href="mailto:info@seeeye.de">info@seeeye.de</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Phone</div>
+                        <div class="info-value">
+                            <a href="tel:+4970314107300">+49 7031 410 73-0</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOSTING -->
+            <div class="legal-section accent-section">
+                <h3>Hosting</h3>
+                <p><strong>Dienst:</strong> WP SPACE</p>
+                <p><strong>Anbieter:</strong> Broll IT & Media GmbH, Am Metternicher Bahnhof 10, 56072 Koblenz,
+                    Deutschland</p>
+                <p><strong>Datenschutzerklärung:</strong> <a href="https://wp-space.de/datenschutzerklaerung/"
+                                                             target="_blank">https://wp-space.de/datenschutzerklaerung/</a>
+                </p>
+
+                <h4>Server Log Files</h4>
+                <p>
+                    Connection data are processed to monitor the technical function and to increase the reliability of
+                    our webhost. The duration of processing is limited to 30 days.
+                </p>
+                <p>
+                    The legal basis of processing is the legitimate interest (absolute technical necessity of a server
+                    log file as fundamental data basis for failure analysis and for security measures in connection with
+                    the "website" service which you have explicitly requested by visiting the website) according to Art.
+                    6 (1) (f) GDPR combined with § 25 TTDSG.
+                </p>
+            </div>
+
+            <!-- CONTACT FORM -->
+            <div class="legal-section accent-section blue">
+                <h3>Contact Form</h3>
+                <p>
+                    You can contact us by using a contact form provided on our website. After submission of the contact
+                    form, the controller will process the personal data you have provided for the purpose of handling
+                    your request on the basis of your consent which you have given by submitting the form according to
+                    Art. 6 (1) (a) GDPR, until revocation.
+                </p>
+                <p>
+                    You have no legal or contractual obligation to provide personal data. If you do not provide such
+                    data, you are simply not able to submit and we are not able to process your request.
+                </p>
+            </div>
+
+            <!-- REGISTRATION FORM -->
+            <div class="legal-section accent-section green">
+                <h3>Registration Form</h3>
+                <p>
+                    You can register on our website. After you have registered, we will process the data provided in the
+                    registration form for the performance of the contract based on the contract concluded with us with
+                    your registration according to Art. 6 (1) (b) GDPR.
+                </p>
+                <p>
+                    You have no legal or contractual obligation to provide personal data. You simply cannot register for
+                    the service if you do not provide such data.
+                </p>
+                <p>
+                    Data are not transferred to third parties.
+                </p>
+            </div>
+
+            <!-- SECURITY SERVICES -->
+            <div class="legal-section">
+                <h3>Security Services</h3>
+                <p>
+                    On this website we use the offer of security service providers such as Captcha services to avoid
+                    non-human and automated input.
+                </p>
+
+                <h4>Google reCAPTCHA</h4>
+                <p>
+                    If you give your consent, we will process your personal data in cooperation with the service Google
+                    reCaptcha, Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland as joint
+                    controllers for the purpose of avoidance of non human and automatized inputs. We will enable the
+                    service to set third party cookies, to collect connection data and data of your web browser.
+                    Furthermore we enable the service to build a personal user-ID to conclusively identify the user
+                    within the scope of the advertising network operated by Google. The data will be stored on your
+                    device for up to two years.
+                </p>
+                <p>
+                    The legal basis of processing is your consent according to Article 6 (1) (a) GDPR. A failure to give
+                    consent will have the effect of not being able to use reCaptcha or the connected forms.
+                </p>
+                <p>
+                    You can revoke your consent by changing the settings at Privacy settings.
+                </p>
+                <p>
+                    The Google group transfers your personal data to the USA. The legal basis for data transfer to the
+                    USA is your consent in accordance with Art. 49 Para. 1 a in conjunction with Art. 6 Para. 1 a GDPR.
+                    Before you gave your consent, you were informed that the USA does not have a data protection level
+                    that complies with EU standards. In particular, US intelligence agencies can access your data
+                    without being informed about it and without you being able to take legal action against it. For this
+                    reason, the European Court of Justice ruled in a judgment that the previous adequacy decision
+                    (Privacy Shield) was invalid.
+                </p>
+            </div>
+
+            <!-- RIGHT TO OBJECT -->
+            <div class="legal-section accent-section">
+                <h3>Right to object</h3>
+                <p>
+                    You have the right to object to processing if your personal data is processed based on legitimate
+                    interests.
+                </p>
+                <p>
+                    We will then cease the processing carried out on this basis, unless there are compelling and
+                    legitimate reasons for us to do so.
+                </p>
+                <p>
+                    You have the right to object to the processing of your personal data for the purpose of direct
+                    marketing. In this case, we will cease the processing of your personal data for the purpose of
+                    direct mail.
+                </p>
+                <p>
+                    The withdrawal of consent shall not affect the lawfulness of processing based on consent before its
+                    withdrawal.
+                </p>
+            </div>
+
+            <!-- WITHDRAWAL -->
+            <div class="legal-section accent-section blue">
+                <h3>Withdrawal</h3>
+                <p>
+                    You have the right to withdraw your consent at any time by changing the settings at Privacy
+                    settings.
+                </p>
+                <p>
+                    If you have given your consent to receipt of advertising by email, you may withdraw your consent by
+                    clicking the unsubscribe link. In this case, we will cease the processing operations, unless there
+                    is any other legal basis.
+                </p>
+                <p>
+                    The withdrawal of consent shall not affect the lawfulness of processing based on consent before its
+                    withdrawal.
+                </p>
+            </div>
+
+            <!-- RIGHT TO DATA SUBJECT -->
+            <div class="legal-section accent-section green">
+                <h3>Right to data subject</h3>
+                <p>
+                    You have the right to access to, rectification, erasure and restriction of processing of personal
+                    data.
+                </p>
+                <p>
+                    You have also the right to data portability if the processing of your personal data is based on your
+                    consent or on a contract concluded with you.
+                </p>
+                <p>
+                    You have also the right to lodge a complaint with the supervisory authority. If you need more
+                    information on the supervisory authorities in the European Union, go to here.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>area710</h3>
+            <p>Gottlieb-Binder-Straße 2</p>
+            <p>D-71088 Holzgerlingen</p>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="lang-de">Öffnungszeiten Eventbüro</h3>
+            <h3 class="lang-en" style="display:none;">Office Hours</h3>
+            <p class="lang-de">Montag–Freitag</p>
+            <p class="lang-en" style="display:none;">Monday–Friday</p>
+            <p>10:00–18:00 <span class="lang-de">Uhr</span></p>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="lang-de">Kontakt</h3>
+            <h3 class="lang-en" style="display:none;">Contact</h3>
+            <p><a href="tel:+4970314107311">+49 7031 41073-11</a></p>
+            <p><a href="mailto:info@area710.de">info@area710.de</a></p>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="lang-de">Folge uns</h3>
+            <h3 class="lang-en" style="display:none;">Follow us</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100086162780846" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/area710_event/" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/1713573288?text=area710" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p class="lang-de">
+            area710 eine Marke der seeeye Werbung & Event GmbH
+            <br>
+            <a href="impressum.html" class="active">Impressum</a>
+            <a href="datenschutz.html">Datenschutzerklärung</a>
+            <a href="booking.html">Buchungsanfrage</a>
+            <a href="https://ticket.area710.de" target="_blank">Ticket Verkauf</a>
+        </p>
+        <p class="lang-en" style="display:none;">
+            area710 a brand of seeeye Werbung & Event GmbH
+            <br>
+            <a href="impressum.html" class="active">Legal Notice</a>
+            <a href="datenschutz.html">Privacy Policy</a>
+            <a href="booking.html">Booking Request</a>
+            <a href="https://ticket.area710.de" target="_blank">Ticket Sales</a>
+        </p>
+    </div>
+</footer>
+
+<script>
+    // LANGUAGE SWITCHING
+    const langBtns = document.querySelectorAll('.lang-btn');
+
+    function setLanguage(lang) {
+        // Update buttons
+        langBtns.forEach(btn => {
+            if (btn.dataset.lang === lang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Update content sections
+        document.querySelectorAll('.lang-content').forEach(content => {
+            if (content.classList.contains(`lang-${lang}`)) {
+                content.classList.add('active');
+            } else {
+                content.classList.remove('active');
+            }
+        });
+
+        // Update all lang-specific elements
+        document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
+            if (el.classList.contains(`lang-${lang}`)) {
+                el.style.display = '';
+            } else {
+                el.style.display = 'none';
+            }
+        });
+
+        // Store preference
+        localStorage.setItem('preferred-language', lang);
+    }
+
+    // Add click listeners
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            setLanguage(btn.dataset.lang);
+        });
+    });
+
+    // Load saved language or default to DE
+    const savedLang = localStorage.getItem('preferred-language') || 'de';
+    setLanguage(savedLang);
+
+    // MOBILE MENU
+    document.getElementById('mobileToggle').addEventListener('click', function () {
+        document.getElementById('navMenu').classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navMenu').classList.remove('active');
+        });
+    });
+
+    // HEADER SCROLL
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if (window.pageYOffset > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+</script>
+
+</body>
+</html>

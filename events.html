@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Events bei area710 - Entdecken Sie unsere kommenden Veranstaltungen">
+    <title>Events - area710 - UNIQUE EVENT LOCATION</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="/img/fav.png" type="image/png" >
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #FCAB14;
+            --red: #CD1151;
+            --blue: #009FE2;
+            --green: #AEC610;
+            --black: #000;
+            --white: #fff;
+            --gray: #222;
+            --border: rgba(255, 255, 255, 0.1);
+            --party: var(--orange);
+            --business: var(--red);
+            --culture: var(--blue);
+            --workshops: var(--green);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 45px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            font-size: 0.95rem;
+            font-weight: 400;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green));
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--orange);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.3rem;
+            margin-left: 2rem;
+            border-left: 1px solid var(--border);
+            padding-left: 2rem;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.7rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--white);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 76px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(252, 171, 20, 0.4), rgba(205, 17, 81, 0.4)), url('img/dj.jpg') center/cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 300;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* VIEW TOGGLE */
+        .view-toggle {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .view-btn {
+            padding: 1rem 2.5rem;
+            background: var(--gray);
+            border: 1px solid var(--border);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .view-btn:hover {
+            border-color: var(--white);
+            color: var(--white);
+        }
+
+        .view-btn.active {
+            background: linear-gradient(135deg, var(--white), var(--white));
+            border-color: transparent;
+            color: var(--black);
+        }
+
+        /* CALENDAR VIEW */
+        .calendar-view {
+            display: none;
+        }
+
+        .calendar-view.active {
+            display: block;
+        }
+
+        .calendar {
+            background: var(--gray);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2rem;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .calendar-header h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .calendar-nav button {
+            padding: 0.6rem 1.2rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--white);
+            cursor: pointer;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-nav button:hover {
+            background: var(--white);
+            border-color: var(--white);
+            color: var(--black);
+        }
+
+        /* MOBILE SCROLL HINT */
+        .mobile-scroll-hint {
+            display: none;
+            text-align: center;
+            padding: 1rem;
+            background: rgba(252, 171, 20, 0.1);
+            border: 1px solid var(--white);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        /* CALENDAR WRAPPER FÜR MOBILE SCROLL */
+        .calendar-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 4px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: var(--border);
+            min-width: 700px;
+        }
+
+        .calendar-day-header {
+            background: rgba(252, 171, 20, 0.2);
+            padding: 1rem;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .calendar-day {
+            background: var(--black);
+            min-height: 120px;
+            padding: 0.8rem;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        .calendar-day:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .calendar-day.other-month {
+            opacity: 0.3;
+        }
+
+        .calendar-day.today {
+            background: rgba(174, 198, 16, 0.1);
+            border: 2px solid var(--green);
+        }
+
+        .calendar-day.blocked {
+            background: rgba(205, 17, 81, 0.1);
+            border: 1px solid var(--red);
+        }
+
+        .calendar-date {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .calendar-event {
+            background: linear-gradient(135deg, var(--blue), var(--blue));
+            padding: 0.4rem;
+            font-size: 0.75rem;
+            margin-bottom: 0.3rem;
+            border-radius: 3px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .calendar-event:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        /* DOWNLOAD BUTTON IN CALENDAR EVENT */
+        .download-event-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: var(--white);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .download-event-btn:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* NEU: GEBLOCKTE RÄUME */
+        .calendar-blocked {
+            background: rgba(205, 17, 81, 0.3);
+            padding: 0.4rem;
+            font-size: 0.7rem;
+            border-radius: 3px;
+            margin-bottom: 0.3rem;
+        }
+
+        .calendar-blocked.reserved {
+            background: rgba(252, 171, 20, 0.3);
+        }
+
+        .blocked-status {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            color: var(--white);
+        }
+
+        .blocked-rooms-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.2rem;
+        }
+
+        .blocked-room-tag {
+            font-size: 0.65rem;
+            padding: 0.15rem 0.4rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 2px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* SEARCH BOX */
+        .search-box {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: var(--gray);
+            border-radius: 4px;
+            border: 1px solid var(--border);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: var(--black);
+            border: 1px solid var(--border);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* FILTERS */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--gray);
+            border-radius: 4px;
+            border: 1px solid var(--border);
+        }
+
+        .filter-btn {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn[data-category="party"] {
+            background: var(--party);
+        }
+
+        .filter-btn[data-category="business"] {
+            background: var(--business);
+        }
+
+        .filter-btn[data-category="culture"] {
+            background: var(--culture);
+        }
+
+        .filter-btn[data-category="workshops"] {
+            background: var(--workshops);
+        }
+
+        .filter-btn:hover {
+            background: transparent;
+            border-color: var(--white);
+        }
+
+        .filter-btn[data-category="party"]:hover {
+            border-color: var(--party);
+            color: var(--party);
+        }
+
+        .filter-btn[data-category="business"]:hover {
+            border-color: var(--business);
+            color: var(--business);
+        }
+
+        .filter-btn[data-category="culture"]:hover {
+            border-color: var(--culture);
+            color: var(--culture);
+        }
+
+        .filter-btn[data-category="workshops"]:hover {
+            border-color: var(--workshops);
+            color: var(--workshops);
+        }
+
+        .filter-btn.active {
+            background: transparent;
+            border-color: var(--white);
+        }
+
+        .filter-btn.active[data-category="party"] {
+            border-color: var(--party);
+            color: var(--party);
+        }
+
+        .filter-btn.active[data-category="business"] {
+            border-color: var(--business);
+            color: var(--business);
+        }
+
+        .filter-btn.active[data-category="culture"] {
+            border-color: var(--culture);
+            color: var(--culture);
+        }
+
+        .filter-btn.active[data-category="workshops"] {
+            border-color: var(--workshops);
+            color: var(--workshops);
+        }
+
+        /* GRID VIEW */
+        .grid-view {
+            display: none;
+        }
+
+        .grid-view.active {
+            display: block;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: var(--gray);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .event-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .event-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .event-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .event-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .event-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .event-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border-color: var(--green);
+        }
+
+        .event-card[data-category="workshops"]:hover {
+            border-color: var(--workshops);
+        }
+
+        .event-card[data-category="culture"]:hover {
+            border-color: var(--culture);
+        }
+
+        .event-card[data-category="business"]:hover {
+            border-color: var(--business);
+        }
+
+        .event-card[data-category="party"]:hover {
+            border-color: var(--party);
+        }
+
+        .event-card.hidden {
+            display: none;
+        }
+
+        .event-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .event-card:hover .event-image {
+            transform: scale(1.1);
+        }
+
+        .event-content {
+            padding: 2rem;
+        }
+
+        .event-category {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .event-category.party {
+            background: rgba(252, 171, 20, 0.2);
+            color: var(--orange);
+        }
+
+        .event-category.business {
+            background: rgba(205, 17, 81, 0.2);
+            color: var(--red);
+        }
+
+        .event-category.culture {
+            background: rgba(0, 159, 226, 0.2);
+            color: var(--blue);
+        }
+
+        .event-category.workshop {
+            background: rgba(174, 198, 16, 0.2);
+            color: var(--green);
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .event-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        .event-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        .event-description {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .event-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .event-price {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .event-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .event-btn {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--white);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .event-btn:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .download-btn {
+            padding: 0.8rem 1.2rem;
+            background: transparent;
+            border: 1px solid var(--white);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* EMPTY STATE */
+        .empty-state {
+            text-align: center;
+            padding: 5rem 2rem;
+            display: none;
+        }
+
+        .empty-state.show {
+            display: block;
+        }
+
+        .empty-state h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .empty-state p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* LEGEND */
+        .calendar-legend {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+
+        .legend-color.event {
+            background: linear-gradient(135deg, var(--blue), var(--blue));
+        }
+
+        .legend-color.blocked {
+            background: rgba(205, 17, 81, 0.3);
+            border: 1px solid var(--red);
+        }
+
+        .legend-color.today {
+            background: rgba(174, 198, 16, 0.1);
+            border: 2px solid var(--green);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--gray);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--white);
+            background: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .social-link:hover svg {
+            fill: var(--black);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0 0.5rem;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        /* SUBMENU */
+        .has-submenu {
+            position: relative;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            list-style: none;
+            padding: 0.5rem 0;
+            margin-top: 0.8rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu li a {
+            display: block;
+            padding: 0.7rem 1.2rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .submenu li a:hover {
+            background: linear-gradient(90deg, rgba(252, 171, 20, 0.15), rgba(205, 17, 81, 0.15), rgba(0, 159, 226, 0.15), rgba(174, 198, 16, 0.15));
+            color: var(--white);
+        }
+
+        .has-submenu > a::after {
+            content: "▾";
+            margin-left: 0.3rem;
+            font-size: 0.7em;
+            opacity: 0.7;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--black);
+                flex-direction: column;
+                justify-content: center;
+                transition: left 0.4s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .events-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+
+            .view-toggle {
+                flex-direction: column;
+            }
+
+            .view-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .mobile-scroll-hint {
+                display: block;
+            }
+
+            .calendar {
+                padding: 1rem;
+            }
+
+            .calendar-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .calendar-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .calendar-nav {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .calendar-nav button {
+                width: 100%;
+            }
+
+            .calendar-day {
+                min-height: 100px;
+                padding: 0.5rem;
+            }
+
+            .calendar-day-header {
+                padding: 0.7rem 0.3rem;
+                font-size: 0.75rem;
+            }
+
+            .calendar-date {
+                font-size: 0.8rem;
+            }
+
+            .calendar-event {
+                font-size: 0.65rem;
+                padding: 0.3rem;
+            }
+
+            .download-event-btn {
+                font-size: 0.6rem;
+                padding: 0.1rem 0.3rem;
+            }
+
+            .calendar-blocked {
+                font-size: 0.6rem;
+                padding: 0.3rem;
+            }
+
+            .blocked-room-tag {
+                font-size: 0.55rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
+
+            .filter-btn {
+                width: 100%;
+            }
+
+            .event-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .event-actions {
+                width: 100%;
+            }
+
+            .event-btn, .download-btn {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header" id="header">
+    <nav class="nav-container">
+        <a href="index.html">
+            <img src="img/logo.jpg" alt="area710" class="logo">
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">area710</a></li>
+            <li class="has-submenu">
+                <a href="raueme.html">Räume</a>
+                <ul class="submenu">
+                    <li><a href="raueme.html#hall">Hall</a></li>
+                    <li><a href="raueme.html#lab">Lab</a></li>
+                    <li><a href="raueme.html#barclub">Bar & Club</a></li>
+                    <li><a href="raueme.html#outdoor">Outdoor</a></li>
+                </ul>
+            </li>
+            <li><a href="events.html" class="active">Events</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="about.html">Über Uns</a></li>
+            <li><a href="booking.html">Buchungsanfrage</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="de">DE</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </ul>
+
+        <button class="mobile-toggle" id="mobileToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 data-de="Unsere Events" data-en="Our Events">Unsere Events</h1>
+        <p data-de="Entdecke kommende Veranstaltungen in der area710" data-en="Discover upcoming events at area710">
+            Entdecke kommende Veranstaltungen in der area710</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="view-toggle">
+            <button class="view-btn active" onclick="switchView('calendar')">
+                <span data-de="Kalender" data-en="Calendar">Kalender</span>
+            </button>
+            <button class="view-btn" onclick="switchView('grid')">
+                <span data-de="Liste" data-en="List">Liste</span>
+            </button>
+        </div>
+
+        <div class="calendar-view active" id="calendarView">
+            <div class="mobile-scroll-hint">
+                <span data-de="Nach links/rechts wischen zum Scrollen" data-en="Swipe left/right to scroll">Nach links/rechts wischen zum Scrollen</span>
+            </div>
+
+            <div class="calendar">
+                <div class="calendar-header">
+                    <h2 id="calendarTitle">Januar 2026</h2>
+                    <div class="calendar-nav">
+                        <button onclick="changeMonth(-1)">‹ <span data-de="Zurück" data-en="Back">Zurück</span></button>
+                        <button onclick="goToToday()" data-de="Heute" data-en="Today">Heute</button>
+                        <button onclick="changeMonth(1)"><span data-de="Weiter" data-en="Next">Weiter</span> ›</button>
+                    </div>
+                </div>
+
+                <div class="calendar-wrapper">
+                    <div class="calendar-grid" id="calendarGrid"></div>
+                </div>
+            </div>
+
+            <div class="calendar-legend">
+                <div class="legend-item">
+                    <div class="legend-color event"></div>
+                    <span data-de="Öffentliches Event" data-en="Public Event">Öffentliches Event</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color blocked"></div>
+                    <span data-de="Privat Veranstaltung / Ausgebucht" data-en="Private Event / Fully Booked">Private Veranstaltung / Ausgebucht</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color today"></div>
+                    <span data-de="Heute" data-en="Today">Heute</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-view" id="gridView">
+            <div class="search-box">
+                <input
+                        type="text"
+                        class="search-input"
+                        id="searchInput"
+                        placeholder="Events durchsuchen..."
+                        data-de-placeholder="Events durchsuchen..."
+                        data-en-placeholder="Search events..."
+                >
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all" data-de="Alle Events" data-en="All Events">Alle
+                    Events
+                </button>
+                <button class="filter-btn" data-filter="party" data-de="Partys" data-en="Parties" data-category="party">
+                    Partys
+                </button>
+                <button class="filter-btn" data-filter="business" data-de="Business" data-en="Business"
+                        data-category="business">Business
+                </button>
+                <button class="filter-btn" data-filter="culture" data-de="Kultur" data-en="Culture"
+                        data-category="culture">Kultur
+                </button>
+                <button class="filter-btn" data-filter="workshop" data-de="Workshops" data-en="Workshops"
+                        data-category="workshops">Workshops
+                </button>
+            </div>
+
+            <div class="events-grid" id="eventsGrid"></div>
+
+            <div class="empty-state" id="emptyState">
+                <h3 data-de="Keine Events gefunden" data-en="No events found">Keine Events gefunden</h3>
+                <p data-de="Bald gibt es wieder neue Veranstaltungen!" data-en="New events coming soon!">Bald gibt es
+                    wieder neue Veranstaltungen!</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>area710</h3>
+            <p>Gottlieb-Binder-Straße 2</p>
+            <p>D-71088 Holzgerlingen</p>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-de="Öffnungszeiten Eventbüro" data-en="Office Hours">Öffnungszeiten Eventbüro</h3>
+            <p data-de="Montag–Freitag" data-en="Monday–Friday">Montag–Freitag</p>
+            <p>10:00–18:00 Uhr</p>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-de="Kontakt" data-en="Contact">Kontakt</h3>
+            <p><a href="tel:+4870314107311">+49 7031 41073-11</a></p>
+            <p><a href="mailto:info@area710.de">info@area710.de</a></p>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-de="Folge uns" data-en="Follow us">Folge uns</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100086162780846" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/area710_event/" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/1713573288?text=area710" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            area710 eine Marke der seeeye Werbung & Event GmbH
+            <br>
+            <a href="impressum.html" data-de="Impressum" data-en="Imprint">Impressum</a>
+            <a href="datenschutz.html" data-de="Datenschutzerklärung" data-en="Privacy Policy">Datenschutzerklärung</a>
+            <a href="booking.html" data-de="Buchungsanfrage" data-en="Booking Request">Buchungsanfrage</a>
+            <a href="https://ticket.area710.de" target="_blank" data-de="Ticket Verkauf" data-en="Ticket Sales">Ticket
+                Verkauf</a>
+        </p>
+    </div>
+</footer>
+
+<script>
+    // MOBILE MENU
+    document.getElementById('mobileToggle').addEventListener('click', function () {
+        document.getElementById('navMenu').classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navMenu').classList.remove('active');
+        });
+    });
+
+    // HEADER SCROLL
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if (window.pageYOffset > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // LANGUAGE SWITCHER
+    let currentLang = 'de';
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const targetLang = this.dataset.lang;
+            if (targetLang === currentLang) return;
+
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentLang = targetLang;
+            translatePage(targetLang);
+        });
+    });
+
+    function translatePage(lang) {
+        document.querySelectorAll('[data-de]').forEach(el => {
+            if (lang === 'de' && el.dataset.de) {
+                el.textContent = el.dataset.de;
+            } else if (lang === 'en' && el.dataset.en) {
+                el.textContent = el.dataset.en;
+            }
+        });
+
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.placeholder = lang === 'de'
+                ? searchInput.dataset.dePlaceholder
+                : searchInput.dataset.enPlaceholder;
+        }
+
+        if (allEvents.length > 0) {
+            renderCalendar();
+            applyFilters();
+        }
+
+        document.documentElement.lang = lang;
+    }
+
+    // VIEW SWITCHING
+    let currentView = 'calendar';
+
+    function switchView(view) {
+        currentView = view;
+
+        document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.closest('.view-btn').classList.add('active');
+
+        if (view === 'calendar') {
+            document.getElementById('calendarView').classList.add('active');
+            document.getElementById('gridView').classList.remove('active');
+        } else {
+            document.getElementById('calendarView').classList.remove('active');
+            document.getElementById('gridView').classList.add('active');
+        }
+    }
+
+    // CALENDAR
+    let currentDate = new Date();
+    let allEvents = [];
+    let blockedDates = [];
+
+    const monthNames = {
+        de: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+        en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    };
+
+    const dayNames = {
+        de: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+        en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    };
+
+    // NEU: Raum-Namen
+    const roomNames = {
+        hall: { de: 'Hall', en: 'Hall' },
+        lab: { de: 'Lab', en: 'Lab' },
+        barclub: { de: 'Bar & Club', en: 'Bar & Club' },
+        outdoor: { de: 'Outdoor', en: 'Outdoor' }
+    };
+
+    // ICS DOWNLOAD FUNCTION
+    function downloadICS(event) {
+        const eventDate = new Date(event.date + 'T' + event.time);
+        const endDate = new Date(eventDate.getTime() + (3 * 60 * 60 * 1000));
+
+        const formatDate = (date) => {
+            return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+        };
+
+        const icsContent = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//area710//Events//DE',
+            'BEGIN:VEVENT',
+            `UID:${event.id}@area710.de`,
+            `DTSTAMP:${formatDate(new Date())}`,
+            `DTSTART:${formatDate(eventDate)}`,
+            `DTEND:${formatDate(endDate)}`,
+            `SUMMARY:${event.title[currentLang]}`,
+            `DESCRIPTION:${event.description[currentLang].replace(/\n/g, '\\n')}`,
+            'LOCATION:area710\\, Gottlieb-Binder-Str. 2\\, 71088 Holzgerlingen',
+            `URL:${event.ticketUrl || 'https://area710.de'}`,
+            'STATUS:CONFIRMED',
+            'END:VEVENT',
+            'END:VCALENDAR'
+        ].join('\r\n');
+
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = `area710-${event.title.de.replace(/\s+/g, '-')}.ics`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    function renderCalendar() {
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+
+        document.getElementById('calendarTitle').textContent = `${monthNames[currentLang][month]} ${year}`;
+
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const today = new Date();
+
+        let html = dayNames[currentLang].map(d => `<div class="calendar-day-header">${d}</div>`).join('');
+
+        const prevMonthDays = new Date(year, month, 0).getDate();
+        const startDay = firstDay === 0 ? 6 : firstDay;
+
+        for (let i = startDay; i > 0; i--) {
+            html += `<div class="calendar-day other-month"><div class="calendar-date">${prevMonthDays - i + 1}</div></div>`;
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
+
+            // Öffentliche Events
+            const dayEvents = allEvents.filter(e => e.date === dateStr);
+            // Geblockte Einträge MIT Raum-Info
+            const dayBlocked = blockedDates.filter(b => b.date === dateStr);
+
+            let classes = 'calendar-day';
+            if (isToday) classes += ' today';
+            if (dayBlocked.length > 0) classes += ' blocked';
+
+            html += `<div class="${classes}">
+                    <div class="calendar-date">${day}</div>
+                    ${dayEvents.map(e => `
+                        <div class="calendar-event" onclick="jumpToEvent(${e.id})" title="${e.title[currentLang]}">
+                            <span>${e.title[currentLang]}</span>
+                            <button class="download-event-btn" onclick="event.stopPropagation(); downloadICS(allEvents.find(ev => ev.id === ${e.id}))" title="${currentLang === 'de' ? 'Zu Kalender hinzufügen' : 'Add to calendar'}">📥</button>
+                        </div>
+                    `).join('')}
+                    ${dayBlocked.map(b => {
+                        // room kann String ODER Array sein
+                        const rooms = Array.isArray(b.room) ? b.room : (b.room ? [b.room] : []);
+                        const statusText = currentLang === 'de'
+                            ? (b.status === 'reserved' ? 'Reserviert' : 'Ausgebucht')
+                            : (b.status === 'reserved' ? 'Reserved' : 'Fully booked');
+
+                        // Zeitbereich formatieren
+                        const startTime = b.startTime || '00:00';
+                        const endTime = b.endTime || '23:59';
+                        const isFullDay = (startTime === '00:00' && endTime === '23:59');
+
+                        const timeDisplay = isFullDay
+                            ? (currentLang === 'de' ? 'Ganztägig' : 'All day')
+                            : `${startTime.substring(0,5)} - ${endTime.substring(0,5)}`;
+
+                        return `
+                            <div class="calendar-blocked ${b.status || 'booked'}">
+                                <div class="blocked-status">${statusText}</div>
+                                <div style="font-size: 0.65rem; margin-bottom: 0.3rem; color: rgba(255,255,255,0.8);">🕒 ${timeDisplay}</div>
+                                ${rooms.length > 0 ? `
+                                    <div class="blocked-rooms-container">
+                                        ${rooms.map(room => `<div class="blocked-room-tag">${roomNames[room] ? roomNames[room][currentLang] : room}</div>`).join('')}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        `;
+                    }).join('')}
+                </div>`;
+        }
+
+        const totalCells = Math.ceil((startDay + daysInMonth) / 7) * 7;
+        const nextMonthDays = totalCells - (startDay + daysInMonth);
+        for (let i = 1; i <= nextMonthDays; i++) {
+            html += `<div class="calendar-day other-month"><div class="calendar-date">${i}</div></div>`;
+        }
+
+        document.getElementById('calendarGrid').innerHTML = html;
+    }
+
+    function changeMonth(delta) {
+        currentDate.setMonth(currentDate.getMonth() + delta);
+        renderCalendar();
+    }
+
+    function goToToday() {
+        currentDate = new Date();
+        renderCalendar();
+    }
+
+    function jumpToEvent(eventId) {
+        switchView('grid');
+        document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.view-btn')[1].classList.add('active');
+
+        setTimeout(() => {
+            const eventCard = document.querySelector(`[data-event-id="${eventId}"]`);
+            if (eventCard) {
+                eventCard.scrollIntoView({behavior: 'smooth', block: 'center'});
+                eventCard.style.animation = 'none';
+                setTimeout(() => {
+                    eventCard.style.animation = 'pulse 1s ease-in-out';
+                }, 100);
+            }
+        }, 300);
+    }
+
+    // GRID VIEW
+    let currentFilter = 'all';
+    let searchTerm = '';
+
+    async function loadEvents() {
+        try {
+            const response = await fetch('events.json');
+            const data = await response.json();
+
+            // NUR Events für die Liste
+            allEvents = data.filter(item => item.type === 'event');
+
+            // Geblockte Einträge MIT allen Infos für Kalender
+            blockedDates = data.filter(item => item.type === 'blocked');
+
+            renderCalendar();
+            displayEvents(allEvents);
+        } catch (error) {
+            console.error('Error loading events:', error);
+            document.getElementById('emptyState').classList.add('show');
+        }
+    }
+
+    function applyFilters() {
+        let filtered = allEvents;
+
+        if (currentFilter !== 'all') {
+            filtered = filtered.filter(e => e.category === currentFilter);
+        }
+
+        if (searchTerm) {
+            filtered = filtered.filter(e => {
+                const title = e.title[currentLang].toLowerCase();
+                const description = e.description[currentLang].toLowerCase();
+                const search = searchTerm.toLowerCase();
+                return title.includes(search) || description.includes(search);
+            });
+        }
+
+        displayEvents(filtered);
+    }
+
+    function displayEvents(events) {
+        const grid = document.getElementById('eventsGrid');
+        const emptyState = document.getElementById('emptyState');
+
+        grid.innerHTML = '';
+
+        if (events.length === 0) {
+            emptyState.classList.add('show');
+            return;
+        }
+
+        emptyState.classList.remove('show');
+
+        events.forEach(event => {
+            const card = createEventCard(event);
+            grid.appendChild(card);
+        });
+    }
+
+    function createEventCard(event) {
+        const card = document.createElement('div');
+        card.className = `event-card ${event.category}`;
+        card.dataset.category = event.category;
+        card.dataset.eventId = event.id;
+
+        const categoryText = {
+            party: {de: 'Party', en: 'Party'},
+            business: {de: 'Business', en: 'Business'},
+            culture: {de: 'Kultur', en: 'Culture'},
+            workshop: {de: 'Workshop', en: 'Workshop'}
+        };
+
+        card.innerHTML = `
+                <img src="${event.image}" alt="${event.title[currentLang]}" class="event-image">
+                <div class="event-content">
+                    <span class="event-category ${event.category}">${categoryText[event.category][currentLang]}</span>
+                    <h3 class="event-title">${event.title[currentLang]}</h3>
+                    <div class="event-date">📅 ${event.date}</div>
+                    <div class="event-time">🕒 ${event.time}</div>
+                    <p class="event-description">${event.description[currentLang]}</p>
+                    <div class="event-footer">
+                        <span class="event-price">${event.price}</span>
+                        <div class="event-actions">
+                            <a href="${event.ticketUrl}" class="event-btn" target="_blank">${currentLang === 'de' ? 'Tickets' : 'Tickets'}</a>
+                            <button class="download-btn" onclick="downloadICS(allEvents.find(e => e.id === ${event.id}))" title="${currentLang === 'de' ? 'Zu Kalender hinzufügen' : 'Add to calendar'}">📥 ${currentLang === 'de' ? 'Kalender' : 'Calendar'}</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+        return card;
+    }
+
+    // SEARCH FUNCTIONALITY
+    document.getElementById('searchInput').addEventListener('input', function (e) {
+        searchTerm = e.target.value;
+        applyFilters();
+    });
+
+    // FILTER FUNCTIONALITY
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            currentFilter = this.dataset.filter;
+            applyFilters();
+        });
+    });
+
+    // Pulse Animation CSS
+    const style = document.createElement('style');
+    style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(252,171,20,0); }
+                50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(252,171,20,0.5); }
+            }
+        `;
+    document.head.appendChild(style);
+
+    // INIT
+    loadEvents();
+</script>
+
+</body>
+</html>

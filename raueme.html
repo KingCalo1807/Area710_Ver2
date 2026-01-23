@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Entdecken Sie unsere vielseitigen Räume: hall, lab, bar & club, outdoor">
+    <title>Räume - area710 - UNIQUE EVENT LOCATION</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" href="/img/fav.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #FCAB14;
+            --red: #CD1151;
+            --blue: #009FE2;
+            --green: #AEC610;
+            --black: #000;
+            --white: #fff;
+            --gray: #222;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 45px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            font-size: 0.95rem;
+            font-weight: 400;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green));
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--orange);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.3rem;
+            margin-left: 2rem;
+            border-left: 1px solid var(--border);
+            padding-left: 2rem;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.7rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--white);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 76px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('img/back2.jpg') center/cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 300;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ROOMS NAV */
+        .rooms-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .room-nav-item {
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .room-nav-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .room-nav-icon {
+            width: 300px;
+            height: 217px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 0 0 3px var(--frame-color, var(--orange)),
+            0 8px 18px rgba(0, 0, 0, 0.15);
+            transition: transform 0.4s ease;
+        }
+
+        .room-nav-item h3 {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: var(--white);
+        }
+
+        .room-nav-item:last-child {
+            border-right: none;
+        }
+
+        .room-nav-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .room-nav-item:nth-child(1)::before {
+            background: rgba(252, 171, 20, 0.1);
+        }
+
+        .room-nav-item:nth-child(2)::before {
+            background: rgba(205, 17, 81, 0.1);
+        }
+
+        .room-nav-item:nth-child(3)::before {
+            background: rgba(0, 159, 226, 0.1);
+        }
+
+        .room-nav-item:nth-child(4)::before {
+            background: rgba(174, 198, 16, 0.1);
+        }
+
+        .room-nav-item:hover::before {
+            height: 100%;
+        }
+
+        .room-nav-icon {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 1rem;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .frame-orange {
+            --frame-color: var(--orange);
+        }
+
+        .frame-blue {
+            --frame-color: var(--blue);
+        }
+
+        .frame-red {
+            --frame-color: var(--red);
+        }
+
+        .frame-green {
+            --frame-color: var(--green);
+        }
+
+        .room-nav-item:hover .room-nav-icon {
+            transform: translateY(-5px);
+        }
+
+        .room-nav-item h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ROOM DETAIL */
+        .room-detail {
+            margin-bottom: 6rem;
+            padding-top: 2rem;
+            scroll-margin-top: 150px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .room-detail.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .room-header {
+            margin-bottom: 3rem;
+            border-left: 4px solid;
+            padding-left: 2rem;
+        }
+
+        #hall .room-header {
+            border-color: var(--orange);
+        }
+
+        #lab .room-header {
+            border-color: var(--red);
+        }
+
+        #barclub .room-header {
+            border-color: var(--blue);
+        }
+
+        #outdoor .room-header {
+            border-color: var(--green);
+        }
+
+        .room-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        #hall .room-title {
+            color: var(--orange);
+        }
+
+        #lab .room-title {
+            color: var(--red);
+        }
+
+        #barclub .room-title {
+            color: var(--blue);
+        }
+
+        #outdoor .room-title {
+            color: var(--green);
+        }
+
+        .room-lead {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* GALLERY */
+        .room-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.15);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-zoom {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            z-index: 10;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .lightbox-close::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: var(--white);
+            transform: rotate(45deg);
+        }
+
+        .lightbox-close::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: var(--white);
+            transform: rotate(-45deg);
+        }
+
+        .lightbox-close:hover::before,
+        .lightbox-close:hover::after {
+            background: var(--black);
+        }
+
+        .lightbox-close:hover {
+            background: var(--white);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--white);
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-nav:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .lightbox-prev {
+            left: -70px;
+        }
+
+        .lightbox-next {
+            right: -70px;
+        }
+
+        /* FACTS BOX */
+        .room-facts {
+            background: var(--gray);
+            padding: 2.5rem;
+            border-radius: 4px;
+            border-left: 4px solid;
+            margin: 3rem 0;
+        }
+
+        #hall .room-facts {
+            border-color: var(--orange);
+        }
+
+        #lab .room-facts {
+            border-color: var(--red);
+        }
+
+        #barclub .room-facts {
+            border-color: var(--blue);
+        }
+
+        #outdoor .room-facts {
+            border-color: var(--green);
+        }
+
+        .room-facts h4 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .facts-list {
+            list-style: none;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .facts-list li {
+            display: flex;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .facts-list li:last-child {
+            border-bottom: none;
+        }
+
+        .facts-list strong {
+            font-weight: 500;
+            min-width: 180px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .facts-list span {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            border: 1px solid var(--white);
+            background: transparent;
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn:hover {
+            color: var(--black);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+
+        /* TABLE */
+        .capacity-section {
+            margin: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--gray);
+        }
+
+        th, td {
+            padding: 1.2rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 500;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--gray);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--white);
+            background: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .social-link:hover svg {
+            fill: var(--black);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0 0.5rem;
+        }
+
+        /* Parent */
+        .has-submenu {
+            position: relative;
+        }
+
+        /* Submenu */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            list-style: none;
+            padding: 0.5rem 0;
+            margin-top: 0.8rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        /* Show on hover */
+        .has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Submenu items */
+        .submenu li a {
+            display: block;
+            padding: 0.7rem 1.2rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect */
+        .submenu li a:hover {
+            background: linear-gradient(
+                    90deg,
+                    rgba(252, 171, 20, 0.15),
+                    rgba(205, 17, 81, 0.15),
+                    rgba(0, 159, 226, 0.15),
+                    rgba(174, 198, 16, 0.15)
+            );
+            color: var(--white);
+        }
+
+        .has-submenu > a::after {
+            content: "▾";
+            margin-left: 0.0rem;
+            font-size: 0.7em;
+            opacity: 0.7;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--black);
+                flex-direction: column;
+                justify-content: center;
+                transition: left 0.4s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .rooms-nav {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .room-nav-item {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .room-nav-item:nth-child(2n) {
+                border-right: none;
+            }
+
+            .room-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .rooms-nav {
+                grid-template-columns: 1fr;
+            }
+
+            .room-nav-item {
+                border-right: none;
+            }
+
+            .room-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .room-header {
+                padding-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header" id="header">
+    <nav class="nav-container">
+        <a href="index.html">
+            <img src="img/logo.jpg" alt="area710" class="logo">
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">area710</a></li>
+            <li class="has-submenu">
+                <a href="raueme.html" class="lang-de active">Räume</a>
+                <a href="raueme.html" class="lang-en active" style="display:none;">Rooms</a>
+                <ul class="submenu">
+                    <li><a href="raueme.html#hall">Hall</a></li>
+                    <li><a href="raueme.html#lab">Lab</a></li>
+                    <li><a href="raueme.html#barclub">Bar & Club</a></li>
+                    <li><a href="raueme.html#outdoor">Outdoor</a></li>
+                </ul>
+            </li>
+            <li><a href="events.html">Events</a></li>
+            <li>
+                <a href="gallery.html" class="lang-de">Galerie</a>
+                <a href="gallery.html" class="lang-en" style="display:none;">Gallery</a>
+            </li>
+            <li>
+                <a href="about.html" class="lang-de">Über Uns</a>
+                <a href="about.html" class="lang-en" style="display:none;">About Us</a>
+            </li>
+            <li>
+                <a href="booking.html" class="lang-de">Buchungsanfrage</a>
+                <a href="booking.html" class="lang-en" style="display:none;">Booking Request</a>
+            </li>
+            <li>
+                <a href="contact.html" class="lang-de">Kontakt</a>
+                <a href="contact.html" class="lang-en" style="display:none;">Contact</a>
+            </li>
+
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="de">DE</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </ul>
+
+        <button class="mobile-toggle" id="mobileToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="lang-de">Unsere Räume</h1>
+        <h1 class="lang-en" style="display:none;">Our Rooms</h1>
+        <p class="lang-de">Entdecke die area710 – unsere einzigartigen Eventflächen</p>
+        <p class="lang-en" style="display:none;">Discover area710 – our unique event spaces</p>
+    </div>
+</section>
+
+<section class="section" style="padding-bottom: 0;">
+    <div class="container">
+        <div class="rooms-nav">
+            <a href="raueme.html#hall" class="room-nav-item frame-orange">
+                <img src="img/hall.png" alt="hall" class="room-nav-icon">
+                <h3>hall</h3>
+            </a>
+            <a href="raueme.html#lab" class="room-nav-item frame-red">
+                <img src="img/lab.png" alt="lab" class="room-nav-icon">
+                <h3>lab</h3>
+            </a>
+            <a href="raueme.html#barclub" class="room-nav-item frame-blue">
+                <img src="img/bar-club-1.png" alt="bar & club" class="room-nav-icon">
+                <h3>bar & club</h3>
+            </a>
+            <a href="raueme.html#outdoor" class="room-nav-item frame-green">
+                <img src="img/outdoor.png" alt="outdoor" class="room-nav-icon">
+                <h3>outdoor</h3>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <!-- HALL -->
+        <div id="hall" class="room-detail">
+            <div class="room-header">
+                <h2 class="room-title">hall</h2>
+                <p class="room-lead lang-de">Seminare, Workshops, Tagungen, Feiern – hier ist genug Raum für geschäftliche und
+                    private Events, inkl. einer 6 x 2 m großen hochauflösenden Video Wall und einem angrenzenden
+                    Balkon</p>
+                <p class="room-lead lang-en" style="display:none;">Seminars, workshops, conferences, celebrations – there is enough space for business and private events, including a 6 x 2 m high-resolution video wall and an adjacent balcony</p>
+            </div>
+
+            <div class="room-gallery">
+                <div class="gallery-item" data-gallery="hall" data-index="0">
+                    <img src="images/c-hall-2.jpg" alt="hall" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="hall" data-index="1">
+                    <img src="images/c-hall-3.jpg" alt="hall" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="hall" data-index="2">
+                    <img src="images/c-hall-1.jpg" alt="hall" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="hall" data-index="3">
+                    <img src="images/c-hall-4.jpg" alt="hall" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="hall" data-index="4">
+                    <img src="images/c-hall-5-1.jpg" alt="hall" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-facts">
+                <h4>facts</h4>
+                <ul class="facts-list">
+                    <li><strong class="lang-de">Fläche</strong><strong class="lang-en" style="display:none;">Area</strong><span>105 m² + 20 m² <span class="lang-de">Balkon</span><span class="lang-en" style="display:none;">Balcony</span></span></li>
+                    <li><strong class="lang-de">Ausstattung</strong><strong class="lang-en" style="display:none;">Equipment</strong><span class="lang-de">Beschallungsanlage</span><span class="lang-en" style="display:none;">Sound system</span></li>
+                    <li><strong>Video</strong><span>6 x 2 m Video Wall</span></li>
+                    <li><strong class="lang-de">Präsentation</strong><strong class="lang-en" style="display:none;">Presentation</strong><span class="lang-de">Beamer + Leinwand</span><span class="lang-en" style="display:none;">Projector + Screen</span></li>
+                    <li><strong>Catering</strong><span class="lang-de">Kühlschrank, Küchenzeile</span><span class="lang-en" style="display:none;">Refrigerator, Kitchenette</span></li>
+                </ul>
+            </div>
+
+            <div class="text-center mt-2">
+                <a href="booking.html?room=hall" class="btn lang-de">hall anfragen</a>
+                <a href="booking.html?room=hall" class="btn lang-en" style="display:none;">Request hall</a>
+            </div>
+        </div>
+
+        <!-- LAB -->
+        <div id="lab" class="room-detail">
+            <div class="room-header">
+                <h2 class="room-title">lab</h2>
+                <p class="room-lead lang-de">Ideal für Tagungen, Musikevents, Fahrzeugpräsentationen, Hausmessen oder sonstige
+                    Veranstaltungsformate, mit der Möglichkeit fließend In- und Outdoorinstallationen zu inszenieren.
+                    Ausgestattet mit der besten Ton- und Lichttechnik, gibt es keine Grenzen diesen besonderen Raum mit
+                    den farbigen Lichtkuben an der hohen Decke zu nutzen. Unser Highlight, die individuell bespielbare
+                    LED-Wand in der Größe 4,8 x 2,7 m</p>
+                <p class="room-lead lang-en" style="display:none;">Ideal for conferences, music events, vehicle presentations, trade shows or other event formats, with the possibility of seamlessly staging indoor and outdoor installations. Equipped with the best sound and lighting technology, there are no limits to using this special space with the colored light cubes on the high ceiling. Our highlight, the individually customizable LED wall measuring 4.8 x 2.7 m</p>
+            </div>
+
+            <div class="room-gallery">
+                <div class="gallery-item" data-gallery="lab" data-index="0">
+                    <img src="images/c-lab-1.jpg" alt="lab" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="lab" data-index="1">
+                    <img src="images/c-lab-3.jpg" alt="lab" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="lab" data-index="2">
+                    <img src="images/c-lab-2.jpg" alt="lab" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="lab" data-index="3">
+                    <img src="images/c-lab-4.jpg" alt="lab" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="lab" data-index="4">
+                    <img src="images/c-lab-5.jpg" alt="lab" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="lab" data-index="5">
+                    <img src="images/c-lab-6.jpg" alt="lab" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="lab" data-index="6">
+                    <img src="images/c-lab-7.jpg" alt="lab" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-facts">
+                <h4>facts</h4>
+                <ul class="facts-list">
+                    <li><strong class="lang-de">Fläche</strong><strong class="lang-en" style="display:none;">Area</strong><span>150 m²</span></li>
+                    <li><strong class="lang-de">Technik</strong><strong class="lang-en" style="display:none;">Technology</strong><span class="lang-de">Professionelle Ton- und Lichttechnik</span><span class="lang-en" style="display:none;">Professional sound and lighting technology</span></li>
+                    <li><strong class="lang-de">LED-Wand</strong><strong class="lang-en" style="display:none;">LED Wall</strong><span class="lang-de">4,8 x 2,7 m individuell bespielbar</span><span class="lang-en" style="display:none;">4.8 x 2.7 m individually customizable</span></li>
+                    <li><strong class="lang-de">Präsentation</strong><strong class="lang-en" style="display:none;">Presentation</strong><span class="lang-de">Beamer + Leinwand</span><span class="lang-en" style="display:none;">Projector + Screen</span></li>
+                    <li><strong class="lang-de">Erweiterung</strong><strong class="lang-en" style="display:none;">Extension</strong><span class="lang-de">20 m² zusätzliche Fläche</span><span class="lang-en" style="display:none;">20 m² additional area</span></li>
+                    <li><strong class="lang-de">Küche</strong><strong class="lang-en" style="display:none;">Kitchen</strong><span class="lang-de">Abtrennbarer Küchenbereich inkl. Kühlschränke, Kühlhaus, Eiswürfelmaschine, Industriespülmaschine</span><span class="lang-en" style="display:none;">Separable kitchen area incl. refrigerators, cold room, ice machine, industrial dishwasher</span></li>
+                    <li><strong class="lang-de">Zugang</strong><strong class="lang-en" style="display:none;">Access</strong><span class="lang-de">Rolltor zur Outdoorfläche</span><span class="lang-en" style="display:none;">Roll-up door to outdoor area</span></li>
+                    <li><strong class="lang-de">Barrierefreiheit</strong><strong class="lang-en" style="display:none;">Accessibility</strong><span class="lang-de">Ja</span><span class="lang-en" style="display:none;">Yes</span></li>
+                </ul>
+            </div>
+
+            <div class="text-center mt-2">
+                <a href="booking.html?room=lab" class="btn lang-de">lab anfragen</a>
+                <a href="booking.html?room=lab" class="btn lang-en" style="display:none;">Request lab</a>
+            </div>
+        </div>
+
+        <!-- BAR & CLUB -->
+        <div id="barclub" class="room-detail">
+            <div class="room-header">
+                <h2 class="room-title">bar & club</h2>
+                <p class="room-lead lang-de">In dieser area können Veranstaltungen mit einer clubähnlichen Atmosphäre
+                    verwirklicht werden. Eine topausgestattete Bar schließt sich an und sorgt für den richtigen Flair.
+                    Auch hier ist ein nahtloser Übergang zu unserem Outdoorbereich möglich.</p>
+                <p class="room-lead lang-en" style="display:none;">In this area, events with a club-like atmosphere can be realized. A top-equipped bar adjoins and provides the right flair. Here too, a seamless transition to our outdoor area is possible.</p>
+            </div>
+
+            <div class="room-gallery">
+                <div class="gallery-item" data-gallery="barclub" data-index="0">
+                    <img src="images/c-cb-1.jpg" alt="bar & club" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="barclub" data-index="1">
+                    <img src="images/c-cb-2.jpg" alt="bar & club" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="barclub" data-index="2">
+                    <img src="images/c-cb-3.jpg" alt="bar & club" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="barclub" data-index="3">
+                    <img src="images/c-cb-4.jpg" alt="bar & club" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-facts">
+                <h4>facts</h4>
+                <ul class="facts-list">
+                    <li><strong class="lang-de">Fläche</strong><strong class="lang-en" style="display:none;">Area</strong><span>65 m²</span></li>
+                    <li><strong class="lang-de">Technik</strong><strong class="lang-en" style="display:none;">Technology</strong><span class="lang-de">Ton- und Lichttechnik</span><span class="lang-en" style="display:none;">Sound and lighting technology</span></li>
+                    <li><strong class="lang-de">Präsentation</strong><strong class="lang-en" style="display:none;">Presentation</strong><span class="lang-de">Beamer + Projektionsfläche</span><span class="lang-en" style="display:none;">Projector + Projection surface</span></li>
+                    <li><strong>Bar</strong><span class="lang-de">Professionell ausgestatteter Barbereich</span><span class="lang-en" style="display:none;">Professionally equipped bar area</span></li>
+                    <li><strong class="lang-de">Ausstattung</strong><strong class="lang-en" style="display:none;">Equipment</strong><span class="lang-de">Kühlschränke, Eiswürfelmaschine, Industriespülmaschine</span><span class="lang-en" style="display:none;">Refrigerators, ice machine, industrial dishwasher</span></li>
+                    <li><strong class="lang-de">Zugang</strong><strong class="lang-en" style="display:none;">Access</strong><span class="lang-de">Rolltor zur Outdoorfläche</span><span class="lang-en" style="display:none;">Roll-up door to outdoor area</span></li>
+                    <li><strong class="lang-de">Barrierefreiheit</strong><strong class="lang-en" style="display:none;">Accessibility</strong><span class="lang-de">Ja</span><span class="lang-en" style="display:none;">Yes</span></li>
+                </ul>
+            </div>
+
+            <div class="text-center mt-2">
+                <a href="booking.html?room=barclub" class="btn lang-de">bar & club anfragen</a>
+                <a href="booking.html?room=barclub" class="btn lang-en" style="display:none;">Request bar & club</a>
+            </div>
+        </div>
+
+        <!-- OUTDOOR -->
+        <div id="outdoor" class="room-detail">
+            <div class="room-header">
+                <h2 class="room-title">outdoor</h2>
+                <p class="room-lead lang-de">Unsere Freifläche wurde speziell konzipiert, um eine einzigartige Verbindung
+                    zwischen In- und Outdoorbereich, zwischen Natur und Gastfreundschaft zu schaffen. Entdecken Sie die
+                    vielfältigen Möglichkeiten, die unsere Freiflächen, sowie erstklassig ausgestattete Outdoorküche für
+                    Ihre gastronomischen Bedürfnisse und Events bieten.</p>
+                <p class="room-lead lang-en" style="display:none;">Our open space was specially designed to create a unique connection between indoor and outdoor areas, between nature and hospitality. Discover the diverse possibilities that our open spaces and first-class equipped outdoor kitchen offer for your gastronomic needs and events.</p>
+            </div>
+
+            <div class="room-gallery">
+                <div class="gallery-item" data-gallery="outdoor" data-index="0">
+                    <img src="images/c-o-1.jpg" alt="outdoor" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="outdoor" data-index="1">
+                    <img src="images/c-o-2.jpg" alt="outdoor" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="outdoor" data-index="2">
+                    <img src="images/c-o-3.jpg" alt="outdoor" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="outdoor" data-index="3">
+                    <img src="images/c-o-4.jpg" alt="outdoor" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="outdoor" data-index="4">
+                    <img src="images/c-o-5.jpg" alt="outdoor" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-zoom">+</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-facts">
+                <h4>facts</h4>
+                <ul class="facts-list">
+                    <li><strong class="lang-de">Fläche</strong><strong class="lang-en" style="display:none;">Area</strong><span class="lang-de">Bis zu 750 m²</span><span class="lang-en" style="display:none;">Up to 750 m²</span></li>
+                    <li><strong class="lang-de">Beleuchtung</strong><strong class="lang-en" style="display:none;">Lighting</strong><span class="lang-de">Vollständig beleuchtet</span><span class="lang-en" style="display:none;">Fully illuminated</span></li>
+                    <li><strong>Sound</strong><span class="lang-de">Mobile Soundanlage</span><span class="lang-en" style="display:none;">Mobile sound system</span></li>
+                    <li><strong class="lang-de">Ambiente</strong><strong class="lang-en" style="display:none;">Ambience</strong><span class="lang-de">Feuerschalen, Heizpilze</span><span class="lang-en" style="display:none;">Fire bowls, patio heaters</span></li>
+                    <li><strong class="lang-de">Überdachung</strong><strong class="lang-en" style="display:none;">Roofing</strong><span class="lang-de">Teilweise überdacht (56 m²)</span><span class="lang-en" style="display:none;">Partially covered (56 m²)</span></li>
+                    <li><strong class="lang-de">Möblierung</strong><strong class="lang-en" style="display:none;">Furniture</strong><span class="lang-de">Selbstangefertigte Biertischgarnituren</span><span class="lang-en" style="display:none;">Custom-made beer table sets</span></li>
+                    <li><strong class="lang-de">Küche</strong><strong class="lang-en" style="display:none;">Kitchen</strong><span class="lang-de">Erstklassig ausgestattete Outdoorküche</span><span class="lang-en" style="display:none;">First-class equipped outdoor kitchen</span></li>
+                </ul>
+            </div>
+
+            <div class="text-center mt-2">
+                <a href="booking.html?room=outdoor" class="btn lang-de">outdoor anfragen</a>
+                <a href="booking.html?room=outdoor" class="btn lang-en" style="display:none;">Request outdoor</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CAPACITY TABLE -->
+<section class="capacity-section">
+    <div class="container">
+        <h2 class="section-title lang-de">Kapazitäten im Überblick</h2>
+        <h2 class="section-title lang-en" style="display:none;">Capacity Overview</h2>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th class="lang-de">Bestuhlung</th>
+                    <th class="lang-en" style="display:none;">Seating</th>
+                    <th class="lang-de">ges. Location</th>
+                    <th class="lang-en" style="display:none;">Total Location</th>
+                    <th>lab</th>
+                    <th>hall</th>
+                    <th>club</th>
+                    <th>bar</th>
+                    <th>plaza</th>
+                    <th>bar & club</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong class="lang-de">Fläche</strong><strong class="lang-en" style="display:none;">Area</strong></td>
+                    <td>1.200 m²</td>
+                    <td>150 m²</td>
+                    <td>105 m²</td>
+                    <td>36 m²</td>
+                    <td>31 m²</td>
+                    <td>56 m²</td>
+                    <td>65 m²</td>
+                </tr>
+                <tr>
+                    <td><strong class="lang-de">Reihenbestuhlung</strong><strong class="lang-en" style="display:none;">Row seating</strong></td>
+                    <td>-</td>
+                    <td>152</td>
+                    <td>60</td>
+                    <td>48</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>48</td>
+                </tr>
+                <tr>
+                    <td><strong class="lang-de">Parlamentarisch</strong><strong class="lang-en" style="display:none;">Parliamentary</strong></td>
+                    <td>-</td>
+                    <td>45</td>
+                    <td>18</td>
+                    <td>15</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><strong class="lang-de">Stehempfang</strong><strong class="lang-en" style="display:none;">Standing reception</strong></td>
+                    <td>-</td>
+                    <td>170</td>
+                    <td>85</td>
+                    <td>40</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><strong class="lang-de">Bankett</strong><strong class="lang-en" style="display:none;">Banquet</strong></td>
+                    <td>-</td>
+                    <td>280</td>
+                    <td>100</td>
+                    <td>60</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><strong class="lang-de">U-Form</strong><strong class="lang-en" style="display:none;">U-Shape</strong></td>
+                    <td>-</td>
+                    <td>96</td>
+                    <td>26</td>
+                    <td>24</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><strong class="lang-de">Block</strong><strong class="lang-en" style="display:none;">Block</strong></td>
+                    <td>-</td>
+                    <td>56</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <div class="lightbox-close" id="lightboxClose"></div>
+        <div class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</div>
+        <img src="" alt="" class="lightbox-img" id="lightboxImg">
+        <div class="lightbox-nav lightbox-next" id="lightboxNext">›</div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>area710</h3>
+            <p>Gottlieb-Binder-Straße 2</p>
+            <p>D-71088 Holzgerlingen</p>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="lang-de">Öffnungszeiten Eventbüro</h3>
+            <h3 class="lang-en" style="display:none;">Office Hours</h3>
+            <p class="lang-de">Montag–Freitag</p>
+            <p class="lang-en" style="display:none;">Monday–Friday</p>
+            <p>10:00–18:00 <span class="lang-de">Uhr</span></p>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="lang-de">Kontakt</h3>
+            <h3 class="lang-en" style="display:none;">Contact</h3>
+            <p><a href="tel:+4970314107311">+49 7031 41073-11</a></p>
+            <p><a href="mailto:info@area710.de">info@area710.de</a></p>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="lang-de">Folge uns</h3>
+            <h3 class="lang-en" style="display:none;">Follow us</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100086162780846" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/area710_event/" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/1713573288?text=area710" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p class="lang-de">
+            area710 eine Marke der seeeye Werbung & Event GmbH
+            <br>
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutzerklärung</a>
+            <a href="booking.html">Buchungsanfrage</a>
+            <a href="https://ticket.area710.de" target="_blank">Ticket Verkauf</a>
+        </p>
+        <p class="lang-en" style="display:none;">
+            area710 a brand of seeeye Werbung & Event GmbH
+            <br>
+            <a href="impressum.html">Legal Notice</a>
+            <a href="datenschutz.html">Privacy Policy</a>
+            <a href="booking.html">Booking Request</a>
+            <a href="https://ticket.area710.de" target="_blank">Ticket Sales</a>
+        </p>
+    </div>
+</footer>
+
+<script>
+    // LANGUAGE SWITCHING
+    const langBtns = document.querySelectorAll('.lang-btn');
+
+    function setLanguage(lang) {
+        // Update buttons
+        langBtns.forEach(btn => {
+            if (btn.dataset.lang === lang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Update all lang-specific elements
+        document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
+            if (el.classList.contains(`lang-${lang}`)) {
+                el.style.display = '';
+            } else {
+                el.style.display = 'none';
+            }
+        });
+
+        // Store preference
+        localStorage.setItem('preferred-language', lang);
+    }
+
+    // Add click listeners
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            setLanguage(btn.dataset.lang);
+        });
+    });
+
+    // Load saved language or default to DE
+    const savedLang = localStorage.getItem('preferred-language') || 'de';
+    setLanguage(savedLang);
+
+    // MOBILE MENU
+    document.getElementById('mobileToggle').addEventListener('click', function () {
+        document.getElementById('navMenu').classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navMenu').classList.remove('active');
+        });
+    });
+
+    // HEADER SCROLL
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if (window.pageYOffset > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // ROOM NAV ACTIVE STATE
+    const roomNavItems = document.querySelectorAll('.room-nav-item');
+    const roomDetails = document.querySelectorAll('.room-detail');
+
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '-150px 0px -50% 0px'
+    };
+
+    const roomObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const roomId = entry.target.id;
+                roomNavItems.forEach(item => {
+                    if (item.dataset.room === roomId) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    roomDetails.forEach(room => {
+        roomObserver.observe(room);
+    });
+
+    // SCROLL ANIMATIONS
+    const animObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, {threshold: 0.15, rootMargin: '0px 0px -100px 0px'});
+
+    document.querySelectorAll('.room-detail').forEach(el => {
+        animObserver.observe(el);
+    });
+
+    // LIGHTBOX FUNCTIONALITY
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+
+    let currentGallery = [];
+    let currentIndex = 0;
+
+    // Open lightbox
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', function () {
+            const gallery = this.dataset.gallery;
+            const index = parseInt(this.dataset.index);
+
+            // Get all images from this gallery
+            currentGallery = Array.from(document.querySelectorAll(`[data-gallery="${gallery}"]`))
+                .map(el => el.querySelector('.gallery-img').src);
+
+            currentIndex = index;
+            showLightboxImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close lightbox
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Navigate lightbox
+    lightboxPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+        showLightboxImage();
+    });
+
+    lightboxNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % currentGallery.length;
+        showLightboxImage();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.classList.contains('active')) {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') lightboxPrev.click();
+            if (e.key === 'ArrowRight') lightboxNext.click();
+        }
+    });
+
+    function showLightboxImage() {
+        lightboxImg.src = currentGallery[currentIndex];
+        lightboxImg.style.animation = 'none';
+        setTimeout(() => {
+            lightboxImg.style.animation = 'zoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        }, 10);
+    }
+</script>
+
+</body>
+</html>

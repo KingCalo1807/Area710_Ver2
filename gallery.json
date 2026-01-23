@@ -1,0 +1,190 @@
+[
+    {
+        "id": 1,
+        "title": {
+            "de": "Platin Party 2025",
+            "en": "Platinum Party 2025"
+        },
+        "category": "party",
+        "date": "2026-05-27",
+        "eventId": 18,
+        "image": "gallery-images/full-service.jpg"
+    },
+    {
+        "id": 2,
+        "title": {
+            "de": "Hall - Professionelle Bestuhlung",
+            "en": "Hall - Professional Seating"
+        },
+        "category": "location",
+        "date": "15.01.2026",
+        "image": "gallery-images/img.png"
+    },
+    {
+        "id": 3,
+        "title": {
+            "de": "Business Networking Event",
+            "en": "Business Networking Event"
+        },
+        "category": "business",
+        "date": "20.02.2026",
+        "image": "gallery-images/img_1.png",
+        "eventId": 2
+    },
+    {
+        "id": 4,
+        "title": {
+            "de": "DJ Setup im Lab",
+            "en": "DJ Setup in the Lab"
+        },
+        "category": "party",
+        "date": "10.03.2025",
+        "image": "gallery-images/img_2.png"
+    },
+    {
+        "id": 5,
+        "title": {
+            "de": "LED-Wand Beleuchtung",
+            "en": "LED Wall Lighting"
+        },
+        "category": "location",
+        "date": "05.03.2026",
+        "image": "gallery-images/img_3.png"
+    },
+    {
+        "id": 6,
+        "title": {
+            "de": "Halloween Horror Night",
+            "en": "Halloween Horror Night"
+        },
+        "category": "party",
+        "date": "31.10.2025",
+        "image": "gallery-images/halloween-1.jpg",
+        "eventId": 7
+    },
+    {
+        "id": 7,
+        "title": {
+            "de": "Outdoor Bereich Sommer",
+            "en": "Outdoor Area Summer"
+        },
+        "category": "location",
+        "date": "20.06.2025",
+        "image": "gallery-images/outdoor-summer-1.jpg"
+    },
+    {
+        "id": 8,
+        "title": {
+            "de": "Corporate Event Catering",
+            "en": "Corporate Event Catering"
+        },
+        "category": "business",
+        "date": "15.04.2026",
+        "image": "gallery-images/catering-1.jpg"
+    },
+    {
+        "id": 9,
+        "title": {
+            "de": "ZauberFlea Flohmarkt Impressionen",
+            "en": "ZauberFlea Flea Market Impressions"
+        },
+        "category": "events",
+        "date": "05.03.2026",
+        "image": "gallery-images/flohmarkt-1.jpg",
+        "eventId": 3
+    },
+    {
+        "id": 10,
+        "title": {
+            "de": "Bar & Club Atmosphäre",
+            "en": "Bar & Club Atmosphere"
+        },
+        "category": "party",
+        "date": "12.12.2025",
+        "image": "gallery-images/bar-club-1.jpg"
+    },
+    {
+        "id": 11,
+        "title": {
+            "de": "Lab - Konferenzbestuhlung",
+            "en": "Lab - Conference Seating"
+        },
+        "category": "business",
+        "date": "22.01.2026",
+        "image": "gallery-images/conference-1.jpg"
+    },
+    {
+        "id": 12,
+        "title": {
+            "de": "Hochzeit Outdoor Setup",
+            "en": "Wedding Outdoor Setup"
+        },
+        "category": "events",
+        "date": "15.07.2025",
+        "image": "gallery-images/wedding-1.jpg"
+    },
+    {
+        "id": 13,
+        "title": {
+            "de": "Party Crowd u30 Night",
+            "en": "Party Crowd u30 Night"
+        },
+        "category": "party",
+        "date": "",
+        "eventId": 10,
+        "image": "gallery-images/party-crowd-1.jpg"
+    },
+    {
+        "id": 14,
+        "title": {
+            "de": "Hall mit Bühne Setup",
+            "en": "Hall with Stage Setup"
+        },
+        "category": "location",
+        "date": "10.05.2026",
+        "image": "gallery-images/hall-stage-1.jpg"
+    },
+    {
+        "id": 15,
+        "title": {
+            "de": "Sommerfest 2025 Impressionen",
+            "en": "Summer Festival 2025 Impressions"
+        },
+        "category": "events",
+        "date": "20.06.2025",
+        "image": "gallery-images/sommerfest-1.jpg",
+        "eventId": 6
+    },
+    {
+        "id": 16,
+        "title": {
+            "de": "Business Workshop Session",
+            "en": "Business Workshop Session"
+        },
+        "category": "business",
+        "date": "15.03.2026",
+        "image": "gallery-images/workshop-1.jpg",
+        "eventId": 4
+    },
+    {
+        "id": 17,
+        "title": {
+            "de": "Lightshow im Lab",
+            "en": "Lightshow in the Lab"
+        },
+        "category": "party",
+        "date": "08.11.2025",
+        "image": "gallery-images/lightshow-1.jpg"
+    },
+    {
+        "id": 18,
+        "title": {
+            "de": "Outdoor bei Nacht",
+            "en": "Outdoor at Night"
+        },
+        "category": "location",
+        "date": "",
+        "eventId": 18,
+        "image": "gallery-images/c-o-2.jpg"
+    }
+]

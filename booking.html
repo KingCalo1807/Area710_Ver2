@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Buchungsanfrage für area710 - Ihre Event Location in Holzgerlingen">
+    <title>Buchungsanfrage - area710 - UNIQUE EVENT LOCATION</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" href="/img/fav.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #FCAB14;
+            --red: #CD1151;
+            --blue: #009FE2;
+            --green: #AEC610;
+            --black: #000;
+            --white: #fff;
+            --gray: #222;
+            --gray-light: #333;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 45px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            font-size: 0.95rem;
+            font-weight: 400;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green));
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--orange);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.3rem;
+            margin-left: 2rem;
+            border-left: 1px solid var(--border);
+            padding-left: 2rem;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.7rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--white);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 76px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(252, 171, 20, 0.3), rgba(205, 17, 81, 0.3), rgba(0, 159, 226, 0.3), rgba(174, 198, 16, 0.3)), url('img/back.jpg') center/cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 300;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* BOOKING LAYOUT */
+        .booking-layout {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* FORM */
+        .booking-form {
+            background: var(--gray);
+            padding: 3rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .form-section {
+            margin-bottom: 3rem;
+        }
+
+        .form-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-section h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green)) 1;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        label.required::after {
+            content: ' *';
+            color: var(--red);
+        }
+
+        input, select, textarea {
+            padding: 0.9rem 1rem;
+            background: var(--gray-light);
+            border: 1px solid var(--border);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--white);
+            background: rgba(252, 171, 20, 0.05);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* AVAILABILITY INFO */
+        .availability-info {
+            margin-top: 0.5rem;
+            padding: 0.8rem;
+            background: var(--gray-light);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            display: none;
+        }
+
+        .availability-info.show {
+            display: block;
+        }
+
+        .availability-info.blocked {
+            background: rgba(205, 17, 81, 0.2);
+            border-left: 3px solid var(--red);
+        }
+
+        .availability-info.available {
+            background: rgba(174, 198, 16, 0.2);
+            border-left: 3px solid var(--green);
+        }
+
+        .availability-info.partial {
+            background: rgba(252, 171, 20, 0.2);
+            border-left: 3px solid var(--orange);
+        }
+
+        .blocked-rooms-list {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ROOM SELECTION */
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .room-checkbox {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+
+        .room-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 1rem 1.5rem;
+            border-radius: 14px;
+
+            border: 1px solid var(--border);
+            cursor: pointer;
+
+            font-size: 0.95rem;
+            text-transform: lowercase;
+
+            transition: all 0.3s ease;
+        }
+
+        .room-option {
+            --active-color: var(--white);
+            position: relative;
+        }
+
+        /* DISABLED STATE */
+        .room-option.disabled .room-label {
+            opacity: 0.4;
+            cursor: not-allowed;
+            background: rgba(205, 17, 81, 0.1);
+        }
+
+        .room-option.disabled .room-checkbox {
+            pointer-events: none;
+        }
+
+        .room-option.disabled::after {
+            content: '🔒';
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .frame-orange {
+            --active-color: var(--orange);
+        }
+
+        .frame-blue {
+            --active-color: var(--blue);
+        }
+
+        .frame-red {
+            --active-color: var(--red);
+        }
+
+        .frame-green {
+            --active-color: var(--green);
+        }
+
+
+        .room-label:hover {
+            transform: translateY(-5px);
+            border-color: var(--white);
+        }
+
+        .room-option.disabled .room-label:hover {
+            transform: none;
+            border-color: var(--border);
+        }
+
+        .room-checkbox:checked + .room-label {
+            border-color: var(--active-color);
+            background: color-mix(in srgb, var(--active-color) 20%, transparent);
+            box-shadow: 0 0 0 2px var(--active-color),
+            0 6px 18px rgba(0, 0, 0, 0.25);
+        }
+
+
+        .room-icon {
+            width: 217px;
+            height: 300px;
+            margin-bottom: 0.5rem;
+        }
+
+        .room-name {
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        /* SERVICES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .service-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--orange);
+        }
+
+        .service-label {
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        /* PRIVACY */
+        .privacy-check {
+            display: flex;
+            align-items: start;
+            gap: 0.8rem;
+            margin: 2rem 0;
+        }
+
+        .privacy-check input {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: var(--orange);
+        }
+
+        .privacy-check label {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .privacy-check a {
+            color: var(--orange);
+            text-decoration: underline;
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            padding: 1.1rem 3rem;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            border: none;
+            background: linear-gradient(135deg, var(--orange), var(--red));
+            color: var(--white);
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(252, 171, 20, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* SIDEBAR */
+        .booking-sidebar {
+            position: sticky;
+            top: 100px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .sidebar-card {
+            background: var(--gray);
+            padding: 2rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: var(--gray-light);
+            border-radius: 4px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--orange), var(--red));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-info a {
+            color: var(--white);
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--orange);
+        }
+
+        .info-text {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* SUCCESS MESSAGE */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, var(--green), var(--blue));
+            padding: 2rem;
+            border-radius: 4px;
+            text-align: center;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-message p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ERROR MESSAGE */
+        .error-message {
+            display: none;
+            background: rgba(205, 17, 81, 0.2);
+            border: 1px solid var(--red);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--gray);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--white);
+            background: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .social-link:hover svg {
+            fill: var(--black);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0 0.5rem;
+        }
+
+        /* Parent */
+        .has-submenu {
+            position: relative;
+        }
+
+        /* Submenu */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            list-style: none;
+            padding: 0.5rem 0;
+            margin-top: 0.8rem;
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+
+            z-index: 1000;
+        }
+
+        /* Show on hover */
+        .has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Submenu items */
+        .submenu li a {
+            display: block;
+            padding: 0.7rem 1.2rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect */
+        .submenu li a:hover {
+            background: linear-gradient(
+                    90deg,
+                    rgba(252, 171, 20, 0.15),
+                    rgba(205, 17, 81, 0.15),
+                    rgba(0, 159, 226, 0.15),
+                    rgba(174, 198, 16, 0.15)
+            );
+            color: var(--white);
+        }
+
+        .has-submenu > a::after {
+            content: "▾";
+            margin-left: 0.0rem;
+            font-size: 0.7em;
+            opacity: 0.7;
+        }
+
+
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--black);
+                flex-direction: column;
+                justify-content: center;
+                transition: left 0.4s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .booking-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .booking-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .room-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        select option {
+            color: black;
+            background: white;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<header class="header" id="header">
+    <nav class="nav-container">
+        <a href="index.html">
+            <img src="img/logo.jpg" alt="area710" class="logo">
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">area710</a></li>
+            <li class="has-submenu">
+                <a href="raueme.html">Räume</a>
+                <ul class="submenu">
+                    <li><a href="raueme.html#hall">Hall</a></li>
+                    <li><a href="raueme.html#lab">Lab</a></li>
+                    <li><a href="raueme.html#barclub">Bar & Club</a></li>
+                    <li><a href="raueme.html#outdoor">Outdoor</a></li>
+                </ul>
+            </li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="about.html">Über Uns</a></li>
+            <li><a href="booking.html" class="active">Buchungsanfrage</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="de">DE</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </ul>
+
+        <button class="mobile-toggle" id="mobileToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 data-de="Buchungsanfrage" data-en="Booking Request">Buchungsanfrage</h1>
+        <p data-de="Lassen Sie uns Ihr Event unvergesslich machen" data-en="Let us make your event unforgettable">Lassen
+            Sie uns Ihr Event unvergesslich machen</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="booking-layout">
+
+            <!-- BOOKING FORM -->
+            <div>
+                <div class="error-message" id="errorMessage"></div>
+
+                <div class="success-message" id="successMessage">
+                    <h3 data-de="Vielen Dank!" data-en="Thank you!">Vielen Dank!</h3>
+                    <p data-de="Ihre Buchungsanfrage wurde erfolgreich versendet. Wir melden uns in Kürze bei Ihnen."
+                       data-en="Your booking request has been sent successfully. We will contact you shortly.">Ihre
+                        Buchungsanfrage wurde erfolgreich versendet. Wir melden uns in Kürze bei Ihnen.</p>
+                    <button class="btn" onclick="location.reload()" data-de="Neue Anfrage" data-en="New Request">Neue
+                        Anfrage
+                    </button>
+                </div>
+
+                <form class="booking-form" id="bookingForm">
+
+                    <!-- PERSONAL INFO -->
+                    <div class="form-section">
+                        <h3 data-de="Ihre Kontaktdaten" data-en="Your Contact Details">Ihre Kontaktdaten</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="required" data-de="Vorname"
+                                       data-en="First Name">Vorname</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName" class="required" data-de="Nachname"
+                                       data-en="Last Name">Nachname</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="required" data-de="E-Mail" data-en="Email">E-Mail</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="required" data-de="Telefon" data-en="Phone">Telefon</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company" data-de="Firma (optional)" data-en="Company (optional)">Firma
+                                (optional)</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                    </div>
+
+                    <!-- EVENT DETAILS -->
+                    <div class="form-section">
+                        <h3 data-de="Event-Details" data-en="Event Details">Event-Details</h3>
+
+                        <div class="form-group">
+                            <label for="eventType" class="required" data-de="Art der Veranstaltung"
+                                   data-en="Type of Event">Art der Veranstaltung</label>
+                            <select id="eventType" name="eventType" required>
+                                <option value="" data-de="Bitte wählen..." data-en="Please select...">Bitte wählen...
+                                </option>
+                                <option value="business" data-de="Business Event" data-en="Business Event">Business
+                                    Event
+                                </option>
+                                <option value="wedding" data-de="Hochzeit" data-en="Wedding">Hochzeit</option>
+                                <option value="birthday" data-de="Geburtstag" data-en="Birthday">Geburtstag</option>
+                                <option value="party" data-de="Party" data-en="Party">Party</option>
+                                <option value="conference" data-de="Konferenz/Tagung" data-en="Conference/Meeting">
+                                    Konferenz/Tagung
+                                </option>
+                                <option value="workshop" data-de="Workshop/Seminar" data-en="Workshop/Seminar">
+                                    Workshop/Seminar
+                                </option>
+                                <option value="other" data-de="Sonstiges" data-en="Other">Sonstiges</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="eventDate" class="required" data-de="Datum" data-en="Date">Datum</label>
+                                <input type="date" id="eventDate" name="eventDate" required>
+
+                                <!-- AVAILABILITY INFO -->
+                                <div class="availability-info" id="availabilityInfo"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventTime" class="required" data-de="Uhrzeit (von)" data-en="Time (from)">Uhrzeit
+                                    (von)</label>
+                                <input type="time" id="eventTime" name="eventTime" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="duration" class="required" data-de="Dauer (Stunden)"
+                                       data-en="Duration (hours)">Dauer (Stunden)</label>
+                                <input type="number" id="duration" name="duration" min="1" max="24" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="guests" class="required" data-de="Anzahl Gäste" data-en="Number of Guests">Anzahl
+                                    Gäste</label>
+                                <input type="number" id="guests" name="guests" min="1" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ROOM SELECTION -->
+                    <div class="form-section">
+                        <h3 data-de="Raumauswahl" data-en="Room Selection">Raumauswahl</h3>
+
+                        <div class="room-grid">
+
+                            <div class="room-option frame-orange" id="room-option-hall">
+                                <input type="checkbox" id="room-hall" name="rooms[]" value="hall" class="room-checkbox">
+                                <label for="room-hall" class="room-label">
+                                    <span class="room-name">hall</span>
+                                </label>
+                            </div>
+
+                            <div class="room-option frame-blue" id="room-option-lab">
+                                <input type="checkbox" id="room-lab" name="rooms[]" value="lab" class="room-checkbox">
+                                <label for="room-lab" class="room-label">
+                                    <span class="room-name">lab</span>
+                                </label>
+                            </div>
+
+                            <div class="room-option frame-red" id="room-option-barclub">
+                                <input type="checkbox" id="room-barclub" name="rooms[]" value="barclub"
+                                       class="room-checkbox">
+                                <label for="room-barclub" class="room-label">
+                                    <span class="room-name">bar & club</span>
+                                </label>
+                            </div>
+
+                            <div class="room-option frame-green" id="room-option-outdoor">
+                                <input type="checkbox" id="room-outdoor" name="rooms[]" value="outdoor"
+                                       class="room-checkbox">
+                                <label for="room-outdoor" class="room-label">
+                                    <span class="room-name">outdoor</span>
+                                </label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ADDITIONAL SERVICES -->
+                    <div class="form-section">
+                        <h3 data-de="Zusätzliche Services" data-en="Additional Services">Zusätzliche Services</h3>
+
+                        <div class="services-grid">
+                            <div class="service-item">
+                                <input type="checkbox" id="service-catering" name="services[]" value="catering"
+                                       class="service-checkbox">
+                                <label for="service-catering" class="service-label" data-de="Catering"
+                                       data-en="Catering">Catering</label>
+                            </div>
+
+                            <div class="service-item">
+                                <input type="checkbox" id="service-tech" name="services[]" value="tech"
+                                       class="service-checkbox">
+                                <label for="service-tech" class="service-label" data-de="Technik" data-en="Technology">Technik</label>
+                            </div>
+
+                            <div class="service-item">
+                                <input type="checkbox" id="service-decoration" name="services[]" value="decoration"
+                                       class="service-checkbox">
+                                <label for="service-decoration" class="service-label" data-de="Dekoration"
+                                       data-en="Decoration">Dekoration</label>
+                            </div>
+
+                            <div class="service-item">
+                                <input type="checkbox" id="service-seating" name="services[]" value="seating"
+                                       class="service-checkbox">
+                                <label for="service-seating" class="service-label" data-de="Bestuhlung"
+                                       data-en="Seating">Bestuhlung</label>
+                            </div>
+
+                            <div class="service-item">
+                                <input type="checkbox" id="service-bar" name="services[]" value="bar"
+                                       class="service-checkbox">
+                                <label for="service-bar" class="service-label" data-de="Bar-Service"
+                                       data-en="Bar Service">Bar-Service</label>
+                            </div>
+
+                            <div class="service-item">
+                                <input type="checkbox" id="service-security" name="services[]" value="security"
+                                       class="service-checkbox">
+                                <label for="service-security" class="service-label" data-de="Security"
+                                       data-en="Security">Security</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MESSAGE -->
+                    <div class="form-section">
+                        <h3 data-de="Ihre Nachricht" data-en="Your Message">Ihre Nachricht</h3>
+
+                        <div class="form-group">
+                            <label for="message" data-de="Weitere Informationen, Wünsche oder Fragen"
+                                   data-en="Additional information, wishes or questions">Weitere Informationen, Wünsche
+                                oder Fragen</label>
+                            <textarea id="message" name="message" rows="6"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- PRIVACY -->
+                    <div class="privacy-check">
+                        <input type="checkbox" id="privacy" name="privacy" required>
+                        <label for="privacy">
+                            <span data-de="Ich habe die " data-en="I have read the ">Ich habe die </span>
+                            <a href="datenschutz.html" data-de="Datenschutzerklärung" data-en="Privacy Policy">Datenschutzerklärung</a>
+                            <span data-de=" gelesen und stimme der Verarbeitung meiner Daten zu."
+                                  data-en=" and agree to the processing of my data."> gelesen und stimme der Verarbeitung meiner Daten zu.</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn" data-de="Anfrage senden" data-en="Send Request">Anfrage senden
+                    </button>
+
+                </form>
+            </div>
+
+            <!-- SIDEBAR -->
+            <aside class="booking-sidebar">
+
+                <div class="sidebar-card">
+                    <h3 data-de="Kontakt" data-en="Contact">Kontakt</h3>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-info">
+                            <div data-de="Telefon" data-en="Phone">Telefon</div>
+                            <a href="tel:+4970314107311">+49 7031 41073-11</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-info">
+                            <div data-de="E-Mail" data-en="Email">E-Mail</div>
+                            <a href="mailto:info@area710.de">info@area710.de</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-info">
+                            <div data-de="Öffnungszeiten" data-en="Office Hours">Öffnungszeiten</div>
+                            <div data-de="Mo-Fr 10:00-18:00" data-en="Mon-Fri 10:00-18:00">Mo-Fr 10:00-18:00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 data-de="Hinweise" data-en="Information">Hinweise</h3>
+                    <p class="info-text"
+                       data-de="Ihre Anfrage ist unverbindlich. Wir melden uns innerhalb von 24 Stunden bei Ihnen mit einem individuellen Angebot."
+                       data-en="Your request is non-binding. We will contact you within 24 hours with an individual offer.">
+                        Ihre Anfrage ist unverbindlich. Wir melden uns innerhalb von 24 Stunden bei Ihnen mit einem
+                        individuellen Angebot.
+                    </p>
+                </div>
+
+            </aside>
+
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>area710</h3>
+            <p>Gottlieb-Binder-Straße 2</p>
+            <p>D-71088 Holzgerlingen</p>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-de="Öffnungszeiten Eventbüro" data-en="Office Hours">Öffnungszeiten Eventbüro</h3>
+            <p data-de="Montag–Freitag" data-en="Monday–Friday">Montag–Freitag</p>
+            <p>10:00–18:00 Uhr</p>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-de="Kontakt" data-en="Contact">Kontakt</h3>
+            <p><a href="tel:+4870314107311">+49 7031 41073-11</a></p>
+            <p><a href="mailto:info@area710.de">info@area710.de</a></p>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-de="Folge uns" data-en="Follow us">Folge uns</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100086162780846" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/area710_event/" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/1713573288?text=area710" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            area710 eine Marke der seeeye Werbung & Event GmbH
+            <br>
+            <a href="impressum.html" data-de="Impressum" data-en="Imprint">Impressum</a>
+            <a href="datenschutz.html" data-de="Datenschutzerklärung" data-en="Privacy Policy">Datenschutzerklärung</a>
+            <a href="booking.html" data-de="Buchungsanfrage" data-en="Booking Request">Buchungsanfrage</a>
+            <a href="https://ticket.area710.de" target="_blank" data-de="Ticket Verkauf" data-en="Ticket Sales">Ticket
+                Verkauf</a>
+        </p>
+    </div>
+</footer>
+
+<script>
+    // ========================================
+    // CSRF TOKEN MANAGEMENT
+    // ========================================
+    let csrfToken = null;
+
+    // Token beim Seitenstart abrufen
+    async function fetchCSRFToken() {
+        try {
+            const response = await fetch('get-csrf-token.php');
+            const data = await response.json();
+            if (data.csrf_token) {
+                csrfToken = data.csrf_token;
+                console.log('CSRF token loaded');
+            }
+        } catch (error) {
+            console.error('Error fetching CSRF token:', error);
+        }
+    }
+
+    // Token beim Seitenstart laden
+    fetchCSRFToken();
+
+    // ========================================
+    // MOBILE MENU
+    // ========================================
+    document.getElementById('mobileToggle').addEventListener('click', function () {
+        document.getElementById('navMenu').classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navMenu').classList.remove('active');
+        });
+    });
+
+    // ========================================
+    // HEADER SCROLL
+    // ========================================
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if (window.pageYOffset > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // ========================================
+    // LANGUAGE SWITCHER
+    // ========================================
+    let currentLang = 'de';
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const targetLang = this.dataset.lang;
+            if (targetLang === currentLang) return;
+
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentLang = targetLang;
+            translatePage(targetLang);
+        });
+    });
+
+    function translatePage(lang) {
+        document.querySelectorAll('[data-de]').forEach(el => {
+            if (lang === 'de' && el.dataset.de) {
+                if (el.tagName === 'INPUT' || el.tagName === 'BUTTON') {
+                    el.value = el.dataset.de;
+                    if (el.tagName === 'BUTTON') el.textContent = el.dataset.de;
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = el.dataset.de;
+                } else {
+                    el.textContent = el.dataset.de;
+                }
+            } else if (lang === 'en' && el.dataset.en) {
+                if (el.tagName === 'INPUT' || el.tagName === 'BUTTON') {
+                    el.value = el.dataset.en;
+                    if (el.tagName === 'BUTTON') el.textContent = el.dataset.en;
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = el.dataset.en;
+                } else {
+                    el.textContent = el.dataset.en;
+                }
+            }
+        });
+        document.documentElement.lang = lang;
+    }
+
+    // ========================================
+    // PRE-SELECT ROOM FROM URL
+    // ========================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const roomParam = urlParams.get('room');
+    if (roomParam) {
+        const roomCheckbox = document.getElementById('room-' + roomParam);
+        if (roomCheckbox) {
+            roomCheckbox.checked = true;
+        }
+    }
+
+    // ========================================
+    // AVAILABILITY CHECK WITH TIME RANGES
+    // ========================================
+    let blockedRooms = [];
+
+    const roomNames = {
+        hall: { de: 'Hall', en: 'Hall' },
+        lab: { de: 'Lab', en: 'Lab' },
+        barclub: { de: 'Bar & Club', en: 'Bar & Club' },
+        outdoor: { de: 'Outdoor', en: 'Outdoor' }
+    };
+
+    async function loadAvailability() {
+        try {
+            const response = await fetch('events.json');
+            const data = await response.json();
+            blockedRooms = data.filter(item => item.type === 'blocked');
+            console.log('Blocked rooms loaded:', blockedRooms);
+        } catch (error) {
+            console.error('Error loading availability:', error);
+        }
+    }
+
+    function formatTime(time) {
+        if (!time) return '';
+        return time.substring(0, 5); // Returns HH:MM format
+    }
+
+    function timeToMinutes(time) {
+        if (!time) return 0;
+        const [hours, minutes] = time.split(':').map(Number);
+        return hours * 60 + minutes;
+    }
+
+    function checkTimeOverlap(requestedTime, requestedDuration, blockedStart, blockedEnd) {
+        const reqStart = timeToMinutes(requestedTime);
+        const reqEnd = reqStart + (parseInt(requestedDuration) * 60);
+        const blockStart = timeToMinutes(blockedStart);
+        const blockEnd = timeToMinutes(blockedEnd);
+
+        // Check if times overlap
+        return !(reqEnd <= blockStart || reqStart >= blockEnd);
+    }
+
+    function checkAvailability(selectedDate, selectedTime = null, duration = null) {
+        const availabilityInfo = document.getElementById('availabilityInfo');
+        const submitBtn = document.querySelector('#bookingForm button[type="submit"]');
+
+        if (!selectedDate) {
+            availabilityInfo.classList.remove('show');
+            enableAllRooms();
+            if (submitBtn) submitBtn.disabled = false;
+            return;
+        }
+
+        const blockedForDate = blockedRooms.filter(item => item.date === selectedDate);
+
+        if (blockedForDate.length === 0) {
+            availabilityInfo.className = 'availability-info available show';
+            availabilityInfo.innerHTML = currentLang === 'de'
+                ? '✅ Alle Räume sind an diesem Datum verfügbar!'
+                : '✅ All rooms are available on this date!';
+            enableAllRooms();
+            if (submitBtn) submitBtn.disabled = false;
+        } else {
+            // Check if user has selected time AND duration
+            const hasCompleteTimeInfo = selectedTime && duration;
+
+            let roomBlockDetails = {};
+
+            blockedForDate.forEach(item => {
+                const rooms = Array.isArray(item.room) ? item.room : (item.room ? [item.room] : ['hall', 'lab', 'barclub', 'outdoor']);
+                const startTime = item.startTime || '00:00';
+                const endTime = item.endTime || '23:59';
+
+                // If time info is complete, check for overlap; otherwise, assume all blocks apply
+                let hasTimeConflict = true;
+
+                if (hasCompleteTimeInfo) {
+                    hasTimeConflict = checkTimeOverlap(selectedTime, duration, startTime, endTime);
+                }
+
+                if (hasTimeConflict) {
+                    rooms.forEach(room => {
+                        if (!roomBlockDetails[room]) {
+                            roomBlockDetails[room] = [];
+                        }
+                        roomBlockDetails[room].push({
+                            startTime: startTime,
+                            endTime: endTime,
+                            reason: item.reason
+                        });
+                    });
+                }
+            });
+
+            const uniqueBlocked = Object.keys(roomBlockDetails);
+
+            if (uniqueBlocked.length === 0) {
+                // This only happens when time is selected and no conflicts found
+                availabilityInfo.className = 'availability-info available show';
+                availabilityInfo.innerHTML = currentLang === 'de'
+                    ? '✅ Alle Räume sind zu der gewählten Zeit verfügbar!'
+                    : '✅ All rooms are available at the selected time!';
+                enableAllRooms();
+                if (submitBtn) submitBtn.disabled = false;
+            } else if (uniqueBlocked.length === 4) {
+                // All rooms blocked
+                let infoHTML = currentLang === 'de'
+                    ? '❌ Leider sind an diesem Datum '
+                    : '❌ Unfortunately all rooms are already booked ';
+
+                if (hasCompleteTimeInfo) {
+                    infoHTML += currentLang === 'de'
+                        ? 'zur gewählten Zeit alle Räume bereits gebucht.'
+                        : 'at the selected time.';
+                } else {
+                    infoHTML += currentLang === 'de'
+                        ? 'alle Räume bereits gebucht.'
+                        : 'on this date.';
+                }
+
+                // Only show time details if time and duration are selected
+                if (hasCompleteTimeInfo) {
+                    const timeDetails = [];
+                    uniqueBlocked.forEach(room => {
+                        const details = roomBlockDetails[room];
+                        details.forEach(detail => {
+                            const timeInfo = `${roomNames[room][currentLang]}: ${formatTime(detail.startTime)} - ${formatTime(detail.endTime)}`;
+                            if (!timeDetails.includes(timeInfo)) {
+                                timeDetails.push(timeInfo);
+                            }
+                        });
+                    });
+
+                    if (timeDetails.length > 0) {
+                        infoHTML += '<div class="blocked-rooms-list" style="margin-top: 0.5rem;">';
+                        timeDetails.forEach(detail => {
+                            infoHTML += `<div>🕒 ${detail}</div>`;
+                        });
+                        infoHTML += '</div>';
+                    }
+                } else {
+                    // Just show which rooms are blocked without times
+                    infoHTML += '<div class="blocked-rooms-list" style="margin-top: 0.5rem;">';
+                    infoHTML += currentLang === 'de'
+                        ? '<div style="opacity: 0.8;">Bitte wählen Sie eine Uhrzeit und Dauer, um die genaue Verfügbarkeit zu prüfen.</div>'
+                        : '<div style="opacity: 0.8;">Please select a time and duration to check exact availability.</div>';
+                    infoHTML += '</div>';
+                }
+
+                availabilityInfo.className = 'availability-info blocked show';
+                availabilityInfo.innerHTML = infoHTML;
+                disableAllRooms();
+                if (submitBtn) submitBtn.disabled = true;
+            } else {
+                // Some rooms blocked
+                let infoHTML = currentLang === 'de'
+                    ? '⚠️ Folgende Räume sind bereits gebucht:'
+                    : '⚠️ The following rooms are already booked:';
+
+                infoHTML += '<div class="blocked-rooms-list" style="margin-top: 0.5rem;">';
+
+                // Only show time details if time and duration are selected
+                if (hasCompleteTimeInfo) {
+                    uniqueBlocked.forEach(room => {
+                        const details = roomBlockDetails[room];
+                        details.forEach(detail => {
+                            infoHTML += `<div>🔒 ${roomNames[room][currentLang]}: ${formatTime(detail.startTime)} - ${formatTime(detail.endTime)}`;
+                            if (detail.reason) {
+                                infoHTML += ` <span style="opacity: 0.7; font-size: 0.85em;">(${detail.reason})</span>`;
+                            }
+                            infoHTML += '</div>';
+                        });
+                    });
+                } else {
+                    // Just show room names without times
+                    uniqueBlocked.forEach(room => {
+                        infoHTML += `<div>🔒 ${roomNames[room][currentLang]}`;
+                        const firstDetail = roomBlockDetails[room][0];
+                        if (firstDetail.reason) {
+                            infoHTML += ` <span style="opacity: 0.7; font-size: 0.85em;">(${firstDetail.reason})</span>`;
+                        }
+                        infoHTML += '</div>';
+                    });
+                    infoHTML += '<div style="opacity: 0.8; margin-top: 0.5rem;">';
+                    infoHTML += currentLang === 'de'
+                        ? 'Bitte wählen Sie eine Uhrzeit und Dauer, um die genaue Verfügbarkeit zu prüfen.'
+                        : 'Please select a time and duration to check exact availability.';
+                    infoHTML += '</div>';
+                }
+
+                infoHTML += '</div>';
+
+                availabilityInfo.className = 'availability-info partial show';
+                availabilityInfo.innerHTML = infoHTML;
+
+                enableAllRooms();
+                uniqueBlocked.forEach(room => disableRoom(room));
+                if (submitBtn) submitBtn.disabled = false;
+            }
+        }
+    }
+
+    function enableAllRooms() {
+        ['hall', 'lab', 'barclub', 'outdoor'].forEach(room => {
+            const roomOption = document.getElementById(`room-option-${room}`);
+            const roomCheckbox = document.getElementById(`room-${room}`);
+
+            if (roomOption && roomCheckbox) {
+                roomOption.classList.remove('disabled');
+                roomCheckbox.disabled = false;
+            }
+        });
+    }
+
+    function disableAllRooms() {
+        ['hall', 'lab', 'barclub', 'outdoor'].forEach(room => {
+            disableRoom(room);
+        });
+    }
+
+    function disableRoom(room) {
+        const roomOption = document.getElementById(`room-option-${room}`);
+        const roomCheckbox = document.getElementById(`room-${room}`);
+
+        if (roomOption && roomCheckbox) {
+            roomOption.classList.add('disabled');
+            roomCheckbox.disabled = true;
+            roomCheckbox.checked = false;
+        }
+    }
+
+    // Event listeners for date, time, and duration changes
+    document.getElementById('eventDate').addEventListener('change', function() {
+        const selectedTime = document.getElementById('eventTime').value;
+        const duration = document.getElementById('duration').value;
+        checkAvailability(this.value, selectedTime, duration);
+    });
+
+    document.getElementById('eventTime').addEventListener('change', function() {
+        const selectedDate = document.getElementById('eventDate').value;
+        const duration = document.getElementById('duration').value;
+        if (selectedDate) {
+            checkAvailability(selectedDate, this.value, duration);
+        }
+    });
+
+    document.getElementById('duration').addEventListener('change', function() {
+        const selectedDate = document.getElementById('eventDate').value;
+        const selectedTime = document.getElementById('eventTime').value;
+        if (selectedDate) {
+            checkAvailability(selectedDate, selectedTime, this.value);
+        }
+    });
+
+    loadAvailability();
+
+    // ========================================
+    // FORM SUBMISSION
+    // ========================================
+    document.getElementById('bookingForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const btn = this.querySelector('button[type="submit"]');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+
+        // Hide messages
+        errorMessage.classList.remove('show');
+        successMessage.classList.remove('show');
+
+        // CSRF-Token prüfen
+        if (!csrfToken) {
+            errorMessage.textContent = currentLang === 'de'
+                ? 'Sicherheitsfehler. Bitte laden Sie die Seite neu.'
+                : 'Security error. Please reload the page.';
+            errorMessage.classList.add('show');
+            return;
+        }
+
+        // Disable button
+        btn.disabled = true;
+        btn.textContent = currentLang === 'de' ? 'Wird gesendet...' : 'Sending...';
+
+        // Collect form data
+        const formData = new FormData(this);
+
+        // Collect selected rooms
+        const rooms = [];
+        document.querySelectorAll('input[name="rooms[]"]:checked').forEach(cb => {
+            rooms.push(cb.value);
+        });
+
+        // Collect selected services
+        const services = [];
+        document.querySelectorAll('input[name="services[]"]:checked').forEach(cb => {
+            services.push(cb.value);
+        });
+
+        // Build data object
+        const data = {
+            csrf_token: csrfToken,  // CSRF-Token hinzufügen
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            company: formData.get('company'),
+            eventType: formData.get('eventType'),
+            eventDate: formData.get('eventDate'),
+            eventTime: formData.get('eventTime'),
+            duration: formData.get('duration'),
+            guests: formData.get('guests'),
+            rooms: rooms,
+            services: services,
+            message: formData.get('message'),
+            lang: currentLang
+        };
+
+        try {
+            const response = await fetch('booking-handler.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                document.querySelector('.booking-form').style.display = 'none';
+                successMessage.classList.add('show');
+                window.scrollTo({top: 0, behavior: 'smooth'});
+
+                // Neues CSRF-Token für nächste Anfrage holen
+                fetchCSRFToken();
+            } else {
+                throw new Error(result.error || 'Ein Fehler ist aufgetreten');
+            }
+
+        } catch (error) {
+            errorMessage.textContent = currentLang === 'de'
+                ? 'Fehler beim Senden der Anfrage. Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch.'
+                : 'Error sending the request. Please try again or contact us by phone.';
+            errorMessage.classList.add('show');
+
+            btn.disabled = false;
+            btn.textContent = currentLang === 'de' ? 'Anfrage senden' : 'Send Request';
+
+            console.error('Booking error:', error);
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontakt - area710 in Holzgerlingen. Erreichen Sie uns per Telefon, E-Mail oder besuchen Sie uns vor Ort.">
+    <title>Kontakt - area710 - UNIQUE EVENT LOCATION</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="icon" type="image/png" href="/img/fav.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --orange: #FCAB14;
+            --red: #CD1151;
+            --blue: #009FE2;
+            --green: #AEC610;
+            --black: #000;
+            --white: #fff;
+            --gray: #222;
+            --gray-light: #333;
+            --border: rgba(255,255,255,0.1);
+        }
+
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header.scrolled {
+            background: rgba(0,0,0,0.98);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.8);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 45px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover { transform: scale(1.05); }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            font-size: 0.95rem;
+            font-weight: 400;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green));
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after { width: 100%; }
+        .nav-menu a:hover { color: var(--orange); }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.3rem;
+            margin-left: 2rem;
+            border-left: 1px solid var(--border);
+            padding-left: 2rem;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.7rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--white);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 76px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(252,171,20,0.3), rgba(205,17,81,0.3)), url('img/exoerience.jpg') center/cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 300;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* CONTACT LAYOUT */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            justify-content: center;
+        }
+
+        /* CONTACT INFO */
+        .contact-info {
+    animation: fadeInUp 0.8s ease-out;
+    grid-column: 1 / -1;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--white), var(--white));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .info-block {
+            margin-bottom: 3rem;
+        }
+
+        .info-block h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--orange);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--gray);
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            border-color: var(--orange);
+            transform: translateX(5px);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--orange), var(--red));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 0.3rem;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .info-value a {
+            color: var(--white);
+            transition: color 0.3s ease;
+        }
+
+        .info-value a:hover {
+            color: var(--orange);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--white);
+            background: var(--white);
+            transform: translateY(-5px);
+        }
+
+        .social-link:hover svg {
+            fill: var(--black);
+        }
+
+        /* CONTACT FORM */
+        .contact-form {
+            background: var(--gray);
+            padding: 3rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .contact-form h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        label.required::after {
+            content: ' *';
+            color: var(--red);
+        }
+
+        input, select, textarea {
+            padding: 0.9rem 1rem;
+            background: var(--gray-light);
+            border: 1px solid var(--border);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--orange);
+            background: rgba(252,171,20,0.05);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem 2.8rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--orange), var(--red));
+
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.25);
+
+            margin: 2rem auto 0 auto;
+    width: auto;
+            position: relative;
+    left: 90px; /* nach rechts */
+}
+
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(252,171,20,0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* SUCCESS/ERROR MESSAGES */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, var(--orange), var(--red));
+            padding: 2rem;
+            border-radius: 4px;
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .error-message {
+            display: none;
+            background: rgba(205,17,81,0.2);
+            border: 1px solid var(--red);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* MAP */
+        .map-section {
+            margin-top: 4rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .map-section h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 500px;
+            background: var(--gray);
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(0%) brightness(1);
+            transition: filter 0.3s ease;
+        }
+
+        .map-container:hover iframe {
+            filter: grayscale(0%) brightness(1);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--gray);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover { color: var(--white); }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255,255,255,0.5);
+            margin: 0 0.5rem;
+        }
+
+        .footer-bottom a:hover { color: var(--white); }
+
+        /* Parent */
+.has-submenu {
+    position: relative;
+}
+
+/* Submenu */
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    list-style: none;
+    padding: 0.5rem 0;
+    margin-top: 0.8rem;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+
+    z-index: 1000;
+}
+
+/* Show on hover */
+.has-submenu:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Submenu items */
+.submenu li a {
+    display: block;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.submenu li a:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(252,171,20,0.15),
+        rgba(205,17,81,0.15),
+        rgba(0,159,226,0.15),
+        rgba(174,198,16,0.15)
+    );
+    color: var(--white);
+}
+.has-submenu > a::after {
+    content: "▾";
+    margin-left: 0.0rem;
+    font-size: 0.7em;
+    opacity: 0.7;
+}
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--black);
+                flex-direction: column;
+                justify-content: center;
+                transition: left 0.4s ease;
+            }
+
+            .nav-menu.active { left: 0; }
+            .mobile-toggle { display: flex; z-index: 1001; }
+            .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        @media (max-width: 640px) {
+            .section { padding: 3rem 1rem; }
+            .contact-form { padding: 2rem 1.5rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .map-container { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+     <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="index.html">
+                <img src="img/logo.jpg" alt="area710" class="logo">
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" >area710</a></li>
+                <li class="has-submenu">
+    <a href="raueme.html">Räume</a>
+    <ul class="submenu">
+        <li><a href="raueme.html#hall">Hall</a></li>
+        <li><a href="raueme.html#lab">Lab</a></li>
+        <li><a href="raueme.html#barclub">Bar & Club</a></li>
+        <li><a href="raueme.html#outdoor">Outdoor</a></li>
+    </ul>
+</li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Galerie</a></li>
+                <li><a href="about.html">Über Uns</a></li>
+                <li><a href="booking.html">Buchungsanfrage</a></li>
+                <li><a href="contact.html" class="active">Kontakt</a></li>
+
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="de">DE</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </ul>
+
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 data-de="Kontakt" data-en="Contact">Kontakt</h1>
+            <p data-de="Wir freuen uns auf Ihre Nachricht" data-en="We look forward to hearing from you">Wir freuen uns auf Ihre Nachricht</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <div class="contact-layout">
+
+                <!-- CONTACT INFO -->
+                <div class="contact-info">
+                    <h2 data-de="Kontaktinformationen" data-en="Contact Information">Kontaktinformationen</h2>
+
+                    <div class="info-block">
+                        <h3 data-de="Eventbüro" data-en="Event Office">Eventbüro</h3>
+
+                        <div class="info-item">
+                            <div class="info-icon">📍</div>
+                            <div class="info-text">
+                                <div class="info-label" data-de="Adresse" data-en="Address">Adresse</div>
+                                <div class="info-value">
+                                    Gottlieb-Binder-Straße 2<br>
+                                    D-71088 Holzgerlingen
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">📞</div>
+                            <div class="info-text">
+                                <div class="info-label" data-de="Telefon" data-en="Phone">Telefon</div>
+                                <div class="info-value">
+                                    <a href="tel:+4970314107311">+49 7031 41073-11</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">📧</div>
+                            <div class="info-text">
+                                <div class="info-label" data-de="E-Mail" data-en="Email">E-Mail</div>
+                                <div class="info-value">
+                                    <a href="mailto:info@area710.de">info@area710.de</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">🕒</div>
+                            <div class="info-text">
+                                <div class="info-label" data-de="Öffnungszeiten" data-en="Office Hours">Öffnungszeiten</div>
+                                <div class="info-value">
+                                    <span data-de="Montag–Freitag" data-en="Monday–Friday">Montag–Freitag</span><br>
+                                    10:00–18:00 Uhr
+                                </div>
+                            </div>
+                        </div>
+                        <a href="booking.html" class="btn" data-de="Buchungsanfrage" data-en="Booking Request">
+    Buchungsanfrage
+</a>
+
+                    </div>
+
+                    <div class="info-block">
+                        <h3 data-de="Folge uns" data-en="Follow us">Folge uns</h3>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/profile.php?id=100086162780846" class="social-link" target="_blank" title="Facebook">
+                                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            </a>
+                            <a href="https://www.instagram.com/area710_event/" class="social-link" target="_blank" title="Instagram">
+                                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </a>
+                            <a href="https://wa.me/1713573288?text=area710" class="social-link" target="_blank" title="WhatsApp">
+                                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAP -->
+            <div class="map-section">
+                <h2 data-de="So finden Sie uns" data-en="How to Find Us">So finden Sie uns</h2>
+                <div class="map-container">
+                    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4374.553318832666!2d9.023883477638307!3d48.627195371301774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799e18dcd16aa0f%3A0xa8d4f18bb904b689!2sarea710!5e1!3m2!1sde!2sde!4v1767878696713!5m2!1sde!2sde"
+        width="100%"
+        height="400"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>area710</h3>
+                <p>Gottlieb-Binder-Straße 2</p>
+                <p>D-71088 Holzgerlingen</p>
+            </div>
+
+            <div class="footer-section">
+                <h3 data-de="Öffnungszeiten Eventbüro" data-en="Office Hours">Öffnungszeiten Eventbüro</h3>
+                <p data-de="Montag–Freitag" data-en="Monday–Friday">Montag–Freitag</p>
+                <p>10:00–18:00 Uhr</p>
+            </div>
+
+            <div class="footer-section">
+                <h3 data-de="Kontakt" data-en="Contact">Kontakt</h3>
+                <p><a href="tel:+4970314107311">+49 7031 41073-11</a></p>
+                <p><a href="mailto:info@area710.de">info@area710.de</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3 data-de="Folge uns" data-en="Follow us">Folge uns</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=100086162780846" class="social-link" target="_blank">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/area710_event/" class="social-link" target="_blank">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://wa.me/1713573288?text=area710" class="social-link" target="_blank">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                area710 eine Marke der seeeye Werbung & Event GmbH
+                <br>
+                <a href="impressum.html" data-de="Impressum" data-en="Imprint">Impressum</a>
+                <a href="datenschutz.html" data-de="Datenschutzerklärung" data-en="Privacy Policy">Datenschutzerklärung</a>
+                <a href="booking.html" data-de="Buchungsanfrage" data-en="Booking Request">Buchungsanfrage</a>
+                <a href="https://ticket.area710.de" target="_blank" data-de="Ticket Verkauf" data-en="Ticket Sales">Ticket Verkauf</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // MOBILE MENU
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // HEADER SCROLL
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // LANGUAGE SWITCHER
+        let currentLang = 'de';
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetLang = this.dataset.lang;
+                if (targetLang === currentLang) return;
+
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentLang = targetLang;
+                translatePage(targetLang);
+            });
+        });
+
+        function translatePage(lang) {
+            document.querySelectorAll('[data-de]').forEach(el => {
+                if (lang === 'de' && el.dataset.de) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'BUTTON') {
+                        el.value = el.dataset.de;
+                        if (el.tagName === 'BUTTON') el.textContent = el.dataset.de;
+                    } else if (el.tagName === 'OPTION') {
+                        el.textContent = el.dataset.de;
+                    } else {
+                        el.textContent = el.dataset.de;
+                    }
+                } else if (lang === 'en' && el.dataset.en) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'BUTTON') {
+                        el.value = el.dataset.en;
+                        if (el.tagName === 'BUTTON') el.textContent = el.dataset.en;
+                    } else if (el.tagName === 'OPTION') {
+                        el.textContent = el.dataset.en;
+                    } else {
+                        el.textContent = el.dataset.en;
+                    }
+                }
+            });
+            document.documentElement.lang = lang;
+        }
+
+        // FORM SUBMISSION
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const btn = this.querySelector('button[type="submit"]');
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+
+            errorMessage.classList.remove('show');
+            successMessage.classList.remove('show');
+
+            btn.disabled = true;
+            btn.textContent = currentLang === 'de' ? 'Wird gesendet...' : 'Sending...';
+
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                subject: formData.get('subject'),
+                message: formData.get('message'),
+                lang: currentLang
+            };
+
+            try {
+                const response = await fetch('contact-handler.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    this.style.display = 'none';
+                    successMessage.classList.add('show');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    throw new Error(result.message || 'Ein Fehler ist aufgetreten');
+                }
+
+            } catch (error) {
+                errorMessage.textContent = currentLang === 'de'
+                    ? 'Fehler beim Senden der Nachricht. Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch.'
+                    : 'Error sending the message. Please try again or contact us by phone.';
+                errorMessage.classList.add('show');
+
+                btn.disabled = false;
+                btn.textContent = currentLang === 'de' ? 'Nachricht senden' : 'Send Message';
+
+                console.error('Contact error:', error);
+            }
+        });
+    </script>
+
+</body>
+</html>
