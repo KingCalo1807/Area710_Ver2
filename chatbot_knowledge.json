@@ -2,15 +2,15 @@
   "intents": [
     {
       "keywords": ["preis", "kosten", "gebühr", "zahlen", "bezahlen", "teuer", "günstig"],
-      "answer": "Unsere Preise beginnen ab 29 € pro Monat. Für individuelle Angebote kontaktiere uns gerne!"
+      "answer": "Unsere Preise hängen von den jeweilig gebuchten Räumen ab. Für individuelle Angebote kontaktiere uns gerne! <a href='contact.html' style='color: var(--blue); text-decoration: underline;'>Hier gehts zum Kontaktformular!</a>."
     },
     {
       "keywords": ["kontakt", "support", "hilfe", "email", "telefon", "erreichen"],
-      "answer": "Du erreichst uns per E-Mail unter support@example.de oder telefonisch unter +49 123 456789."
+      "answer": "Du erreichst uns per E-Mail unter info@area710.de oder telefonisch unter +49 7031 41073-11."
     },
     {
       "keywords": ["öffnungszeiten", "öffnen", "geöffnet", "wann", "zeiten"],
-      "answer": "Wir sind Montag bis Freitag von 9:00 bis 18:00 Uhr für dich da."
+      "answer": "Wir sind Montag bis Freitag von 10:00 bis 18:00 Uhr für dich da."
     },
     {
       "keywords": ["standort", "adresse", "büro", "wo", "finden"],
@@ -27,6 +27,10 @@
     {
       "keywords": ["tschüss", "bye", "ciao", "auf wiedersehen"],
       "answer": "Auf Wiedersehen! Bis bald! 👋"
+    },
+    {
+      "keywords": ["Räume"],
+      "answer": "Wir haben verschiedene Räume, wie Hall, Bar & Club, Plaza und das Lab. <a href='raueme.html' style='color: var(--blue); text-decoration: underline;'>Hier geht's zu den Räumen</a>!"
     }
   ],
   "fallback": "Entschuldigung, das habe ich nicht verstanden. Kannst du es anders formulieren?"
