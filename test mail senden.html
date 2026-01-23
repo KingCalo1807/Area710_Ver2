@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontaktformular - Area710</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .contact-container {
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        width: 100%;
+        max-width: 500px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #FCAB14;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        box-sizing: border-box;
+        transition: 0.2s;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #FCAB14;
+        outline: none;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(90deg, #FF6B00, #FCAB14, #FF6B00);
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        opacity: 0.9;
+    }
+</style>
+</head>
+<body>
+
+<div class="contact-container">
+    <h2>Kontaktformular</h2>
+    <form id="contactForm" onsubmit="sendEmail(); return false;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Dein Name" required>
+
+        <label for="email">E-Mail:</label>
+        <input type="email" id="email" name="email" placeholder="Deine E-Mail" required>
+
+        <label for="message">Nachricht:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Deine Nachricht" required></textarea>
+
+        <button type="submit">Absenden</button>
+    </form>
+</div>
+
+<script>
+function sendEmail() {
+    const name = encodeURIComponent(document.getElementById('name').value);
+    const email = encodeURIComponent(document.getElementById('email').value);
+    const message = encodeURIComponent(document.getElementById('message').value);
+
+    const recipient = "dennis.steinbach@outlook.com"; // Empfängeradresse
+    const subject = encodeURIComponent("Kontaktformular Area710");
+
+    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0ANachricht:%0D%0A${message}`;
+
+    // Mailprogramm öffnen
+    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+}
+</script>
+
+</body>
+</html>
