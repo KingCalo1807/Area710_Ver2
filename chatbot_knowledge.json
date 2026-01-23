@@ -1,0 +1,33 @@
+{
+  "intents": [
+    {
+      "keywords": ["preis", "kosten", "gebühr", "zahlen", "bezahlen", "teuer", "günstig"],
+      "answer": "Unsere Preise beginnen ab 29 € pro Monat. Für individuelle Angebote kontaktiere uns gerne!"
+    },
+    {
+      "keywords": ["kontakt", "support", "hilfe", "email", "telefon", "erreichen"],
+      "answer": "Du erreichst uns per E-Mail unter support@example.de oder telefonisch unter +49 123 456789."
+    },
+    {
+      "keywords": ["öffnungszeiten", "öffnen", "geöffnet", "wann", "zeiten"],
+      "answer": "Wir sind Montag bis Freitag von 9:00 bis 18:00 Uhr für dich da."
+    },
+    {
+      "keywords": ["standort", "adresse", "büro", "wo", "finden"],
+      "answer": "Unser Büro befindet sich in der Musterstraße 123, 12345 Musterstadt."
+    },
+    {
+      "keywords": ["hallo", "hi", "hey", "guten tag", "moin"],
+      "answer": "Hallo! 👋 Wie kann ich dir heute helfen?"
+    },
+    {
+      "keywords": ["danke", "dankeschön", "vielen dank"],
+      "answer": "Gerne! Wenn du noch weitere Fragen hast, bin ich für dich da. 😊"
+    },
+    {
+      "keywords": ["tschüss", "bye", "ciao", "auf wiedersehen"],
+      "answer": "Auf Wiedersehen! Bis bald! 👋"
+    }
+  ],
+  "fallback": "Entschuldigung, das habe ich nicht verstanden. Kannst du es anders formulieren?"
+}
