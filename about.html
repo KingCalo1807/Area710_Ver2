@@ -975,6 +975,58 @@
             color: rgba(255, 255, 255, 0.8);
         }
 
+        .testimonial-section {
+            background: linear-gradient(135deg, var(--gray), var(--black));
+            padding: 5rem 2rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .testimonial-section .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header-orange h2 {
+            background: linear-gradient(135deg, var(--blue), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .testimonial-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 4px;
+            background: transparent; /* kein Hintergrund standardmäßig */
+            color: var(--white); /* weißer Text standardmäßig */
+            border: 2px solid var(--white); /* weißer Rahmen */
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+        }
+
+        .testimonial-btn:hover {
+            background: var(--white); /* Hintergrund wird weiß */
+            color: var(--black); /* Text wird schwarz */
+            transform: translateY(-5px); /* leichte Bewegung nach oben */
+        }
+
         /* RESPONSIVE */
         @media (max-width: 968px) {
             .nav-menu {
@@ -1207,87 +1259,28 @@
 </section>
 
 <!-- STATS -->
-<section class="stats-section">
-    <div class="stats-grid">
-        <div class="stat-item">
-            <div class="stat-number">[XXX]</div>
-            <div class="stat-label lang-de">Events pro Jahr</div>
-            <div class="stat-label lang-en" style="display:none;">Events per Year</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">[XXX]</div>
-            <div class="stat-label lang-de">Quadratmeter</div>
-            <div class="stat-label lang-en" style="display:none;">Square Meters</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">[XXX]</div>
-            <div class="stat-label lang-de">Zufriedene Kunden</div>
-            <div class="stat-label lang-en" style="display:none;">Happy Clients</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">[XXX]</div>
-            <div class="stat-label lang-de">Jahre Erfahrung</div>
-            <div class="stat-label lang-en" style="display:none;">Years Experience</div>
-        </div>
-    </div>
-</section>
-
-<!-- TIMELINE -->
-<section class="section">
+<section class="testimonial-section">
     <div class="container">
-        <div class="section-header section-header-blue">
-            <h2 class="lang-de">Unsere Reise</h2>
-            <h2 class="lang-en" style="display:none;">Our Journey</h2>
-            <p class="lang-de">Die wichtigsten Meilensteine</p>
-            <p class="lang-en" style="display:none;">The most important milestones</p>
+        <div class="section-header section-header-orange">
+            <h2 class="lang-de">Das sagen unsere Kunden</h2>
+            <h2 class="lang-en" style="display:none;">What Our Clients Say</h2>
+            <p class="lang-de">Erfahren Sie, was unsere Kunden über area710 berichten</p>
+            <p class="lang-en" style="display:none;">Learn what our clients say about area710</p>
         </div>
 
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="timeline-year timeline-year-orange">2020</div>
-                    <h3 class="timeline-title lang-de">Meilenstein 1</h3>
-                    <h3 class="timeline-title lang-en" style="display:none;">Milestone 1</h3>
-                    <p class="timeline-text lang-de">Beschreibung Meilenstein 1</p>
-                    <p class="timeline-text lang-en" style="display:none;">Description Milestone 1</p>
-                </div>
-                <div class="timeline-dot timeline-dot-orange"></div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="timeline-year timeline-year-red">2021</div>
-                    <h3 class="timeline-title lang-de">Meilenstein 2</h3>
-                    <h3 class="timeline-title lang-en" style="display:none;">Milestone 2</h3>
-                    <p class="timeline-text lang-de">Beschreibung Meilenstein 2</p>
-                    <p class="timeline-text lang-en" style="display:none;">Description Milestone 2</p>
-                </div>
-                <div class="timeline-dot timeline-dot-red"></div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="timeline-year timeline-year-blue">2022</div>
-                    <h3 class="timeline-title lang-de">Meilenstein 3</h3>
-                    <h3 class="timeline-title lang-en" style="display:none;">Milestone 3</h3>
-                    <p class="timeline-text lang-de">Beschreibung Meilenstein 3</p>
-                    <p class="timeline-text lang-en" style="display:none;">Description Milestone 3</p>
-                </div>
-                <div class="timeline-dot timeline-dot-blue"></div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="timeline-year timeline-year-green">2023</div>
-                    <h3 class="timeline-title lang-de">Meilenstein 4</h3>
-                    <h3 class="timeline-title lang-en" style="display:none;">Milestone 4</h3>
-                    <p class="timeline-text lang-de">Beschreibung Meilenstein 4</p>
-                    <p class="timeline-text lang-en" style="display:none;">Description Milestone 4</p>
-                </div>
-                <div class="timeline-dot timeline-dot-green"></div>
-            </div>
+        <div class="testimonial-content">
+            <p class="lang-de">
+                Unsere Kunden stehen im Mittelpunkt all unserer Bemühungen. Lesen Sie ihre Erfahrungen und
+                Erfolgsgeschichten mit area710.
+            </p>
+            <p class="lang-en" style="display:none;">
+                Our clients are at the center of all our efforts. Read their experiences and success stories with
+                area710.
+            </p>
         </div>
 
+        <a href="referenz.html" class="testimonial-btn lang-de">Zu den Referenzen</a>
+        <a href="referenz.html" class="testimonial-btn lang-en" style="display:none;">View References</a>
     </div>
 </section>
 

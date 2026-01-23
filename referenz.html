@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Referenzen & Partner - area710 Holzgerlingen">
+    <title>Referenzen & Partner - area710 - UNIQUE EVENT LOCATION</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="/img/fav.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #FCAB14;
+            --red: #CD1151;
+            --blue: #009FE2;
+            --green: #AEC610;
+            --black: #000;
+            --white: #fff;
+            --gray: #222;
+            --gray-light: #333;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 45px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            font-size: 0.95rem;
+            font-weight: 400;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green));
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--orange);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.3rem;
+            margin-left: 2rem;
+            border-left: 1px solid var(--border);
+            padding-left: 2rem;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.7rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--white);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 76px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(252, 171, 20, 0.3), rgba(205, 17, 81, 0.3), rgba(0, 159, 226, 0.3), rgba(174, 198, 16, 0.3)), url('img/hall.jpg') center/cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .hero-content h1 span {
+            color: var(--white);
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 300;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .section-title.orange {
+            color: var(--orange);
+        }
+
+        .section-title.red {
+            color: var(--red);
+        }
+
+        .section-title.blue {
+            color: var(--blue);
+        }
+
+        .section-title.green {
+            color: var(--green);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* BrideBOOK AWARD */
+        .award-section {
+            background: linear-gradient(135deg, rgba(0, 0, 255, 0.1), rgba(255, 255, 255, 0.1));
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .award-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem 3rem;
+            background: var(--gray);
+            border: 2px solid var(--white);
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .award-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 2px var(--blue);
+            border-color: var(--white);
+        }
+
+        .award-icon img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 12px; /* hier stellst du die Rundung ein */
+        }
+
+        .award-text h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .award-text p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* PARTNERS */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .partner-card {
+            background: var(--gray);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .partner-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .partner-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .partner-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .partner-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .partner-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .partner-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--orange);
+            box-shadow: 0 20px 40px rgba(252, 171, 20, 0.3);
+        }
+
+        .partner-logo {
+            width: 100%;
+            max-width: 150px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed var(--border);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .partner-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .testimonial-card {
+            background: var(--gray);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .testimonial-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .testimonial-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .testimonial-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 5rem;
+            color: var(--orange);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--red);
+            box-shadow: 0 20px 40px rgba(205, 17, 81, 0.3);
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--orange), var(--red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .rating {
+            display: flex;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
+        }
+
+        .star {
+            color: var(--orange);
+            font-size: 1.2rem;
+        }
+
+        /* NEWSPAPER */
+        .newspaper-section {
+            background: var(--gray);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .newspaper-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .newspaper-page {
+            background: #f4f1e8;
+            color: #333;
+            padding: 3rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transition: all 0.5s ease-in-out;
+        }
+
+        /* SLIDE ANIMATIONS */
+        .newspaper-page.slide-out-left {
+            animation: slideOutLeft 0.5s ease-in-out;
+        }
+
+        .newspaper-page.slide-out-right {
+            animation: slideOutRight 0.5s ease-in-out;
+        }
+
+        .newspaper-page.slide-in-left {
+            animation: slideInLeft 0.5s ease-in-out;
+        }
+
+        .newspaper-page.slide-in-right {
+            animation: slideInRight 0.5s ease-in-out;
+        }
+
+        @keyframes slideOutLeft {
+            0% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes slideOutRight {
+            0% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .newspaper-header {
+            text-align: center;
+            border-bottom: 3px double #333;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .newspaper-title {
+            font-family: 'Georgia', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .newspaper-date {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .newspaper-article {
+            column-count: 2;
+            column-gap: 2rem;
+            text-align: justify;
+        }
+
+        .article-headline {
+            font-family: 'Georgia', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 0.5rem;
+            column-span: all;
+        }
+
+        .article-subheadline {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            column-span: all;
+        }
+
+        .article-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            background: #ddd;
+            border: 1px solid #999;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            column-span: all;
+        }
+
+        .newspaper-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .newspaper-btn {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid var(--white);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .newspaper-btn:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .newspaper-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .page-indicator {
+            text-align: center;
+            margin-top: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--gray);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--white);
+            background: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .social-link:hover svg {
+            fill: var(--black);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0 0.5rem;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        /* SUBMENU */
+        .has-submenu {
+            position: relative;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            list-style: none;
+            padding: 0.5rem 0;
+            margin-top: 0.8rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu li a {
+            display: block;
+            padding: 0.7rem 1.2rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .submenu li a:hover {
+            background: linear-gradient(90deg, rgba(252, 171, 20, 0.15), rgba(205, 17, 81, 0.15), rgba(0, 159, 226, 0.15), rgba(174, 198, 16, 0.15));
+            color: var(--white);
+        }
+
+        .has-submenu > a::after {
+            content: "▾";
+            margin-left: 0.3rem;
+            font-size: 0.7em;
+            opacity: 0.7;
+        }
+
+        /* CERTIFICATE MODAL */
+        .certificate-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .certificate-modal.show {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .certificate-image-container {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .certificate-image {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .certificate-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .certificate-close:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: rotate(0deg);
+        }
+
+        .certificate-placeholder {
+            width: 800px;
+            max-width: 90vw;
+            height: 600px;
+            background: linear-gradient(135deg, #f4f1e8 0%, #e8e5dc 100%);
+            border: 3px solid var(--orange);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem;
+            color: #333;
+        }
+
+        .placeholder-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .placeholder-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .placeholder-subtext {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--black);
+                flex-direction: column;
+                justify-content: center;
+                transition: left 0.4s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .newspaper-article {
+                column-count: 1;
+            }
+
+            .award-badge {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .award-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .newspaper-page {
+                padding: 2rem 1.5rem;
+            }
+
+            .newspaper-title {
+                font-size: 1.8rem;
+            }
+
+            .article-headline {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header" id="header">
+    <nav class="nav-container">
+        <a href="index.html">
+            <img src="img/logo.jpg" alt="area710" class="logo">
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">area710</a></li>
+            <li class="has-submenu">
+                <a href="raueme.html">Räume</a>
+                <ul class="submenu">
+                    <li><a href="raueme.html#hall">Hall</a></li>
+                    <li><a href="raueme.html#lab">Lab</a></li>
+                    <li><a href="raueme.html#barclub">Bar & Club</a></li>
+                    <li><a href="raueme.html#outdoor">Outdoor</a></li>
+                </ul>
+            </li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="about.html">Über Uns</a></li>
+            <li><a href="booking.html">Buchungsanfrage</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="de">DE</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </ul>
+
+        <button class="mobile-toggle" id="mobileToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 data-de="Referenzen & Kunden" data-en="References & Customers">
+            <span data-de="Referenzen" data-en="References">Referenzen</span> & Kunden
+        </h1>
+        <p data-de="Vertrauen durch Qualität und Erfahrung" data-en="Trust through quality and experience">Vertrauen
+            durch Qualität und Erfahrung</p>
+    </div>
+</section>
+
+<!-- BrideBOOK AWARD -->
+<section class="section">
+    <div class="container">
+        <div class="award-section">
+            <div class="award-badge" onclick="openCertificate()">
+                <div class="award-icon">
+                    <img src="img/bridebook.png" alt="Auszeichnung" style="width: 60px; height: 60px;">
+                </div>
+
+                <div class="award-text">
+                    <h3 data-de="Bridebook Auszeichnung" data-en="Bridebook Award">Bridebook Auszeichnung</h3>
+                    <p data-de="Zertifizierte Event-Location mit höchster Kundenzufriedenheit"
+                       data-en="Certified event location with highest customer satisfaction">
+                        Zertifizierte Event-Location mit höchster Kundenzufriedenheit
+                    </p>
+                </div>
+            </div>
+            <p data-de="area710 wurde von Bridebook als herausragende Event-Location ausgezeichnet. Diese Anerkennung bestätigt unsere hohen Qualitätsstandards und das Vertrauen unserer Kunden. Klicken Sie auf das Zertifikat, um es anzusehen."
+               data-en="area710 has been awarded by Bridebook as an outstanding event location. This recognition confirms our high quality standards and the trust of our customers. Click on the certificate to view it.">
+                area710 wurde von Bridebook als herausragende Event-Location ausgezeichnet. Diese Anerkennung bestätigt
+                unsere hohen Qualitätsstandards und das Vertrauen unserer Kunden. <strong
+                    style="color: var(--blue); cursor: pointer;" onclick="openCertificate()">Klicken Sie hier, um das
+                Zertifikat anzusehen.</strong>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="section" style="padding-top: 0;">
+    <div class="container">
+        <h2 class="section-title orange" data-de="Unsere Kunden" data-en="Our Customers">Unsere Kunden</h2>
+        <p class="section-subtitle" data-de="Gemeinsam stark: unsere Kunden setzen auf uns"
+           data-en="Stronger together: Our customers rely on us">
+            Gemeinsam stark: unsere Kunden setzen auf uns
+        </p>
+
+        <div class="partners-grid">
+            <div class="partner-card">
+                <div class="partner-logo">Partner Logo</div>
+                <div class="partner-name">Mercedes-Benz</div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-logo">Partner Logo</div>
+                <div class="partner-name">Porsche AG</div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-logo">Partner Logo</div>
+                <div class="partner-name">Daimler Truck</div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-logo">Partner Logo</div>
+                <div class="partner-name">Bosch</div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-logo">Partner Logo</div>
+                <div class="partner-name">Stadt Holzgerlingen</div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-logo">Partner Logo</div>
+                <div class="partner-name">IHK Stuttgart</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="background: rgba(255, 255, 255, 0.02);">
+    <div class="container">
+        <h2 class="section-title red" data-de="Das sagen unsere Kunden" data-en="What our customers say">Das sagen
+            unsere Kunden</h2>
+        <p class="section-subtitle" data-de="Echte Erfahrungen von echten Kunden"
+           data-en="Real experiences from real customers">
+            Echte Erfahrungen von echten Kunden
+        </p>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    Die area710 hat unsere Firmenfeier zu einem unvergesslichen Erlebnis gemacht. Die Location ist
+                    einzigartig, die Technik top und das Team super professionell. Absolut empfehlenswert!
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MS</div>
+                    <div class="author-info">
+                        <h4>Michael Schmidt</h4>
+                        <p>Geschäftsführer, TechCorp GmbH</p>
+                        <div class="rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    Wir haben unsere Hochzeit in der area710 gefeiert und es war einfach perfekt! Die flexiblen Räume,
+                    die tolle Atmosphäre und der Service haben alle Wünsche erfüllt. Danke für diesen magischen Tag!
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">LM</div>
+                    <div class="author-info">
+                        <h4>Lisa & Max Müller</h4>
+                        <p>Hochzeit 2025</p>
+                        <div class="rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    Als Veranstalter schätze ich die professionelle Ausstattung und die zentrale Lage. Die area710
+                    bietet alles, was man für erfolgreiche Events braucht. Die Zusammenarbeit war stets unkompliziert
+                    und zuverlässig.
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SK</div>
+                    <div class="author-info">
+                        <h4>Sarah Klein</h4>
+                        <p>Event-Managerin</p>
+                        <div class="rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NEWSPAPER -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title blue" data-de="Presse & Medien" data-en="Press & Media">Presse & Medien</h2>
+        <p class="section-subtitle" data-de="area710 in den Medien" data-en="area710 in the media">
+            area710 in den Medien
+        </p>
+
+        <div class="newspaper-section">
+            <div class="newspaper-container">
+                <div class="newspaper-page" id="newspaperPage">
+                    <div class="newspaper-header">
+                        <h1 class="newspaper-title">Stuttgarter Zeitung</h1>
+                        <p class="newspaper-date">15. März 2025</p>
+                    </div>
+
+                    <div class="newspaper-article" id="articleContent">
+                        <!-- Article 1 -->
+                    </div>
+                </div>
+
+                <div class="newspaper-nav">
+                    <button class="newspaper-btn" id="prevBtn" onclick="previousArticle()">
+                        <span data-de="← Vorheriger" data-en="← Previous">← Vorheriger</span>
+                    </button>
+                    <button class="newspaper-btn" id="nextBtn" onclick="nextArticle()">
+                        <span data-de="Nächster →" data-en="Next →">Nächster →</span>
+                    </button>
+                </div>
+                <p class="page-indicator">
+                    <span data-de="Artikel" data-en="Article">Artikel</span> <span id="currentPage">1</span> / <span
+                        id="totalPages">3</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CERTIFICATE MODAL -->
+<div class="certificate-modal" id="certificateModal">
+    <div class="certificate-image-container">
+        <button class="certificate-close" onclick="closeCertificate()">×</button>
+                <img src="img/bridebook.png" alt="Brightbook Zertifikat" class="certificate-image">
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>area710</h3>
+            <p>Gottlieb-Binder-Straße 2</p>
+            <p>D-71088 Holzgerlingen</p>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-de="Öffnungszeiten Eventbüro" data-en="Office Hours">Öffnungszeiten Eventbüro</h3>
+            <p data-de="Montag–Freitag" data-en="Monday–Friday">Montag–Freitag</p>
+            <p>10:00–18:00 Uhr</p>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-de="Kontakt" data-en="Contact">Kontakt</h3>
+            <p><a href="tel:+4970314107311">+49 7031 41073-11</a></p>
+            <p><a href="/cdn-cgi/l/email-protection#ef86818980af8e9d8a8ed8dedfc18b8a"><span class="__cf_email__"
+                                                                                            data-cfemail="dfb6b1b9b09fbeadbabee8eeeff1bbba">[email&#160;protected]</span></a>
+            </p>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-de="Folge uns" data-en="Follow us">Folge uns</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100086162780846" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/area710_event/" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/1713573288?text=area710" class="social-link" target="_blank">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            area710 eine Marke der seeeye Werbung & Event GmbH
+            <br>
+            <a href="impressum.html" data-de="Impressum" data-en="Imprint">Impressum</a>
+            <a href="datenschutz.html" data-de="Datenschutzerklärung" data-en="Privacy Policy">Datenschutzerklärung</a>
+            <a href="booking.html" data-de="Buchungsanfrage" data-en="Booking Request">Buchungsanfrage</a>
+            <a href="https://ticket.area710.de" target="_blank" data-de="Ticket Verkauf" data-en="Ticket Sales">Ticket
+                Verkauf</a>
+        </p>
+    </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+    // MOBILE MENU
+    document.getElementById('mobileToggle').addEventListener('click', function () {
+        document.getElementById('navMenu').classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navMenu').classList.remove('active');
+        });
+    });
+
+    // HEADER SCROLL
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        header.classList.toggle('scrolled', window.pageYOffset > 100);
+    });
+
+    // LANGUAGE SWITCHER
+    let currentLang = 'de';
+
+    // CERTIFICATE MODAL
+    function openCertificate() {
+        document.getElementById('certificateModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeCertificate() {
+        document.getElementById('certificateModal').classList.remove('show');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Close on ESC key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            closeCertificate();
+        }
+    });
+
+    // Close on background click
+    document.getElementById('certificateModal').addEventListener('click', function (e) {
+        if (e.target === this) {
+            closeCertificate();
+        }
+    });
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const targetLang = this.dataset.lang;
+            if (targetLang === currentLang) return;
+
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentLang = targetLang;
+            translatePage(targetLang);
+        });
+    });
+
+    function translatePage(lang) {
+        document.querySelectorAll('[data-de]').forEach(el => {
+            el.textContent = lang === 'de' ? el.dataset.de : el.dataset.en;
+        });
+        document.documentElement.lang = lang;
+        renderArticle(currentArticle);
+    }
+
+    // NEWSPAPER
+    const articles = [
+        {
+            title: {
+                de: 'Stuttgarter Zeitung',
+                en: 'Stuttgart Newspaper'
+            },
+            date: '15. März 2025',
+            headline: {
+                de: 'Neue Event-Location area710 begeistert Holzgerlingen',
+                en: 'New Event Location area710 Inspires Holzgerlingen'
+            },
+            subheadline: {
+                de: 'Moderne Location setzt neue Maßstäbe für Events in der Region',
+                en: 'Modern venue sets new standards for events in the region'
+            },
+            text: {
+                de: 'Holzgerlingen – Mit der Eröffnung der area710 hat die Region eine neue, außergewöhnliche Event-Location erhalten. Das moderne Veranstaltungszentrum in der Gottlieb-Binder-Straße verbindet industriellen Charme mit modernster Technik und flexiblen Raumkonzepten. "Wir wollten einen Ort schaffen, der für jede Art von Veranstaltung die perfekte Kulisse bietet", erklärt die Geschäftsführung. Von Firmenevents über Hochzeiten bis hin zu Konzerten und Partys – die area710 bietet mit ihren vier unterschiedlichen Bereichen Hall, Lab, Bar & Club sowie Outdoor vielseitige Möglichkeiten. Besonders die hochmoderne Technikausstattung und das professionelle Team überzeugen Veranstalter und Gäste gleichermaßen.',
+                en: 'Holzgerlingen – With the opening of area710, the region has gained a new, extraordinary event location. The modern event center on Gottlieb-Binder-Straße combines industrial charm with state-of-the-art technology and flexible room concepts. "We wanted to create a place that offers the perfect setting for any type of event," explains the management. From corporate events to weddings, concerts and parties – area710 offers versatile possibilities with its four different areas: Hall, Lab, Bar & Club and Outdoor. The ultra-modern technical equipment and professional team particularly impress organizers and guests alike.'
+            }
+        },
+        {
+            title: {
+                de: 'Wirtschaftsmagazin Baden-Württemberg',
+                en: 'Business Magazine Baden-Württemberg'
+            },
+            date: '22. April 2025',
+            headline: {
+                de: 'area710 gewinnt Brightbook Award für herausragende Kundenzufriedenheit',
+                en: 'area710 Wins Brightbook Award for Outstanding Customer Satisfaction'
+            },
+            subheadline: {
+                de: 'Event-Location erhält Auszeichnung für Qualität und Service',
+                en: 'Event location receives award for quality and service'
+            },
+            text: {
+                de: 'Die area710 in Holzgerlingen wurde mit dem renommierten Brightbook Award ausgezeichnet. Die Auszeichnung würdigt Unternehmen, die durch außergewöhnliche Qualität und Kundenzufriedenheit überzeugen. "Diese Anerkennung ist eine Bestätigung unserer täglichen Arbeit und des Engagements unseres Teams", freut sich das Management. Besonders hervorgehoben wurden die flexible Raumgestaltung, die professionelle Technikausstattung sowie der persönliche Service. Kunden loben vor allem die unkomplizierte Zusammenarbeit und die kreativen Lösungen für individuelle Anforderungen. Die area710 setzt damit neue Standards in der Event-Branche der Region.',
+                en: 'The area710 in Holzgerlingen has been awarded the renowned Brightbook Award. The award honors companies that convince through exceptional quality and customer satisfaction. "This recognition confirms our daily work and our team\'s commitment," says the management. Particularly highlighted were the flexible room design, professional technical equipment and personal service. Customers especially praise the uncomplicated cooperation and creative solutions for individual requirements. Area710 thus sets new standards in the regional event industry.'
+            }
+        },
+        {
+            title: {
+                de: 'Lokale Nachrichten Holzgerlingen',
+                en: 'Local News Holzgerlingen'
+            },
+            date: '10. Juni 2025',
+            headline: {
+                de: 'Erfolgsgeschichte area710: Über 200 Events im ersten Jahr',
+                en: 'Success Story area710: Over 200 Events in First Year'
+            },
+            subheadline: {
+                de: 'Veranstaltungszentrum zieht positive Bilanz nach erstem Geschäftsjahr',
+                en: 'Event center draws positive conclusion after first business year'
+            },
+            text: {
+                de: 'Ein Jahr nach der Eröffnung zieht die area710 eine äußerst positive Bilanz. Mehr als 200 Events wurden erfolgreich durchgeführt, von intimen Firmenfeiern bis zu großen Konzerten mit über 500 Gästen. "Die Resonanz übertrifft unsere Erwartungen bei weitem", so das Team. Besonders erfreulich: Viele Kunden werden zu Stammkunden und empfehlen die Location weiter. Die Zusammenarbeit mit regionalen Partnern und Dienstleistern stärkt zudem die lokale Wirtschaft. Für die Zukunft sind weitere Investitionen in Technik und Ausstattung geplant, um den hohen Qualitätsstandard weiter auszubauen.',
+                en: 'One year after opening, area710 draws an extremely positive conclusion. More than 200 events were successfully held, from intimate company celebrations to large concerts with over 500 guests. "The response far exceeds our expectations," says the team. Particularly pleasing: many customers become regular customers and recommend the location. Cooperation with regional partners and service providers also strengthens the local economy. Further investments in technology and equipment are planned for the future to further expand the high quality standard.'
+            }
+        }
+    ];
+
+    let currentArticle = 0;
+    let isAnimating = false;
+
+    function renderArticle(index, direction = 'next') {
+        if (isAnimating) return;
+
+        const article = articles[index];
+        const page = document.getElementById('newspaperPage');
+
+        isAnimating = true;
+
+        // Slide out current page
+        const outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
+        page.classList.add(outClass);
+
+        // After slide out, change content and slide in
+        setTimeout(() => {
+            page.classList.remove(outClass);
+
+            const content = document.getElementById('articleContent');
+            content.innerHTML = `
+                <h2 class="article-headline">${article.headline[currentLang]}</h2>
+                <p class="article-subheadline">${article.subheadline[currentLang]}</p>
+                <div class="article-image">[Bild: ${article.title[currentLang]}]</div>
+                <p class="article-text">${article.text[currentLang]}</p>
+            `;
+
+            document.querySelector('.newspaper-title').textContent = article.title[currentLang];
+            document.querySelector('.newspaper-date').textContent = article.date;
+
+            // Slide in new page
+            const inClass = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
+            page.classList.add(inClass);
+
+            setTimeout(() => {
+                page.classList.remove(inClass);
+                isAnimating = false;
+            }, 500);
+        }, 500);
+
+        document.getElementById('currentPage').textContent = index + 1;
+        document.getElementById('totalPages').textContent = articles.length;
+
+        document.getElementById('prevBtn').disabled = index === 0;
+        document.getElementById('nextBtn').disabled = index === articles.length - 1;
+    }
+
+    function nextArticle() {
+        if (currentArticle < articles.length - 1 && !isAnimating) {
+            currentArticle++;
+            renderArticle(currentArticle, 'next');
+        }
+    }
+
+    function previousArticle() {
+        if (currentArticle > 0 && !isAnimating) {
+            currentArticle--;
+            renderArticle(currentArticle, 'prev');
+        }
+    }
+
+    // Init - Zeige ersten Artikel beim Laden
+    window.addEventListener('DOMContentLoaded', function () {
+        renderArticle(0);
+    });
+</script>
+
+</body>
+</html>
