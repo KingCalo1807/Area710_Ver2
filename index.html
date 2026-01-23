@@ -960,7 +960,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-        }
+                    }
 
         .chat-header-text h3 {
             font-size: 16px;
@@ -1170,13 +1170,11 @@
         /* Mobile */
         @media (max-width: 480px) {
             #chatbot-window {
-                right: 0; /* Vorher: 10px */
-                left: 0; /* Vorher: 10px */
-                bottom: 0; /* Vorher: 90px */
-                width: 100%; /* Vorher: auto */
-                height: 100vh; /* Vorher: 500px */
-                max-height: 100vh; /* NEU */
-                border-radius: 0;
+                right: 10px;
+                left: 10px;
+                width: auto;
+                bottom: 90px;
+                height: 500px;
             }
 
             #chatbot-button {
@@ -1209,12 +1207,12 @@
             }
 
             .chat-input {
-                position: sticky; /* NEU - wichtig! */
-                bottom: 0; /* NEU */
+                padding: 15px;
+                gap: 8px;
             }
 
             .chat-input input {
-                font-size: 16px;
+                font-size: 13px;
                 padding: 10px 14px;
             }
 
@@ -1224,12 +1222,6 @@
                 font-size: 16px;
             }
 
-            body.chat-open {
-                overflow: hidden;
-                position: fixed;
-                width: 100%;
-                height: 100%;
-            }
         }
 
         @media (max-width: 360px) {
@@ -1669,13 +1661,6 @@
         if (isOpen) {
             userInput.focus();
         }
-        // NEU: Body-Scroll sperren auf Mobile
-        if (window.innerWidth <= 480) {
-            document.body.classList.toggle('chat-open', isOpen);
-        }
-
-// NEU: Auto-Scroll beim Öffnen
-        setTimeout(scrollToBottom, 100);
     }
 
     // Add Message
