@@ -518,70 +518,70 @@
         }
 
         /* SLIDE ANIMATIONS – CLEAN EDITORIAL STYLE */
-.newspaper-page {
-    will-change: transform, opacity;
-}
+        .newspaper-page {
+            will-change: transform, opacity;
+        }
 
-.newspaper-page.slide-out-left {
-    animation: slideOutLeft 420ms cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
-}
+        .newspaper-page.slide-out-left {
+            animation: slideOutLeft 420ms cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+        }
 
-.newspaper-page.slide-out-right {
-    animation: slideOutRight 420ms cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
-}
+        .newspaper-page.slide-out-right {
+            animation: slideOutRight 420ms cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+        }
 
-.newspaper-page.slide-in-left {
-    animation: slideInLeft 480ms cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
-}
+        .newspaper-page.slide-in-left {
+            animation: slideInLeft 480ms cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
+        }
 
-.newspaper-page.slide-in-right {
-    animation: slideInRight 480ms cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
-}
+        .newspaper-page.slide-in-right {
+            animation: slideInRight 480ms cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
+        }
 
 
         @keyframes slideOutLeft {
-    from {
-        transform: translate3d(0, 0, 0) scale(1);
-        opacity: 1;
-    }
-    to {
-        transform: translate3d(-40px, 0, 0) scale(0.98);
-        opacity: 0;
-    }
-}
+            from {
+                transform: translate3d(0, 0, 0) scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: translate3d(-40px, 0, 0) scale(0.98);
+                opacity: 0;
+            }
+        }
 
-@keyframes slideOutRight {
-    from {
-        transform: translate3d(0, 0, 0) scale(1);
-        opacity: 1;
-    }
-    to {
-        transform: translate3d(40px, 0, 0) scale(0.98);
-        opacity: 0;
-    }
-}
+        @keyframes slideOutRight {
+            from {
+                transform: translate3d(0, 0, 0) scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: translate3d(40px, 0, 0) scale(0.98);
+                opacity: 0;
+            }
+        }
 
-@keyframes slideInLeft {
-    from {
-        transform: translate3d(-40px, 0, 0) scale(0.98);
-        opacity: 0;
-    }
-    to {
-        transform: translate3d(0, 0, 0) scale(1);
-        opacity: 1;
-    }
-}
+        @keyframes slideInLeft {
+            from {
+                transform: translate3d(-40px, 0, 0) scale(0.98);
+                opacity: 0;
+            }
+            to {
+                transform: translate3d(0, 0, 0) scale(1);
+                opacity: 1;
+            }
+        }
 
-@keyframes slideInRight {
-    from {
-        transform: translate3d(40px, 0, 0) scale(0.98);
-        opacity: 0;
-    }
-    to {
-        transform: translate3d(0, 0, 0) scale(1);
-        opacity: 1;
-    }
-}
+        @keyframes slideInRight {
+            from {
+                transform: translate3d(40px, 0, 0) scale(0.98);
+                opacity: 0;
+            }
+            to {
+                transform: translate3d(0, 0, 0) scale(1);
+                opacity: 1;
+            }
+        }
 
 
         .newspaper-header {
@@ -1232,7 +1232,8 @@
                     </button>
                 </div>
                 <p class="page-indicator">
-                    <span data-de="Artikel" data-en="Article">Artikel</span> <span id="currentPage">1</span> / <span id="totalPages">3</span>
+                    <span data-de="Artikel" data-en="Article">Artikel</span> <span id="currentPage">1</span> / <span
+                        id="totalPages">3</span>
                 </p>
             </div>
         </div>
@@ -1243,7 +1244,7 @@
 <div class="certificate-modal" id="certificateModal">
     <div class="certificate-image-container">
         <button class="certificate-close" onclick="closeCertificate()">×</button>
-                <img src="img/bridebook.png" alt="Brightbook Zertifikat" class="certificate-image">
+        <img src="img/bridebook.png" alt="Brightbook Zertifikat" class="certificate-image">
     </div>
 </div>
 
@@ -1264,9 +1265,7 @@
         <div class="footer-section">
             <h3 data-de="Kontakt" data-en="Contact">Kontakt</h3>
             <p><a href="tel:+4970314107311">+49 7031 41073-11</a></p>
-            <p><a href="/cdn-cgi/l/email-protection#ef86818980af8e9d8a8ed8dedfc18b8a"><span class="__cf_email__"
-                                                                                            data-cfemail="dfb6b1b9b09fbeadbabee8eeeff1bbba">[email&#160;protected]</span></a>
-            </p>
+            <p><a href="mailto:info@area710.de">info@area710.de</a></p>
         </div>
 
         <div class="footer-section">
@@ -1307,7 +1306,7 @@
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
     // MOBILE MENU
-    document.getElementById('mobileToggle').addEventListener('click', function() {
+    document.getElementById('mobileToggle').addEventListener('click', function () {
         document.getElementById('navMenu').classList.toggle('active');
     });
 
@@ -1338,21 +1337,21 @@
     }
 
     // Close on ESC key
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             closeCertificate();
         }
     });
 
     // Close on background click
-    document.getElementById('certificateModal').addEventListener('click', function(e) {
+    document.getElementById('certificateModal').addEventListener('click', function (e) {
         if (e.target === this) {
             closeCertificate();
         }
     });
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             const targetLang = this.dataset.lang;
             if (targetLang === currentLang) return;
 
@@ -1514,7 +1513,7 @@
     }
 
     // Init - Lade Artikel und zeige ersten
-    window.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('DOMContentLoaded', function () {
         loadArticles();
     });
 </script>
