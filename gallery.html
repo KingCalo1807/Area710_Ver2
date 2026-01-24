@@ -295,47 +295,47 @@
             color: var(--white);
         }
 
-        /* PARTY */
-        .filter-btn[data-filter="party"]:hover {
-            border-color: var(--blue);
-            color: var(--blue);
-        }
-
-        .filter-btn.active[data-filter="party"] {
-            background: var(--blue);
-            color: var(--white);
-        }
-
-        /* BUSINESS */
-        .filter-btn[data-filter="business"]:hover {
-            border-color: var(--green);
-            color: var(--green);
-        }
-
-        .filter-btn.active[data-filter="business"] {
-            background: var(--green);
-            color: var(--white);
-        }
-
-        /* Events */
-        .filter-btn[data-filter="events"]:hover {
+        /* HALL */
+        .filter-btn[data-filter="hall"]:hover {
             border-color: var(--orange);
             color: var(--orange);
         }
 
-        .filter-btn.active[data-filter="events"] {
+        .filter-btn.active[data-filter="hall"] {
             background: var(--orange);
             color: var(--white);
         }
 
-        /* location */
-        .filter-btn[data-filter="location"]:hover {
+        /* LAB */
+        .filter-btn[data-filter="lab"]:hover {
             border-color: var(--red);
             color: var(--red);
         }
 
-        .filter-btn.active[data-filter="location"] {
+        .filter-btn.active[data-filter="lab"] {
             background: var(--red);
+            color: var(--white);
+        }
+
+        /* BAR & CLUB */
+        .filter-btn[data-filter="barclub"]:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+
+        .filter-btn.active[data-filter="barclub"] {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        /* OUTDOOR */
+        .filter-btn[data-filter="outdoor"]:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .filter-btn.active[data-filter="outdoor"] {
+            background: var(--green);
             color: var(--white);
         }
 
@@ -410,20 +410,20 @@
             display: none;
         }
 
-        .gallery-item.party:hover {
-            border-color: var(--blue);
+        .gallery-item.hall:hover {
+            border-color: var(--orange);
         }
 
-        .gallery-item.business:hover {
-            border-color: var(--green);
-        }
-
-        .gallery-item.location:hover {
+        .gallery-item.lab:hover {
             border-color: var(--red);
         }
 
-        .gallery-item.events:hover {
-            border-color: var(--orange);
+        .gallery-item.barclub:hover {
+            border-color: var(--blue);
+        }
+
+        .gallery-item.outdoor:hover {
+            border-color: var(--green);
         }
 
         .gallery-img-wrapper {
@@ -467,27 +467,27 @@
             font-weight: 500;
             border-radius: 20px;
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
+            text-transform: lowercase;
             letter-spacing: 0.05em;
             width: fit-content;
         }
 
-        .gallery-category.events {
+        .gallery-category.hall {
             background: rgba(252, 171, 20, 0.3);
             color: var(--orange);
         }
 
-        .gallery-category.location {
+        .gallery-category.lab {
             background: rgba(205, 17, 81, 0.3);
             color: var(--red);
         }
 
-        .gallery-category.party {
+        .gallery-category.barclub {
             background: rgba(0, 159, 226, 0.3);
             color: var(--blue);
         }
 
-        .gallery-category.business {
+        .gallery-category.outdoor {
             background: rgba(174, 198, 16, 0.3);
             color: var(--green);
         }
@@ -599,7 +599,7 @@
             padding: 0.5rem 1.2rem;
             font-size: 0.9rem;
             border-radius: 20px;
-            text-transform: uppercase;
+            text-transform: lowercase;
             letter-spacing: 0.05em;
             font-weight: 500;
             width: fit-content;
@@ -1014,9 +1014,9 @@
                     type="text"
                     class="search-input"
                     id="searchInput"
-                    placeholder="Galerie durchsuchen (Titel, Kategorie, Event-Name)..."
-                    data-de-placeholder="Galerie durchsuchen (Titel, Kategorie, Event-Name)..."
-                    data-en-placeholder="Search gallery (title, category, event name)..."
+                    placeholder="Galerie durchsuchen (Titel, Raum, Event)..."
+                    data-de-placeholder="Galerie durchsuchen (Titel, Raum, Event)..."
+                    data-en-placeholder="Search gallery (title, room, event)..."
             >
         </div>
 
@@ -1025,21 +1025,21 @@
                 <span data-de="Alle Bilder" data-en="All Images">Alle Bilder</span>
                 <span class="filter-count" id="count-all">0</span>
             </button>
-            <button class="filter-btn" data-filter="events">
-                <span data-de="Events" data-en="Events">Events</span>
-                <span class="filter-count" id="count-events">0</span>
+            <button class="filter-btn" data-filter="hall">
+                <span data-de="Hall" data-en="Hall">hall</span>
+                <span class="filter-count" id="count-hall">0</span>
             </button>
-            <button class="filter-btn" data-filter="location">
-                <span data-de="Location" data-en="Location">Location</span>
-                <span class="filter-count" id="count-location">0</span>
+            <button class="filter-btn" data-filter="lab">
+                <span data-de="Lab" data-en="Lab">lab</span>
+                <span class="filter-count" id="count-lab">0</span>
             </button>
-            <button class="filter-btn" data-filter="party">
-                <span data-de="Partys" data-en="Parties">Partys</span>
-                <span class="filter-count" id="count-party">0</span>
+            <button class="filter-btn" data-filter="barclub">
+                <span data-de="Bar & Club" data-en="Bar & Club">bar & club</span>
+                <span class="filter-count" id="count-barclub">0</span>
             </button>
-            <button class="filter-btn" data-filter="business">
-                <span data-de="Business" data-en="Business">Business</span>
-                <span class="filter-count" id="count-business">0</span>
+            <button class="filter-btn" data-filter="outdoor">
+                <span data-de="Outdoor" data-en="Outdoor">outdoor</span>
+                <span class="filter-count" id="count-outdoor">0</span>
             </button>
         </div>
 
@@ -1213,6 +1213,12 @@
     let currentImageIndex = 0;
     let filteredImages = [];
 
+    // URL PARAMETER LESEN
+    function getFilterFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('filter') || 'all';
+    }
+
     async function loadGallery() {
         const loading = document.getElementById('loading');
         const grid = document.getElementById('galleryGrid');
@@ -1234,7 +1240,20 @@
 
             if (allImages.length > 0) {
                 updateCounts();
-                displayImages(allImages);
+
+                // Filter aus URL setzen
+                const urlFilter = getFilterFromURL();
+                if (urlFilter && urlFilter !== 'all') {
+                    currentFilter = urlFilter;
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.dataset.filter === urlFilter) {
+                            btn.classList.add('active');
+                        }
+                    });
+                }
+
+                applyFilters();
             } else {
                 emptyState.classList.add('show');
             }
@@ -1248,25 +1267,25 @@
 
     function updateCounts() {
         document.getElementById('count-all').textContent = allImages.length;
-        document.getElementById('count-events').textContent = allImages.filter(img => img.category === 'events').length;
-        document.getElementById('count-location').textContent = allImages.filter(img => img.category === 'location').length;
-        document.getElementById('count-party').textContent = allImages.filter(img => img.category === 'party').length;
-        document.getElementById('count-business').textContent = allImages.filter(img => img.category === 'business').length;
+        document.getElementById('count-hall').textContent = allImages.filter(img => img.room === 'hall').length;
+        document.getElementById('count-lab').textContent = allImages.filter(img => img.room === 'lab').length;
+        document.getElementById('count-barclub').textContent = allImages.filter(img => img.room === 'barclub').length;
+        document.getElementById('count-outdoor').textContent = allImages.filter(img => img.room === 'outdoor').length;
     }
 
     function applyFilters() {
         let filtered = allImages;
 
-        // Filter nach Kategorie
+        // Filter nach Raum
         if (currentFilter !== 'all') {
-            filtered = filtered.filter(img => img.category === currentFilter);
+            filtered = filtered.filter(img => img.room === currentFilter);
         }
 
         // Filter nach Suchbegriff
         if (searchTerm) {
             filtered = filtered.filter(img => {
                 const title = img.title[currentLang].toLowerCase();
-                const category = img.category.toLowerCase();
+                const room = img.room.toLowerCase();
                 const search = searchTerm.toLowerCase();
 
                 // Suche auch in Event-Namen
@@ -1279,7 +1298,7 @@
                 }
 
                 return title.includes(search) ||
-                    category.includes(search) ||
+                    room.includes(search) ||
                     eventName.includes(search);
             });
         }
@@ -1309,15 +1328,15 @@
 
     function createGalleryItem(img, index) {
         const item = document.createElement('div');
-        item.className = `gallery-item ${img.category}`;
-        item.dataset.category = img.category;
+        item.className = `gallery-item ${img.room}`;
+        item.dataset.room = img.room;
         item.dataset.index = index;
 
-        const categoryText = {
-            events: {de: 'Events', en: 'Events'},
-            location: {de: 'Location', en: 'Location'},
-            party: {de: 'Party', en: 'Party'},
-            business: {de: 'Business', en: 'Business'}
+        const roomText = {
+            hall: {de: 'hall', en: 'hall'},
+            lab: {de: 'lab', en: 'lab'},
+            barclub: {de: 'bar & club', en: 'bar & club'},
+            outdoor: {de: 'outdoor', en: 'outdoor'}
         };
 
         // Event-Name holen wenn verknüpft
@@ -1333,7 +1352,7 @@
                 <div class="gallery-img-wrapper">
                     <img src="${img.image}" alt="${img.title[currentLang]}" class="gallery-img" loading="lazy">
                     <div class="gallery-overlay">
-                        <span class="gallery-category ${img.category}">${categoryText[img.category][currentLang]}</span>
+                        <span class="gallery-category ${img.room}">${roomText[img.room][currentLang]}</span>
                         <div class="gallery-title">${img.title[currentLang]}</div>
                         <div class="gallery-date">${img.date}</div>
                         ${eventTag}
@@ -1391,18 +1410,18 @@
     function showLightboxImage() {
         const img = filteredImages[currentImageIndex];
 
-        const categoryText = {
-            events: {de: 'Events', en: 'Events'},
-            location: {de: 'Location', en: 'Location'},
-            party: {de: 'Party', en: 'Party'},
-            business: {de: 'Business', en: 'Business'}
+        const roomText = {
+            hall: {de: 'hall', en: 'hall'},
+            lab: {de: 'lab', en: 'lab'},
+            barclub: {de: 'bar & club', en: 'bar & club'},
+            outdoor: {de: 'outdoor', en: 'outdoor'}
         };
 
         lightboxImg.src = img.image;
         lightboxTitle.textContent = img.title[currentLang];
         lightboxDate.textContent = img.date;
-        lightboxCategory.textContent = categoryText[img.category][currentLang];
-        lightboxCategory.className = `lightbox-category gallery-category ${img.category}`;
+        lightboxCategory.textContent = roomText[img.room][currentLang];
+        lightboxCategory.className = `lightbox-category gallery-category ${img.room}`;
         lightboxCounter.textContent = `${currentImageIndex + 1} / ${filteredImages.length}`;
 
         // Event-Link anzeigen falls vorhanden
