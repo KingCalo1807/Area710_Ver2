@@ -378,6 +378,54 @@
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .gallery-link-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            color: var(--white);
+        }
+
+        .gallery-link-icon:hover {
+            border-color: var(--orange);
+            transform: scale(1.1);
+        }
+
+        /* Raum-spezifische Icon-Farben */
+        #hall .gallery-link-icon:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+        }
+
+        #lab .gallery-link-icon:hover {
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        #barclub .gallery-link-icon:hover {
+            background: var(--blue);
+            border-color: var(--blue);
+        }
+
+        #outdoor .gallery-link-icon:hover {
+            background: var(--green);
+            border-color: var(--green);
+        }
+
+        .gallery-link-icon svg {
+            width: 24px;
+            height: 24px;
         }
 
         #hall .room-title {
@@ -732,6 +780,132 @@
             background: rgba(255, 255, 255, 0.02);
         }
 
+        /* Bestuhlung Icons */
+        .seating-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 0.5rem;
+            display: block;
+            object-fit: contain;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        th:first-child {
+            text-align: left;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        td:first-child {
+            text-align: left;
+        }
+
+        /* ROOM PREVIEW IMAGES */
+        .room-previews {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .room-preview-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 2px solid var(--border);
+            transition: all 0.4s ease;
+            aspect-ratio: 4/3;
+        }
+
+        .room-preview-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .room-preview-card[data-room="lab"]:hover {
+            border-color: var(--red);
+        }
+
+        .room-preview-card[data-room="hall"]:hover {
+            border-color: var(--orange);
+        }
+
+        .room-preview-card[data-room="barclub"]:hover {
+            border-color: var(--blue);
+        }
+
+        .room-preview-card[data-room="outdoor"]:hover {
+            border-color: var(--green);
+        }
+
+        .room-preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .room-preview-card:hover .room-preview-img {
+            transform: scale(1.1);
+        }
+
+        .room-preview-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .room-preview-card:hover .room-preview-overlay {
+            opacity: 1;
+        }
+
+        .room-preview-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: lowercase;
+        }
+
+        .room-preview-card[data-room="lab"] .room-preview-name {
+            color: var(--red);
+        }
+
+        .room-preview-card[data-room="hall"] .room-preview-name {
+            color: var(--orange);
+        }
+
+        .room-preview-card[data-room="barclub"] .room-preview-name {
+            color: var(--blue);
+        }
+
+        .room-preview-card[data-room="outdoor"] .room-preview-name {
+            color: var(--green);
+        }
+
+        .room-preview-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+
+        .room-preview-link svg {
+            width: 20px;
+            height: 20px;
+        }
+
         /* FOOTER */
         .footer {
             background: var(--gray);
@@ -1031,7 +1205,16 @@
         <!-- HALL -->
         <div id="hall" class="room-detail">
             <div class="room-header">
-                <h2 class="room-title">hall</h2>
+                <h2 class="room-title">
+                    hall
+                    <a href="gallery.html?filter=hall" class="gallery-link-icon" title="Zur Galerie">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                    </a>
+                </h2>
                 <p class="room-lead lang-de">Seminare, Workshops, Tagungen, Feiern – hier ist genug Raum für geschäftliche und
                     private Events, inkl. einer 6 x 2 m großen hochauflösenden Video Wall und einem angrenzenden
                     Balkon</p>
@@ -1091,7 +1274,16 @@
         <!-- LAB -->
         <div id="lab" class="room-detail">
             <div class="room-header">
-                <h2 class="room-title">lab</h2>
+                <h2 class="room-title">
+                    lab
+                    <a href="gallery.html?filter=lab" class="gallery-link-icon" title="Zur Galerie">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                    </a>
+                </h2>
                 <p class="room-lead lang-de">Ideal für Tagungen, Musikevents, Fahrzeugpräsentationen, Hausmessen oder sonstige
                     Veranstaltungsformate, mit der Möglichkeit fließend In- und Outdoorinstallationen zu inszenieren.
                     Ausgestattet mit der besten Ton- und Lichttechnik, gibt es keine Grenzen diesen besonderen Raum mit
@@ -1168,7 +1360,16 @@
         <!-- BAR & CLUB -->
         <div id="barclub" class="room-detail">
             <div class="room-header">
-                <h2 class="room-title">bar & club</h2>
+                <h2 class="room-title">
+                    bar & club
+                    <a href="gallery.html?filter=barclub" class="gallery-link-icon" title="Zur Galerie">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                    </a>
+                </h2>
                 <p class="room-lead lang-de">In dieser area können Veranstaltungen mit einer clubähnlichen Atmosphäre
                     verwirklicht werden. Eine topausgestattete Bar schließt sich an und sorgt für den richtigen Flair.
                     Auch hier ist ein nahtloser Übergang zu unserem Outdoorbereich möglich.</p>
@@ -1224,7 +1425,16 @@
         <!-- OUTDOOR -->
         <div id="outdoor" class="room-detail">
             <div class="room-header">
-                <h2 class="room-title">outdoor</h2>
+                <h2 class="room-title">
+                    outdoor
+                    <a href="gallery.html?filter=outdoor" class="gallery-link-icon" title="Zur Galerie">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                    </a>
+                </h2>
                 <p class="room-lead lang-de">Unsere Freifläche wurde speziell konzipiert, um eine einzigartige Verbindung
                     zwischen In- und Outdoorbereich, zwischen Natur und Gastfreundschaft zu schaffen. Entdecken Sie die
                     vielfältigen Möglichkeiten, die unsere Freiflächen, sowie erstklassig ausgestattete Outdoorküche für
@@ -1297,83 +1507,85 @@
             <table>
                 <thead>
                 <tr>
-                    <th class="lang-de">Bestuhlung</th>
-                    <th class="lang-en" style="display:none;">Seating</th>
-                    <th class="lang-de">ges. Location</th>
-                    <th class="lang-en" style="display:none;">Total Location</th>
-                    <th>lab</th>
-                    <th>hall</th>
-                    <th>club</th>
-                    <th>bar</th>
-                    <th>plaza</th>
-                    <th>bar & club</th>
+                    <th class="lang-de" style="display: none;">Name</th>
+                    <th class="lang-en" style="display:none;">Name</th>
+                    <th>
+                        <img src="img/seating/platz.png" alt="Platz" class="seating-icon" title="Platz">
+                        <br><span class="lang-de">Platz</span><span class="lang-en" style="display:none;">Space</span>
+                    </th>
+                    <th>
+                        <img src="img/seating/reihen.png" alt="Reihenbestuhlung" class="seating-icon" title="Reihenbestuhlung">
+                        <br><span class="lang-de">Reihenbestuhlung</span><span class="lang-en" style="display:none;">Row seating</span>
+                    </th>
+                    <th>
+                        <img src="img/seating/parlament.png" alt="Parlamentarisch" class="seating-icon" title="Parlamentarisch">
+                        <br><span class="lang-de">Parlamentarisch</span><span class="lang-en" style="display:none;">Parliamentary</span>
+                    </th>
+                    <th>
+                        <img src="img/seating/stehempfang.png" alt="Stehempfang" class="seating-icon" title="Stehempfang">
+                        <br><span class="lang-de">Stehempfang</span><span class="lang-en" style="display:none;">Standing reception</span>
+                    </th>
+                    <th>
+                        <img src="img/seating/bankett.png" alt="Bankett" class="seating-icon" title="Bankett">
+                        <br><span class="lang-de">Bankett</span><span class="lang-en" style="display:none;">Banquet</span>
+                    </th>
+                    <th>
+                        <img src="img/seating/uform.png" alt="U-Form" class="seating-icon" title="U-Form">
+                        <br><span class="lang-de">U-Form</span><span class="lang-en" style="display:none;">U-Shape</span>
+                    </th>
+                    <th>
+                        <img src="img/seating/kreis.png" alt="Kreis" class="seating-icon" title="Kreis">
+                        <br><span class="lang-de">Kreis</span><span class="lang-en" style="display:none;">Circle</span>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
+
                 <tr>
-                    <td><strong class="lang-de">Fläche</strong><strong class="lang-en" style="display:none;">Area</strong></td>
-                    <td>1.200 m²</td>
-                    <td>150 m²</td>
-                    <td>105 m²</td>
-                    <td>36 m²</td>
-                    <td>31 m²</td>
-                    <td>56 m²</td>
-                    <td>65 m²</td>
+                    <td><strong>ges. Location</strong></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
                 </tr>
+
                 <tr>
-                    <td><strong class="lang-de">Reihenbestuhlung</strong><strong class="lang-en" style="display:none;">Row seating</strong></td>
-                    <td>-</td>
-                    <td>152</td>
-                    <td>60</td>
-                    <td>48</td>
+                    <td><strong>lab</strong></td>
                     <td>-</td>
                     <td>-</td>
-                    <td>48</td>
-                </tr>
-                <tr>
-                    <td><strong class="lang-de">Parlamentarisch</strong><strong class="lang-en" style="display:none;">Parliamentary</strong></td>
                     <td>-</td>
-                    <td>45</td>
-                    <td>18</td>
-                    <td>15</td>
+                    <td>-</td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><strong class="lang-de">Stehempfang</strong><strong class="lang-en" style="display:none;">Standing reception</strong></td>
-                    <td>-</td>
-                    <td>170</td>
-                    <td>85</td>
-                    <td>40</td>
+                    <td><strong>hall</strong></td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
-                </tr>
-                <tr>
-                    <td><strong class="lang-de">Bankett</strong><strong class="lang-en" style="display:none;">Banquet</strong></td>
                     <td>-</td>
-                    <td>280</td>
-                    <td>100</td>
-                    <td>60</td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><strong class="lang-de">U-Form</strong><strong class="lang-en" style="display:none;">U-Shape</strong></td>
+                    <td><strong>bar & club</strong></td>
                     <td>-</td>
-                    <td>96</td>
-                    <td>26</td>
-                    <td>24</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td><strong class="lang-de">Block</strong><strong class="lang-en" style="display:none;">Block</strong></td>
+                    <td><strong>bar & club / plaza</strong></td>
                     <td>-</td>
-                    <td>56</td>
+                    <td>-</td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
@@ -1382,6 +1594,82 @@
                 </tr>
                 </tbody>
             </table>
+        </div>
+
+        <!-- ROOM PREVIEW IMAGES -->
+        <div class="room-previews">
+
+
+            <a href="gallery.html?filter=hall" class="room-preview-card" data-room="hall">
+                <img src="images/c-hall-4.jpg" alt="hall" class="room-preview-img">
+                <div class="room-preview-overlay">
+                    <span class="room-preview-name">hall</span>
+                    <span class="room-preview-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span class="lang-de">Zur Galerie</span>
+                        <span class="lang-en" style="display:none;">To Gallery</span>
+                    </span>
+                </div>
+            </a>
+
+            <a href="gallery.html?filter=lab" class="room-preview-card" data-room="lab">
+                <img src="images/c-lab-4.jpg" alt="lab" class="room-preview-img">
+                <div class="room-preview-overlay">
+                    <span class="room-preview-name">lab</span>
+                    <span class="room-preview-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span class="lang-de">Zur Galerie</span>
+                        <span class="lang-en" style="display:none;">To Gallery</span>
+                    </span>
+                </div>
+            </a>
+
+            <a href="gallery.html?filter=barclub" class="room-preview-card" data-room="barclub">
+                <img src="images/c-cb-2.jpg" alt="bar & club" class="room-preview-img">
+                <div class="room-preview-overlay">
+                    <span class="room-preview-name">bar & club</span>
+                    <span class="room-preview-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span class="lang-de">Zur Galerie</span>
+                        <span class="lang-en" style="display:none;">To Gallery</span>
+                    </span>
+                </div>
+            </a>
+
+            <a href="gallery.html?filter=outdoor" class="room-preview-card" data-room="outdoor">
+                <img src="images/c-o-1.jpg" alt="bar & club / plaza" class="room-preview-img">
+                <div class="room-preview-overlay">
+                    <span class="room-preview-name">bar & club / plaza</span>
+                    <span class="room-preview-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span class="lang-de">Zur Galerie</span>
+                        <span class="lang-en" style="display:none;">To Gallery</span>
+                    </span>
+                </div>
+            </a>
+        </div>
+
+        <div class="text-center" style="margin-top: 3rem;">
+            <a href="ausstattung.html" class="btn">
+                <span class="lang-de">Zur kompletten Ausstattungsliste</span>
+                <span class="lang-en" style="display:none;">To complete equipment list</span>
+            </a>
         </div>
     </div>
 </section>
@@ -1416,7 +1704,7 @@
             <h3 class="lang-de">Kontakt</h3>
             <h3 class="lang-en" style="display:none;">Contact</h3>
             <p><a href="tel:+4970314107311">+49 7031 41073-11</a></p>
-            <p><a href="mailto:info@area710.de">info@area710.de</a></p>
+            <p><a href="/cdn-cgi/l/email-protection#472e2921280726352226707677692322"><span class="__cf_email__" data-cfemail="adc4c3cbc2edccdfc8cc9a9c9d83c9c8">[email&#160;protected]</span></a></p>
         </div>
 
         <div class="footer-section">
@@ -1462,7 +1750,7 @@
     </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // LANGUAGE SWITCHING
     const langBtns = document.querySelectorAll('.lang-btn');
 
@@ -1624,10 +1912,6 @@
 
     function showLightboxImage() {
         lightboxImg.src = currentGallery[currentIndex];
-        lightboxImg.style.animation = 'none';
-        setTimeout(() => {
-            lightboxImg.style.animation = 'zoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-        }, 10);
     }
 </script>
 
