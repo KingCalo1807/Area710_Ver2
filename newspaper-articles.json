@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "title": {
+      "de": "Stuttgarter Zeitung",
+      "en": "Stuttgart Newspaper"
+    },
+    "date": "15. März 2025",
+    "headline": {
+      "de": "Neue Event-Location area710 begeistert Holzgerlingen",
+      "en": "New Event Location area710 Inspires Holzgerlingen"
+    },
+    "subheadline": {
+      "de": "Moderne Location setzt neue Maßstäbe für Events in der Region",
+      "en": "Modern venue sets new standards for events in the region"
+    },
+    "text": {
+      "de": "Holzgerlingen – Mit der Eröffnung der area710 hat die Region eine neue, außergewöhnliche Event-Location erhalten. Das moderne Veranstaltungszentrum in der Gottlieb-Binder-Straße verbindet industriellen Charme mit modernster Technik und flexiblen Raumkonzepten. \"Wir wollten einen Ort schaffen, der für jede Art von Veranstaltung die perfekte Kulisse bietet\", erklärt die Geschäftsführung. Von Firmenevents über Hochzeiten bis hin zu Konzerten und Partys – die area710 bietet mit ihren vier unterschiedlichen Bereichen Hall, Lab, Bar & Club sowie Outdoor vielseitige Möglichkeiten. Besonders die hochmoderne Technikausstattung und das professionelle Team überzeugen Veranstalter und Gäste gleichermaßen.",
+      "en": "Holzgerlingen – With the opening of area710, the region has gained a new, extraordinary event location. The modern event center on Gottlieb-Binder-Straße combines industrial charm with state-of-the-art technology and flexible room concepts. \"We wanted to create a place that offers the perfect setting for any type of event,\" explains the management. From corporate events to weddings, concerts and parties – area710 offers versatile possibilities with its four different areas: Hall, Lab, Bar & Club and Outdoor. The ultra-modern technical equipment and professional team particularly impress organizers and guests alike."
+    },
+    "sourceUrl": "https://www.stuttgarter-zeitung.de/beispiel-artikel-1",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "title": {
+      "de": "Wirtschaftsmagazin Baden-Württemberg",
+      "en": "Business Magazine Baden-Württemberg"
+    },
+    "date": "22. April 2025",
+    "headline": {
+      "de": "area710 gewinnt Brightbook Award für herausragende Kundenzufriedenheit",
+      "en": "area710 Wins Brightbook Award for Outstanding Customer Satisfaction"
+    },
+    "subheadline": {
+      "de": "Event-Location erhält Auszeichnung für Qualität und Service",
+      "en": "Event location receives award for quality and service"
+    },
+    "text": {
+      "de": "Die area710 in Holzgerlingen wurde mit dem renommierten Brightbook Award ausgezeichnet. Die Auszeichnung würdigt Unternehmen, die durch außergewöhnliche Qualität und Kundenzufriedenheit überzeugen. \"Diese Anerkennung ist eine Bestätigung unserer täglichen Arbeit und des Engagements unseres Teams\", freut sich das Management. Besonders hervorgehoben wurden die flexible Raumgestaltung, die professionelle Technikausstattung sowie der persönliche Service. Kunden loben vor allem die unkomplizierte Zusammenarbeit und die kreativen Lösungen für individuelle Anforderungen. Die area710 setzt damit neue Standards in der Event-Branche der Region.",
+      "en": "The area710 in Holzgerlingen has been awarded the renowned Brightbook Award. The award honors companies that convince through exceptional quality and customer satisfaction. \"This recognition confirms our daily work and our team's commitment,\" says the management. Particularly highlighted were the flexible room design, professional technical equipment and personal service. Customers especially praise the uncomplicated cooperation and creative solutions for individual requirements. Area710 thus sets new standards in the regional event industry."
+    },
+    "sourceUrl": "https://www.wirtschaft-bw.de/beispiel-artikel-2",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "title": {
+      "de": "Lokale Nachrichten Holzgerlingen",
+      "en": "Local News Holzgerlingen"
+    },
+    "date": "10. Juni 2025",
+    "headline": {
+      "de": "Erfolgsgeschichte area710: Über 200 Events im ersten Jahr",
+      "en": "Success Story area710: Over 200 Events in First Year"
+    },
+    "subheadline": {
+      "de": "Veranstaltungszentrum zieht positive Bilanz nach erstem Geschäftsjahr",
+      "en": "Event center draws positive conclusion after first business year"
+    },
+    "text": {
+      "de": "Ein Jahr nach der Eröffnung zieht die area710 eine äußerst positive Bilanz. Mehr als 200 Events wurden erfolgreich durchgeführt, von intimen Firmenfeiern bis zu großen Konzerten mit über 500 Gästen. \"Die Resonanz übertrifft unsere Erwartungen bei weitem\", so das Team. Besonders erfreulich: Viele Kunden werden zu Stammkunden und empfehlen die Location weiter. Die Zusammenarbeit mit regionalen Partnern und Dienstleistern stärkt zudem die lokale Wirtschaft. Für die Zukunft sind weitere Investitionen in Technik und Ausstattung geplant, um den hohen Qualitätsstandard weiter auszubauen.",
+      "en": "One year after opening, area710 draws an extremely positive conclusion. More than 200 events were successfully held, from intimate company celebrations to large concerts with over 500 guests. \"The response far exceeds our expectations,\" says the team. Particularly pleasing: many customers become regular customers and recommend the location. Cooperation with regional partners and service providers also strengthens the local economy. Further investments in technology and equipment are planned for the future to further expand the high quality standard."
+    },
+    "sourceUrl": "https://www.holzgerlingen-news.de/beispiel-artikel-3",
+    "image": ""
+  }
+]

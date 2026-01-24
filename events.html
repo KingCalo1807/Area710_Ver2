@@ -363,7 +363,7 @@
             min-height: 120px;
             padding: 0.8rem;
             position: relative;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .calendar-day:hover {
@@ -382,6 +382,14 @@
         .calendar-day.blocked {
             background: rgba(205, 17, 81, 0.1);
             border: 1px solid var(--red);
+        }
+
+        .calendar-day.available {
+            cursor: pointer;
+        }
+
+        .calendar-day.available:hover {
+            background: rgba(174, 198, 16, 0.1);
         }
 
         .calendar-date {
@@ -430,37 +438,19 @@
             color: var(--black);
         }
 
-        /* NEU: GEBLOCKTE RÄUME */
+        /* GEBLOCKTE TAGE - VEREINFACHT */
         .calendar-blocked {
             background: rgba(205, 17, 81, 0.3);
             padding: 0.4rem;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             border-radius: 3px;
             margin-bottom: 0.3rem;
+            text-align: center;
+            font-weight: 500;
         }
 
         .calendar-blocked.reserved {
             background: rgba(252, 171, 20, 0.3);
-        }
-
-        .blocked-status {
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-            color: var(--white);
-        }
-
-        .blocked-rooms-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.2rem;
-        }
-
-        .blocked-room-tag {
-            font-size: 0.65rem;
-            padding: 0.15rem 0.4rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 2px;
-            color: rgba(255, 255, 255, 0.9);
         }
 
         /* SEARCH BOX */
@@ -857,6 +847,11 @@
             border: 2px solid var(--green);
         }
 
+        .legend-color.available {
+            background: rgba(174, 198, 16, 0.1);
+            border: 1px solid var(--green);
+        }
+
         /* FOOTER */
         .footer {
             background: var(--gray);
@@ -1071,12 +1066,8 @@
             }
 
             .calendar-blocked {
-                font-size: 0.6rem;
+                font-size: 0.65rem;
                 padding: 0.3rem;
-            }
-
-            .blocked-room-tag {
-                font-size: 0.55rem;
             }
         }
 
@@ -1200,7 +1191,11 @@
                 </div>
                 <div class="legend-item">
                     <div class="legend-color blocked"></div>
-                    <span data-de="Privat Veranstaltung / Ausgebucht" data-en="Private Event / Fully Booked">Private Veranstaltung / Ausgebucht</span>
+                    <span data-de="Ausgebucht" data-en="Fully Booked">Ausgebucht</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color available"></div>
+                    <span data-de="Verfügbar (zum Buchen klicken)" data-en="Available (click to book)">Verfügbar (zum Buchen klicken)</span>
                 </div>
                 <div class="legend-item">
                     <div class="legend-color today"></div>
@@ -1400,14 +1395,6 @@
         en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     };
 
-    // NEU: Raum-Namen
-    const roomNames = {
-        hall: { de: 'Hall', en: 'Hall' },
-        lab: { de: 'Lab', en: 'Lab' },
-        barclub: { de: 'Bar & Club', en: 'Bar & Club' },
-        outdoor: { de: 'Outdoor', en: 'Outdoor' }
-    };
-
     // ICS DOWNLOAD FUNCTION
     function downloadICS(event) {
         const eventDate = new Date(event.date + 'T' + event.time);
@@ -1444,6 +1431,11 @@
         document.body.removeChild(link);
     }
 
+    // NAVIGATE TO BOOKING WITH DATE
+    function navigateToBooking(dateStr) {
+        window.location.href = `booking.html?date=${dateStr}`;
+    }
+
     function renderCalendar() {
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth();
@@ -1457,7 +1449,7 @@
         let html = dayNames[currentLang].map(d => `<div class="calendar-day-header">${d}</div>`).join('');
 
         const prevMonthDays = new Date(year, month, 0).getDate();
-        const startDay = firstDay === 0 ? 6 : firstDay;
+        const startDay = firstDay === 0 ? 6 : firstDay - 1;
 
         for (let i = startDay; i > 0; i--) {
             html += `<div class="calendar-day other-month"><div class="calendar-date">${prevMonthDays - i + 1}</div></div>`;
@@ -1466,49 +1458,40 @@
         for (let day = 1; day <= daysInMonth; day++) {
             const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
             const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
+            const isPast = new Date(dateStr) < new Date(today.toDateString());
 
             // Öffentliche Events
             const dayEvents = allEvents.filter(e => e.date === dateStr);
-            // Geblockte Einträge MIT Raum-Info
+            // Geblockte Einträge
             const dayBlocked = blockedDates.filter(b => b.date === dateStr);
 
             let classes = 'calendar-day';
             if (isToday) classes += ' today';
             if (dayBlocked.length > 0) classes += ' blocked';
 
-            html += `<div class="${classes}">
+            // Nur verfügbare Tage in der Zukunft sind klickbar
+            const isAvailable = dayBlocked.length === 0 && dayEvents.length === 0 && !isPast;
+            if (isAvailable) classes += ' available';
+
+            const clickHandler = isAvailable ? `onclick="navigateToBooking('${dateStr}')"` : '';
+            const cursorStyle = isAvailable ? 'cursor: pointer;' : '';
+
+            html += `<div class="${classes}" ${clickHandler} style="${cursorStyle}">
                     <div class="calendar-date">${day}</div>
                     ${dayEvents.map(e => `
-                        <div class="calendar-event" onclick="jumpToEvent(${e.id})" title="${e.title[currentLang]}">
+                        <div class="calendar-event" onclick="event.stopPropagation(); jumpToEvent(${e.id})" title="${e.title[currentLang]}">
                             <span>${e.title[currentLang]}</span>
                             <button class="download-event-btn" onclick="event.stopPropagation(); downloadICS(allEvents.find(ev => ev.id === ${e.id}))" title="${currentLang === 'de' ? 'Zu Kalender hinzufügen' : 'Add to calendar'}">📥</button>
                         </div>
                     `).join('')}
                     ${dayBlocked.map(b => {
-                        // room kann String ODER Array sein
-                        const rooms = Array.isArray(b.room) ? b.room : (b.room ? [b.room] : []);
                         const statusText = currentLang === 'de'
                             ? (b.status === 'reserved' ? 'Reserviert' : 'Ausgebucht')
                             : (b.status === 'reserved' ? 'Reserved' : 'Fully booked');
 
-                        // Zeitbereich formatieren
-                        const startTime = b.startTime || '00:00';
-                        const endTime = b.endTime || '23:59';
-                        const isFullDay = (startTime === '00:00' && endTime === '23:59');
-
-                        const timeDisplay = isFullDay
-                            ? (currentLang === 'de' ? 'Ganztägig' : 'All day')
-                            : `${startTime.substring(0,5)} - ${endTime.substring(0,5)}`;
-
                         return `
                             <div class="calendar-blocked ${b.status || 'booked'}">
-                                <div class="blocked-status">${statusText}</div>
-                                <div style="font-size: 0.65rem; margin-bottom: 0.3rem; color: rgba(255,255,255,0.8);">🕒 ${timeDisplay}</div>
-                                ${rooms.length > 0 ? `
-                                    <div class="blocked-rooms-container">
-                                        ${rooms.map(room => `<div class="blocked-room-tag">${roomNames[room] ? roomNames[room][currentLang] : room}</div>`).join('')}
-                                    </div>
-                                ` : ''}
+                                ${statusText}
                             </div>
                         `;
                     }).join('')}
@@ -1563,7 +1546,7 @@
             // NUR Events für die Liste
             allEvents = data.filter(item => item.type === 'event');
 
-            // Geblockte Einträge MIT allen Infos für Kalender
+            // Geblockte Einträge für Kalender
             blockedDates = data.filter(item => item.type === 'blocked');
 
             renderCalendar();
@@ -1631,7 +1614,7 @@
                     <span class="event-category ${event.category}">${categoryText[event.category][currentLang]}</span>
                     <h3 class="event-title">${event.title[currentLang]}</h3>
                     <div class="event-date">📅 ${event.date}</div>
-                    <div class="event-time">🕒 ${event.time}</div>
+                    <div class="event-time">🕐 ${event.time}</div>
                     <p class="event-description">${event.description[currentLang]}</p>
                     <div class="event-footer">
                         <span class="event-price">${event.price}</span>
@@ -1648,7 +1631,7 @@
 
     // SEARCH FUNCTIONALITY
     document.getElementById('searchInput').addEventListener('input', function (e) {
-        searchTerm = e.target.value;
+        searchTerm = e.value;
         applyFilters();
     });
 

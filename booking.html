@@ -1298,14 +1298,27 @@
     }
 
     // ========================================
-    // PRE-SELECT ROOM FROM URL
+    // PRE-SELECT ROOM AND DATE FROM URL
     // ========================================
     const urlParams = new URLSearchParams(window.location.search);
+
+    // Room parameter
     const roomParam = urlParams.get('room');
     if (roomParam) {
         const roomCheckbox = document.getElementById('room-' + roomParam);
         if (roomCheckbox) {
             roomCheckbox.checked = true;
+        }
+    }
+
+    // Date parameter
+    const dateParam = urlParams.get('date');
+    if (dateParam) {
+        const eventDateField = document.getElementById('eventDate');
+        if (eventDateField) {
+            eventDateField.value = dateParam;
+            // Verfügbarkeit direkt prüfen
+            checkAvailability(dateParam);
         }
     }
 
@@ -1315,10 +1328,10 @@
     let blockedRooms = [];
 
     const roomNames = {
-        hall: { de: 'Hall', en: 'Hall' },
-        lab: { de: 'Lab', en: 'Lab' },
-        barclub: { de: 'Bar & Club', en: 'Bar & Club' },
-        outdoor: { de: 'Outdoor', en: 'Outdoor' }
+        hall: {de: 'Hall', en: 'Hall'},
+        lab: {de: 'Lab', en: 'Lab'},
+        barclub: {de: 'Bar & Club', en: 'Bar & Club'},
+        outdoor: {de: 'Outdoor', en: 'Outdoor'}
     };
 
     async function loadAvailability() {
@@ -1543,13 +1556,13 @@
     }
 
     // Event listeners for date, time, and duration changes
-    document.getElementById('eventDate').addEventListener('change', function() {
+    document.getElementById('eventDate').addEventListener('change', function () {
         const selectedTime = document.getElementById('eventTime').value;
         const duration = document.getElementById('duration').value;
         checkAvailability(this.value, selectedTime, duration);
     });
 
-    document.getElementById('eventTime').addEventListener('change', function() {
+    document.getElementById('eventTime').addEventListener('change', function () {
         const selectedDate = document.getElementById('eventDate').value;
         const duration = document.getElementById('duration').value;
         if (selectedDate) {
@@ -1557,7 +1570,7 @@
         }
     });
 
-    document.getElementById('duration').addEventListener('change', function() {
+    document.getElementById('duration').addEventListener('change', function () {
         const selectedDate = document.getElementById('eventDate').value;
         const selectedTime = document.getElementById('eventTime').value;
         if (selectedDate) {
@@ -1662,7 +1675,8 @@
             console.error('Booking error:', error);
         }
     });
-</script>
+
+    </script>
 
 </body>
 </html>

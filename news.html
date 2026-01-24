@@ -8,8 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" href="/img/fav.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -217,7 +216,7 @@
         }
 
         .hero-content h1 span {
-            color: var(--white);
+            color: var(--orange);
         }
 
         .hero-content p {
@@ -269,9 +268,9 @@
             margin-right: auto;
         }
 
-        /* BrideBOOK AWARD */
+        /* BRIGHTBOOK AWARD */
         .award-section {
-            background: linear-gradient(135deg, rgba(0, 0, 255, 0.1), rgba(255, 255, 255, 0.1));
+            background: linear-gradient(135deg, rgba(252, 171, 20, 0.1), rgba(205, 17, 81, 0.1));
             border: 1px solid var(--border);
             border-radius: 4px;
             padding: 3rem;
@@ -286,7 +285,7 @@
             gap: 2rem;
             padding: 2rem 3rem;
             background: var(--gray);
-            border: 2px solid var(--white);
+            border: 2px solid var(--orange);
             margin-bottom: 2rem;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -294,22 +293,19 @@
 
         .award-badge:hover {
             transform: scale(1.05);
-            box-shadow: 0 2px 2px var(--blue);
+            box-shadow: 0 10px 30px rgba(252, 171, 20, 0.3);
             border-color: var(--white);
         }
 
-        .award-icon img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            border-radius: 12px; /* hier stellst du die Rundung ein */
+        .award-icon {
+            font-size: 4rem;
         }
 
         .award-text h3 {
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            color: var(--white);
+            color: var(--orange);
         }
 
         .award-text p {
@@ -340,29 +336,12 @@
             opacity: 0;
         }
 
-        .partner-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .partner-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .partner-card:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .partner-card:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        .partner-card:nth-child(5) {
-            animation-delay: 0.5s;
-        }
-
-        .partner-card:nth-child(6) {
-            animation-delay: 0.6s;
-        }
+        .partner-card:nth-child(1) { animation-delay: 0.1s; }
+        .partner-card:nth-child(2) { animation-delay: 0.2s; }
+        .partner-card:nth-child(3) { animation-delay: 0.3s; }
+        .partner-card:nth-child(4) { animation-delay: 0.4s; }
+        .partner-card:nth-child(5) { animation-delay: 0.5s; }
+        .partner-card:nth-child(6) { animation-delay: 0.6s; }
 
         .partner-card:hover {
             transform: translateY(-10px);
@@ -410,17 +389,9 @@
             opacity: 0;
         }
 
-        .testimonial-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .testimonial-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .testimonial-card:nth-child(3) {
-            animation-delay: 0.3s;
-        }
+        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
 
         .testimonial-card::before {
             content: '"';
@@ -517,72 +488,66 @@
             transition: all 0.5s ease-in-out;
         }
 
-        /* SLIDE ANIMATIONS – CLEAN EDITORIAL STYLE */
-.newspaper-page {
-    will-change: transform, opacity;
-}
+        /* SLIDE ANIMATIONS */
+        .newspaper-page.slide-out-left {
+            animation: slideOutLeft 0.5s ease-in-out;
+        }
 
-.newspaper-page.slide-out-left {
-    animation: slideOutLeft 420ms cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
-}
+        .newspaper-page.slide-out-right {
+            animation: slideOutRight 0.5s ease-in-out;
+        }
 
-.newspaper-page.slide-out-right {
-    animation: slideOutRight 420ms cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
-}
+        .newspaper-page.slide-in-left {
+            animation: slideInLeft 0.5s ease-in-out;
+        }
 
-.newspaper-page.slide-in-left {
-    animation: slideInLeft 480ms cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
-}
-
-.newspaper-page.slide-in-right {
-    animation: slideInRight 480ms cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
-}
-
+        .newspaper-page.slide-in-right {
+            animation: slideInRight 0.5s ease-in-out;
+        }
 
         @keyframes slideOutLeft {
-    from {
-        transform: translate3d(0, 0, 0) scale(1);
-        opacity: 1;
-    }
-    to {
-        transform: translate3d(-40px, 0, 0) scale(0.98);
-        opacity: 0;
-    }
-}
+            0% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+        }
 
-@keyframes slideOutRight {
-    from {
-        transform: translate3d(0, 0, 0) scale(1);
-        opacity: 1;
-    }
-    to {
-        transform: translate3d(40px, 0, 0) scale(0.98);
-        opacity: 0;
-    }
-}
+        @keyframes slideOutRight {
+            0% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
 
-@keyframes slideInLeft {
-    from {
-        transform: translate3d(-40px, 0, 0) scale(0.98);
-        opacity: 0;
-    }
-    to {
-        transform: translate3d(0, 0, 0) scale(1);
-        opacity: 1;
-    }
-}
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
-@keyframes slideInRight {
-    from {
-        transform: translate3d(40px, 0, 0) scale(0.98);
-        opacity: 0;
-    }
-    to {
-        transform: translate3d(0, 0, 0) scale(1);
-        opacity: 1;
-    }
-}
-
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
         .newspaper-header {
             text-align: center;
@@ -853,12 +818,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .certificate-image-container {
@@ -892,7 +853,7 @@
             right: 0;
             width: 40px;
             height: 40px;
-            background: var(--blue);
+            background: var(--orange);
             color: var(--white);
             border: none;
             border-radius: 50%;
@@ -907,7 +868,7 @@
         .certificate-close:hover {
             background: var(--white);
             color: var(--black);
-            transform: rotate(0deg);
+            transform: rotate(90deg);
         }
 
         .certificate-placeholder {
@@ -1050,37 +1011,29 @@
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h1 data-de="Referenzen & Kunden" data-en="References & Customers">
-            <span data-de="Referenzen" data-en="References">Referenzen</span> & Kunden
+        <h1 data-de="Referenzen & Partner" data-en="References & Partners">
+            <span data-de="Referenzen" data-en="References">Referenzen</span> & Partner
         </h1>
-        <p data-de="Vertrauen durch Qualität und Erfahrung" data-en="Trust through quality and experience">Vertrauen
-            durch Qualität und Erfahrung</p>
+        <p data-de="Vertrauen durch Qualität und Erfahrung" data-en="Trust through quality and experience">Vertrauen durch Qualität und Erfahrung</p>
     </div>
 </section>
 
-<!-- BrideBOOK AWARD -->
+<!-- BRIGHTBOOK AWARD -->
 <section class="section">
     <div class="container">
         <div class="award-section">
             <div class="award-badge" onclick="openCertificate()">
-                <div class="award-icon">
-                    <img src="img/bridebook.png" alt="Auszeichnung" style="width: 60px; height: 60px;">
-                </div>
-
+                <div class="award-icon">🏆</div>
                 <div class="award-text">
-                    <h3 data-de="Bridebook Auszeichnung" data-en="Bridebook Award">Bridebook Auszeichnung</h3>
-                    <p data-de="Zertifizierte Event-Location mit höchster Kundenzufriedenheit"
-                       data-en="Certified event location with highest customer satisfaction">
+                    <h3 data-de="Brightbook Auszeichnung" data-en="Brightbook Award">Brightbook Auszeichnung</h3>
+                    <p data-de="Zertifizierte Event-Location mit höchster Kundenzufriedenheit" data-en="Certified event location with highest customer satisfaction">
                         Zertifizierte Event-Location mit höchster Kundenzufriedenheit
                     </p>
                 </div>
             </div>
-            <p data-de="area710 wurde von Bridebook als herausragende Event-Location ausgezeichnet. Diese Anerkennung bestätigt unsere hohen Qualitätsstandards und das Vertrauen unserer Kunden. Klicken Sie auf das Zertifikat, um es anzusehen."
-               data-en="area710 has been awarded by Bridebook as an outstanding event location. This recognition confirms our high quality standards and the trust of our customers. Click on the certificate to view it.">
-                area710 wurde von Bridebook als herausragende Event-Location ausgezeichnet. Diese Anerkennung bestätigt
-                unsere hohen Qualitätsstandards und das Vertrauen unserer Kunden. <strong
-                    style="color: var(--blue); cursor: pointer;" onclick="openCertificate()">Klicken Sie hier, um das
-                Zertifikat anzusehen.</strong>
+            <p data-de="area710 wurde von Brightbook als herausragende Event-Location ausgezeichnet. Diese Anerkennung bestätigt unsere hohen Qualitätsstandards und das Vertrauen unserer Kunden. Klicken Sie auf das Zertifikat, um es anzusehen."
+               data-en="area710 has been awarded by Brightbook as an outstanding event location. This recognition confirms our high quality standards and the trust of our customers. Click on the certificate to view it.">
+                area710 wurde von Brightbook als herausragende Event-Location ausgezeichnet. Diese Anerkennung bestätigt unsere hohen Qualitätsstandards und das Vertrauen unserer Kunden. <strong style="color: var(--orange); cursor: pointer;" onclick="openCertificate()">Klicken Sie hier, um das Zertifikat anzusehen.</strong>
             </p>
         </div>
     </div>
@@ -1089,10 +1042,10 @@
 <!-- PARTNERS -->
 <section class="section" style="padding-top: 0;">
     <div class="container">
-        <h2 class="section-title orange" data-de="Unsere Kunden" data-en="Our Customers">Unsere Kunden</h2>
-        <p class="section-subtitle" data-de="Gemeinsam stark: unsere Kunden setzen auf uns"
-           data-en="Stronger together: Our customers rely on us">
-            Gemeinsam stark: unsere Kunden setzen auf uns
+        <h2 class="section-title orange" data-de="Unsere Partner" data-en="Our Partners">Unsere Partner</h2>
+        <p class="section-subtitle" data-de="Gemeinsam stark: Wir arbeiten mit führenden Unternehmen zusammen"
+           data-en="Stronger together: We work with leading companies">
+            Gemeinsam stark: Wir arbeiten mit führenden Unternehmen zusammen
         </p>
 
         <div class="partners-grid">
@@ -1127,8 +1080,7 @@
 <!-- TESTIMONIALS -->
 <section class="section" style="background: rgba(255, 255, 255, 0.02);">
     <div class="container">
-        <h2 class="section-title red" data-de="Das sagen unsere Kunden" data-en="What our customers say">Das sagen
-            unsere Kunden</h2>
+        <h2 class="section-title red" data-de="Das sagen unsere Kunden" data-en="What our customers say">Das sagen unsere Kunden</h2>
         <p class="section-subtitle" data-de="Echte Erfahrungen von echten Kunden"
            data-en="Real experiences from real customers">
             Echte Erfahrungen von echten Kunden
@@ -1137,8 +1089,7 @@
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <p class="testimonial-text">
-                    Die area710 hat unsere Firmenfeier zu einem unvergesslichen Erlebnis gemacht. Die Location ist
-                    einzigartig, die Technik top und das Team super professionell. Absolut empfehlenswert!
+                    Die area710 hat unsere Firmenfeier zu einem unvergesslichen Erlebnis gemacht. Die Location ist einzigartig, die Technik top und das Team super professionell. Absolut empfehlenswert!
                 </p>
                 <div class="testimonial-author">
                     <div class="author-avatar">MS</div>
@@ -1158,8 +1109,7 @@
 
             <div class="testimonial-card">
                 <p class="testimonial-text">
-                    Wir haben unsere Hochzeit in der area710 gefeiert und es war einfach perfekt! Die flexiblen Räume,
-                    die tolle Atmosphäre und der Service haben alle Wünsche erfüllt. Danke für diesen magischen Tag!
+                    Wir haben unsere Hochzeit in der area710 gefeiert und es war einfach perfekt! Die flexiblen Räume, die tolle Atmosphäre und der Service haben alle Wünsche erfüllt. Danke für diesen magischen Tag!
                 </p>
                 <div class="testimonial-author">
                     <div class="author-avatar">LM</div>
@@ -1179,9 +1129,7 @@
 
             <div class="testimonial-card">
                 <p class="testimonial-text">
-                    Als Veranstalter schätze ich die professionelle Ausstattung und die zentrale Lage. Die area710
-                    bietet alles, was man für erfolgreiche Events braucht. Die Zusammenarbeit war stets unkompliziert
-                    und zuverlässig.
+                    Als Veranstalter schätze ich die professionelle Ausstattung und die zentrale Lage. Die area710 bietet alles, was man für erfolgreiche Events braucht. Die Zusammenarbeit war stets unkompliziert und zuverlässig.
                 </p>
                 <div class="testimonial-author">
                     <div class="author-avatar">SK</div>
@@ -1242,8 +1190,17 @@
 <!-- CERTIFICATE MODAL -->
 <div class="certificate-modal" id="certificateModal">
     <div class="certificate-image-container">
-        <button class="certificate-close" onclick="closeCertificate()">×</button>
-                <img src="img/bridebook.png" alt="Brightbook Zertifikat" class="certificate-image">
+        <button class="certificate-close" onclick="closeCertificate()">✕</button>
+
+        <!-- PLATZHALTER: Ersetze src mit deinem Zertifikat-Bild -->
+        <!-- <img src="img/brightbook-zertifikat.jpg" alt="Brightbook Zertifikat" class="certificate-image"> -->
+
+        <!-- Temporärer Platzhalter (entfernen wenn echtes Bild vorhanden): -->
+        <div class="certificate-placeholder">
+            <div class="placeholder-icon">🏆</div>
+            <p class="placeholder-text">Brightbook Zertifikat</p>
+            <p class="placeholder-subtext">Bild hier einfügen:<br>img/brightbook-zertifikat.jpg</p>
+        </div>
     </div>
 </div>
 
@@ -1264,28 +1221,20 @@
         <div class="footer-section">
             <h3 data-de="Kontakt" data-en="Contact">Kontakt</h3>
             <p><a href="tel:+4970314107311">+49 7031 41073-11</a></p>
-            <p><a href="/cdn-cgi/l/email-protection#ef86818980af8e9d8a8ed8dedfc18b8a"><span class="__cf_email__"
-                                                                                            data-cfemail="dfb6b1b9b09fbeadbabee8eeeff1bbba">[email&#160;protected]</span></a>
-            </p>
+            <p><a href="/cdn-cgi/l/email-protection#ef86818980af8e9d8a8ed8dedfc18b8a"><span class="__cf_email__" data-cfemail="dfb6b1b9b09fbeadbabee8eeeff1bbba">[email&#160;protected]</span></a></p>
         </div>
 
         <div class="footer-section">
             <h3 data-de="Folge uns" data-en="Follow us">Folge uns</h3>
             <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=100086162780846" class="social-link" target="_blank">
-                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 </a>
                 <a href="https://www.instagram.com/area710_event/" class="social-link" target="_blank">
-                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </a>
                 <a href="https://wa.me/1713573288?text=area710" class="social-link" target="_blank">
-                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                    </svg>
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 </a>
             </div>
         </div>
@@ -1298,14 +1247,12 @@
             <a href="impressum.html" data-de="Impressum" data-en="Imprint">Impressum</a>
             <a href="datenschutz.html" data-de="Datenschutzerklärung" data-en="Privacy Policy">Datenschutzerklärung</a>
             <a href="booking.html" data-de="Buchungsanfrage" data-en="Booking Request">Buchungsanfrage</a>
-            <a href="https://ticket.area710.de" target="_blank" data-de="Ticket Verkauf" data-en="Ticket Sales">Ticket
-                Verkauf</a>
+            <a href="https://ticket.area710.de" target="_blank" data-de="Ticket Verkauf" data-en="Ticket Sales">Ticket Verkauf</a>
         </p>
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // MOBILE MENU
     document.getElementById('mobileToggle').addEventListener('click', function() {
         document.getElementById('navMenu').classList.toggle('active');
