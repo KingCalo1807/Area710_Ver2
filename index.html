@@ -292,6 +292,7 @@
 
         .btn:hover {
             color: var(--black);
+            background: var(--white);
         }
 
         .btn-primary {
@@ -893,6 +894,59 @@
             }
         }
 
+        .testimonial-section {
+            background: linear-gradient(135deg, var(--gray), var(--black));
+            padding: 5rem 2rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .testimonial-section .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header-orange h2 {
+            background: linear-gradient(135deg, var(--blue), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.4rem;
+        }
+
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .testimonial-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 4px;
+            background: transparent; /* kein Hintergrund standardmäßig */
+            color: var(--white); /* weißer Text standardmäßig */
+            border: 2px solid var(--white); /* weißer Rahmen */
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+        }
+
+        .testimonial-btn:hover {
+            background: var(--white); /* Hintergrund wird weiß */
+            color: var(--black); /* Text wird schwarz */
+            transform: translateY(-5px); /* leichte Bewegung nach oben */
+        }
+
 
         /* Chatbot Button */
         #chatbot-button {
@@ -907,12 +961,58 @@
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 1000;
-            overflow: hidden;
+            overflow: visible;
         }
 
         #chatbot-button:hover {
             transform: scale(1.1);
         }
+
+        /* Text separat animieren */
+#chatbot-button .chatbot-hint {
+    position: absolute;
+    top: 50%;
+    right: 70px;
+    transform: translateY(-50%) translateX(10px);
+
+    background: #ffffff;
+    color: #000000;
+    padding: 10px 18px;
+    font-size: 0.7rem;
+    font-weight: 500;
+
+    border-radius: 999px;
+    white-space: nowrap;
+
+    opacity: 0;
+    pointer-events: none;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Text leicht verzögert */
+#chatbot-button .chatbot-hint::after {
+    content: attr(data-text);
+}
+
+.hint-text {
+    display: inline-block;
+    transform: translateX(6px);
+    opacity: 0;
+    transition: transform 0.25s ease 0.05s, opacity 0.25s ease 0.05s;
+}
+
+#chatbot-button:hover .chatbot-hint {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+#chatbot-button:hover .hint-text {
+    opacity: 1;
+    transform: translateX(0);
+}
 
         #chatbot-button img {
             width: 100%;
@@ -1252,7 +1352,7 @@
                     <li><a href="raueme.html#hall">Hall</a></li>
                     <li><a href="raueme.html#lab">Lab</a></li>
                     <li><a href="raueme.html#barclub">Bar & Club</a></li>
-                    <li><a href="raueme.html#outdoor">Outdoor</a></li>
+                    <li><a href="raueme.html#outdoor">Bar & Club / Plaza</a></li>
                 </ul>
             </li>
             <li><a href="events.html">Events</a></li>
@@ -1374,7 +1474,7 @@
             </a>
             <a href="raueme.html#outdoor" class="room-nav-item frame-green">
                 <img src="img/outdoor.png" alt="outdoor" class="room-nav-icon">
-                <h3>outdoor</h3>
+                <h3>bar & club / plaza</h3>
             </a>
         </div>
 
@@ -1407,13 +1507,14 @@
             <a href="raueme.html#outdoor" class="room-card">
                 <img src="img/outdoor_qual.png" alt="outdoor" class="room-image">
                 <div class="room-overlay">
-                    <h3>outdoor</h3>
+                    <h3>bar & club / plaza</h3>
                     <p>Bis zu 750qm Freifläche mit Outdoorküche</p>
                 </div>
             </a>
         </div>
     </div>
 </section>
+
 
 <section class="section" style="background: var(--gray);">
     <div class="container">
@@ -1445,9 +1546,38 @@
 
 </section>
 
+<!-- STATS -->
+<section class="testimonial-section">
+    <div class="container">
+        <div class="section-header section-header-orange">
+            <h2 class="lang-de">Das sagen unsere Kunden</h2>
+            <h2 class="lang-en" style="display:none;">What Our Clients Say</h2>
+            <p class="lang-de">Erfahren Sie, was unsere Kunden über area710 berichten</p>
+            <p class="lang-en" style="display:none;">Learn what our clients say about area710</p>
+        </div>
+
+        <div class="testimonial-content">
+            <p class="lang-de">
+                Unsere Kunden stehen im Mittelpunkt all unserer Bemühungen. Lesen Sie ihre Erfahrungen und
+                Erfolgsgeschichten mit area710.
+            </p>
+            <p class="lang-en" style="display:none;">
+                Our clients are at the center of all our efforts. Read their experiences and success stories with
+                area710.
+            </p>
+        </div>
+
+        <a href="referenz.html" class="testimonial-btn lang-de">Zu den Referenzen</a>
+        <a href="referenz.html" class="testimonial-btn lang-en" style="display:none;">View References</a>
+    </div>
+</section>
+
 <!-- Chatbot Button -->
 <button id="chatbot-button" aria-label="Chat öffnen">
     <img src="img/fav.png" alt="Chat Avatar">
+    <span class="chatbot-hint">
+        <span class="hint-text">Chatte mit Array - unserem Chatbot</span>
+    </span>
 </button>
 
 <!-- Chatbot Window -->
@@ -1505,7 +1635,8 @@
                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.44z"/>
                     </svg>
                 </a>
-                <a href="https://bridebook.com/de/wedding-venues/area710-holzgerlingen-stuttgart-de0Y10vQwg?gad_source=1&gad_campaignid=20481448784&gbraid=0AAAAAog_qeuf2G-MQl8GmPC7ClS1fJ-xV&gclid=Cj0KCQiA-NHLBhDSARIsAIhe9X3mWJSxgpaGOJS1SvDJLO1h9gvexDESTfNoDKOcPAm8YgMN5yylyVMaAnoOEALw_wcB" class="social-link" target="_blank"
+                <a href="https://bridebook.com/de/wedding-venues/area710-holzgerlingen-stuttgart-de0Y10vQwg?gad_source=1&gad_campaignid=20481448784&gbraid=0AAAAAog_qeuf2G-MQl8GmPC7ClS1fJ-xV&gclid=Cj0KCQiA-NHLBhDSARIsAIhe9X3mWJSxgpaGOJS1SvDJLO1h9gvexDESTfNoDKOcPAm8YgMN5yylyVMaAnoOEALw_wcB"
+                   class="social-link" target="_blank"
                    aria-label="Bridebook">
                     <img src="img/bridebook.png" alt="Bridebook">
                 </a>

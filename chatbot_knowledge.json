@@ -26,7 +26,7 @@
     },
     {
       "keywords": ["räume", "räume info", "säle", "bereiche", "hall", "lab", "bar", "club", "plaza"],
-      "answer": "Die area710 bietet mehrere flexibel nutzbare Bereiche: Hall (Eventraum mit Videowall und Balkon), Lab (multifunktionaler Raum mit großer LED-Wand), Bar & Club (Abend- und Partybereich) sowie eine große Outdoor-Plaza mit Outdoorküche und Technik."
+      "answer": "Die area710 bietet mehrere flexibel nutzbare Bereiche: Hall (Eventraum mit Videowall und Balkon), Lab (multifunktionaler Raum mit großer LED-Wand), Bar & Club (Abend- und Partybereich) sowie eine große Outdoor-Plaza mit Outdoorküche und Technik. <a href='raueme.html' style='color: var(--blue); text-decoration: underline;'>Hier gehts zu unseren Räumen!</a>."
     },
     {
       "keywords": ["technik", "ausstattung", "licht", "ton", "beamer", "led"],

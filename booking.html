@@ -444,6 +444,7 @@
         .room-name {
             font-size: 0.95rem;
             font-weight: 400;
+            text-align: center;
         }
 
         /* SERVICES */
@@ -841,7 +842,7 @@
                     <li><a href="raueme.html#hall">Hall</a></li>
                     <li><a href="raueme.html#lab">Lab</a></li>
                     <li><a href="raueme.html#barclub">Bar & Club</a></li>
-                    <li><a href="raueme.html#outdoor">Outdoor</a></li>
+                    <li><a href="raueme.html#outdoor">Bar & Club / Plaza</a></li>
                 </ul>
             </li>
             <li><a href="events.html">Events</a></li>
@@ -1001,14 +1002,14 @@
                                 </label>
                             </div>
 
-                            <div class="room-option frame-blue" id="room-option-lab">
+                            <div class="room-option frame-red" id="room-option-lab">
                                 <input type="checkbox" id="room-lab" name="rooms[]" value="lab" class="room-checkbox">
                                 <label for="room-lab" class="room-label">
                                     <span class="room-name">lab</span>
                                 </label>
                             </div>
 
-                            <div class="room-option frame-red" id="room-option-barclub">
+                            <div class="room-option frame-blue" id="room-option-barclub">
                                 <input type="checkbox" id="room-barclub" name="rooms[]" value="barclub"
                                        class="room-checkbox">
                                 <label for="room-barclub" class="room-label">
@@ -1020,7 +1021,7 @@
                                 <input type="checkbox" id="room-outdoor" name="rooms[]" value="outdoor"
                                        class="room-checkbox">
                                 <label for="room-outdoor" class="room-label">
-                                    <span class="room-name">outdoor</span>
+                                    <span class="room-name">bar & club / plaza</span>
                                 </label>
                             </div>
 
@@ -1468,8 +1469,8 @@
                     // Just show which rooms are blocked without times
                     infoHTML += '<div class="blocked-rooms-list" style="margin-top: 0.5rem;">';
                     infoHTML += currentLang === 'de'
-                        ? '<div style="opacity: 0.8;">Bitte wählen Sie eine Uhrzeit und Dauer, um die genaue Verfügbarkeit zu prüfen.</div>'
-                        : '<div style="opacity: 0.8;">Please select a time and duration to check exact availability.</div>';
+                        ? '<div style="opacity: 0.8;"></div>'
+                        : '<div style="opacity: 0.8;"></div>';
                     infoHTML += '</div>';
                 }
 
