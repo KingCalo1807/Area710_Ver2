@@ -1093,27 +1093,6 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        .clear-chat-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.2s;
-            margin-left: auto;
-            margin-right: 5px;
-        }
-
-        .clear-chat-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
         /* Messages */
         .chat-messages {
             flex: 1;
@@ -1286,102 +1265,6 @@
 
         .chat-messages::-webkit-scrollbar-thumb:hover {
             background: #999;
-        }
-
-        /* COOKIE BANNER */
-        #cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(17, 17, 17, 0.98);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--border);
-            padding: 1.5rem 2rem;
-            z-index: 10000;
-            transform: translateY(100%);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        #cookie-banner.show {
-            transform: translateY(0);
-        }
-
-        .cookie-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .cookie-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .cookie-text h3 {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--orange);
-        }
-
-        .cookie-text p {
-            font-weight: 300;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .cookie-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .cookie-btn {
-            padding: 0.8rem 1.8rem;
-            border: none;
-            cursor: pointer;
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 500;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .cookie-btn.accept {
-            background: linear-gradient(135deg, var(--orange), var(--red));
-            color: white;
-        }
-
-        .cookie-btn.accept:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(252, 171, 20, 0.4);
-        }
-
-        .cookie-btn.decline {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: white;
-        }
-
-        .cookie-btn.decline:hover {
-            border-color: var(--white);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        @media (max-width: 768px) {
-            .cookie-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .cookie-buttons {
-                width: 100%;
-                justify-content: center;
-            }
         }
 
         /* Mobile */
@@ -1706,7 +1589,6 @@
             <h3>Array</h3>
             <p>Online</p>
         </div>
-        <button class="clear-chat-btn" id="clear-chat" title="Chat löschen">🗑️</button>
         <button class="close-btn" id="close-chat">×</button>
     </div>
 
@@ -1737,7 +1619,7 @@
         <div class="footer-section">
             <h3 data-de="Kontakt" data-en="Contact">Kontakt</h3>
             <p><a href="tel:+4970314107311">+49 7031 41073-11</a></p>
-            <p><a href="/cdn-cgi/l/email-protection#98f1f6fef7d8f9eafdf9afa9a8b6fcfd"><span class="__cf_email__" data-cfemail="e0898e868fa081928581d7d1d0ce8485">[email&#160;protected]</span></a></p>
+            <p><a href="mailto:info@area710.de">info@area710.de</a></p>
         </div>
 
         <div class="footer-section">
@@ -1780,7 +1662,7 @@
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     // MOBILE MENU
     document.getElementById('mobileToggle').addEventListener('click', function () {
         document.getElementById('navMenu').classList.toggle('active');
@@ -1894,9 +1776,6 @@
     let consecutiveFailures = 0;
     const MAX_FAILURES = 3;
 
-    // Forward declaration for saveChatHistory (defined later in cookie section)
-    let saveChatHistory = function() {};
-
     // DOM Elements
     const chatButton = document.getElementById('chatbot-button');
     const chatWindow = document.getElementById('chatbot-window');
@@ -1907,10 +1786,7 @@
 
     // Initialize
     function init() {
-        // Nur Begrüßung zeigen, wenn Chat leer ist
-        if (messagesContainer.children.length === 0) {
-            addBotMessage("Hallo! 👋 Ich bin Array :). Wie kann ich dir helfen?");
-        }
+        addBotMessage("Hallo! 👋 Ich bin Array :). Wie kann ich dir helfen?");
     }
 
     // Toggle Chat
@@ -1939,9 +1815,6 @@
         messagesContainer.appendChild(messageDiv);
 
         scrollToBottom();
-
-        // Save to cookies after adding message
-        saveChatHistory();
     }
 
     // Add Bot Message with Typing Effect
@@ -2027,19 +1900,6 @@
     chatButton.addEventListener('click', toggleChat);
     closeBtn.addEventListener('click', toggleChat);
 
-    // Clear chat button
-    const clearChatBtn = document.getElementById('clear-chat');
-    clearChatBtn.addEventListener('click', () => {
-        // Alle Nachrichten löschen
-        messagesContainer.innerHTML = '';
-
-        // Chat-History aus Cookies löschen
-        localStorage.removeItem(CHAT_HISTORY_KEY);
-
-        // Willkommensnachricht anzeigen
-        addBotMessage("Hallo! 👋 Ich bin Array :). Wie kann ich dir helfen?");
-    });
-
     sendBtn.addEventListener('click', () => {
         processInput(userInput.value);
     });
@@ -2050,113 +1910,9 @@
         }
     });
 
-    // ==================== COOKIE MANAGEMENT ====================
-    const COOKIE_CONSENT_KEY = 'area710_cookie_consent';
-    const CHAT_HISTORY_KEY = 'area710_chat_history';
-    let cookiesAccepted = false;
-
-    // Check cookie consent on page load
-    function checkCookieConsent() {
-        const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
-        if (consent === null) {
-            // Show banner if no decision was made
-            setTimeout(() => {
-                document.getElementById('cookie-banner').classList.add('show');
-            }, 1000);
-        } else if (consent === 'accepted') {
-            cookiesAccepted = true;
-        }
-    }
-
-    function acceptCookies() {
-        localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted');
-        cookiesAccepted = true;
-        document.getElementById('cookie-banner').classList.remove('show');
-    }
-
-    function declineCookies() {
-        localStorage.setItem(COOKIE_CONSENT_KEY, 'declined');
-        cookiesAccepted = false;
-        // Clear any existing chat history
-        localStorage.removeItem(CHAT_HISTORY_KEY);
-        document.getElementById('cookie-banner').classList.remove('show');
-    }
-
-    // Make functions globally available
-    window.acceptCookies = acceptCookies;
-    window.declineCookies = declineCookies;
-
-    // Save chat history to cookies
-    saveChatHistory = function() {
-        if (!cookiesAccepted) return;
-
-        const messages = [];
-        document.querySelectorAll('#chat-messages .message').forEach(msg => {
-            const isBot = msg.classList.contains('bot');
-            const text = msg.querySelector('.message-bubble').innerHTML;
-            messages.push({ text, isBot });
-        });
-
-        localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(messages));
-    };
-
-    // Load chat history from cookies
-    function loadChatHistory() {
-        if (!cookiesAccepted) return;
-
-        const saved = localStorage.getItem(CHAT_HISTORY_KEY);
-        if (saved) {
-            try {
-                const messages = JSON.parse(saved);
-                messages.forEach(msg => {
-                    addMessageDirectly(msg.text, msg.isBot);
-                });
-            } catch (e) {
-                console.error('Error loading chat history:', e);
-            }
-        }
-    }
-
-    // Add message directly without triggering save (for loading history)
-    function addMessageDirectly(text, isBot = true) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${isBot ? 'bot' : 'user'}`;
-
-        const avatar = document.createElement('div');
-        avatar.className = 'message-avatar';
-
-        const bubble = document.createElement('div');
-        bubble.className = 'message-bubble';
-        bubble.innerHTML = text;
-
-        messageDiv.appendChild(avatar);
-        messageDiv.appendChild(bubble);
-        messagesContainer.appendChild(messageDiv);
-
-        scrollToBottom();
-    }
-
-    // Initialize cookie check and load history
-    checkCookieConsent();
-    loadChatHistory();
-
-    // Start loading knowledge base
+    // Initialize chatbot - lade zuerst die Knowledge Base
     loadKnowledgeBase();
 </script>
-
-<!-- COOKIE BANNER -->
-<div id="cookie-banner">
-    <div class="cookie-content">
-        <div class="cookie-text">
-            <h3>Cookie-Einstellungen</h3>
-            <p>Wir verwenden Cookies, um den Chat-Verlauf zu speichern und Ihnen ein besseres Erlebnis zu bieten. Durch das Akzeptieren von Cookies können wir Ihre Konversationen speichern.</p>
-        </div>
-        <div class="cookie-buttons">
-            <button class="cookie-btn accept" onclick="acceptCookies()">Akzeptieren</button>
-            <button class="cookie-btn decline" onclick="declineCookies()">Ablehnen</button>
-        </div>
-    </div>
-</div>
 
 </body>
 </html>
