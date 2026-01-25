@@ -1055,10 +1055,18 @@
             box-sizing: border-box;
             align-items: center;
             gap: 12px;
+            justify-content: space-between; /* Links: Titel, Rechts: Buttons */
             border-radius: 0;
             border-bottom: 2px solid;
             border-image: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green)) 1;
         }
+
+        /* Linke Gruppe: Bild + Text */
+.chat-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Abstand zwischen Bild und Text */
+}
 
         /* Pseudo-Element trick für perfekte abgerundete Ecken */
         .chat-header::before {
@@ -1091,6 +1099,12 @@
             margin: 0;
         }
 
+        .header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Abstand zwischen den Buttons */
+}
+
         .close-btn {
             margin-left: auto;
             background: none;
@@ -1113,19 +1127,17 @@
 
         .clear-chat-btn {
             background: none;
-            border: black;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.2s;
-            margin-left: auto;
-            margin-right: 5px;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
         }
 
         .clear-chat-btn:hover {
@@ -1718,14 +1730,18 @@
 <!-- Chatbot Window -->
 <div id="chatbot-window">
     <div class="chat-header">
+        <div class="chat-header-left">
         <img src="img/fav.png"
              alt="Bot Avatar">
         <div class="chat-header-text">
             <h3>Array</h3>
             <p>Online</p>
         </div>
+        </div>
+        <div class="header-buttons">
         <button class="clear-chat-btn" id="clear-chat" title="Chat löschen">🗑️</button>
         <button class="close-btn" id="close-chat">×</button>
+        </div>
     </div>
 
     <div class="chat-messages" id="chat-messages">
