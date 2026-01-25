@@ -969,50 +969,50 @@
         }
 
         /* Text separat animieren */
-#chatbot-button .chatbot-hint {
-    position: absolute;
-    top: 50%;
-    right: 70px;
-    transform: translateY(-50%) translateX(10px);
+        #chatbot-button .chatbot-hint {
+            position: absolute;
+            top: 50%;
+            right: 70px;
+            transform: translateY(-50%) translateX(10px);
 
-    background: #ffffff;
-    color: #000000;
-    padding: 10px 18px;
-    font-size: 0.7rem;
-    font-weight: 500;
+            background: #ffffff;
+            color: #000000;
+            padding: 10px 18px;
+            font-size: 0.7rem;
+            font-weight: 500;
 
-    border-radius: 999px;
-    white-space: nowrap;
+            border-radius: 999px;
+            white-space: nowrap;
 
-    opacity: 0;
-    pointer-events: none;
+            opacity: 0;
+            pointer-events: none;
 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 
-    transition: opacity 0.25s ease, transform 0.25s ease;
-}
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
 
-/* Text leicht verzögert */
-#chatbot-button .chatbot-hint::after {
-    content: attr(data-text);
-}
+        /* Text leicht verzögert */
+        #chatbot-button .chatbot-hint::after {
+            content: attr(data-text);
+        }
 
-.hint-text {
-    display: inline-block;
-    transform: translateX(6px);
-    opacity: 0;
-    transition: transform 0.25s ease 0.05s, opacity 0.25s ease 0.05s;
-}
+        .hint-text {
+            display: inline-block;
+            transform: translateX(6px);
+            opacity: 0;
+            transition: transform 0.25s ease 0.05s, opacity 0.25s ease 0.05s;
+        }
 
-#chatbot-button:hover .chatbot-hint {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
-}
+        #chatbot-button:hover .chatbot-hint {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
 
-#chatbot-button:hover .hint-text {
-    opacity: 1;
-    transform: translateX(0);
-}
+        #chatbot-button:hover .hint-text {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
         #chatbot-button img {
             width: 100%;
@@ -1036,6 +1036,7 @@
             opacity: 0;
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             z-index: 999;
+            overflow: hidden;
         }
 
         #chatbot-window.open {
@@ -1045,15 +1046,32 @@
 
         /* Header */
         .chat-header {
+            position: relative;
             background: linear-gradient(135deg, var(--black) 0%, var(--gray) 100%);
             color: var(--white);
             padding: 20px;
-            border-radius: 16px 16px 0 0;
             display: flex;
+            width: 100%;
+            box-sizing: border-box;
             align-items: center;
             gap: 12px;
+            border-radius: 0;
             border-bottom: 2px solid;
             border-image: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green)) 1;
+        }
+
+        /* Pseudo-Element trick für perfekte abgerundete Ecken */
+        .chat-header::before {
+            content: "";
+            position: absolute;
+            top: -2px; /* überdeckt die obere Kante */
+            left: -2px;
+            right: -2px;
+            height: 20px; /* genug, um die Ecken zu überdecken */
+            background: linear-gradient(135deg, var(--black) 0%, var(--gray) 100%);
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            z-index: -1;
         }
 
         .chat-header img {
@@ -1095,7 +1113,7 @@
 
         .clear-chat-btn {
             background: none;
-            border: none;
+            border: black;
             color: white;
             font-size: 18px;
             cursor: pointer;
@@ -1737,7 +1755,9 @@
         <div class="footer-section">
             <h3 data-de="Kontakt" data-en="Contact">Kontakt</h3>
             <p><a href="tel:+4970314107311">+49 7031 41073-11</a></p>
-            <p><a href="/cdn-cgi/l/email-protection#98f1f6fef7d8f9eafdf9afa9a8b6fcfd"><span class="__cf_email__" data-cfemail="e0898e868fa081928581d7d1d0ce8485">[email&#160;protected]</span></a></p>
+            <p><a href="/cdn-cgi/l/email-protection#98f1f6fef7d8f9eafdf9afa9a8b6fcfd"><span class="__cf_email__"
+                                                                                            data-cfemail="e0898e868fa081928581d7d1d0ce8485">[email&#160;protected]</span></a>
+            </p>
         </div>
 
         <div class="footer-section">
@@ -1780,7 +1800,8 @@
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
     // MOBILE MENU
     document.getElementById('mobileToggle').addEventListener('click', function () {
         document.getElementById('navMenu').classList.toggle('active');
@@ -1895,7 +1916,8 @@
     const MAX_FAILURES = 3;
 
     // Forward declaration for saveChatHistory (defined later in cookie section)
-    let saveChatHistory = function() {};
+    let saveChatHistory = function () {
+    };
 
     // DOM Elements
     const chatButton = document.getElementById('chatbot-button');
@@ -2087,14 +2109,14 @@
     window.declineCookies = declineCookies;
 
     // Save chat history to cookies
-    saveChatHistory = function() {
+    saveChatHistory = function () {
         if (!cookiesAccepted) return;
 
         const messages = [];
         document.querySelectorAll('#chat-messages .message').forEach(msg => {
             const isBot = msg.classList.contains('bot');
             const text = msg.querySelector('.message-bubble').innerHTML;
-            messages.push({ text, isBot });
+            messages.push({text, isBot});
         });
 
         localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(messages));
@@ -2149,7 +2171,8 @@
     <div class="cookie-content">
         <div class="cookie-text">
             <h3>Cookie-Einstellungen 🍪</h3>
-            <p>Wir verwenden Cookies, um den Chat-Verlauf zu speichern und Ihnen ein besseres Erlebnis zu bieten. Durch das Akzeptieren von Cookies können wir Ihre Konversationen speichern.</p>
+            <p>Wir verwenden Cookies, um den Chat-Verlauf zu speichern und Ihnen ein besseres Erlebnis zu bieten. Durch
+                das Akzeptieren von Cookies können wir Ihre Konversationen speichern.</p>
         </div>
         <div class="cookie-buttons">
             <button class="cookie-btn accept" onclick="acceptCookies()">Akzeptieren</button>
