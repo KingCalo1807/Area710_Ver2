@@ -1874,7 +1874,27 @@
     });
 
     // LANGUAGE SWITCHER
+    const LANGUAGE_PREF_KEY = 'area710_language_preference';
     let currentLang = 'de';
+
+    // Load saved language preference on page load
+    function loadLanguagePreference() {
+        const savedLang = localStorage.getItem(LANGUAGE_PREF_KEY);
+        if (savedLang && (savedLang === 'de' || savedLang === 'en')) {
+            currentLang = savedLang;
+
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === savedLang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Apply saved language
+            translatePage(savedLang);
+        }
+    }
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', function () {
@@ -1905,6 +1925,9 @@
         if (typeof updateChatbotLanguage === 'function') {
             updateChatbotLanguage(lang);
         }
+
+        // Save language preference to localStorage
+        localStorage.setItem(LANGUAGE_PREF_KEY, lang);
     }
 
 
@@ -2157,8 +2180,9 @@
     function declineCookies() {
         localStorage.setItem(COOKIE_CONSENT_KEY, 'declined');
         cookiesAccepted = false;
-        // Clear any existing chat history
+        // Clear any existing chat history and language preference
         localStorage.removeItem(CHAT_HISTORY_KEY);
+        localStorage.removeItem(LANGUAGE_PREF_KEY);
         document.getElementById('cookie-banner').classList.remove('show');
     }
 
@@ -2220,6 +2244,9 @@
     checkCookieConsent();
     loadChatHistory();
 
+    // Load saved language preference
+    loadLanguagePreference();
+
     // Start loading knowledge base
     loadKnowledgeBase();
 </script>
@@ -2229,8 +2256,8 @@
     <div class="cookie-content">
         <div class="cookie-text">
             <h3>Cookie-Einstellungen 🍪</h3>
-            <p>Wir verwenden Cookies, um den Chat-Verlauf zu speichern und Ihnen ein besseres Erlebnis zu bieten. Durch
-                das Akzeptieren von Cookies können wir Ihre Konversationen speichern.</p>
+            <p>Wir verwenden Cookies, um den Chat-Verlauf und Ihre Spracheinstellung zu speichern und Ihnen ein besseres Erlebnis zu bieten. Durch
+                das Akzeptieren von Cookies können wir Ihre Konversationen und Präferenzen speichern.</p>
         </div>
         <div class="cookie-buttons">
             <button class="cookie-btn accept" onclick="acceptCookies()">Akzeptieren</button>
