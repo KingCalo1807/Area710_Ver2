@@ -1900,11 +1900,17 @@
         });
 
         document.documentElement.lang = lang;
+
+        // Update chatbot language
+        if (typeof updateChatbotLanguage === 'function') {
+            updateChatbotLanguage(lang);
+        }
     }
 
 
     // JSON Knowledge Base - wird aus externer Datei geladen
     let knowledgeBase = null;
+    let chatbotLang = 'de'; // Current chatbot language
 
     // Lade Knowledge Base
     async function loadKnowledgeBase() {
@@ -1917,12 +1923,34 @@
             init();
         } catch (error) {
             console.error('Fehler beim Laden der Knowledge Base:', error);
-            // Fallback Knowledge Base
+            // Fallback Knowledge Base with multi-language support
             knowledgeBase = {
-                "intents": [],
-                "fallback": "Der Chatbot konnte nicht korrekt geladen werden. Bitte kontaktiere uns direkt."
+                "de": {
+                    "intents": [],
+                    "fallback": "Der Chatbot konnte nicht korrekt geladen werden. Bitte kontaktiere uns direkt.",
+                    "greeting": "Hallo! 👋 Ich bin Array :). Wie kann ich dir helfen?",
+                    "maxFailuresMessage": "Es scheint, als könnte ich dir aktuell nicht weiterhelfen. Möchtest du direkt mit unserem Team sprechen?"
+                },
+                "en": {
+                    "intents": [],
+                    "fallback": "The chatbot could not be loaded correctly. Please contact us directly.",
+                    "greeting": "Hello! 👋 I'm Array :). How can I help you?",
+                    "maxFailuresMessage": "It seems I can't help you at the moment. Would you like to speak directly with our team?"
+                }
             };
             init();
+        }
+    }
+
+    // Update chatbot language when page language changes
+    function updateChatbotLanguage(lang) {
+        chatbotLang = lang;
+        // Update greeting if chat is empty or only has greeting
+        if (messagesContainer.children.length <= 1) {
+            messagesContainer.innerHTML = '';
+            if (knowledgeBase && knowledgeBase[chatbotLang]) {
+                addBotMessage(knowledgeBase[chatbotLang].greeting);
+            }
         }
     }
 
@@ -1947,7 +1975,11 @@
     function init() {
         // Nur Begrüßung zeigen, wenn Chat leer ist
         if (messagesContainer.children.length === 0) {
-            addBotMessage("Hallo! 👋 Ich bin Array :). Wie kann ich dir helfen?");
+            if (knowledgeBase && knowledgeBase[chatbotLang]) {
+                addBotMessage(knowledgeBase[chatbotLang].greeting);
+            } else {
+                addBotMessage("Hallo! 👋 Ich bin Array :). Wie kann ich dir helfen?");
+            }
         }
     }
 
@@ -2040,8 +2072,14 @@
     function getResponse(input) {
         const normalizedInput = input.toLowerCase().trim();
 
+        // Get current language knowledge base
+        const currentKB = knowledgeBase[chatbotLang];
+        if (!currentKB) {
+            return "Language not supported.";
+        }
+
         // Check each intent
-        for (const intent of knowledgeBase.intents) {
+        for (const intent of currentKB.intents) {
             for (const keyword of intent.keywords) {
                 if (normalizedInput.includes(keyword.toLowerCase())) {
                     consecutiveFailures = 0;
@@ -2055,10 +2093,10 @@
 
         if (consecutiveFailures >= MAX_FAILURES) {
             consecutiveFailures = 0;
-            return "Es scheint, als könnte ich dir aktuell nicht weiterhelfen. Möchtest du direkt mit unserem Team sprechen? <a href='contact.html' style='color: #FCAB14; text-decoration: underline;'>Hier geht's zum Kontaktformular</a>";
+            return currentKB.maxFailuresMessage || "Es scheint, als könnte ich dir aktuell nicht weiterhelfen. Möchtest du direkt mit unserem Team sprechen? <a href='contact.html' style='color: #FCAB14; text-decoration: underline;'>Hier geht's zum Kontaktformular</a>";
         }
 
-        return knowledgeBase.fallback;
+        return currentKB.fallback;
     }
 
     // Event Listeners
@@ -2075,7 +2113,11 @@
         localStorage.removeItem(CHAT_HISTORY_KEY);
 
         // Willkommensnachricht anzeigen
-        addBotMessage("Hallo! 👋 Ich bin Array :). Wie kann ich dir helfen?");
+        if (knowledgeBase && knowledgeBase[chatbotLang]) {
+            addBotMessage(knowledgeBase[chatbotLang].greeting);
+        } else {
+            addBotMessage("Hallo! 👋 Ich bin Array :). Wie kann ich dir helfen?");
+        }
     });
 
     sendBtn.addEventListener('click', () => {

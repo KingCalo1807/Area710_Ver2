@@ -1,77 +1,160 @@
 {
-  "intents": [
-    {
-      "keywords": ["preis", "preise", "kosten", "miete", "raummiete", "gebühr", "bezahlen", "buchen"],
-      "answer": "Unsere Preise hängen von den jeweilig gebuchten Räumen ab. Für individuelle Angebote kontaktiere uns gerne! <a href='contact.html' style='color: var(--blue); text-decoration: underline;'>Hier gehts zum Kontaktformular!</a>."
-    },
-    {
-      "keywords": ["kontakt", "email", "telefon", "erreichen", "anfrage", "support"],
-      "answer": "Du erreichst die area710 per E-Mail unter info@area710.de oder telefonisch unter +49 7031 41073-11."
-    },
-    {
-      "keywords": ["öffnungszeiten", "geöffnet", "zeiten", "wann offen"],
-      "answer": "Wir sind Montag bis Freitag von 10:00 bis 18:00 Uhr für dich da. Deine private Veranstallung kann jedoch open-end bis in die Morgenstunden gehen."
-    },
-    {
-      "keywords": ["adresse", "standort", "lage", "anfahrt", "wo"],
-      "answer": "Die area710 befindet sich in der Gottlieb-Binder-Straße 2, 71088 Holzgerlingen, im Industriegebiet. Dadurch sind Veranstaltungen auch ohne Sperrstunde möglich."
-    },
-    {
-      "keywords": ["fläche", "größe", "qm", "gesamtfläche"],
-      "answer": "Die area710 verfügt über eine Gesamtfläche von rund 1.200 m², bestehend aus mehreren Innenräumen sowie großzügigen Outdoor-Bereichen."
-    },
-    {
-      "keywords": ["kapazität", "personen", "gäste", "wie viele"],
-      "answer": "Je nach Raum und Bestuhlungsart bietet die area710 Platz für bis zu ca. 300 Personen sitzend bzw. bis zu etwa 500 Personen stehend."
-    },
-    {
-      "keywords": ["räume", "räume info", "säle", "bereiche", "hall", "lab", "bar", "club", "plaza"],
-      "answer": "Die area710 bietet mehrere flexibel nutzbare Bereiche: Hall (Eventraum mit Videowall und Balkon), Lab (multifunktionaler Raum mit großer LED-Wand), Bar & Club (Abend- und Partybereich) sowie eine große Outdoor-Plaza mit Outdoorküche und Technik. <a href='raueme.html' style='color: var(--blue); text-decoration: underline;'>Hier gehts zu unseren Räumen!</a>."
-    },
-    {
-      "keywords": ["technik", "ausstattung", "licht", "ton", "beamer", "led"],
-      "answer": "Zur Ausstattung gehören professionelle Licht- und Tontechnik, LED-Wände, Beamer, Leinwände, WLAN sowie Küchen- und Barbereiche. Die technische Ausstattung variiert je nach Raum."
-    },
-    {
-      "keywords": ["outdoor", "außenbereich", "terrasse", "plaza"],
-      "answer": "Der Outdoor-Bereich der area710 umfasst mehrere hundert Quadratmeter und bietet unter anderem eine Outdoorküche, mobile Soundtechnik, Feuerschalen, Heizpilze und teilweise überdachte Flächen."
-    },
-    {
-      "keywords": ["hochzeit", "hochzeitslocation", "trauung", "heiraten"],
-      "answer": "Die area710 wird auch als Hochzeitslocation genutzt. Je nach Raumkonzept sind Hochzeiten mit etwa 160–180 Gästen möglich. Technik, Catering und externe Dienstleister können eingebunden werden."
-    },
-    {
-      "keywords": ["business", "seminar", "workshop", "tagung", "meeting"],
-      "answer": "Für Business-Events eignet sich die area710 für Seminare, Workshops, Tagungen, Produktpräsentationen und Firmenevents mit moderner Präsentations- und Medientechnik."
-    },
-    {
-      "keywords": ["events", "veranstaltungen", "partys", "eventkalender", "programm"],
-      "answer": "In der area710 finden regelmäßig öffentliche und private Events statt, darunter Tanznächte, Ü30-Partys, Halloween-Events, Mottopartys sowie Firmen- und Privatveranstaltungen. Öffentliche Termine werden über Eventportale veröffentlicht."
-    },
-    {
-      "keywords": ["anreise", "parken", "parkplatz", "bahn", "öpnv"],
-      "answer": "Die area710 ist gut erreichbar: Parkplätze sind vor Ort vorhanden. Die Schönbuchbahn-Haltestelle liegt nur wenige Gehminuten entfernt. Die Autobahn A81 sowie der Flughafen Stuttgart sind ebenfalls gut erreichbar."
-    },
-    {
-      "keywords": ["barrierefrei", "rollstuhl", "zugang"],
-      "answer": "Die area710 ist barrierefrei zugänglich und eignet sich daher auch für Veranstaltungen mit mobilitätseingeschränkten Gästen."
-    },
-    {
-      "keywords": ["catering", "essen", "trinken", "getränke"],
-      "answer": "Catering-Leistungen sind optional zubuchbar oder können über externe Dienstleister erfolgen. In mehreren Bereichen stehen Küchen- und Barflächen zur Verfügung."
-    },
-    {
-      "keywords": ["hallo", "hi", "hey", "guten tag", "moin"],
-      "answer": "Hallo! Wie kann ich dir Informationen zur area710 in Holzgerlingen geben?"
-    },
-    {
-      "keywords": ["danke", "dankeschön", "vielen dank"],
-      "answer": "Sehr gerne! Wenn du noch weitere Fragen hast, helfe ich dir gerne weiter."
-    },
-    {
-      "keywords": ["tschüss", "bye", "auf wiedersehen"],
-      "answer": "Auf Wiedersehen und bis bald!"
-    }
-  ],
-  "fallback": "Diese Information konnte ich leider nicht eindeutig finden. Formuliere deine Frage bitte anders oder frage nach einem anderen Thema zur area710."
+  "de": {
+    "intents": [
+      {
+        "keywords": ["preis", "preise", "kosten", "miete", "raummiete", "gebühr", "bezahlen", "buchen"],
+        "answer": "Unsere Preise hängen von den jeweilig gebuchten Räumen ab. Für individuelle Angebote kontaktiere uns gerne! <a href='contact.html' style='color: var(--blue); text-decoration: underline;'>Hier gehts zum Kontaktformular!</a>."
+      },
+      {
+        "keywords": ["kontakt", "email", "telefon", "erreichen", "anfrage", "support"],
+        "answer": "Du erreichst die area710 per E-Mail unter info@area710.de oder telefonisch unter +49 7031 41073-11."
+      },
+      {
+        "keywords": ["öffnungszeiten", "geöffnet", "zeiten", "wann offen"],
+        "answer": "Wir sind Montag bis Freitag von 10:00 bis 18:00 Uhr für dich da. Deine private Veranstallung kann jedoch open-end bis in die Morgenstunden gehen."
+      },
+      {
+        "keywords": ["adresse", "standort", "lage", "anfahrt", "wo"],
+        "answer": "Die area710 befindet sich in der Gottlieb-Binder-Straße 2, 71088 Holzgerlingen, im Industriegebiet. Dadurch sind Veranstaltungen auch ohne Sperrstunde möglich."
+      },
+      {
+        "keywords": ["fläche", "größe", "qm", "gesamtfläche"],
+        "answer": "Die area710 verfügt über eine Gesamtfläche von rund 1.200 m², bestehend aus mehreren Innenräumen sowie großzügigen Outdoor-Bereichen."
+      },
+      {
+        "keywords": ["kapazität", "personen", "gäste", "wie viele"],
+        "answer": "Je nach Raum und Bestuhlungsart bietet die area710 Platz für bis zu ca. 300 Personen sitzend bzw. bis zu etwa 500 Personen stehend."
+      },
+      {
+        "keywords": ["räume", "räume info", "säle", "bereiche", "hall", "lab", "bar", "club", "plaza"],
+        "answer": "Die area710 bietet mehrere flexibel nutzbare Bereiche: Hall (Eventraum mit Videowall und Balkon), Lab (multifunktionaler Raum mit großer LED-Wand), Bar & Club (Abend- und Partybereich) sowie eine große Outdoor-Plaza mit Outdoorküche und Technik. <a href='raueme.html' style='color: var(--blue); text-decoration: underline;'>Hier gehts zu unseren Räumen!</a>."
+      },
+      {
+        "keywords": ["technik", "ausstattung", "licht", "ton", "beamer", "led"],
+        "answer": "Zur Ausstattung gehören professionelle Licht- und Tontechnik, LED-Wände, Beamer, Leinwände, WLAN sowie Küchen- und Barbereiche. Die technische Ausstattung variiert je nach Raum."
+      },
+      {
+        "keywords": ["outdoor", "außenbereich", "terrasse", "plaza"],
+        "answer": "Der Outdoor-Bereich der area710 umfasst mehrere hundert Quadratmeter und bietet unter anderem eine Outdoorküche, mobile Soundtechnik, Feuerschalen, Heizpilze und teilweise überdachte Flächen."
+      },
+      {
+        "keywords": ["hochzeit", "hochzeitslocation", "trauung", "heiraten"],
+        "answer": "Die area710 wird auch als Hochzeitslocation genutzt. Je nach Raumkonzept sind Hochzeiten mit etwa 160–180 Gästen möglich. Technik, Catering und externe Dienstleister können eingebunden werden."
+      },
+      {
+        "keywords": ["business", "seminar", "workshop", "tagung", "meeting"],
+        "answer": "Für Business-Events eignet sich die area710 für Seminare, Workshops, Tagungen, Produktpräsentationen und Firmenevents mit moderner Präsentations- und Medientechnik."
+      },
+      {
+        "keywords": ["events", "veranstaltungen", "partys", "eventkalender", "programm"],
+        "answer": "In der area710 finden regelmäßig öffentliche und private Events statt, darunter Tanznächte, Ü30-Partys, Halloween-Events, Mottopartys sowie Firmen- und Privatveranstaltungen. Öffentliche Termine werden über Eventportale veröffentlicht."
+      },
+      {
+        "keywords": ["anreise", "parken", "parkplatz", "bahn", "öpnv"],
+        "answer": "Die area710 ist gut erreichbar: Parkplätze sind vor Ort vorhanden. Die Schönbuchbahn-Haltestelle liegt nur wenige Gehminuten entfernt. Die Autobahn A81 sowie der Flughafen Stuttgart sind ebenfalls gut erreichbar."
+      },
+      {
+        "keywords": ["barrierefrei", "rollstuhl", "zugang"],
+        "answer": "Die area710 ist barrierefrei zugänglich und eignet sich daher auch für Veranstaltungen mit mobilitätseingeschränkten Gästen."
+      },
+      {
+        "keywords": ["catering", "essen", "trinken", "getränke"],
+        "answer": "Catering-Leistungen sind optional zubuchbar oder können über externe Dienstleister erfolgen. In mehreren Bereichen stehen Küchen- und Barflächen zur Verfügung."
+      },
+      {
+        "keywords": ["hallo", "hi", "hey", "guten tag", "moin"],
+        "answer": "Hallo! Wie kann ich dir Informationen zur area710 in Holzgerlingen geben?"
+      },
+      {
+        "keywords": ["danke", "dankeschön", "vielen dank"],
+        "answer": "Sehr gerne! Wenn du noch weitere Fragen hast, helfe ich dir gerne weiter."
+      },
+      {
+        "keywords": ["tschüss", "bye", "auf wiedersehen"],
+        "answer": "Auf Wiedersehen und bis bald!"
+      }
+    ],
+    "fallback": "Diese Information konnte ich leider nicht eindeutig finden. Formuliere deine Frage bitte anders oder frage nach einem anderen Thema zur area710.",
+    "greeting": "Hallo! 👋 Ich bin Array :). Wie kann ich dir helfen?",
+    "maxFailuresMessage": "Es scheint, als könnte ich dir aktuell nicht weiterhelfen. Möchtest du direkt mit unserem Team sprechen? <a href='contact.html' style='color: #FCAB14; text-decoration: underline;'>Hier geht's zum Kontaktformular</a>"
+  },
+  "en": {
+    "intents": [
+      {
+        "keywords": ["price", "prices", "cost", "rent", "rental", "fee", "pay", "book"],
+        "answer": "Our prices depend on the rooms booked. For individual offers, feel free to contact us! <a href='contact.html' style='color: var(--blue); text-decoration: underline;'>Click here for the contact form!</a>."
+      },
+      {
+        "keywords": ["contact", "email", "phone", "reach", "inquiry", "support"],
+        "answer": "You can reach area710 by email at info@area710.de or by phone at +49 7031 41073-11."
+      },
+      {
+        "keywords": ["opening hours", "open", "hours", "when open", "opening times"],
+        "answer": "We are available for you Monday to Friday from 10:00 AM to 6:00 PM. However, your private event can go open-end until the early morning hours."
+      },
+      {
+        "keywords": ["address", "location", "where", "directions"],
+        "answer": "The area710 is located at Gottlieb-Binder-Straße 2, 71088 Holzgerlingen, in the industrial area. This allows events without curfew restrictions."
+      },
+      {
+        "keywords": ["area", "size", "sqm", "square meters", "total area"],
+        "answer": "The area710 has a total area of around 1.200 m², consisting of several indoor rooms and spacious outdoor areas."
+      },
+      {
+        "keywords": ["capacity", "people", "guests", "how many"],
+        "answer": "Depending on the room and seating arrangement, area710 can accommodate up to approximately 300 people seated or up to about 500 people standing."
+      },
+      {
+        "keywords": ["rooms", "room info", "halls", "areas", "hall", "lab", "bar", "club", "plaza"],
+        "answer": "The area710 offers several flexibly usable areas: Hall (event room with video wall and balcony), Lab (multifunctional room with large LED wall), Bar & Club (evening and party area), and a large Outdoor Plaza with outdoor kitchen and technology. <a href='raueme.html' style='color: var(--blue); text-decoration: underline;'>Click here for our rooms!</a>."
+      },
+      {
+        "keywords": ["technology", "equipment", "light", "sound", "projector", "led"],
+        "answer": "The equipment includes professional lighting and sound technology, LED walls, projectors, screens, WiFi, as well as kitchen and bar areas. The technical equipment varies depending on the room."
+      },
+      {
+        "keywords": ["outdoor", "outside area", "terrace", "plaza"],
+        "answer": "The outdoor area of area710 spans several hundred square meters and includes an outdoor kitchen, mobile sound system, fire bowls, patio heaters, and partially covered areas."
+      },
+      {
+        "keywords": ["wedding", "wedding venue", "ceremony", "marry"],
+        "answer": "The area710 is also used as a wedding venue. Depending on the room concept, weddings with approximately 160-180 guests are possible. Technology, catering, and external service providers can be integrated."
+      },
+      {
+        "keywords": ["business", "seminar", "workshop", "conference", "meeting"],
+        "answer": "For business events, area710 is suitable for seminars, workshops, conferences, product presentations, and corporate events with modern presentation and media technology."
+      },
+      {
+        "keywords": ["events", "functions", "parties", "event calendar", "program"],
+        "answer": "Regular public and private events take place at area710, including dance nights, over-30 parties, Halloween events, themed parties, as well as corporate and private events. Public dates are published on event portals."
+      },
+      {
+        "keywords": ["arrival", "parking", "parking lot", "train", "public transport"],
+        "answer": "The area710 is easily accessible: parking is available on site. The Schönbuchbahn stop is just a few minutes' walk away. The A81 highway and Stuttgart Airport are also easily accessible."
+      },
+      {
+        "keywords": ["accessible", "wheelchair", "access", "barrier-free"],
+        "answer": "The area710 is wheelchair accessible and is therefore also suitable for events with mobility-impaired guests."
+      },
+      {
+        "keywords": ["catering", "food", "drink", "beverages"],
+        "answer": "Catering services can be optionally booked or provided through external service providers. Kitchen and bar areas are available in several areas."
+      },
+      {
+        "keywords": ["hello", "hi", "hey", "good day", "greetings"],
+        "answer": "Hello! How can I provide you with information about area710 in Holzgerlingen?"
+      },
+      {
+        "keywords": ["thanks", "thank you", "thanks a lot"],
+        "answer": "You're very welcome! If you have any more questions, I'm happy to help."
+      },
+      {
+        "keywords": ["goodbye", "bye", "see you"],
+        "answer": "Goodbye and see you soon!"
+      }
+    ],
+    "fallback": "Unfortunately, I couldn't find this information clearly. Please rephrase your question or ask about another topic related to area710.",
+    "greeting": "Hello! 👋 I'm Array :). How can I help you?",
+    "maxFailuresMessage": "It seems I can't help you at the moment. Would you like to speak directly with our team? <a href='contact.html' style='color: #FCAB14; text-decoration: underline;'>Click here for the contact form</a>"
+  }
 }
