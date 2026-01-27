@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet">
 
+
     <style>
         * {
             margin: 0;
@@ -713,6 +714,11 @@
                 padding: 2rem 1.5rem;
             }
         }
+
+        .icon-white {
+            filter: brightness(0) invert(1);
+        }
+
     </style>
 </head>
 <body>
@@ -950,7 +956,8 @@
 
                 <div class="equipment-footer">
                     <a href="booking.html?room=outdoor" class="btn lang-de">bar & club / plaza anfragen</a>
-                    <a href="booking.html?room=outdoor" class="btn lang-en" style="display:none;">Request bar & club / plaza</a>
+                    <a href="booking.html?room=outdoor" class="btn lang-en" style="display:none;">Request bar & club /
+                        plaza</a>
                 </div>
             </div>
         </div>
@@ -1099,12 +1106,7 @@
             <!-- Parking & Accessibility -->
             <div class="general-card">
                 <div class="general-icon">
-                    <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="5" y="11" width="14" height="10" rx="2"/>
-                        <circle cx="9" cy="17" r="2"/>
-                        <circle cx="15" cy="17" r="2"/>
-                        <path d="M5 11V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5"/>
-                    </svg>
+                    <img src="img/parking-sign.png" alt="Auto" class="icon-white"/>
                 </div>
                 <h3 class="general-title lang-de">Parken & Erreichbarkeit</h3>
                 <h3 class="general-title lang-en" style="display:none;">Parking & Accessibility</h3>
@@ -1209,12 +1211,12 @@
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', function () {
-            const targetLang = this.dataset.lang;
-            if (targetLang === currentLang) return;
+            const lang = this.dataset.lang;
+            if (lang === currentLang) return;
 
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            currentLang = targetLang;
+            currentLang = lang;
 
             // Hide all language elements
             document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
@@ -1222,13 +1224,21 @@
             });
 
             // Show selected language elements
-            document.querySelectorAll(`.lang-${targetLang}`).forEach(el => {
+            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
                 el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
             });
 
-            document.documentElement.lang = targetLang;
+            document.documentElement.lang = lang;
+            localStorage.setItem('area710_language_preference', lang);
         });
     });
+    // Load saved language on page load
+    const savedLang = localStorage.getItem('area710_language_preference');
+    if (savedLang) {
+        setTimeout(() => {
+            document.querySelector(`.lang-btn[data-lang="${savedLang}"]`)?.click();
+        }, 100);
+    }
 </script>
 
 </body>

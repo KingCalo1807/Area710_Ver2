@@ -1296,6 +1296,7 @@
             }
         });
         document.documentElement.lang = lang;
+        localStorage.setItem('area710_language_preference', lang);
     }
 
     // ========================================
@@ -1677,7 +1678,15 @@
         }
     });
 
-    </script>
+    // Load saved language on page load
+    const savedLang = localStorage.getItem('area710_language_preference');
+    if (savedLang) {
+        setTimeout(() => {
+            document.querySelector(`.lang-btn[data-lang="${savedLang}"]`)?.click();
+        }, 100);
+    }
+
+</script>
 
 </body>
 </html>
