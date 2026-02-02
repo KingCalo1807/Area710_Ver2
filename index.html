@@ -1753,11 +1753,9 @@
         <input
                 type="text"
                 id="user-input"
-                class="lang-input"
-                data-placeholder-de="Schreibe eine Nachricht..."
-                data-placeholder-en="Type a message..."
-                placeholder="Schreibe eine Nachricht..."
                 autocomplete="off"
+                data-placeholder-de="Schreibe eine Nachricht..."
+                data-placeholder-en="Write a message..."
         >
         <button id="send-btn">➤</button>
     </div>
@@ -1946,6 +1944,16 @@
 
         // Save language preference to localStorage
         localStorage.setItem(LANGUAGE_PREF_KEY, lang);
+
+        const chatInput = document.getElementById('user-input');
+        if (chatInput) {
+            if (lang === 'de' && chatInput.dataset.placeholderDe) {
+                chatInput.placeholder = chatInput.dataset.placeholderDe;
+            } else if (lang === 'en' && chatInput.dataset.placeholderEn) {
+                chatInput.placeholder = chatInput.dataset.placeholderEn;
+            }
+        }
+
     }
 
 
@@ -1986,15 +1994,6 @@
     // Update chatbot language when page language changes
     function updateChatbotLanguage(lang) {
         chatbotLang = lang;
-
-        const input = document.getElementById('user-input');
-        const placeholder = input.getAttribute(`data-${lang}`);
-
-        if (placeholder) {
-            input.placeholder = placeholder;
-        }
-
-
         // Update greeting if chat is empty or only has greeting
         if (messagesContainer.children.length <= 1) {
             messagesContainer.innerHTML = '';
@@ -2277,7 +2276,6 @@
 
     // Start loading knowledge base
     loadKnowledgeBase();
-    updateChatbotLanguage(chatbotLang);
 </script>
 
 <!-- COOKIE BANNER -->
