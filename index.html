@@ -1062,11 +1062,11 @@
         }
 
         /* Linke Gruppe: Bild + Text */
-.chat-header-left {
-    display: flex;
-    align-items: center;
-    gap: 12px; /* Abstand zwischen Bild und Text */
-}
+        .chat-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px; /* Abstand zwischen Bild und Text */
+        }
 
         /* Pseudo-Element trick für perfekte abgerundete Ecken */
         .chat-header::before {
@@ -1100,10 +1100,10 @@
         }
 
         .header-buttons {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Abstand zwischen den Buttons */
-}
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Abstand zwischen den Buttons */
+        }
 
         .close-btn {
             margin-left: auto;
@@ -1127,17 +1127,17 @@
 
         .clear-chat-btn {
             background: none;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: background 0.2s;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s;
         }
 
         .clear-chat-btn:hover {
@@ -1723,24 +1723,25 @@
 <button id="chatbot-button" aria-label="Chat öffnen">
     <img src="img/fav.png" alt="Chat Avatar">
     <span class="chatbot-hint">
-        <span class="hint-text">Chatte mit Array - unserem Chatbot</span>
-    </span>
+    <span class="hint-text lang-de">Chatte mit Array – unserem Chatbot</span>
+    <span class="hint-text lang-en" style="display:none;">Chat with Array – our chatbot</span>
+</span>
 </button>
 
 <!-- Chatbot Window -->
 <div id="chatbot-window">
     <div class="chat-header">
         <div class="chat-header-left">
-        <img src="img/fav.png"
-             alt="Bot Avatar">
-        <div class="chat-header-text">
-            <h3>Array</h3>
-            <p>Online</p>
-        </div>
+            <img src="img/fav.png"
+                 alt="Bot Avatar">
+            <div class="chat-header-text">
+                <h3>Array</h3>
+                <p>Online</p>
+            </div>
         </div>
         <div class="header-buttons">
-        <button class="clear-chat-btn" id="clear-chat" title="Chat löschen">🗑️</button>
-        <button class="close-btn" id="close-chat">×</button>
+            <button class="clear-chat-btn" id="clear-chat" title="Chat löschen">🗑️</button>
+            <button class="close-btn" id="close-chat">×</button>
         </div>
     </div>
 
@@ -1749,7 +1750,15 @@
     </div>
 
     <div class="chat-input">
-        <input type="text" id="user-input" placeholder="Schreibe eine Nachricht..." autocomplete="off">
+        <input
+                type="text"
+                id="user-input"
+                class="lang-input"
+                data-placeholder-de="Schreibe eine Nachricht..."
+                data-placeholder-en="Type a message..."
+                placeholder="Schreibe eine Nachricht..."
+                autocomplete="off"
+        >
         <button id="send-btn">➤</button>
     </div>
 </div>
@@ -1977,6 +1986,15 @@
     // Update chatbot language when page language changes
     function updateChatbotLanguage(lang) {
         chatbotLang = lang;
+
+        const input = document.getElementById('user-input');
+        const placeholder = input.getAttribute(`data-${lang}`);
+
+        if (placeholder) {
+            input.placeholder = placeholder;
+        }
+
+
         // Update greeting if chat is empty or only has greeting
         if (messagesContainer.children.length <= 1) {
             messagesContainer.innerHTML = '';
@@ -2113,7 +2131,8 @@
         // Check each intent
         for (const intent of currentKB.intents) {
             for (const keyword of intent.keywords) {
-                if (normalizedInput.includes(keyword.toLowerCase())) {
+                const regex = new RegExp(`\\b${keyword.toLowerCase()}\\b`);
+                if (regex.test(normalizedInput)) {
                     consecutiveFailures = 0;
                     return intent.answer;
                 }
@@ -2258,6 +2277,7 @@
 
     // Start loading knowledge base
     loadKnowledgeBase();
+    updateChatbotLanguage(chatbotLang);
 </script>
 
 <!-- COOKIE BANNER -->
@@ -2265,7 +2285,8 @@
     <div class="cookie-content">
         <div class="cookie-text">
             <h3>Cookie-Einstellungen 🍪</h3>
-            <p>Wir verwenden Cookies, um den Chat-Verlauf und Ihre Spracheinstellung zu speichern und Ihnen ein besseres Erlebnis zu bieten. Durch
+            <p>Wir verwenden Cookies, um den Chat-Verlauf und Ihre Spracheinstellung zu speichern und Ihnen ein besseres
+                Erlebnis zu bieten. Durch
                 das Akzeptieren von Cookies können wir Ihre Konversationen und Präferenzen speichern.</p>
         </div>
         <div class="cookie-buttons">
