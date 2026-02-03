@@ -1124,7 +1124,7 @@
                         <div class="contact-icon">📧</div>
                         <div class="contact-info">
                             <div data-de="E-Mail" data-en="Email">E-Mail</div>
-                            <a href="mailto:info@area710.de">info@area710.de</a>
+                            <a href="/cdn-cgi/l/email-protection#7e171018113e1f0c1b1f494f4e501a1b"><span class="__cf_email__" data-cfemail="e1888f878ea180938480d6d0d1cf8584">[email&#160;protected]</span></a>
                         </div>
                     </div>
 
@@ -1170,7 +1170,7 @@
         <div class="footer-section">
             <h3 data-de="Kontakt" data-en="Contact">Kontakt</h3>
             <p><a href="tel:+4870314107311">+49 7031 41073-11</a></p>
-            <p><a href="mailto:info@area710.de">info@area710.de</a></p>
+            <p><a href="/cdn-cgi/l/email-protection#bbd2d5ddd4fbdac9deda8c8a8b95dfde"><span class="__cf_email__" data-cfemail="5c35323a331c3d2e393d6b6d6c723839">[email&#160;protected]</span></a></p>
         </div>
 
         <div class="footer-section">
@@ -1213,7 +1213,7 @@
     </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ========================================
     // CSRF TOKEN MANAGEMENT
     // ========================================
@@ -1394,142 +1394,13 @@
             enableAllRooms();
             if (submitBtn) submitBtn.disabled = false;
         } else {
-            // Check if user has selected time AND duration
-            const hasCompleteTimeInfo = selectedTime && duration;
-
-            let roomBlockDetails = {};
-
-            blockedForDate.forEach(item => {
-                const rooms = Array.isArray(item.room) ? item.room : (item.room ? [item.room] : ['hall', 'lab', 'barclub', 'outdoor']);
-                const startTime = item.startTime || '00:00';
-                const endTime = item.endTime || '23:59';
-
-                // If time info is complete, check for overlap; otherwise, assume all blocks apply
-                let hasTimeConflict = true;
-
-                if (hasCompleteTimeInfo) {
-                    hasTimeConflict = checkTimeOverlap(selectedTime, duration, startTime, endTime);
-                }
-
-                if (hasTimeConflict) {
-                    rooms.forEach(room => {
-                        if (!roomBlockDetails[room]) {
-                            roomBlockDetails[room] = [];
-                        }
-                        roomBlockDetails[room].push({
-                            startTime: startTime,
-                            endTime: endTime,
-                            reason: item.reason
-                        });
-                    });
-                }
-            });
-
-            const uniqueBlocked = Object.keys(roomBlockDetails);
-
-            if (uniqueBlocked.length === 0) {
-                // This only happens when time is selected and no conflicts found
-                availabilityInfo.className = 'availability-info available show';
-                availabilityInfo.innerHTML = currentLang === 'de'
-                    ? '✅ Alle Räume sind zu der gewählten Zeit verfügbar!'
-                    : '✅ All rooms are available at the selected time!';
-                enableAllRooms();
-                if (submitBtn) submitBtn.disabled = false;
-            } else if (uniqueBlocked.length === 4) {
-                // All rooms blocked
-                let infoHTML = currentLang === 'de'
-                    ? '❌ Leider sind an diesem Datum '
-                    : '❌ Unfortunately all rooms are already booked ';
-
-                if (hasCompleteTimeInfo) {
-                    infoHTML += currentLang === 'de'
-                        ? 'zur gewählten Zeit alle Räume bereits gebucht.'
-                        : 'at the selected time.';
-                } else {
-                    infoHTML += currentLang === 'de'
-                        ? 'alle Räume bereits gebucht.'
-                        : 'on this date.';
-                }
-
-                // Only show time details if time and duration are selected
-                if (hasCompleteTimeInfo) {
-                    const timeDetails = [];
-                    uniqueBlocked.forEach(room => {
-                        const details = roomBlockDetails[room];
-                        details.forEach(detail => {
-                            const timeInfo = `${roomNames[room][currentLang]}: ${formatTime(detail.startTime)} - ${formatTime(detail.endTime)}`;
-                            if (!timeDetails.includes(timeInfo)) {
-                                timeDetails.push(timeInfo);
-                            }
-                        });
-                    });
-
-                    if (timeDetails.length > 0) {
-                        infoHTML += '<div class="blocked-rooms-list" style="margin-top: 0.5rem;">';
-                        timeDetails.forEach(detail => {
-                            infoHTML += `<div>🕒 ${detail}</div>`;
-                        });
-                        infoHTML += '</div>';
-                    }
-                } else {
-                    // Just show which rooms are blocked without times
-                    infoHTML += '<div class="blocked-rooms-list" style="margin-top: 0.5rem;">';
-                    infoHTML += currentLang === 'de'
-                        ? '<div style="opacity: 0.8;"></div>'
-                        : '<div style="opacity: 0.8;"></div>';
-                    infoHTML += '</div>';
-                }
-
-                availabilityInfo.className = 'availability-info blocked show';
-                availabilityInfo.innerHTML = infoHTML;
-                disableAllRooms();
-                if (submitBtn) submitBtn.disabled = true;
-            } else {
-                // Some rooms blocked
-                let infoHTML = currentLang === 'de'
-                    ? '⚠️ Folgende Räume sind bereits gebucht:'
-                    : '⚠️ The following rooms are already booked:';
-
-                infoHTML += '<div class="blocked-rooms-list" style="margin-top: 0.5rem;">';
-
-                // Only show time details if time and duration are selected
-                if (hasCompleteTimeInfo) {
-                    uniqueBlocked.forEach(room => {
-                        const details = roomBlockDetails[room];
-                        details.forEach(detail => {
-                            infoHTML += `<div>🔒 ${roomNames[room][currentLang]}: ${formatTime(detail.startTime)} - ${formatTime(detail.endTime)}`;
-                            if (detail.reason) {
-                                infoHTML += ` <span style="opacity: 0.7; font-size: 0.85em;">(${detail.reason})</span>`;
-                            }
-                            infoHTML += '</div>';
-                        });
-                    });
-                } else {
-                    // Just show room names without times
-                    uniqueBlocked.forEach(room => {
-                        infoHTML += `<div>🔒 ${roomNames[room][currentLang]}`;
-                        const firstDetail = roomBlockDetails[room][0];
-                        if (firstDetail.reason) {
-                            infoHTML += ` <span style="opacity: 0.7; font-size: 0.85em;">(${firstDetail.reason})</span>`;
-                        }
-                        infoHTML += '</div>';
-                    });
-                    infoHTML += '<div style="opacity: 0.8; margin-top: 0.5rem;">';
-                    infoHTML += currentLang === 'de'
-                        ? 'Bitte wählen Sie eine Uhrzeit und Dauer, um die genaue Verfügbarkeit zu prüfen.'
-                        : 'Please select a time and duration to check exact availability.';
-                    infoHTML += '</div>';
-                }
-
-                infoHTML += '</div>';
-
-                availabilityInfo.className = 'availability-info partial show';
-                availabilityInfo.innerHTML = infoHTML;
-
-                enableAllRooms();
-                uniqueBlocked.forEach(room => disableRoom(room));
-                if (submitBtn) submitBtn.disabled = false;
-            }
+            // Simplified: If any room is blocked on this date, show everything as fully booked
+            availabilityInfo.className = 'availability-info blocked show';
+            availabilityInfo.innerHTML = currentLang === 'de'
+                ? '🔒 An diesem Tag ist leider alles ausgebucht.'
+                : '🔒 Unfortunately, everything is fully booked on this date.';
+            disableAllRooms();
+            if (submitBtn) submitBtn.disabled = true;
         }
     }
 
@@ -1691,6 +1562,19 @@
         }, 100);
     }
 
+    // ========================================
+    // HEADER SCROLL EFFECT
+    // ========================================
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header');
+        header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ========================================
+    // SET MINIMUM DATE TO TODAY
+    // ========================================
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('eventDate').setAttribute('min', today);
 </script>
 
 </body>
