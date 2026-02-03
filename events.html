@@ -7,7 +7,7 @@
     <title>Events - area710 - UNIQUE EVENT LOCATION</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="icon" href="/img/fav.png" type="image/png" >
+    <link rel="icon" href="/img/fav.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet">
 
@@ -422,7 +422,7 @@
 
         /* DOWNLOAD BUTTON IN CALENDAR EVENT */
         .download-event-btn {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             border: none;
             color: var(--white);
             padding: 0.2rem 0.4rem;
@@ -1112,7 +1112,7 @@
         </a>
 
         <ul class="nav-menu" id="navMenu">
-            <li><a href="index.html" >area710</a></li>
+            <li><a href="index.html">area710</a></li>
             <li class="has-submenu">
                 <a href="raueme.html" data-de="Räume" data-en="Rooms">Räume</a>
                 <ul class="submenu">
@@ -1428,7 +1428,7 @@
             'END:VCALENDAR'
         ].join('\r\n');
 
-        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const blob = new Blob([icsContent], {type: 'text/calendar;charset=utf-8'});
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
         link.download = `area710-${event.title.de.replace(/\s+/g, '-')}.ics`;
@@ -1491,16 +1491,16 @@
                         </div>
                     `).join('')}
                     ${dayBlocked.map(b => {
-                        const statusText = currentLang === 'de'
-                            ? (b.status === 'reserved' ? 'Reserviert' : 'Ausgebucht')
-                            : (b.status === 'reserved' ? 'Reserved' : 'Fully booked');
+                const statusText = currentLang === 'de'
+                    ? (b.status === 'reserved' ? 'Reserviert' : 'Ausgebucht')
+                    : (b.status === 'reserved' ? 'Reserved' : 'Fully booked');
 
-                        return `
+                return `
                             <div class="calendar-blocked ${b.status || 'booked'}">
                                 ${statusText}
                             </div>
                         `;
-                    }).join('')}
+            }).join('')}
                 </div>`;
         }
 
@@ -1666,12 +1666,12 @@
     loadEvents();
 
     // Load saved language on page load
-const savedLang = localStorage.getItem('area710_language_preference');
-if (savedLang) {
-    setTimeout(() => {
-        document.querySelector(`.lang-btn[data-lang="${savedLang}"]`)?.click();
-    }, 100);
-}
+    const savedLang = localStorage.getItem('area710_language_preference');
+    if (savedLang) {
+        setTimeout(() => {
+            document.querySelector(`.lang-btn[data-lang="${savedLang}"]`)?.click();
+        }, 100);
+    }
 </script>
 
 </body>

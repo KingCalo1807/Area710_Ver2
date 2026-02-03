@@ -1213,6 +1213,9 @@
     </div>
 </footer>
 
+<!-- Language Switcher Script -->
+<script src="language-switcher.js"></script>
+
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ========================================
     // CSRF TOKEN MANAGEMENT
@@ -1262,47 +1265,9 @@
     });
 
     // ========================================
-    // LANGUAGE SWITCHER
+    // LANGUAGE SWITCHER - now handled by language-switcher.js
     // ========================================
-    let currentLang = 'de';
-
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', function () {
-            const targetLang = this.dataset.lang;
-            if (targetLang === currentLang) return;
-
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            currentLang = targetLang;
-            translatePage(targetLang);
-        });
-    });
-
-    function translatePage(lang) {
-        document.querySelectorAll('[data-de]').forEach(el => {
-            if (lang === 'de' && el.dataset.de) {
-                if (el.tagName === 'INPUT' || el.tagName === 'BUTTON') {
-                    el.value = el.dataset.de;
-                    if (el.tagName === 'BUTTON') el.textContent = el.dataset.de;
-                } else if (el.tagName === 'OPTION') {
-                    el.textContent = el.dataset.de;
-                } else {
-                    el.textContent = el.dataset.de;
-                }
-            } else if (lang === 'en' && el.dataset.en) {
-                if (el.tagName === 'INPUT' || el.tagName === 'BUTTON') {
-                    el.value = el.dataset.en;
-                    if (el.tagName === 'BUTTON') el.textContent = el.dataset.en;
-                } else if (el.tagName === 'OPTION') {
-                    el.textContent = el.dataset.en;
-                } else {
-                    el.textContent = el.dataset.en;
-                }
-            }
-        });
-        document.documentElement.lang = lang;
-        localStorage.setItem('area710_language_preference', lang);
-    }
+    // currentLang is now available globally from language-switcher.js
 
     // ========================================
     // PRE-SELECT ROOM AND DATE FROM URL
@@ -1553,14 +1518,6 @@
             console.error('Booking error:', error);
         }
     });
-
-    // Load saved language on page load
-    const savedLang = localStorage.getItem('area710_language_preference');
-    if (savedLang) {
-        setTimeout(() => {
-            document.querySelector(`.lang-btn[data-lang="${savedLang}"]`)?.click();
-        }, 100);
-    }
 
     // ========================================
     // HEADER SCROLL EFFECT

@@ -730,21 +730,21 @@
         </a>
 
         <ul class="nav-menu" id="navMenu">
-            <li><a href="index.html">area710</a></li>
+            <li><a href="index.html" data-de="area710" data-en="area710">area710</a></li>
             <li class="has-submenu">
-                <a href="raueme.html">Räume</a>
+                <a href="raueme.html" data-de="Räume" data-en="Rooms">Räume</a>
                 <ul class="submenu">
-                    <li><a href="raueme.html#hall">Hall</a></li>
-                    <li><a href="raueme.html#lab">Lab</a></li>
-                    <li><a href="raueme.html#barclub">Bar & Club</a></li>
-                    <li><a href="raueme.html#outdoor">Bar & Club / Plaza</a></li>
+                    <li><a href="raueme.html#hall" data-de="Hall" data-en="Hall">Hall</a></li>
+                    <li><a href="raueme.html#lab" data-de="Lab" data-en="Lab">Lab</a></li>
+                    <li><a href="raueme.html#barclub" data-de="Bar & Club" data-en="Bar & Club">Bar & Club</a></li>
+                    <li><a href="raueme.html#outdoor" data-de="Bar & Club / Plaza" data-en="Bar & Club / Plaza">Bar & Club / Plaza</a></li>
                 </ul>
             </li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="gallery.html">Galerie</a></li>
-            <li><a href="about.html">Über Uns</a></li>
-            <li><a href="booking.html">Buchungsanfrage</a></li>
-            <li><a href="contact.html">Kontakt</a></li>
+            <li><a href="events.html" data-de="Events" data-en="Events">Events</a></li>
+            <li><a href="gallery.html" data-de="Galerie" data-en="Gallery">Galerie</a></li>
+            <li><a href="about.html" data-de="Über Uns" data-en="About Us">Über Uns</a></li>
+            <li><a href="booking.html" data-de="Buchungsanfrage" data-en="Booking Request">Buchungsanfrage</a></li>
+            <li><a href="contact.html" data-de="Kontakt" data-en="Contact">Kontakt</a></li>
 
             <div class="lang-switch">
                 <button class="lang-btn active" data-lang="de">DE</button>
@@ -1145,7 +1145,7 @@
             <h3 class="lang-de">Kontakt</h3>
             <h3 class="lang-en" style="display:none;">Contact</h3>
             <p><a href="tel:+4870314107311">+49 7031 41073-11</a></p>
-            <p><a href="mailto:info@area710.de">info@area710.de</a></p>
+            <p><a href="/cdn-cgi/l/email-protection#94fdfaf2fbd4f5e6f1f5a3a5a4baf0f1"><span class="__cf_email__" data-cfemail="bbd2d5ddd4fbdac9deda8c8a8b95dfde">[email&#160;protected]</span></a></p>
         </div>
 
         <div class="footer-section">
@@ -1180,19 +1180,19 @@
         <p>
             area710 eine Marke der seeeye Werbung & Event GmbH
             <br>
-            <a href="impressum.html" class="lang-de">Impressum</a>
-            <a href="impressum.html" class="lang-en" style="display:none;">Imprint</a>
-            <a href="datenschutz.html" class="lang-de">Datenschutzerklärung</a>
-            <a href="datenschutz.html" class="lang-en" style="display:none;">Privacy Policy</a>
-            <a href="booking.html" class="lang-de">Buchungsanfrage</a>
-            <a href="booking.html" class="lang-en" style="display:none;">Booking Request</a>
-            <a href="https://ticket.area710.de" target="_blank" class="lang-de">Ticket Verkauf</a>
-            <a href="https://ticket.area710.de" target="_blank" class="lang-en" style="display:none;">Ticket Sales</a>
+            <a href="impressum.html" data-de="Impressum" data-en="Imprint">Impressum</a>
+            <a href="datenschutz.html" data-de="Datenschutzerklärung" data-en="Privacy Policy">Datenschutzerklärung</a>
+            <a href="booking.html" data-de="Buchungsanfrage" data-en="Booking Request">Buchungsanfrage</a>
+            <a href="https://ticket.area710.de" target="_blank" data-de="Ticket Verkauf" data-en="Ticket Sales">Ticket
+                Verkauf</a>
         </p>
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<!-- Language Switcher Script -->
+<script src="language-switcher.js"></script>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
     // MOBILE MENU
     document.getElementById('mobileToggle').addEventListener('click', function () {
@@ -1211,39 +1211,7 @@
         header.classList.toggle('scrolled', window.pageYOffset > 100);
     });
 
-    // LANGUAGE SWITCHER
-    let currentLang = 'de';
-
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', function () {
-            const lang = this.dataset.lang;
-            if (lang === currentLang) return;
-
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            currentLang = lang;
-
-            // Hide all language elements
-            document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
-                el.style.display = 'none';
-            });
-
-            // Show selected language elements
-            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
-                el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
-            });
-
-            document.documentElement.lang = lang;
-            localStorage.setItem('area710_language_preference', lang);
-        });
-    });
-    // Load saved language on page load
-    const savedLang = localStorage.getItem('area710_language_preference');
-    if (savedLang) {
-        setTimeout(() => {
-            document.querySelector(`.lang-btn[data-lang="${savedLang}"]`)?.click();
-        }, 100);
-    }
+    // LANGUAGE SWITCHER - now handled by language-switcher.js
 </script>
 
 </body>

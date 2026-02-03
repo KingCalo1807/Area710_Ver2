@@ -1497,9 +1497,6 @@
         });
     });
 
-    // Load saved language or default to DE
-    const savedLang = localStorage.getItem('preferred-language') || 'de';
-    setLanguage(savedLang);
 
     // MOBILE MENU
     document.getElementById('mobileToggle').addEventListener('click', function () {
@@ -1521,6 +1518,15 @@
             header.classList.remove('scrolled');
         }
     });
+
+    // Load saved language on page load
+const savedLang = localStorage.getItem('area710_language_preference');
+if (savedLang) {
+    setTimeout(() => {
+        document.querySelector(`.lang-btn[data-lang="${savedLang}"]`)?.click();
+    }, 100);
+}
+
 </script>
 
 </body>

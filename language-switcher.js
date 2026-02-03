@@ -43,12 +43,22 @@ function initLanguageSwitcher() {
 
 // Translate page content
 function translatePage(lang) {
+    // Method 1: Handle data-de / data-en attributes
     document.querySelectorAll('[data-de]').forEach(el => {
         if (lang === 'de' && el.dataset.de) {
             el.textContent = el.dataset.de;
         } else if (lang === 'en' && el.dataset.en) {
             el.textContent = el.dataset.en;
         }
+    });
+
+    // Method 2: Handle lang-de / lang-en classes (for legacy pages)
+    document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
+        el.style.display = 'none';
+    });
+
+    document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+        el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
     });
 
     document.documentElement.lang = lang;
