@@ -186,5 +186,16 @@
         "date": "",
         "eventId": 18,
         "image": "gallery-images/c-o-2.jpg"
+    },
+    {
+        "id": 19,
+        "title": {
+            "de": "Test neu",
+            "en": "Test neu"
+        },
+        "room": "lab",
+        "date": "2026-02-03",
+        "eventId": null,
+        "image": "gallery-images/full-service.jpg"
     }
 ]

@@ -274,5 +274,30 @@
         "price": "0€",
         "ticketUrl": "https://ticket.area710.de",
         "image": "img/Mercedes-Benz_CLA_AMG_Line_2019_Edition_Orange_Art_559670_1920x1080.jpg"
+    },
+    {
+        "id": 21,
+        "type": "blocked",
+        "date": "2026-02-05",
+        "startTime": "13:20",
+        "endTime": "23:59",
+        "reason": "VFB",
+        "status": "confirmed",
+        "room": [
+            "hall",
+            "lab",
+            "outdoor",
+            "barclub"
+        ]
+    },
+    {
+        "id": 22,
+        "type": "blocked",
+        "date": "2026-02-02",
+        "startTime": "00:00",
+        "endTime": "23:59",
+        "room": [
+            "outdoor"
+        ]
     }
 ]

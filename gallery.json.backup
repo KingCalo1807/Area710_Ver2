@@ -5,8 +5,8 @@
             "de": "Platin Party 2025",
             "en": "Platinum Party 2025"
         },
-        "category": "party",
-        "date": "",
+        "room": "outdoor",
+        "date": "2026-05-27",
         "eventId": 18,
         "image": "gallery-images/full-service.jpg"
     },
@@ -16,7 +16,7 @@
             "de": "Hall - Professionelle Bestuhlung",
             "en": "Hall - Professional Seating"
         },
-        "category": "location",
+        "room": "hall",
         "date": "15.01.2026",
         "image": "gallery-images/img.png"
     },
@@ -26,7 +26,7 @@
             "de": "Business Networking Event",
             "en": "Business Networking Event"
         },
-        "category": "business",
+        "room": "hall",
         "date": "20.02.2026",
         "image": "gallery-images/img_1.png",
         "eventId": 2
@@ -37,7 +37,7 @@
             "de": "DJ Setup im Lab",
             "en": "DJ Setup in the Lab"
         },
-        "category": "party",
+        "room": "lab",
         "date": "10.03.2025",
         "image": "gallery-images/img_2.png"
     },
@@ -47,7 +47,7 @@
             "de": "LED-Wand Beleuchtung",
             "en": "LED Wall Lighting"
         },
-        "category": "location",
+        "room": "lab",
         "date": "05.03.2026",
         "image": "gallery-images/img_3.png"
     },
@@ -57,7 +57,7 @@
             "de": "Halloween Horror Night",
             "en": "Halloween Horror Night"
         },
-        "category": "party",
+        "room": "barclub",
         "date": "31.10.2025",
         "image": "gallery-images/halloween-1.jpg",
         "eventId": 7
@@ -68,7 +68,7 @@
             "de": "Outdoor Bereich Sommer",
             "en": "Outdoor Area Summer"
         },
-        "category": "location",
+        "room": "outdoor",
         "date": "20.06.2025",
         "image": "gallery-images/outdoor-summer-1.jpg"
     },
@@ -78,7 +78,7 @@
             "de": "Corporate Event Catering",
             "en": "Corporate Event Catering"
         },
-        "category": "business",
+        "room": "hall",
         "date": "15.04.2026",
         "image": "gallery-images/catering-1.jpg"
     },
@@ -88,7 +88,7 @@
             "de": "ZauberFlea Flohmarkt Impressionen",
             "en": "ZauberFlea Flea Market Impressions"
         },
-        "category": "events",
+        "room": "outdoor",
         "date": "05.03.2026",
         "image": "gallery-images/flohmarkt-1.jpg",
         "eventId": 3
@@ -99,7 +99,7 @@
             "de": "Bar & Club Atmosphäre",
             "en": "Bar & Club Atmosphere"
         },
-        "category": "party",
+        "room": "barclub",
         "date": "12.12.2025",
         "image": "gallery-images/bar-club-1.jpg"
     },
@@ -109,7 +109,7 @@
             "de": "Lab - Konferenzbestuhlung",
             "en": "Lab - Conference Seating"
         },
-        "category": "business",
+        "room": "lab",
         "date": "22.01.2026",
         "image": "gallery-images/conference-1.jpg"
     },
@@ -119,7 +119,7 @@
             "de": "Hochzeit Outdoor Setup",
             "en": "Wedding Outdoor Setup"
         },
-        "category": "events",
+        "room": "outdoor",
         "date": "15.07.2025",
         "image": "gallery-images/wedding-1.jpg"
     },
@@ -129,7 +129,7 @@
             "de": "Party Crowd u30 Night",
             "en": "Party Crowd u30 Night"
         },
-        "category": "party",
+        "room": "barclub",
         "date": "",
         "eventId": 10,
         "image": "gallery-images/party-crowd-1.jpg"
@@ -140,7 +140,7 @@
             "de": "Hall mit Bühne Setup",
             "en": "Hall with Stage Setup"
         },
-        "category": "location",
+        "room": "hall",
         "date": "10.05.2026",
         "image": "gallery-images/hall-stage-1.jpg"
     },
@@ -150,7 +150,7 @@
             "de": "Sommerfest 2025 Impressionen",
             "en": "Summer Festival 2025 Impressions"
         },
-        "category": "events",
+        "room": "outdoor",
         "date": "20.06.2025",
         "image": "gallery-images/sommerfest-1.jpg",
         "eventId": 6
@@ -161,7 +161,7 @@
             "de": "Business Workshop Session",
             "en": "Business Workshop Session"
         },
-        "category": "business",
+        "room": "hall",
         "date": "15.03.2026",
         "image": "gallery-images/workshop-1.jpg",
         "eventId": 4
@@ -172,7 +172,7 @@
             "de": "Lightshow im Lab",
             "en": "Lightshow in the Lab"
         },
-        "category": "party",
+        "room": "lab",
         "date": "08.11.2025",
         "image": "gallery-images/lightshow-1.jpg"
     },
@@ -182,7 +182,7 @@
             "de": "Outdoor bei Nacht",
             "en": "Outdoor at Night"
         },
-        "category": "location",
+        "room": "outdoor",
         "date": "",
         "eventId": 18,
         "image": "gallery-images/c-o-2.jpg"

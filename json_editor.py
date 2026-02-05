@@ -79,6 +79,7 @@ HTML_TEMPLATE = """
     <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="icon" type="image/png" href="/img/fav.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -786,33 +787,69 @@ HTML_TEMPLATE = """
 
         <!-- Dashboard Tab -->
         <div id="dashboard-tab" class="tab-content active">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
-                <div style="background: rgba(252, 171, 20, 0.1); border: 1px solid var(--orange); border-radius: 12px; padding: 25px;">
-                    <h3 style="color: var(--orange); font-size: 2.5rem; margin-bottom: 10px;" id="stats-total-events">-</h3>
-                    <p style="color: rgba(255,255,255,0.8);">Gesamt Events</p>
-                </div>
-                <div style="background: rgba(174, 198, 16, 0.1); border: 1px solid var(--green); border-radius: 12px; padding: 25px;">
-                    <h3 style="color: var(--green); font-size: 2.5rem; margin-bottom: 10px;" id="stats-upcoming">-</h3>
-                    <p style="color: rgba(255,255,255,0.8);">Zukünftige Events</p>
-                </div>
-                <div style="background: rgba(0, 159, 226, 0.1); border: 1px solid var(--blue); border-radius: 12px; padding: 25px;">
-                    <h3 style="color: var(--blue); font-size: 2.5rem; margin-bottom: 10px;" id="stats-gallery">-</h3>
-                    <p style="color: rgba(255,255,255,0.8);">Gallery Bilder</p>
-                </div>
-                <div style="background: rgba(205, 17, 81, 0.1); border: 1px solid var(--red); border-radius: 12px; padding: 25px;">
-                    <h3 style="color: var(--red); font-size: 2.5rem; margin-bottom: 10px;" id="stats-blocked">-</h3>
-                    <p style="color: rgba(255,255,255,0.8);">Geblockte Termine</p>
-                </div>
-            </div>
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 25px; margin-bottom: 30px;">
+                <!-- Left Column: Stats & Room Chart -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- Stat Cards -->
+                    <div style="background: rgba(205, 17, 81, 0.15); border: 1px solid var(--red); border-radius: 12px; padding: 20px;">
+                        <h3 style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.5); margin-bottom: 8px; text-transform: uppercase;">Private Veranstaltungen</h3>
+                        <div style="font-size: 1.8rem; font-weight: 600; margin: 5px 0; color: var(--red);" id="stats-blocked">-</div>
+                        <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.4);">Zukünftige Termine</div>
+                    </div>
+                    
+                    <div style="background: rgba(0, 159, 226, 0.15); border: 1px solid var(--blue); border-radius: 12px; padding: 20px;">
+                        <h3 style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.5); margin-bottom: 8px; text-transform: uppercase;">Gallery Bilder</h3>
+                        <div style="font-size: 1.8rem; font-weight: 600; margin: 5px 0; color: var(--blue);" id="stats-gallery">-</div>
+                        <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.4);">Gesamt</div>
+                    </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
-                <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); border-radius: 12px; padding: 25px;">
-                    <h3 style="margin-bottom: 20px; color: var(--orange);">Event Kategorien</h3>
-                    <div id="category-stats"></div>
+                    <!-- Room Booking Chart -->
+                    <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); border-radius: 12px; padding: 25px; display: flex; flex-direction: column; align-items: center;">
+                        <h3 style="font-size: 0.9rem; font-weight: 300; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.7); margin-bottom: 25px; text-transform: uppercase; text-align: center;">Raumbelegung Zukünftige Private Events</h3>
+                        <canvas id="roomChart" style="max-width: 350px; max-height: 350px;"></canvas>
+                        <div id="room-legend" style="margin-top: 20px; width: 100%; display: grid; grid-template-columns: 1fr; gap: 10px; font-size: 0.85rem;"></div>
+                    </div>
+
+                    <!-- Mini Event Stats -->
+                    <div style="background: rgba(252, 171, 20, 0.1); border: 1px solid var(--orange); border-radius: 12px; padding: 15px; font-size: 0.85rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: rgba(255,255,255,0.6);">Öffentliche Events</span>
+                            <span style="color: var(--orange); font-weight: 600; font-size: 1.2rem;" id="stats-total-events">-</span>
+                        </div>
+                    </div>
                 </div>
-                <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); border-radius: 12px; padding: 25px;">
-                    <h3 style="margin-bottom: 20px; color: var(--green);">Nächste Events</h3>
-                    <div id="next-events-list"></div>
+
+                <!-- Right Column: Statistics & Lists -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- Upcoming Private Events -->
+                    <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); border-radius: 12px; padding: 25px;">
+                        <h3 style="margin-bottom: 20px; color: var(--red); font-size: 1rem; font-weight: 300; letter-spacing: 0.05em;">Kommende Private Veranstaltungen</h3>
+                        <div id="upcoming-blocked-list" style="max-height: 300px; overflow-y: auto;">
+                            <!-- Upcoming blocked events will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats Row -->
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                        <div style="background: rgba(174, 198, 16, 0.1); border: 1px solid var(--green); border-radius: 12px; padding: 20px; text-align: center;">
+                            <div style="font-size: 0.7rem; font-weight: 300; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.5); margin-bottom: 8px; text-transform: uppercase;">Diese Woche</div>
+                            <div style="font-size: 1.5rem; font-weight: 600; color: var(--green);" id="stats-this-week">-</div>
+                            <div style="font-size: 0.7rem; color: rgba(255, 255, 255, 0.4);">Private Events</div>
+                        </div>
+                        <div style="background: rgba(0, 159, 226, 0.1); border: 1px solid var(--blue); border-radius: 12px; padding: 20px; text-align: center;">
+                            <div style="font-size: 0.7rem; font-weight: 300; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.5); margin-bottom: 8px; text-transform: uppercase;">Dieser Monat</div>
+                            <div style="font-size: 1.5rem; font-weight: 600; color: var(--blue);" id="stats-this-month">-</div>
+                            <div style="font-size: 0.7rem; color: rgba(255, 255, 255, 0.4);">Private Events</div>
+                        </div>
+                    </div>
+
+                    <!-- Compact Gallery Preview -->
+                    <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); border-radius: 12px; padding: 20px;">
+                        <h3 style="margin-bottom: 15px; color: var(--blue); font-size: 0.9rem; font-weight: 300; letter-spacing: 0.05em;">Aktuelle Gallery</h3>
+                        <div id="dashboard-gallery-preview" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                            <!-- Gallery items will be inserted here -->
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1005,8 +1042,14 @@ HTML_TEMPLATE = """
                 </div>
 
                 <div class="form-group">
-                    <label>Kategorie</label>
-                    <input type="text" id="gallery-category">
+                    <label>Raum</label>
+                    <select id="gallery-room" required>
+                        <option value="">Bitte wählen...</option>
+                        <option value="hall">Hall</option>
+                        <option value="lab">Lab</option>
+                        <option value="outdoor">Outdoor</option>
+                        <option value="barclub">Bar & Club</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -1015,7 +1058,7 @@ HTML_TEMPLATE = """
                 </div>
 
                 <div class="form-group">
-                    <label>Event zuordnen</label>
+                    <label>Event zuordnen (optional)</label>
                     <select id="gallery-event-id">
                         <option value="">Kein Event</option>
                     </select>
@@ -1228,15 +1271,9 @@ HTML_TEMPLATE = """
                 renderGalleryList();
                 populateEventDropdown();
 
-                // Dashboard aktualisieren wenn aktiv
-                if (document.getElementById('dashboard-tab').classList.contains('active')) {
-                    loadDashboardStats();
-                }
-
-                // Kalender aktualisieren wenn aktiv
-                if (document.getElementById('calendar-tab').classList.contains('active')) {
-                    renderEditorCalendar();
-                }
+                // Dashboard + Kalender immer aktualisieren nach Datenänderungen
+                loadDashboardStats();
+                renderEditorCalendar();
             }
         }
 
@@ -1514,7 +1551,7 @@ HTML_TEMPLATE = """
                 document.getElementById('gallery-index').value = index;
                 document.getElementById('gallery-title-de').value = item.title.de;
                 document.getElementById('gallery-title-en').value = item.title.en;
-                document.getElementById('gallery-category').value = item.category;
+                document.getElementById('gallery-room').value = item.room || '';
                 document.getElementById('gallery-date').value = item.date;
                 document.getElementById('gallery-event-id').value = item.eventId || '';
                 document.getElementById('gallery-current-image').textContent = item.image ? `Aktuell: ${item.image}` : '';
@@ -1548,7 +1585,7 @@ HTML_TEMPLATE = """
             formData.append('id', document.getElementById('gallery-id').value);
             formData.append('title_de', document.getElementById('gallery-title-de').value);
             formData.append('title_en', document.getElementById('gallery-title-en').value);
-            formData.append('category', document.getElementById('gallery-category').value);
+            formData.append('room', document.getElementById('gallery-room').value);
             formData.append('date', document.getElementById('gallery-date').value);
             formData.append('eventId', document.getElementById('gallery-event-id').value);
 
@@ -1601,48 +1638,223 @@ HTML_TEMPLATE = """
         // ========================================
 
         // Dashboard Statistiken laden
+        let roomChartInstance = null;
+        
         async function loadDashboardStats() {
             const response = await fetch('/get_dashboard_stats');
             const data = await response.json();
 
             if (data.success) {
                 const stats = data.stats;
+                
+                // Update Stats Cards
                 document.getElementById('stats-total-events').textContent = stats.total_events;
-                document.getElementById('stats-upcoming').textContent = stats.upcoming_events;
                 document.getElementById('stats-gallery').textContent = stats.gallery_items;
-                document.getElementById('stats-blocked').textContent = stats.blocked_dates;
+                document.getElementById('stats-blocked').textContent = stats.future_blocked;
+                document.getElementById('stats-this-week').textContent = stats.blocked_this_week || 0;
+                document.getElementById('stats-this-month').textContent = stats.blocked_this_month || 0;
 
-                // Kategorien
-                let catHtml = '';
-                const catColors = {
-                    'party': 'var(--orange)',
-                    'business': 'var(--red)',
-                    'culture': 'var(--blue)',
-                    'workshop': 'var(--green)'
-                };
-                for (const [cat, count] of Object.entries(stats.categories)) {
-                    const color = catColors[cat] || 'var(--white)';
-                    catHtml += `
-                        <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border);">
-                            <span style="text-transform: capitalize;">${cat}</span>
-                            <span style="color: ${color}; font-weight: 500;">${count}</span>
-                        </div>
-                    `;
-                }
-                document.getElementById('category-stats').innerHTML = catHtml || '<p style="color: rgba(255,255,255,0.5);">Keine Events vorhanden</p>';
-
-                // Nächste Events
-                let nextHtml = '';
-                stats.next_events.forEach(event => {
-                    nextHtml += `
-                        <div style="padding: 10px 0; border-bottom: 1px solid var(--border);">
-                            <div style="font-weight: 500;">${event.title}</div>
-                            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">📅 ${event.date}</div>
-                        </div>
-                    `;
-                });
-                document.getElementById('next-events-list').innerHTML = nextHtml || '<p style="color: rgba(255,255,255,0.5);">Keine kommenden Events</p>';
+                // Room Booking Pie Chart
+                createRoomChart(stats.room_bookings);
+                
+                // Upcoming Blocked Events List
+                loadUpcomingBlockedList(stats.upcoming_blocked || []);
+                
+                // Gallery Preview
+                loadDashboardGallery();
             }
+        }
+        
+        function loadUpcomingBlockedList(upcomingBlocked) {
+            const container = document.getElementById('upcoming-blocked-list');
+            if (!container) return;
+            
+            if (upcomingBlocked.length === 0) {
+                container.innerHTML = '<div style="text-align: center; color: rgba(255,255,255,0.5); padding: 20px;">Keine kommenden privaten Veranstaltungen</div>';
+                return;
+            }
+            
+            const roomNames = {
+                'hall': 'Hall',
+                'lab': 'Lab',
+                'outdoor': 'Outdoor',
+                'barclub': 'Bar & Club'
+            };
+            
+            const roomColors = {
+                'hall': 'var(--orange)',
+                'lab': 'var(--red)',
+                'outdoor': 'var(--blue)',
+                'barclub': 'var(--green)'
+            };
+            
+            container.innerHTML = '';
+            upcomingBlocked.forEach(item => {
+                const div = document.createElement('div');
+                div.style.cssText = 'padding: 15px; border-bottom: 1px solid var(--border); transition: background 0.2s ease;';
+                div.onmouseover = () => div.style.background = 'rgba(255,255,255,0.05)';
+                div.onmouseout = () => div.style.background = 'transparent';
+                
+                // Format rooms
+                let roomsDisplay = '';
+                if (item.rooms && item.rooms.length > 0) {
+                    roomsDisplay = item.rooms.map(r => {
+                        const name = roomNames[r] || r;
+                        const color = roomColors[r] || 'rgba(255,255,255,0.7)';
+                        return `<span style="display: inline-block; padding: 2px 8px; margin-right: 5px; background: rgba(255,255,255,0.1); border-radius: 4px; font-size: 0.75rem; color: ${color};">${name}</span>`;
+                    }).join('');
+                }
+                
+                const reason = item.reason || 'Private Veranstaltung';
+                
+                div.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+                        <div style="font-weight: 500; color: var(--white); font-size: 0.95rem;">${item.date}</div>
+                        <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6);">${item.startTime} - ${item.endTime}</div>
+                    </div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;">${reason}</div>
+                    ${roomsDisplay ? `<div style="margin-top: 8px;">${roomsDisplay}</div>` : ''}
+                `;
+                
+                container.appendChild(div);
+            });
+        }
+        
+        function createRoomChart(roomData) {
+            const canvas = document.getElementById('roomChart');
+            const legend = document.getElementById('room-legend');
+            
+            if (!canvas) return;
+            
+            // Destroy existing chart
+            if (roomChartInstance) {
+                roomChartInstance.destroy();
+            }
+            
+            // Room names mapping
+            const roomNames = {
+                'hall': 'Hall',
+                'lab': 'Lab',
+                'outdoor': 'Outdoor',
+                'barclub': 'Bar & Club'
+            };
+            
+            // Room colors
+            const roomColors = {
+                'hall': '#FCAB14',      // Orange
+                'lab': '#CD1151',        // Red
+                'outdoor': '#009FE2',    // Blue
+                'barclub': '#AEC610'     // Green
+            };
+            
+            const labels = Object.keys(roomData).map(room => roomNames[room] || room);
+            const values = Object.values(roomData);
+            const colors = Object.keys(roomData).map(room => roomColors[room] || '#FFFFFF');
+            
+            const total = values.reduce((a, b) => a + b, 0);
+            
+            if (total === 0) {
+                canvas.style.display = 'none';
+                legend.innerHTML = '<div style="text-align: center; color: rgba(255,255,255,0.5); padding: 20px;">Keine zukünftigen privaten Veranstaltungen</div>';
+                return;
+            }
+            
+            canvas.style.display = 'block';
+            
+            const ctx = canvas.getContext('2d');
+            roomChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: colors,
+                        borderColor: '#222',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                            titleColor: '#fff',
+                            bodyColor: '#fff',
+                            borderColor: 'rgba(255, 255, 255, 0.1)',
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: true,
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    const percentage = total > 0 ? ((value / total) * 100).toFixed(1) : 0;
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%'
+                }
+            });
+            
+            // Create custom legend
+            let legendHtml = '';
+            Object.keys(roomData).forEach((room, index) => {
+                const name = roomNames[room] || room;
+                const count = roomData[room];
+                const color = roomColors[room] || '#FFFFFF';
+                const percentage = total > 0 ? ((count / total) * 100).toFixed(1) : 0;
+                
+                legendHtml += `
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 8px; background: rgba(0,0,0,0.3); border-radius: 6px;">
+                        <div style="width: 16px; height: 16px; background: ${color}; border-radius: 3px; flex-shrink: 0;"></div>
+                        <div style="flex: 1; color: rgba(255,255,255,0.8);">${name}</div>
+                        <div style="color: rgba(255,255,255,0.6); font-weight: 500;">${count} (${percentage}%)</div>
+                    </div>
+                `;
+            });
+            
+            legend.innerHTML = legendHtml;
+        }
+        
+        async function loadDashboardGallery() {
+            const container = document.getElementById('dashboard-gallery-preview');
+            if (!container) return;
+            
+            // Get last 6 gallery items
+            const galleryItems = galleryData.slice(0, 6);
+            
+            if (galleryItems.length === 0) {
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: rgba(255,255,255,0.5); padding: 20px;">Keine Gallery-Einträge</div>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            galleryItems.forEach(item => {
+                const div = document.createElement('div');
+                div.style.cssText = 'position: relative; border-radius: 8px; overflow: hidden; aspect-ratio: 1; cursor: pointer; border: 1px solid var(--border); transition: all 0.3s ease;';
+                div.onmouseover = () => div.style.transform = 'translateY(-3px)';
+                div.onmouseout = () => div.style.transform = 'translateY(0)';
+                
+                // sicheres Bild-URL-Building über die /project-files/ Route
+const imgPlaceholder = "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23222%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-size=%2214%22%3EKein Bild%3C/text%3E%3C/svg%3E";
+
+const imgSrc = (item.image && item.image.length) ? `/project-files/${item.image}` : imgPlaceholder;
+
+div.innerHTML = `
+    <img src="${imgSrc}"
+         alt="${(item.title && item.title.de) ? item.title.de : ''}"
+         style="width: 100%; height: 100%; object-fit: cover;"
+         onerror="this.src='${imgPlaceholder}'">
+`;
+                
+                container.appendChild(div);
+            });
         }
 
         // Backup herunterladen
@@ -2093,20 +2305,29 @@ HTML_TEMPLATE = """
             const search = document.getElementById('search-gallery').value.toLowerCase();
 
             const filtered = galleryData.filter(item => {
+                const roomName = item.room || '';
                 return search === '' ||
                     item.title.de.toLowerCase().includes(search) ||
                     item.title.en.toLowerCase().includes(search) ||
                     item.date.includes(search) ||
-                    item.category.toLowerCase().includes(search);
+                    roomName.toLowerCase().includes(search);
             });
 
             const list = document.getElementById('gallery-list');
             list.innerHTML = '';
 
+            const roomNames = {
+                'hall': 'Hall',
+                'lab': 'Lab',
+                'outdoor': 'Outdoor',
+                'barclub': 'Bar & Club'
+            };
+
             filtered.forEach((item) => {
                 const index = galleryData.indexOf(item);
                 const li = document.createElement('li');
-                li.textContent = `${item.id}: ${item.title.de} (${item.date}) - ${item.category}`;
+                const roomDisplay = roomNames[item.room] || item.room || 'Kein Raum';
+                li.textContent = `${item.id}: ${item.title.de} (${item.date}) - ${roomDisplay}`;
                 li.onclick = () => selectGallery(index);
                 if (index === selectedGalleryIndex) li.classList.add('selected');
                 list.appendChild(li);
@@ -2440,7 +2661,7 @@ def save_gallery():
                 'de': request.form.get('title_de', ''),
                 'en': request.form.get('title_en', '')
             },
-            'category': request.form.get('category', ''),
+            'room': request.form.get('room', ''),
             'date': request.form.get('date', ''),
             'eventId': int(request.form.get('eventId')) if request.form.get('eventId') else None,
             'image': ''
@@ -2555,47 +2776,73 @@ def get_dashboard_stats():
         public_events = [e for e in events if e.get('type') == 'event']
         blocked_events = [e for e in events if e.get('type') == 'blocked']
 
-        # Kategorien zählen
-        categories = {}
-        for event in public_events:
-            cat = event.get('category', 'unknown')
-            categories[cat] = categories.get(cat, 0) + 1
-
-        # Nächstes Event finden
-        from datetime import datetime as dt
+        # Zukünftige private Veranstaltungen nach Raum analysieren
+        from datetime import datetime as dt, timedelta
         today = dt.now().date()
-        upcoming = []
-        past = []
-        for event in public_events:
+        week_end = today + timedelta(days=7)
+        month_end = today + timedelta(days=30)
+
+        room_bookings = {
+            'hall': 0,
+            'lab': 0,
+            'outdoor': 0,
+            'barclub': 0
+        }
+
+        future_blocked_count = 0
+        blocked_this_week = 0
+        blocked_this_month = 0
+        upcoming_blocked_list = []
+
+        for event in blocked_events:
             try:
                 event_date = dt.strptime(event.get('date', ''), '%Y-%m-%d').date()
-                event_info = {
-                    'id': event.get('id'),
-                    'title': event['title']['de'],
-                    'date': event['date'],
-                    'category': event.get('category', '')
-                }
                 if event_date >= today:
-                    upcoming.append(event_info)
-                else:
-                    past.append(event_info)
+                    future_blocked_count += 1
+
+                    # Count for this week/month
+                    if event_date <= week_end:
+                        blocked_this_week += 1
+                    if event_date <= month_end:
+                        blocked_this_month += 1
+
+                    # Add to upcoming list (max 10)
+                    if len(upcoming_blocked_list) < 10:
+                        upcoming_blocked_list.append({
+                            'date': event.get('date'),
+                            'startTime': event.get('startTime', ''),
+                            'endTime': event.get('endTime', ''),
+                            'reason': event.get('reason', 'Private Veranstaltung'),
+                            'rooms': event.get('room', []) if isinstance(event.get('room', []), list) else [
+                                event.get('room', '')]
+                        })
+
+                    # Raum aus Event extrahieren (kann Array oder String sein)
+                    room = event.get('room', [])
+                    if isinstance(room, list):
+                        # Wenn Array, zähle jeden Raum
+                        for r in room:
+                            if r in room_bookings:
+                                room_bookings[r] += 1
+                    elif isinstance(room, str) and room in room_bookings:
+                        # Wenn String, direkt zählen
+                        room_bookings[room] += 1
             except:
                 pass
 
-        upcoming.sort(key=lambda x: x['date'])
-        past.sort(key=lambda x: x['date'], reverse=True)
+        # Sort upcoming blocked by date
+        upcoming_blocked_list.sort(key=lambda x: x['date'])
 
         return jsonify({
             'success': True,
             'stats': {
                 'total_events': len(public_events),
-                'upcoming_events': len(upcoming),
-                'past_events': len(past),
-                'blocked_dates': len(blocked_events),
                 'gallery_items': len(gallery),
-                'categories': categories,
-                'next_events': upcoming[:5],
-                'recent_past': past[:3]
+                'future_blocked': future_blocked_count,
+                'blocked_this_week': blocked_this_week,
+                'blocked_this_month': blocked_this_month,
+                'room_bookings': room_bookings,
+                'upcoming_blocked': upcoming_blocked_list
             }
         })
     except Exception as e:
