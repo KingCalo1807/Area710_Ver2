@@ -331,6 +331,20 @@ HTML_TEMPLATE = """
             border-radius: 4px;
         }
 
+        /* Dashboard scrollbars */
+        #upcoming-blocked-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #upcoming-blocked-list::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        #upcoming-blocked-list::-webkit-scrollbar-thumb {
+            background: var(--blue);
+            border-radius: 4px;
+        }
+
         .item-list li {
             padding: 12px 16px;
             border-bottom: 1px solid var(--border);
@@ -845,10 +859,17 @@ HTML_TEMPLATE = """
 
                     <!-- Compact Gallery Preview -->
                     <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); border-radius: 12px; padding: 20px;">
-                        <h3 style="margin-bottom: 15px; color: var(--blue); font-size: 0.9rem; font-weight: 300; letter-spacing: 0.05em;">Aktuelle Gallery</h3>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h3 style="color: var(--blue); font-size: 0.9rem; font-weight: 300; letter-spacing: 0.05em;">Aktuelle Gallery</h3>
+                            <div style="display: flex; gap: 10px;">
+                                <button onclick="gallerySliderPrev()" style="background: rgba(255,255,255,0.1); border: 1px solid var(--border); color: var(--white); padding: 8px 12px; border-radius: 6px; cursor: pointer; transition: all 0.3s;">←</button>
+                                <button onclick="gallerySliderNext()" style="background: rgba(255,255,255,0.1); border: 1px solid var(--border); color: var(--white); padding: 8px 12px; border-radius: 6px; cursor: pointer; transition: all 0.3s;">→</button>
+                            </div>
+                        </div>
                         <div id="dashboard-gallery-preview" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
                             <!-- Gallery items will be inserted here -->
                         </div>
+                        <div id="gallery-slider-info" style="text-align: center; margin-top: 10px; font-size: 0.8rem; color: rgba(255,255,255,0.5);"></div>
                     </div>
                 </div>
             </div>
@@ -1266,6 +1287,10 @@ HTML_TEMPLATE = """
             if (data.success) {
                 eventsData = data.events;
                 galleryData = data.gallery;
+                
+                // Reset Gallery Slider wenn neue Daten geladen werden
+                gallerySliderIndex = 0;
+                
                 renderEventsList();
                 renderBlockedList();
                 renderGalleryList();
@@ -1434,7 +1459,7 @@ HTML_TEMPLATE = """
         }
 
         // Blocked/Private Veranstaltungen Modal
-        function openBlockedModal(index = null) {
+        function openBlockedModal(index = null, presetDate = null) {
             const modal = document.getElementById('blocked-modal');
             const form = document.getElementById('blocked-form');
             form.reset();
@@ -1463,6 +1488,11 @@ HTML_TEMPLATE = """
                 // Standardwerte setzen
                 document.getElementById('blocked-start-time').value = '00:00';
                 document.getElementById('blocked-end-time').value = '23:59';
+                
+                // Wenn ein Datum aus dem Kalender übergeben wurde, setze es
+                if (presetDate) {
+                    document.getElementById('blocked-date').value = presetDate;
+                }
             }
 
             modal.classList.add('active');
@@ -1822,17 +1852,24 @@ HTML_TEMPLATE = """
             legend.innerHTML = legendHtml;
         }
         
+        // Gallery Slider für Dashboard
+        let gallerySliderIndex = 0;
+        const GALLERY_PAGE_SIZE = 6;
+
         async function loadDashboardGallery() {
             const container = document.getElementById('dashboard-gallery-preview');
             if (!container) return;
             
-            // Get last 6 gallery items
-            const galleryItems = galleryData.slice(0, 6);
-            
-            if (galleryItems.length === 0) {
+            if (galleryData.length === 0) {
                 container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: rgba(255,255,255,0.5); padding: 20px;">Keine Gallery-Einträge</div>';
+                document.getElementById('gallery-slider-info').textContent = '';
                 return;
             }
+            
+            // Berechne Start- und Endindex für aktuelle Seite
+            const startIdx = gallerySliderIndex * GALLERY_PAGE_SIZE;
+            const endIdx = Math.min(startIdx + GALLERY_PAGE_SIZE, galleryData.length);
+            const galleryItems = galleryData.slice(startIdx, endIdx);
             
             container.innerHTML = '';
             galleryItems.forEach(item => {
@@ -1841,20 +1878,39 @@ HTML_TEMPLATE = """
                 div.onmouseover = () => div.style.transform = 'translateY(-3px)';
                 div.onmouseout = () => div.style.transform = 'translateY(0)';
                 
-                // sicheres Bild-URL-Building über die /project-files/ Route
-const imgPlaceholder = "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23222%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-size=%2214%22%3EKein Bild%3C/text%3E%3C/svg%3E";
+                const imgPlaceholder = "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23222%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-size=%2214%22%3EKein Bild%3C/text%3E%3C/svg%3E";
+                const imgSrc = (item.image && item.image.length) ? `/project-files/${item.image}` : imgPlaceholder;
 
-const imgSrc = (item.image && item.image.length) ? `/project-files/${item.image}` : imgPlaceholder;
-
-div.innerHTML = `
-    <img src="${imgSrc}"
-         alt="${(item.title && item.title.de) ? item.title.de : ''}"
-         style="width: 100%; height: 100%; object-fit: cover;"
-         onerror="this.src='${imgPlaceholder}'">
-`;
+                div.innerHTML = `
+                    <img src="${imgSrc}"
+                         alt="${(item.title && item.title.de) ? item.title.de : ''}"
+                         style="width: 100%; height: 100%; object-fit: cover;"
+                         onerror="this.src='${imgPlaceholder}'">
+                `;
                 
                 container.appendChild(div);
             });
+            
+            // Update Info-Text
+            const totalPages = Math.ceil(galleryData.length / GALLERY_PAGE_SIZE);
+            const currentPage = gallerySliderIndex + 1;
+            document.getElementById('gallery-slider-info').textContent = 
+                `${startIdx + 1}-${endIdx} von ${galleryData.length} | Seite ${currentPage} von ${totalPages}`;
+        }
+
+        function gallerySliderNext() {
+            const totalPages = Math.ceil(galleryData.length / GALLERY_PAGE_SIZE);
+            if (gallerySliderIndex < totalPages - 1) {
+                gallerySliderIndex++;
+                loadDashboardGallery();
+            }
+        }
+
+        function gallerySliderPrev() {
+            if (gallerySliderIndex > 0) {
+                gallerySliderIndex--;
+                loadDashboardGallery();
+            }
         }
 
         // Backup herunterladen
@@ -1911,19 +1967,20 @@ div.innerHTML = `
                 html += `<div style="${classes}"
                               ondrop="dropEvent(event, '${dateStr}')"
                               ondragover="allowDrop(event)"
+                              onclick="handleCalendarCellClick(event, '${dateStr}')"
                               data-date="${dateStr}">
                     <div style="font-size: 0.9rem; margin-bottom: 5px;">${day}</div>
                     ${dayEvents.map(e => `
                         <div style="background: var(--blue); padding: 4px; font-size: 0.7rem; margin-bottom: 3px; border-radius: 3px; cursor: move;"
                              draggable="true"
                              ondragstart="dragEvent(event, ${e.id})"
-                             onclick="jumpToEvent(${e.id}, 'events')"
+                             onclick="event.stopPropagation(); jumpToEvent(${e.id}, 'events')"
                              title="${e.title.de}">
                             ${e.title.de}
                         </div>
                     `).join('')}
                     ${dayBlocked.map(b => `
-                        <div style="background: rgba(205,17,81,0.3); padding: 4px; font-size: 0.65rem; border-radius: 3px;">
+                        <div style="background: rgba(205,17,81,0.3); padding: 4px; font-size: 0.65rem; border-radius: 3px;" onclick="event.stopPropagation();">
                             ${b.reason || 'Geblockt'}
                         </div>
                     `).join('')}
@@ -2037,6 +2094,17 @@ div.innerHTML = `
                     document.getElementById('events-list').children[index]?.scrollIntoView({behavior: 'smooth', block: 'center'});
                 }
             }, 100);
+        }
+
+        // Kalender-Feld Click Handler - Private Veranstaltung anlegen
+        function handleCalendarCellClick(event, dateStr) {
+            // Nur wenn auf das Feld selbst geklickt wurde, nicht auf Events/Blocked
+            if (event.target.closest('[draggable="true"]') || event.target.closest('[onclick*="stopPropagation"]')) {
+                return;
+            }
+            
+            // Öffne Modal für neue private Veranstaltung mit vorausgefülltem Datum
+            openBlockedModal(null, dateStr);
         }
 
         // Mehrfachauswahl
@@ -2806,16 +2874,15 @@ def get_dashboard_stats():
                     if event_date <= month_end:
                         blocked_this_month += 1
 
-                    # Add to upcoming list (max 10)
-                    if len(upcoming_blocked_list) < 10:
-                        upcoming_blocked_list.append({
-                            'date': event.get('date'),
-                            'startTime': event.get('startTime', ''),
-                            'endTime': event.get('endTime', ''),
-                            'reason': event.get('reason', 'Private Veranstaltung'),
-                            'rooms': event.get('room', []) if isinstance(event.get('room', []), list) else [
-                                event.get('room', '')]
-                        })
+                    # Sammle ALLE zukünftigen Events (nicht nur die ersten 10)
+                    upcoming_blocked_list.append({
+                        'date': event.get('date'),
+                        'startTime': event.get('startTime', ''),
+                        'endTime': event.get('endTime', ''),
+                        'reason': event.get('reason', 'Private Veranstaltung'),
+                        'rooms': event.get('room', []) if isinstance(event.get('room', []), list) else [
+                            event.get('room', '')]
+                    })
 
                     # Raum aus Event extrahieren (kann Array oder String sein)
                     room = event.get('room', [])
@@ -2830,8 +2897,9 @@ def get_dashboard_stats():
             except:
                 pass
 
-        # Sort upcoming blocked by date
+        # Sort upcoming blocked by date FIRST, then take first 10
         upcoming_blocked_list.sort(key=lambda x: x['date'])
+        upcoming_blocked_list = upcoming_blocked_list[:10]  # Nur die ersten 10 nach Sortierung
 
         return jsonify({
             'success': True,
