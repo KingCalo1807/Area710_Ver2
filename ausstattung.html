@@ -10,6 +10,7 @@
     <link rel="icon" href="/img/fav.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet">
+    <link rel="stylesheet" href="chatbot.css">
 
 
     <style>
@@ -1213,6 +1214,85 @@
 
     // LANGUAGE SWITCHER - now handled by language-switcher.js
 </script>
+
+<!-- Chatbot Button -->
+<button id="chatbot-button" aria-label="Chat öffnen">
+    <img src="img/fav.png" alt="Chat Avatar">
+    <span class="chatbot-hint">
+    <span class="hint-text lang-de">Chatte mit area710 – unserem Chatbot</span>
+    <span class="hint-text lang-en" style="display:none;">Chat with area710 – our chatbot</span>
+</span>
+</button>
+
+<!-- Chatbot Greeting Widget -->
+<div id="chatbot-greeting-widget">
+    <div class="widget-header">
+        <img src="img/fav.png" alt="area710 Bot">
+        <h4>area710</h4>
+    </div>
+    <div class="widget-message" id="widget-message">
+        <!-- Message will be inserted here based on language -->
+    </div>
+    <div class="widget-buttons">
+        <button class="widget-btn decline" id="widget-decline" title="Ablehnen">✕</button>
+        <button class="widget-btn accept" id="widget-accept" title="Chat öffnen">Chat</button>
+    </div>
+</div>
+
+<!-- Chatbot Window -->
+<div id="chatbot-window">
+    <div class="chat-header">
+        <div class="chat-header-left">
+            <img src="img/fav.png"
+                 alt="Bot Avatar">
+            <div class="chat-header-text">
+                <h3>area710</h3>
+                <p>Online</p>
+            </div>
+        </div>
+        <div class="header-buttons">
+            <button class="clear-chat-btn" id="clear-chat" title="Chat löschen">🗑️</button>
+            <button class="close-btn" id="close-chat">×</button>
+        </div>
+    </div>
+
+    <div class="chat-messages" id="chat-messages">
+        <!-- Messages will be added here -->
+    </div>
+
+    <div class="chat-input">
+        <input
+                type="text"
+                id="user-input"
+                autocomplete="off"
+                data-placeholder-de="Schreibe eine Nachricht..."
+                data-placeholder-en="Write a message..."
+        >
+        <button id="send-btn">➤</button>
+    </div>
+</div>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+    <div class="cookie-content">
+        <div class="cookie-text">
+            <h3>Cookie-Einstellungen 🍪</h3>
+            <p>Wir verwenden Cookies, um den Chat-Verlauf und Ihre Spracheinstellung zu speichern und Ihnen ein besseres
+                Erlebnis zu bieten. Durch
+                das Akzeptieren von Cookies können wir Ihre Konversationen und Präferenzen speichern.</p>
+        </div>
+        <div class="cookie-buttons">
+            <button class="cookie-btn accept" onclick="acceptCookies()">Akzeptieren</button>
+            <button class="cookie-btn decline" onclick="declineCookies()">Ablehnen</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // CHATBOT Configuration - Disable greeting widget on non-index pages
+    window.CHATBOT_CONFIG = { showGreetingWidget: false };
+</script>
+<script src="chatbot.js"></script>
 
 </body>
 </html>
