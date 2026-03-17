@@ -28,5 +28,45 @@
         "price": "15€",
         "ticketUrl": "",
         "image": ""
+    },
+    {
+        "id": 3,
+        "type": "blocked",
+        "date": "2026-02-12",
+        "startTime": "12:00",
+        "endTime": "23:59",
+        "reason": "Große Party",
+        "status": "confirmed",
+        "room": [
+            "hall",
+            "lab",
+            "outdoor",
+            "barclub"
+        ]
+    },
+    {
+        "id": 4,
+        "type": "blocked",
+        "date": "2026-02-13",
+        "startTime": "00:00",
+        "endTime": "23:59",
+        "reason": "sdfsdf",
+        "room": [
+            "hall",
+            "lab"
+        ]
+    },
+    {
+        "id": 5,
+        "type": "blocked",
+        "date": "2026-02-20",
+        "startTime": "00:00",
+        "endTime": "23:59",
+        "reason": "dfbjsbkfjs",
+        "room": [
+            "hall",
+            "lab",
+            "outdoor"
+        ]
     }
 ]

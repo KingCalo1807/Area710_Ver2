@@ -10,5 +10,50 @@
             "hall",
             "lab"
         ]
+    },
+    {
+        "id": 2,
+        "type": "event",
+        "title": {
+            "de": "All White Party",
+            "en": "All White Party"
+        },
+        "description": {
+            "de": "All White Party",
+            "en": "All White Party"
+        },
+        "category": "party",
+        "date": "2026-07-12",
+        "time": "17:00",
+        "price": "15€",
+        "ticketUrl": "",
+        "image": ""
+    },
+    {
+        "id": 3,
+        "type": "blocked",
+        "date": "2026-02-12",
+        "startTime": "12:00",
+        "endTime": "23:59",
+        "reason": "Große Party",
+        "status": "confirmed",
+        "room": [
+            "hall",
+            "lab",
+            "outdoor",
+            "barclub"
+        ]
+    },
+    {
+        "id": 4,
+        "type": "blocked",
+        "date": "2026-02-13",
+        "startTime": "00:00",
+        "endTime": "23:59",
+        "reason": "sdfsdf",
+        "room": [
+            "hall",
+            "lab"
+        ]
     }
 ]

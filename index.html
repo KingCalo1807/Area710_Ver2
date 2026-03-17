@@ -1318,6 +1318,117 @@
             background: #999;
         }
 
+        /* CHATBOT GREETING WIDGET */
+        #chatbot-greeting-widget {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--orange), var(--red));
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 8px 32px rgba(252, 171, 20, 0.3);
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            max-width: 280px;
+            pointer-events: none;
+        }
+
+        #chatbot-greeting-widget.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        #chatbot-greeting-widget:hover {
+            transform: translateY(-3px) scale(1);
+            box-shadow: 0 12px 40px rgba(252, 171, 20, 0.4);
+        }
+
+        .widget-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .widget-header img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+
+        .widget-header h4 {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .widget-message {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: white;
+            margin-bottom: 0.8rem;
+        }
+
+        .widget-buttons {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: flex-end;
+        }
+
+        .widget-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .widget-btn.accept {
+            background: white;
+            color: var(--red);
+        }
+
+        .widget-btn.accept:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .widget-btn.decline {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .widget-btn.decline:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Mobile Widget */
+        @media (max-width: 480px) {
+            #chatbot-greeting-widget {
+                right: 10px;
+                bottom: 80px;
+                max-width: 260px;
+                padding: 1rem 1.2rem;
+            }
+
+            .widget-message {
+                font-size: 0.85rem;
+            }
+
+            .widget-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+
         /* COOKIE BANNER */
         #cookie-banner {
             position: fixed;
@@ -1662,6 +1773,31 @@
     </div>
 </section>
 
+<!-- STATS -->
+<section class="testimonial-section">
+    <div class="container">
+        <div class="section-header section-header-orange">
+            <h2 class="lang-de">Das sagen unsere Kunden</h2>
+            <h2 class="lang-en" style="display:none;">What Our Clients Say</h2>
+            <p class="lang-de">Erfahren Sie, was unsere Kunden über area710 berichten</p>
+            <p class="lang-en" style="display:none;">Learn what our clients say about area710</p>
+        </div>
+
+        <div class="testimonial-content">
+            <p class="lang-de">
+                Unsere Kunden stehen im Mittelpunkt all unserer Bemühungen. Lesen Sie ihre Erfahrungen und
+                Erfolgsgeschichten mit area710.
+            </p>
+            <p class="lang-en" style="display:none;">
+                Our clients are at the center of all our efforts. Read their experiences and success stories with
+                area710.
+            </p>
+        </div>
+
+        <a href="referenz.html" class="testimonial-btn lang-de">Zu den Referenzen</a>
+        <a href="referenz.html" class="testimonial-btn lang-en" style="display:none;">View References</a>
+    </div>
+</section>
 
 <section class="section" style="background: var(--gray);">
     <div class="container">
@@ -1693,40 +1829,31 @@
 
 </section>
 
-<!-- STATS -->
-<section class="testimonial-section">
-    <div class="container">
-        <div class="section-header section-header-orange">
-            <h2 class="lang-de">Das sagen unsere Kunden</h2>
-            <h2 class="lang-en" style="display:none;">What Our Clients Say</h2>
-            <p class="lang-de">Erfahren Sie, was unsere Kunden über area710 berichten</p>
-            <p class="lang-en" style="display:none;">Learn what our clients say about area710</p>
-        </div>
 
-        <div class="testimonial-content">
-            <p class="lang-de">
-                Unsere Kunden stehen im Mittelpunkt all unserer Bemühungen. Lesen Sie ihre Erfahrungen und
-                Erfolgsgeschichten mit area710.
-            </p>
-            <p class="lang-en" style="display:none;">
-                Our clients are at the center of all our efforts. Read their experiences and success stories with
-                area710.
-            </p>
-        </div>
-
-        <a href="referenz.html" class="testimonial-btn lang-de">Zu den Referenzen</a>
-        <a href="referenz.html" class="testimonial-btn lang-en" style="display:none;">View References</a>
-    </div>
-</section>
 
 <!-- Chatbot Button -->
 <button id="chatbot-button" aria-label="Chat öffnen">
     <img src="img/fav.png" alt="Chat Avatar">
     <span class="chatbot-hint">
-    <span class="hint-text lang-de">Chatte mit Array – unserem Chatbot</span>
-    <span class="hint-text lang-en" style="display:none;">Chat with Array – our chatbot</span>
+    <span class="hint-text lang-de">Chatte mit area710 – unserem Chatbot</span>
+    <span class="hint-text lang-en" style="display:none;">Chat with area710 – our chatbot</span>
 </span>
 </button>
+
+<!-- Chatbot Greeting Widget -->
+<div id="chatbot-greeting-widget">
+    <div class="widget-header">
+        <img src="img/fav.png" alt="area710 Bot">
+        <h4>area710</h4>
+    </div>
+    <div class="widget-message" id="widget-message">
+        <!-- Message will be inserted here based on language -->
+    </div>
+    <div class="widget-buttons">
+        <button class="widget-btn decline" id="widget-decline" title="Ablehnen">✕</button>
+        <button class="widget-btn accept" id="widget-accept" title="Chat öffnen">Chat</button>
+    </div>
+</div>
 
 <!-- Chatbot Window -->
 <div id="chatbot-window">
@@ -1735,7 +1862,7 @@
             <img src="img/fav.png"
                  alt="Bot Avatar">
             <div class="chat-header-text">
-                <h3>Array</h3>
+                <h3>area710</h3>
                 <p>Online</p>
             </div>
         </div>
@@ -2001,6 +2128,17 @@
                 addBotMessage(knowledgeBase[chatbotLang].greeting);
             }
         }
+
+        // Update widget message if it's currently visible
+        const widget = document.getElementById('chatbot-greeting-widget');
+        if (widget && widget.classList.contains('show')) {
+            const messageDiv = document.getElementById('widget-message');
+            const messages = {
+                'de': 'Hey, ich bin der Chatbot der area710! 🤖 Möchtest du mit mir chatten?',
+                'en': 'Hey, I\'m the area710 chatbot! 🤖 Do you want to chat with me?'
+            };
+            messageDiv.textContent = messages[lang] || messages['de'];
+        }
     }
 
     // Chatbot State
@@ -2180,9 +2318,28 @@
         }
     });
 
+    // Widget Event Listeners
+    const widgetAcceptBtn = document.getElementById('widget-accept');
+    const widgetDeclineBtn = document.getElementById('widget-decline');
+
+    if (widgetAcceptBtn) {
+        widgetAcceptBtn.addEventListener('click', () => {
+            hideGreetingWidget();
+            toggleChat();
+        });
+    }
+
+    if (widgetDeclineBtn) {
+        widgetDeclineBtn.addEventListener('click', () => {
+            hideGreetingWidget();
+        });
+    }
+
     // ==================== COOKIE MANAGEMENT ====================
     const COOKIE_CONSENT_KEY = 'area710_cookie_consent';
     const CHAT_HISTORY_KEY = 'area710_chat_history';
+    const FIRST_VISIT_KEY = 'area710_first_visit';
+    const CHATBOT_GREETED_KEY = 'area710_chatbot_greeted';
     let cookiesAccepted = false;
 
     // Check cookie consent on page load
@@ -2195,6 +2352,68 @@
             }, 1000);
         } else if (consent === 'accepted') {
             cookiesAccepted = true;
+        }
+    }
+
+    // Check if this is the first visit to this page
+    function isFirstVisitToPage() {
+        const firstVisit = localStorage.getItem(FIRST_VISIT_KEY);
+        if (firstVisit === null) {
+            // Mark as visited
+            localStorage.setItem(FIRST_VISIT_KEY, 'true');
+            return true;
+        }
+        return false;
+    }
+
+    // Check if chatbot greeting was already shown
+    function hasShownGreeting() {
+        return localStorage.getItem(CHATBOT_GREETED_KEY) === 'true';
+    }
+
+    // Mark greeting as shown
+    function markGreetingAsShown() {
+        localStorage.setItem(CHATBOT_GREETED_KEY, 'true');
+    }
+
+    // Show greeting widget with language-specific message
+    function showGreetingWidget() {
+        const widget = document.getElementById('chatbot-greeting-widget');
+        const messageDiv = document.getElementById('widget-message');
+
+        // Determine language
+        const lang = currentLang || 'de';
+
+        // Get message based on language
+        const messages = {
+            'de': 'Hey, ich bin der Chatbot der area710! 🤖 Möchtest du mit mir chatten?',
+            'en': 'Hey, I\'m the area710 chatbot! 🤖 Do you want to chat with me?'
+        };
+
+        messageDiv.textContent = messages[lang] || messages['de'];
+
+        // Show widget with animation
+        setTimeout(() => {
+            widget.classList.add('show');
+        }, 100);
+    }
+
+    // Hide greeting widget
+    function hideGreetingWidget() {
+        const widget = document.getElementById('chatbot-greeting-widget');
+        widget.classList.remove('show');
+    }
+
+    // Auto-open chatbot after 30 seconds on first visit
+    function scheduleAutoOpenChatbot() {
+        if (isFirstVisitToPage() && !hasShownGreeting()) {
+            setTimeout(() => {
+                // Only show if still on the same page and document is fully loaded
+                if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                    showGreetingWidget();
+                    markGreetingAsShown();
+                }
+            }, 30000); // 30 seconds
         }
     }
 
@@ -2276,6 +2495,9 @@
 
     // Start loading knowledge base
     loadKnowledgeBase();
+
+    // Schedule auto-open chatbot after 30 seconds on first visit
+    scheduleAutoOpenChatbot();
 </script>
 
 <!-- COOKIE BANNER -->

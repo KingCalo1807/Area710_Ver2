@@ -75,7 +75,8 @@
       }
     ],
     "fallback": "Diese Information konnte ich leider nicht eindeutig finden. Formuliere deine Frage bitte anders oder frage nach einem anderen Thema zur area710.",
-    "greeting": "Hallo! 👋 Ich bin Array :). Wie kann ich dir helfen?",
+    "greeting": "Hey, ich bin der Chatbot der area710! Möchtest du mit mir chatten?",
+    "welcomeMessage": "Hey, ich bin der Chatbot der area710! Möchtest du mit mir chatten?",
     "maxFailuresMessage": "Es scheint, als könnte ich dir aktuell nicht weiterhelfen. Möchtest du direkt mit unserem Team sprechen? <a href='contact.html' style='color: #FCAB14; text-decoration: underline;'>Hier geht's zum Kontaktformular</a>"
   },
   "en": {
@@ -154,7 +155,8 @@
       }
     ],
     "fallback": "Unfortunately, I couldn't find this information clearly. Please rephrase your question or ask about another topic related to area710.",
-    "greeting": "Hello! 👋 I'm Array :). How can I help you?",
+    "greeting": "Hey, I'm the area710 chatbot! Do you want to chat with me?",
+    "welcomeMessage": "Hey, I'm the area710 chatbot! Do you want to chat with me?",
     "maxFailuresMessage": "It seems I can't help you at the moment. Would you like to speak directly with our team? <a href='contact.html' style='color: #FCAB14; text-decoration: underline;'>Click here for the contact form</a>"
   }
 }
