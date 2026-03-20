@@ -895,57 +895,159 @@
             }
         }
 
+        /* ── REFERENZEN SECTION ────────────────────────────────── */
         .testimonial-section {
-            background: linear-gradient(135deg, var(--gray), var(--black));
-            padding: 5rem 2rem;
+            position: relative;
+            padding: 8rem 2rem;
+            background: #0a0a0a;
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-            text-align: center;
+            overflow: hidden;
         }
 
-        .testimonial-section .section-header {
-            margin-bottom: 2.5rem;
+        /* Subtle grain texture overlay */
+        .testimonial-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* Orange accent line on the left side */
+        .ref-layout {
+            display: grid;
+            grid-template-columns: 4px 1fr;
+            gap: 0 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            align-items: start;
+        }
+        .ref-accent-line {
+            width: 1px;
+            height: 100%;
+            min-height: 280px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+        }
+
+        .ref-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .ref-eyebrow {
+            font-size: 0.72rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            font-weight: 400;
         }
 
         .section-header-orange h2 {
-            background: linear-gradient(135deg, var(--blue), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 2.4rem;
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            line-height: 1.15;
+            color: var(--white);
+            margin-bottom: 0;
+            -webkit-text-fill-color: unset;
+            background: none;
         }
 
-        .testimonial-content {
-            max-width: 800px;
-            margin: 0 auto 2.5rem;
+        .testimonial-section .section-header {
+            margin-bottom: 0;
+        }
+        .testimonial-section .section-header p {
+            display: none; /* replaced by pull-quote */
         }
 
-        .testimonial-content p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 2rem;
+        /* Large pull quote */
+        .ref-pull-quote {
+            position: relative;
+            padding-left: 0;
         }
-
-        .testimonial-btn {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            font-size: 1.1rem;
-            font-weight: 500;
-            border-radius: 4px;
-            background: transparent; /* kein Hintergrund standardmäßig */
-            color: var(--white); /* weißer Text standardmäßig */
-            border: 2px solid var(--white); /* weißer Rahmen */
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .ref-pull-quote p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 300;
+            line-height: 1.75;
+            color: rgba(255,255,255,0.65);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .ref-pull-author {
+            font-size: 0.8rem;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            cursor: pointer;
+            color: rgba(255,255,255,0.3);
+        }
+        .ref-pull-author strong {
+            color: rgba(255,255,255,0.6);
+            font-weight: 500;
         }
 
+        /* Stats – horizontal, minimal */
+        .ref-stats {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .ref-stat-number {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+        .ref-stat-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-top: 0.3rem;
+        }
+        .ref-stat-divider {
+            width: 1px;
+            height: 36px;
+            background: rgba(255,255,255,0.12);
+        }
+
+        /* CTA button – clean, single accent */
+        .testimonial-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.95rem 2.2rem;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.25);
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease, border-color 0.3s ease, gap 0.3s ease;
+            align-self: flex-start;
+        }
         .testimonial-btn:hover {
-            background: var(--white); /* Hintergrund wird weiß */
-            color: var(--black); /* Text wird schwarz */
-            transform: translateY(-5px); /* leichte Bewegung nach oben */
+            background: rgba(255,255,255,0.07);
+            border-color: rgba(255,255,255,0.6);
+            gap: 1.5rem;
+        }
+        .btn-arrow {
+            font-style: normal;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .ref-layout {
+                grid-template-columns: 3px 1fr;
+                gap: 0 1.5rem;
+            }
+            .ref-stats { flex-wrap: wrap; gap: 1.5rem; }
         }
 
         /* Chat Header */
@@ -1400,29 +1502,61 @@
     </div>
 </section>
 
-<!-- STATS -->
+<!-- REFERENZEN -->
 <section class="testimonial-section">
-    <div class="container">
-        <div class="section-header section-header-orange">
-            <h2 class="lang-de">Das sagen unsere Kunden</h2>
-            <h2 class="lang-en" style="display:none;">What Our Clients Say</h2>
-            <p class="lang-de">Erfahren Sie, was unsere Kunden über area710 berichten</p>
-            <p class="lang-en" style="display:none;">Learn what our clients say about area710</p>
-        </div>
+    <div class="container" style="position:relative; z-index:1;">
+        <div class="ref-layout">
 
-        <div class="testimonial-content">
-            <p class="lang-de">
-                Unsere Kunden stehen im Mittelpunkt all unserer Bemühungen. Lesen Sie ihre Erfahrungen und
-                Erfolgsgeschichten mit area710.
-            </p>
-            <p class="lang-en" style="display:none;">
-                Our clients are at the center of all our efforts. Read their experiences and success stories with
-                area710.
-            </p>
-        </div>
+            <div class="ref-accent-line"></div>
 
-        <a href="referenz.html" class="testimonial-btn lang-de">Zu den Referenzen</a>
-        <a href="referenz.html" class="testimonial-btn lang-en" style="display:none;">View References</a>
+            <div class="ref-inner">
+
+                <span class="ref-eyebrow lang-de">Kundenstimmen</span>
+                <span class="ref-eyebrow lang-en" style="display:none;">Testimonials</span>
+
+                <div class="section-header section-header-orange">
+                    <h2 class="lang-de">Das sagen<br>unsere Kunden</h2>
+                    <h2 class="lang-en" style="display:none;">What Our<br>Clients Say</h2>
+                </div>
+
+                <div class="ref-pull-quote lang-de">
+                    <p>„Super tolle Location! Modern, neu, elegant - einfach ein Traum!"</p>
+                    <span class="ref-pull-author"><strong>Liza L.</strong> &nbsp;·&nbsp; Local Guide</span>
+                </div>
+                <div class="ref-pull-quote lang-en" style="display:none;">
+                    <p>"Fantastic location! Modern, new, elegant - simply a dream!"</p>
+                    <span class="ref-pull-author"><strong>Liza L.</strong> &nbsp;·&nbsp; Local Guide</span>
+                </div>
+
+                <div class="ref-stats">
+                    <div class="ref-stat">
+                        <div class="ref-stat-number">500+</div>
+                        <div class="ref-stat-label lang-de">Events</div>
+                        <div class="ref-stat-label lang-en" style="display:none;">Events</div>
+                    </div>
+                    <div class="ref-stat-divider"></div>
+                    <div class="ref-stat">
+                        <div class="ref-stat-number">4,7</div>
+                        <div class="ref-stat-label lang-de">Sterne auf Google</div>
+                        <div class="ref-stat-label lang-en" style="display:none;">Stars on Google</div>
+                    </div>
+                    <div class="ref-stat-divider"></div>
+                    <div class="ref-stat">
+                        <div class="ref-stat-number">10+</div>
+                        <div class="ref-stat-label lang-de">Jahre Erfahrung</div>
+                        <div class="ref-stat-label lang-en" style="display:none;">Years exp.</div>
+                    </div>
+                </div>
+
+                <a href="referenz.html" class="testimonial-btn lang-de">
+                    Alle Referenzen <em class="btn-arrow">→</em>
+                </a>
+                <a href="referenz.html" class="testimonial-btn lang-en" style="display:none;">
+                    View References <em class="btn-arrow">→</em>
+                </a>
+
+            </div>
+        </div>
     </div>
 </section>
 
