@@ -25,13 +25,13 @@ async function loadKnowledgeBase() {
             "de": {
                 "intents": [],
                 "fallback": "Der Chatbot konnte nicht korrekt geladen werden. Bitte kontaktiere uns direkt.",
-                "greeting": "Hallo! 👋 Ich bin Array :). Wie kann ich dir helfen?",
+                "greeting": "Hallo! 👋 Ich bin area710 :). Wie kann ich dir helfen?",
                 "maxFailuresMessage": "Es scheint, als könnte ich dir aktuell nicht weiterhelfen. Möchtest du direkt mit unserem Team sprechen?"
             },
             "en": {
                 "intents": [],
                 "fallback": "The chatbot could not be loaded correctly. Please contact us directly.",
-                "greeting": "Hello! 👋 I'm Array :). How can I help you?",
+                "greeting": "Hello! 👋 I'm area710 :). How can I help you?",
                 "maxFailuresMessage": "It seems I can't help you at the moment. Would you like to speak directly with our team?"
             }
         };
@@ -96,7 +96,7 @@ function init() {
         if (knowledgeBase && knowledgeBase[chatbotLang]) {
             addBotMessage(knowledgeBase[chatbotLang].greeting);
         } else {
-            addBotMessage("Hallo! 👋 Ich bin Array :). Wie kann ich dir helfen?");
+            addBotMessage("Hallo! 👋 Ich bin area710 :). Wie kann ich dir helfen?");
         }
     }
 }
@@ -235,7 +235,7 @@ clearChatBtn.addEventListener('click', () => {
     if (knowledgeBase && knowledgeBase[chatbotLang]) {
         addBotMessage(knowledgeBase[chatbotLang].greeting);
     } else {
-        addBotMessage("Hallo! 👋 Ich bin Array :). Wie kann ich dir helfen?");
+        addBotMessage("Hallo! 👋 Ich bin area710 :). Wie kann ich dir helfen?");
     }
 });
 
@@ -317,8 +317,8 @@ function showGreetingWidget() {
 
     // Get message based on language
     const messages = {
-        'de': 'Hey, ich bin der Chatbot der area710! 🤖 Möchtest du mit mir chatten?',
-        'en': 'Hey, I\'m the area710 chatbot! 🤖 Do you want to chat with me?'
+        'de': 'Hey, ich bin der Chatbot der area710! Möchtest du mit mir chatten?',
+        'en': 'Hey, I\'m the area710 chatbot! Do you want to chat with me?'
     };
 
     messageDiv.textContent = messages[lang] || messages['de'];
