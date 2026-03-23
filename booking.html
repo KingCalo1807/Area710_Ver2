@@ -27,7 +27,8 @@
             --black: #000;
             --white: #fff;
             --gray: #222;
-            --gray-light: #333;
+            --gray-light: #1a1a1a;
+            --gray-medium: #2a2a2a;
             --border: rgba(255, 255, 255, 0.1);
         }
 
@@ -241,11 +242,28 @@
 
         /* FORM */
         .booking-form {
-            background: var(--gray);
+            background: var(--gray-medium);
             padding: 3rem;
-            border-radius: 4px;
+            border-radius: 16px;
             border: 1px solid var(--border);
             animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .booking-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green));
+        }
+
+        .booking-form:hover {
+            box-shadow: 0 8px 32px rgba(252, 171, 20, 0.15);
         }
 
         .form-section {
@@ -296,14 +314,19 @@
             color: var(--white);
             font-family: 'Roboto', sans-serif;
             font-size: 0.95rem;
-            border-radius: 4px;
+            border-radius: 10px;
             transition: all 0.3s ease;
         }
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--white);
-            background: rgba(252, 171, 20, 0.05);
+            border-color: var(--orange);
+            background: rgba(252, 171, 20, 0.08);
+            box-shadow: 0 0 0 3px rgba(252, 171, 20, 0.1);
+        }
+
+        input:hover:not(:focus), select:hover:not(:focus), textarea:hover:not(:focus) {
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         textarea {
@@ -314,30 +337,32 @@
         /* AVAILABILITY INFO */
         .availability-info {
             margin-top: 0.5rem;
-            padding: 0.8rem;
+            padding: 1rem;
             background: var(--gray-light);
-            border-radius: 4px;
+            border-radius: 10px;
             font-size: 0.85rem;
             display: none;
+            transition: all 0.3s ease;
         }
 
         .availability-info.show {
             display: block;
+            animation: fadeInUp 0.3s ease-out;
         }
 
         .availability-info.blocked {
-            background: rgba(205, 17, 81, 0.2);
-            border-left: 3px solid var(--red);
+            background: rgba(205, 17, 81, 0.15);
+            border-left: 4px solid var(--red);
         }
 
         .availability-info.available {
-            background: rgba(174, 198, 16, 0.2);
-            border-left: 3px solid var(--green);
+            background: rgba(174, 198, 16, 0.15);
+            border-left: 4px solid var(--green);
         }
 
         .availability-info.partial {
-            background: rgba(252, 171, 20, 0.2);
-            border-left: 3px solid var(--orange);
+            background: rgba(252, 171, 20, 0.15);
+            border-left: 4px solid var(--orange);
         }
 
         .blocked-rooms-list {
@@ -511,21 +536,43 @@
             background: linear-gradient(135deg, var(--orange), var(--red));
             color: var(--white);
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 12px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             width: 100%;
             font-family: 'Roboto', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(252, 171, 20, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(252, 171, 20, 0.4);
         }
 
         .btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
+        }
+
+        .btn:disabled::before {
+            display: none;
         }
 
         /* SIDEBAR */
@@ -536,11 +583,29 @@
         }
 
         .sidebar-card {
-            background: var(--gray);
+            background: var(--gray-medium);
             padding: 2rem;
-            border-radius: 4px;
+            border-radius: 16px;
             border: 1px solid var(--border);
             margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .sidebar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green));
+        }
+
+        .sidebar-card:hover {
+            box-shadow: 0 8px 32px rgba(0, 159, 226, 0.15);
+            transform: translateY(-2px);
         }
 
         .sidebar-card h3 {
@@ -554,20 +619,35 @@
             align-items: center;
             gap: 1rem;
             margin-bottom: 1rem;
-            padding: 0.8rem;
+            padding: 1rem;
             background: var(--gray-light);
-            border-radius: 4px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .contact-item:hover {
+            background: rgba(252, 171, 20, 0.08);
+            border-color: rgba(252, 171, 20, 0.2);
+            transform: translateX(5px);
         }
 
         .contact-icon {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             background: linear-gradient(135deg, var(--orange), var(--red));
-            border-radius: 50%;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(252, 171, 20, 0.3);
         }
 
         .contact-info a {
@@ -583,16 +663,31 @@
             font-size: 0.9rem;
             line-height: 1.7;
             color: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            background: var(--gray-light);
+            border-radius: 10px;
+            border-left: 3px solid var(--blue);
         }
 
         /* SUCCESS MESSAGE */
         .success-message {
             display: none;
-            background: var(--gray);
-            border-radius: 4px;
+            background: var(--gray-medium);
+            border-radius: 16px;
             border: 1px solid var(--border);
             animation: fadeInUp 0.6s ease-out;
             overflow: hidden;
+            position: relative;
+        }
+
+        .success-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--green), var(--blue));
         }
 
         .success-message.show {
@@ -601,21 +696,27 @@
 
         .success-header {
             background: var(--gray-light);
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             text-align: center;
         }
 
         .success-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, var(--green), var(--blue));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1rem;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: white;
+            animation: successPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes successPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(174, 198, 16, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(174, 198, 16, 0); }
         }
 
         .success-header h3 {
@@ -657,7 +758,12 @@
             gap: 0.8rem;
             background: var(--gray-light);
             padding: 1rem;
-            border-radius: 8px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .mail-status-item:hover {
+            transform: translateY(-2px);
         }
 
         .mail-status-item .status-icon {
@@ -759,7 +865,7 @@
         .summary-message {
             background: var(--gray-light);
             padding: 1rem;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.6;
@@ -775,7 +881,7 @@
             border-left: 4px solid var(--orange);
             padding: 1rem 1.5rem;
             margin: 0 2rem 1.5rem;
-            border-radius: 0 8px 8px 0;
+            border-radius: 0 12px 12px 0;
         }
 
         .next-steps-icon {
@@ -797,13 +903,25 @@
         /* ERROR MESSAGE */
         .error-message {
             display: none;
-            background: rgba(205, 17, 81, 0.2);
+            background: rgba(205, 17, 81, 0.15);
             border: 1px solid var(--red);
             padding: 1.5rem;
-            border-radius: 4px;
+            border-radius: 12px;
             margin-bottom: 1.5rem;
             color: var(--white);
             line-height: 1.6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--red);
         }
 
         .error-message.show {
@@ -1020,9 +1138,14 @@
         .custom-calendar {
             background: var(--gray-light);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .custom-calendar:hover {
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .calendar-header {
@@ -1044,7 +1167,7 @@
             color: var(--white);
             width: 36px;
             height: 36px;
-            border-radius: 4px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 1.5rem;
             line-height: 1;
@@ -1056,6 +1179,7 @@
             background: var(--orange);
             border-color: var(--orange);
             color: var(--black);
+            transform: scale(1.05);
         }
 
         .calendar-weekdays {
@@ -1085,7 +1209,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 4px;
+            border-radius: 8px;
             font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -1098,6 +1222,7 @@
         .calendar-day:hover:not(.disabled):not(.past):not(.empty) {
             background: rgba(255, 255, 255, 0.1);
             border-color: var(--white);
+            transform: scale(1.05);
         }
 
         .calendar-day.empty {
