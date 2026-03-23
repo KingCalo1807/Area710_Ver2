@@ -1,0 +1,12 @@
+[23-Mar-2026 12:20:33 UTC] Mail Error: SMTP Error: data not accepted. SMTP server error: DATA command failed Detail: Too many emails per second. Please upgrade your plan https://mailtrap.io/billing/plans/testing
+ SMTP code: 550 Additional SMTP info: 5.7.0
+[23-Mar-2026 12:20:48 UTC] Mail Error: SMTP Error: data not accepted. SMTP server error: DATA command failed Detail: Too many emails per second. Please upgrade your plan https://mailtrap.io/billing/plans/testing
+ SMTP code: 550 Additional SMTP info: 5.7.0
+[23-Mar-2026 12:40:59 UTC] Mail Error: SMTP Error: data not accepted. SMTP server error: DATA command failed Detail: Too many emails per second. Please upgrade your plan https://mailtrap.io/billing/plans/testing
+ SMTP code: 550 Additional SMTP info: 5.7.0
+[23-Mar-2026 12:43:32 UTC] Mail Error: SMTP Error: data not accepted. SMTP server error: DATA command failed Detail: Too many emails per second. Please upgrade your plan https://mailtrap.io/billing/plans/testing
+ SMTP code: 550 Additional SMTP info: 5.7.0
+[23-Mar-2026 12:46:13 UTC] Mail Error: SMTP Error: data not accepted. SMTP server error: DATA command failed Detail: Too many emails per second. Please upgrade your plan https://mailtrap.io/billing/plans/testing
+ SMTP code: 550 Additional SMTP info: 5.7.0
+[23-Mar-2026 12:47:06 UTC] Mail Error: SMTP Error: data not accepted. SMTP server error: DATA command failed Detail: Too many emails per second. Please upgrade your plan https://mailtrap.io/billing/plans/testing
+ SMTP code: 550 Additional SMTP info: 5.7.0

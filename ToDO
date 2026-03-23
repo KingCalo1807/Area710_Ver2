@@ -1,8 +1,14 @@
-referenz.html
+Localhost: cd /Users/dennis/Desktop/Project/Area710_Ver_2 && php -S localhost:8000
+
+
+referenz.html => CHECK
 - zeitungsquelle und bilder => CHECK
 
 Chatbot überall einbauen! => CHECK
 Chatbott handy optimieren
 Kalender Buchungsanfragen ohne Blocker
-Events Kalender raus und ansicht möglichkeit bei Buchungsanfragen. Bei Buchung einfach Kalender größer
-Dafür bei Events eine Dynamische Liste
+Events Kalender raus und ansicht möglichkeit bei Buchungsanfragen. => CHECK
+Bei Buchung einfach Kalender größer
+Dafür bei Events eine Dynamische Liste => CHECK
+
+Kundenmail emojies raus und facebook logo ändern

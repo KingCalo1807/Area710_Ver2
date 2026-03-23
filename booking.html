@@ -588,25 +588,210 @@
         /* SUCCESS MESSAGE */
         .success-message {
             display: none;
-            background: linear-gradient(135deg, var(--green), var(--blue));
-            padding: 2rem;
+            background: var(--gray);
             border-radius: 4px;
-            text-align: center;
+            border: 1px solid var(--border);
             animation: fadeInUp 0.6s ease-out;
+            overflow: hidden;
         }
 
         .success-message.show {
             display: block;
         }
 
-        .success-message h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+        .success-header {
+            background: var(--gray-light);
+            padding: 2rem;
+            text-align: center;
         }
 
-        .success-message p {
-            font-size: 1.1rem;
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--green), var(--blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .success-header h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0;
+            color: var(--white);
+        }
+
+        .success-gradient-line {
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange) 0%, var(--red) 33%, var(--blue) 66%, var(--green) 100%);
+        }
+
+        /* Mail Status Section */
+        .mail-status-section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mail-status-section h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 1rem 0;
+        }
+
+        .mail-status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .mail-status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--gray-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .mail-status-item .status-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .mail-status-item.failed .status-icon {
+            background: var(--red);
+        }
+
+        .mail-status-item .status-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mail-status-item .status-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .mail-status-item .status-result {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        /* Booking Summary Section */
+        .booking-summary-section {
+            padding: 1.5rem 2rem;
+        }
+
+        .booking-summary-section h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .summary-group {
             margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .summary-group:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .summary-group-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+
+        .summary-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .summary-value {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--white);
+            text-align: right;
+        }
+
+        .summary-badge {
+            background: var(--orange);
+            color: var(--black);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .summary-message {
+            background: var(--gray-light);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        /* Next Steps Info */
+        .next-steps-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: linear-gradient(135deg, rgba(252, 171, 20, 0.1), rgba(205, 17, 81, 0.1));
+            border-left: 4px solid var(--orange);
+            padding: 1rem 1.5rem;
+            margin: 0 2rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .next-steps-icon {
+            font-size: 1.2rem;
+            color: var(--orange);
+        }
+
+        .next-steps-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .success-message .btn {
+            margin: 0 2rem 2rem;
+            width: calc(100% - 4rem);
         }
 
         /* ERROR MESSAGE */
@@ -614,10 +799,11 @@
             display: none;
             background: rgba(205, 17, 81, 0.2);
             border: 1px solid var(--red);
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 4px;
             margin-bottom: 1.5rem;
             color: var(--white);
+            line-height: 1.6;
         }
 
         .error-message.show {
@@ -824,6 +1010,192 @@
             background: white;
         }
 
+        /* CUSTOM CALENDAR */
+        .custom-calendar {
+            background: var(--gray-light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-month {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .calendar-nav {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--white);
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .calendar-nav:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+            color: var(--black);
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .calendar-weekdays span {
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            padding: 0.5rem 0;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--white);
+            position: relative;
+        }
+
+        .calendar-day:hover:not(.disabled):not(.past):not(.empty) {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+        }
+
+        .calendar-day.empty {
+            cursor: default;
+        }
+
+        .calendar-day.past {
+            color: rgba(255, 255, 255, 0.25);
+            cursor: not-allowed;
+        }
+
+        .calendar-day.today {
+            border-color: var(--orange);
+            font-weight: 600;
+        }
+
+        .calendar-day.selected {
+            background: var(--orange);
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .calendar-day.available:not(.past):not(.selected) {
+            background: rgba(174, 198, 16, 0.2);
+        }
+
+        .calendar-day.partial:not(.past):not(.selected) {
+            background: rgba(252, 171, 20, 0.3);
+            color: var(--orange);
+        }
+
+        .calendar-day.partial:not(.past):not(.selected)::after {
+            content: '';
+            position: absolute;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+
+        .calendar-day.blocked:not(.past) {
+            background: rgba(205, 17, 81, 0.3);
+            color: var(--red);
+            cursor: not-allowed;
+        }
+
+        .calendar-day.blocked:not(.past)::after {
+            content: '';
+            position: absolute;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--red);
+            border-radius: 50%;
+        }
+
+        .calendar-legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.available {
+            background: var(--green);
+        }
+
+        .legend-dot.partial {
+            background: var(--orange);
+        }
+
+        .legend-dot.blocked {
+            background: var(--red);
+        }
+
+        @media (max-width: 640px) {
+            .calendar-legend {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
 
     </style>
 </head>
@@ -885,13 +1257,110 @@
                 <div class="error-message" id="errorMessage"></div>
 
                 <div class="success-message" id="successMessage">
-                    <h3 data-de="Vielen Dank!" data-en="Thank you!">Vielen Dank!</h3>
-                    <p data-de="Ihre Buchungsanfrage wurde erfolgreich versendet. Wir melden uns in Kürze bei Ihnen."
-                       data-en="Your booking request has been sent successfully. We will contact you shortly.">Ihre
-                        Buchungsanfrage wurde erfolgreich versendet. Wir melden uns in Kürze bei Ihnen.</p>
-                    <button class="btn" onclick="location.reload()" data-de="Neue Anfrage" data-en="New Request">Neue
-                        Anfrage
-                    </button>
+                    <!-- Header -->
+                    <div class="success-header">
+                        <div class="success-icon">✓</div>
+                        <h3 data-de="Buchungsanfrage erfolgreich versendet!" data-en="Booking request sent successfully!">Buchungsanfrage erfolgreich versendet!</h3>
+                    </div>
+                    
+                    <!-- Gradient Line -->
+                    <div class="success-gradient-line"></div>
+                    
+                    <!-- Mail Status -->
+                    <div class="mail-status-section">
+                        <h4 data-de="E-Mail-Status" data-en="Email Status">E-Mail-Status</h4>
+                        <div class="mail-status-grid">
+                            <div class="mail-status-item" id="ownerMailStatus">
+                                <span class="status-icon" id="ownerMailIcon">✓</span>
+                                <div class="status-text">
+                                    <span class="status-label" data-de="Anfrage an area710" data-en="Request to area710">Anfrage an area710</span>
+                                    <span class="status-result" id="ownerMailResult" data-de="Gesendet" data-en="Sent">Gesendet</span>
+                                </div>
+                            </div>
+                            <div class="mail-status-item" id="customerMailStatus">
+                                <span class="status-icon" id="customerMailIcon">✓</span>
+                                <div class="status-text">
+                                    <span class="status-label" data-de="Bestätigung an Sie" data-en="Confirmation to you">Bestätigung an Sie</span>
+                                    <span class="status-result" id="customerMailResult" data-de="Gesendet" data-en="Sent">Gesendet</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Booking Summary -->
+                    <div class="booking-summary-section">
+                        <h4 data-de="Ihre Buchungsanfrage" data-en="Your Booking Request">Ihre Buchungsanfrage</h4>
+                        
+                        <!-- Contact Info -->
+                        <div class="summary-group">
+                            <div class="summary-group-title" data-de="Kontaktdaten" data-en="Contact Details">Kontaktdaten</div>
+                            <div class="summary-row">
+                                <span class="summary-label" data-de="Name" data-en="Name">Name</span>
+                                <span class="summary-value" id="summaryName">-</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label" data-de="E-Mail" data-en="Email">E-Mail</span>
+                                <span class="summary-value" id="summaryEmail">-</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label" data-de="Telefon" data-en="Phone">Telefon</span>
+                                <span class="summary-value" id="summaryPhone">-</span>
+                            </div>
+                            <div class="summary-row" id="summaryCompanyRow" style="display: none;">
+                                <span class="summary-label" data-de="Firma" data-en="Company">Firma</span>
+                                <span class="summary-value" id="summaryCompany">-</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Event Details -->
+                        <div class="summary-group">
+                            <div class="summary-group-title" data-de="Event-Details" data-en="Event Details">Event-Details</div>
+                            <div class="summary-row">
+                                <span class="summary-label" data-de="Veranstaltung" data-en="Event">Veranstaltung</span>
+                                <span class="summary-value summary-badge" id="summaryEventType">-</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label" data-de="Datum & Uhrzeit" data-en="Date & Time">Datum & Uhrzeit</span>
+                                <span class="summary-value" id="summaryDateTime">-</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label" data-de="Dauer" data-en="Duration">Dauer</span>
+                                <span class="summary-value" id="summaryDuration">-</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label" data-de="Gäste" data-en="Guests">Gäste</span>
+                                <span class="summary-value" id="summaryGuests">-</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Rooms & Services -->
+                        <div class="summary-group">
+                            <div class="summary-group-title" data-de="Räume & Services" data-en="Rooms & Services">Räume & Services</div>
+                            <div class="summary-row">
+                                <span class="summary-label" data-de="Räume" data-en="Rooms">Räume</span>
+                                <span class="summary-value" id="summaryRooms">-</span>
+                            </div>
+                            <div class="summary-row" id="summaryServicesRow">
+                                <span class="summary-label" data-de="Services" data-en="Services">Services</span>
+                                <span class="summary-value" id="summaryServices">-</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Message (if any) -->
+                        <div class="summary-group" id="summaryMessageGroup" style="display: none;">
+                            <div class="summary-group-title" data-de="Ihre Nachricht" data-en="Your Message">Ihre Nachricht</div>
+                            <div class="summary-message" id="summaryMessage">-</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Next Steps Info -->
+                    <div class="next-steps-info">
+                        <span class="next-steps-icon">ℹ</span>
+                        <p data-de="Wir werden uns innerhalb von 24 Stunden bei Ihnen melden." data-en="We will contact you within 24 hours.">Wir werden uns innerhalb von 24 Stunden bei Ihnen melden.</p>
+                    </div>
+                    
+                    <!-- New Request Button -->
+                    <button class="btn" onclick="location.reload()" data-de="Neue Anfrage stellen" data-en="Submit New Request">Neue Anfrage stellen</button>
                 </div>
 
                 <form class="booking-form" id="bookingForm">
@@ -959,10 +1428,38 @@
                             </select>
                         </div>
 
+                        <div class="form-row" style="margin-top: 1.5rem;">
+                            <div class="form-group" style="grid-column: 1 / -1;">
+                                <!-- CUSTOM CALENDAR -->
+                                <div class="custom-calendar" id="customCalendar">
+                                    <div class="calendar-header">
+                                        <button type="button" class="calendar-nav" id="calendarPrev">&#8249;</button>
+                                        <span class="calendar-month" id="calendarMonth"></span>
+                                        <button type="button" class="calendar-nav" id="calendarNext">&#8250;</button>
+                                    </div>
+                                    <div class="calendar-weekdays">
+                                        <span data-de="Mo" data-en="Mon">Mo</span>
+                                        <span data-de="Di" data-en="Tue">Di</span>
+                                        <span data-de="Mi" data-en="Wed">Mi</span>
+                                        <span data-de="Do" data-en="Thu">Do</span>
+                                        <span data-de="Fr" data-en="Fri">Fr</span>
+                                        <span data-de="Sa" data-en="Sat">Sa</span>
+                                        <span data-de="So" data-en="Sun">So</span>
+                                    </div>
+                                    <div class="calendar-days" id="calendarDays"></div>
+                                    <div class="calendar-legend">
+                                        <span class="legend-item"><span class="legend-dot available"></span> <span data-de="Verfügbar" data-en="Available">Verfügbar</span></span>
+                                        <span class="legend-item"><span class="legend-dot partial"></span> <span data-de="Teilweise belegt" data-en="Partially booked">Teilweise belegt</span></span>
+                                        <span class="legend-item"><span class="legend-dot blocked"></span> <span data-de="Ausgebucht" data-en="Fully booked">Ausgebucht</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="eventDate" class="required" data-de="Datum" data-en="Date">Datum</label>
-                                <input type="date" id="eventDate" name="eventDate" required>
+                                <label for="eventDate" class="required" data-de="Gewähltes Datum" data-en="Selected Date">Gewähltes Datum</label>
+                                <input type="date" id="eventDate" name="eventDate" required readonly style="cursor: pointer;">
 
                                 <!-- AVAILABILITY INFO -->
                                 <div class="availability-info" id="availabilityInfo"></div>
@@ -977,9 +1474,9 @@
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="duration" class="required" data-de="Dauer (Stunden)"
-                                       data-en="Duration (hours)">Dauer (Stunden)</label>
-                                <input type="number" id="duration" name="duration" min="1" max="24" required>
+                                <label for="endTime" class="required" data-de="Uhrzeit (bis)"
+                                       data-en="Time (until)">Uhrzeit (bis)</label>
+                                <input type="time" id="endTime" name="endTime" required>
                             </div>
 
                             <div class="form-group">
@@ -1226,7 +1723,9 @@
     // Token beim Seitenstart abrufen
     async function fetchCSRFToken() {
         try {
-            const response = await fetch('get-csrf-token.php');
+            const response = await fetch('get-csrf-token.php', {
+                credentials: 'include'
+            });
             const data = await response.json();
             if (data.csrf_token) {
                 csrfToken = data.csrf_token;
@@ -1399,30 +1898,271 @@
         }
     }
 
-    // Event listeners for date, time, and duration changes
+    // Event listeners for date, time, and endTime changes
     document.getElementById('eventDate').addEventListener('change', function () {
         const selectedTime = document.getElementById('eventTime').value;
-        const duration = document.getElementById('duration').value;
+        const endTime = document.getElementById('endTime').value;
+        const duration = calculateDuration(selectedTime, endTime);
         checkAvailability(this.value, selectedTime, duration);
     });
 
     document.getElementById('eventTime').addEventListener('change', function () {
         const selectedDate = document.getElementById('eventDate').value;
-        const duration = document.getElementById('duration').value;
+        const endTime = document.getElementById('endTime').value;
+        validateEndTime();
+        const duration = calculateDuration(this.value, endTime);
         if (selectedDate) {
             checkAvailability(selectedDate, this.value, duration);
         }
     });
 
-    document.getElementById('duration').addEventListener('change', function () {
+    document.getElementById('endTime').addEventListener('change', function () {
         const selectedDate = document.getElementById('eventDate').value;
         const selectedTime = document.getElementById('eventTime').value;
+        validateEndTime();
+        const duration = calculateDuration(selectedTime, this.value);
         if (selectedDate) {
-            checkAvailability(selectedDate, selectedTime, this.value);
+            checkAvailability(selectedDate, selectedTime, duration);
         }
     });
+    
+    // Berechnet die Dauer in Stunden aus Start- und Endzeit
+    function calculateDuration(startTime, endTime) {
+        if (!startTime || !endTime) return null;
+        
+        const startMinutes = timeToMinutes(startTime);
+        let endMinutes = timeToMinutes(endTime);
+        
+        // Wenn Endzeit kleiner als Startzeit, geht Event über Mitternacht
+        if (endMinutes <= startMinutes) {
+            endMinutes += 24 * 60; // 24 Stunden addieren
+        }
+        
+        return (endMinutes - startMinutes) / 60;
+    }
+    
+    // Validiert, dass die Endzeit nach der Startzeit liegt
+    function validateEndTime() {
+        const startTime = document.getElementById('eventTime').value;
+        const endTime = document.getElementById('endTime').value;
+        const endTimeInput = document.getElementById('endTime');
+        
+        if (!startTime || !endTime) return;
+        
+        const startMinutes = timeToMinutes(startTime);
+        const endMinutes = timeToMinutes(endTime);
+        
+        // Events über Mitternacht sind erlaubt, aber sehr kurze Events (< 1h) nicht
+        if (endMinutes !== startMinutes) {
+            let duration = endMinutes - startMinutes;
+            if (duration < 0) duration += 24 * 60; // Über Mitternacht
+            
+            if (duration < 60) { // Minimum 1 Stunde
+                endTimeInput.setCustomValidity(
+                    currentLang === 'de' 
+                        ? 'Die Veranstaltung muss mindestens 1 Stunde dauern.' 
+                        : 'The event must be at least 1 hour long.'
+                );
+            } else if (duration > 24 * 60) { // Maximum 24 Stunden
+                endTimeInput.setCustomValidity(
+                    currentLang === 'de' 
+                        ? 'Die Veranstaltung darf maximal 24 Stunden dauern.' 
+                        : 'The event must not exceed 24 hours.'
+                );
+            } else {
+                endTimeInput.setCustomValidity('');
+            }
+        } else {
+            endTimeInput.setCustomValidity(
+                currentLang === 'de' 
+                    ? 'Die Endzeit muss sich von der Startzeit unterscheiden.' 
+                    : 'End time must be different from start time.'
+            );
+        }
+    }
 
     loadAvailability();
+
+    // ========================================
+    // CUSTOM CALENDAR
+    // ========================================
+    let currentCalendarDate = new Date();
+    let selectedCalendarDate = null;
+    
+    const monthNames = {
+        de: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+        en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    };
+    
+    function renderCalendar() {
+        const year = currentCalendarDate.getFullYear();
+        const month = currentCalendarDate.getMonth();
+        
+        // Update month display
+        const monthLabel = document.getElementById('calendarMonth');
+        monthLabel.textContent = `${monthNames[currentLang][month]} ${year}`;
+        
+        // Get first day of month (0 = Sunday, convert to Monday-based)
+        const firstDay = new Date(year, month, 1);
+        let startDay = firstDay.getDay() - 1;
+        if (startDay < 0) startDay = 6; // Sunday becomes 6
+        
+        // Get number of days in month
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        
+        // Get today for comparison
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        // Build calendar HTML
+        const calendarDays = document.getElementById('calendarDays');
+        let html = '';
+        
+        // Empty cells before first day
+        for (let i = 0; i < startDay; i++) {
+            html += '<div class="calendar-day empty"></div>';
+        }
+        
+        // Days of the month
+        for (let day = 1; day <= daysInMonth; day++) {
+            const date = new Date(year, month, day);
+            const dateStr = formatDateISO(date);
+            
+            let classes = ['calendar-day'];
+            
+            // Check if past
+            if (date < today) {
+                classes.push('past');
+            }
+            
+            // Check if today
+            if (date.getTime() === today.getTime()) {
+                classes.push('today');
+            }
+            
+            // Check if selected
+            if (selectedCalendarDate === dateStr) {
+                classes.push('selected');
+            }
+            
+            // Check availability
+            if (date >= today) {
+                const availability = getDateAvailability(dateStr);
+                classes.push(availability);
+            }
+            
+            html += `<div class="${classes.join(' ')}" data-date="${dateStr}">${day}</div>`;
+        }
+        
+        calendarDays.innerHTML = html;
+        
+        // Add click handlers
+        calendarDays.querySelectorAll('.calendar-day:not(.empty):not(.past):not(.blocked)').forEach(dayEl => {
+            dayEl.addEventListener('click', function() {
+                const dateStr = this.getAttribute('data-date');
+                selectDate(dateStr);
+            });
+        });
+    }
+    
+    function formatDateISO(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+    
+    function getDateAvailability(dateStr) {
+        const blockedForDate = blockedRooms.filter(item => item.date === dateStr);
+        
+        if (blockedForDate.length === 0) {
+            return 'available';
+        }
+        
+        // Check if all rooms are blocked
+        const allRooms = ['hall', 'lab', 'barclub', 'outdoor'];
+        const blockedRoomsList = new Set();
+        
+        blockedForDate.forEach(booking => {
+            if (Array.isArray(booking.room)) {
+                booking.room.forEach(r => blockedRoomsList.add(r));
+            }
+        });
+        
+        if (allRooms.every(room => blockedRoomsList.has(room))) {
+            return 'blocked';
+        }
+        
+        return 'partial';
+    }
+    
+    function selectDate(dateStr) {
+        selectedCalendarDate = dateStr;
+        
+        // Update hidden date input
+        document.getElementById('eventDate').value = dateStr;
+        
+        // Trigger availability check
+        const selectedTime = document.getElementById('eventTime').value;
+        const endTime = document.getElementById('endTime').value;
+        const duration = calculateDuration(selectedTime, endTime);
+        checkAvailability(dateStr, selectedTime, duration);
+        
+        // Re-render calendar to show selection
+        renderCalendar();
+    }
+    
+    // Calendar navigation
+    document.getElementById('calendarPrev').addEventListener('click', function() {
+        currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
+        
+        // Don't go before current month
+        const today = new Date();
+        if (currentCalendarDate < new Date(today.getFullYear(), today.getMonth(), 1)) {
+            currentCalendarDate = new Date(today.getFullYear(), today.getMonth(), 1);
+        }
+        
+        renderCalendar();
+    });
+    
+    document.getElementById('calendarNext').addEventListener('click', function() {
+        currentCalendarDate.setMonth(currentCalendarDate.getMonth() + 1);
+        
+        // Don't go more than 2 years ahead
+        const maxDate = new Date();
+        maxDate.setFullYear(maxDate.getFullYear() + 2);
+        if (currentCalendarDate > maxDate) {
+            currentCalendarDate = new Date(maxDate.getFullYear(), maxDate.getMonth(), 1);
+        }
+        
+        renderCalendar();
+    });
+    
+    // Sync date input with calendar
+    document.getElementById('eventDate').addEventListener('change', function() {
+        if (this.value) {
+            selectedCalendarDate = this.value;
+            const [year, month] = this.value.split('-').map(Number);
+            currentCalendarDate = new Date(year, month - 1, 1);
+            renderCalendar();
+        }
+    });
+    
+    // Initial render after availability data is loaded
+    async function initCalendar() {
+        await loadAvailability();
+        renderCalendar();
+        
+        // If date was passed via URL, sync with calendar
+        if (dateParam) {
+            selectedCalendarDate = dateParam;
+            const [year, month] = dateParam.split('-').map(Number);
+            currentCalendarDate = new Date(year, month - 1, 1);
+            renderCalendar();
+        }
+    }
+    
+    initCalendar();
 
     // ========================================
     // FORM SUBMISSION
@@ -1477,7 +2217,7 @@
             eventType: formData.get('eventType'),
             eventDate: formData.get('eventDate'),
             eventTime: formData.get('eventTime'),
-            duration: formData.get('duration'),
+            endTime: formData.get('endTime'),
             guests: formData.get('guests'),
             rooms: rooms,
             services: services,
@@ -1488,6 +2228,7 @@
         try {
             const response = await fetch('booking-handler.php', {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -1497,14 +2238,47 @@
             const result = await response.json();
 
             if (result.success) {
+                // Formular ausblenden
                 document.querySelector('.booking-form').style.display = 'none';
+                
+                // Mail-Status anzeigen
+                updateMailStatus('ownerMail', result.ownerMailSent);
+                updateMailStatus('customerMail', result.customerMailSent);
+                
+                // Zusammenfassung einfügen
+                if (result.summary) {
+                    populateSummary(result.summary);
+                }
+                
+                // Erfolgs-Nachricht anzeigen
                 successMessage.classList.add('show');
                 window.scrollTo({top: 0, behavior: 'smooth'});
 
                 // Neues CSRF-Token für nächste Anfrage holen
                 fetchCSRFToken();
             } else {
-                throw new Error(result.error || 'Ein Fehler ist aufgetreten');
+                // Detaillierte Fehlermeldung erstellen
+                let errorDetails = result.error || 'Ein Fehler ist aufgetreten';
+                
+                // Mail-Status Details hinzufügen
+                if (result.ownerMailSent !== undefined || result.customerMailSent !== undefined) {
+                    const ownerStatus = result.ownerMailSent 
+                        ? (currentLang === 'de' ? '✓ Gesendet' : '✓ Sent')
+                        : (currentLang === 'de' ? '✗ Fehlgeschlagen' : '✗ Failed');
+                    const customerStatus = result.customerMailSent 
+                        ? (currentLang === 'de' ? '✓ Gesendet' : '✓ Sent')
+                        : (currentLang === 'de' ? '✗ Fehlgeschlagen' : '✗ Failed');
+                    
+                    errorDetails += currentLang === 'de'
+                        ? `\n\nE-Mail-Status:\n• Anfrage an area710: ${ownerStatus}\n• Bestätigung an Sie: ${customerStatus}`
+                        : `\n\nEmail status:\n• Request to area710: ${ownerStatus}\n• Confirmation to you: ${customerStatus}`;
+                }
+                
+                errorMessage.innerHTML = errorDetails.replace(/\n/g, '<br>');
+                errorMessage.classList.add('show');
+                
+                btn.disabled = false;
+                btn.textContent = currentLang === 'de' ? 'Anfrage senden' : 'Send Request';
             }
 
         } catch (error) {
@@ -1519,6 +2293,58 @@
             console.error('Booking error:', error);
         }
     });
+    
+    // ========================================
+    // HELPER FUNCTIONS FOR SUCCESS VIEW
+    // ========================================
+    
+    function updateMailStatus(mailType, success) {
+        const statusItem = document.getElementById(mailType + 'Status');
+        const statusIcon = document.getElementById(mailType + 'Icon');
+        const statusResult = document.getElementById(mailType + 'Result');
+        
+        if (success) {
+            statusItem.classList.remove('failed');
+            statusIcon.textContent = '✓';
+            statusResult.textContent = currentLang === 'de' ? 'Gesendet' : 'Sent';
+        } else {
+            statusItem.classList.add('failed');
+            statusIcon.textContent = '✗';
+            statusResult.textContent = currentLang === 'de' ? 'Fehlgeschlagen' : 'Failed';
+        }
+    }
+    
+    function populateSummary(summary) {
+        // Kontaktdaten
+        document.getElementById('summaryName').textContent = summary.name || '-';
+        document.getElementById('summaryEmail').textContent = summary.email || '-';
+        document.getElementById('summaryPhone').textContent = summary.phone || '-';
+        
+        // Firma (nur anzeigen wenn vorhanden)
+        if (summary.company) {
+            document.getElementById('summaryCompany').textContent = summary.company;
+            document.getElementById('summaryCompanyRow').style.display = 'flex';
+        }
+        
+        // Event-Details
+        document.getElementById('summaryEventType').textContent = summary.eventType || '-';
+        document.getElementById('summaryDateTime').textContent = 
+            (summary.eventDate || '-') + ', ' + (summary.eventTime || '-') + ' – ' + (summary.endTime || '-') + ' Uhr';
+        document.getElementById('summaryDuration').textContent = 
+            (summary.duration || '-') + (currentLang === 'de' ? ' Stunden' : ' hours');
+        document.getElementById('summaryGuests').textContent = 
+            (summary.guests || '-') + (currentLang === 'de' ? ' Personen' : ' guests');
+        
+        // Räume & Services
+        document.getElementById('summaryRooms').textContent = summary.rooms || '-';
+        document.getElementById('summaryServices').textContent = summary.services || '-';
+        
+        // Nachricht (nur anzeigen wenn vorhanden)
+        if (summary.message) {
+            document.getElementById('summaryMessage').textContent = summary.message;
+            document.getElementById('summaryMessageGroup').style.display = 'block';
+        }
+    }
 
     // ========================================
     // HEADER SCROLL EFFECT
