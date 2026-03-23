@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Komplette Ausstattungsliste - area710 Holzgerlingen">
-    <title>Ausstattung - area710 - UNIQUE EVENT LOCATION</title>
+    <meta name="description" content="Ausstattung & Raumpläne - area710 Holzgerlingen. Alle Details zu unseren Räumen, Kapazitäten und technischer Ausstattung.">
+    <title>Ausstattung & Raumpläne - area710 - UNIQUE EVENT LOCATION</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" type="image/png" href="img/fav.png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="chatbot.css">
-
 
     <style>
         * {
@@ -27,7 +25,9 @@
             --green: #AEC610;
             --black: #000;
             --white: #fff;
-            --gray: #222;
+            --gray: #111;
+            --gray-light: #1a1a1a;
+            --gray-medium: #222;
             --border: rgba(255, 255, 255, 0.1);
         }
 
@@ -170,6 +170,7 @@
         .hero {
             position: relative;
             height: 50vh;
+            min-height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -180,14 +181,21 @@
         .hero-bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(252, 171, 20, 0.3), rgba(205, 17, 81, 0.3), rgba(0, 159, 226, 0.3), rgba(174, 198, 16, 0.3)), url('img/hall.jpg') center/cover;
+            background: linear-gradient(135deg, rgba(252, 171, 20, 0.2), rgba(205, 17, 81, 0.2)), url('img/hall.jpg') center/cover;
             z-index: 1;
+            transform: scale(1.1);
+            animation: heroZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            0% { transform: scale(1.1); }
+            100% { transform: scale(1.15); }
         }
 
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.6);
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
             z-index: 2;
         }
 
@@ -214,16 +222,21 @@
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
             margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--white), rgba(255,255,255,0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-content p {
             font-size: clamp(1rem, 2vw, 1.3rem);
             font-weight: 300;
+            opacity: 0.9;
         }
 
         /* SECTION */
         .section {
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
         }
 
         .container {
@@ -231,312 +244,485 @@
             margin: 0 auto;
         }
 
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
         .section-title {
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
             margin-bottom: 1rem;
-            text-align: center;
         }
 
         .section-subtitle {
-            text-align: center;
             font-size: clamp(1rem, 2vw, 1.2rem);
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 4rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* EQUIPMENT GRID */
-        .equipment-grid {
-            max-width: 900px;
-            margin: 0 auto 3rem;
-        }
-
-        .equipment-card {
-            background: var(--gray);
-            border: 2px solid var(--border);
-            border-radius: 4px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: fadeInUp 0.6s ease-out forwards;
-            opacity: 0;
-        }
-
-        .equipment-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .equipment-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .equipment-card:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .equipment-card:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        .equipment-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .equipment-card.hall {
-            border-color: var(--orange);
-        }
-
-        .equipment-card.hall:hover {
-            border-color: var(--orange);
-            box-shadow: 0 20px 40px rgba(252, 171, 20, 0.3);
-        }
-
-        .equipment-card.lab {
-            border-color: var(--red);
-        }
-
-        .equipment-card.lab:hover {
-            border-color: var(--red);
-            box-shadow: 0 20px 40px rgba(205, 17, 81, 0.3);
-        }
-
-        .equipment-card.barclub {
-            border-color: var(--blue);
-        }
-
-        .equipment-card.barclub:hover {
-            border-color: var(--blue);
-            box-shadow: 0 20px 40px rgba(0, 159, 226, 0.3);
-        }
-
-        .equipment-card.outdoor {
-            border-color: var(--green);
-        }
-
-        .equipment-card.outdoor:hover {
-            border-color: var(--green);
-            box-shadow: 0 20px 40px rgba(174, 198, 16, 0.3);
-        }
-
-        .equipment-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .equipment-title {
-            font-size: 2rem;
-            font-weight: 700;
-            text-transform: lowercase;
-            flex: 1;
-        }
-
-        .equipment-card.hall .equipment-title {
-            color: var(--orange);
-        }
-
-        .equipment-card.lab .equipment-title {
-            color: var(--red);
-        }
-
-        .equipment-card.barclub .equipment-title {
-            color: var(--blue);
-        }
-
-        .equipment-card.outdoor .equipment-title {
-            color: var(--green);
-        }
-
-        .facts-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .facts-list li {
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            align-items: flex-start;
-        }
-
-        .facts-list li:last-child {
-            border-bottom: none;
-        }
-
-        .facts-list strong {
-            font-weight: 500;
-            color: var(--white);
-            min-width: 120px;
-        }
-
-        .facts-list span {
-            flex: 1;
-            text-align: right;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .equipment-footer {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            text-transform: lowercase;
-        }
-
-        .btn:hover {
-            background: var(--white);
-            color: var(--black);
-            transform: translateY(-2px);
-        }
-
-        .equipment-card.hall .btn {
-            border-color: var(--orange);
-        }
-
-        .equipment-card.hall .btn:hover {
-            background: var(--orange);
-            border-color: var(--orange);
-            color: var(--white);
-        }
-
-        .equipment-card.lab .btn {
-            border-color: var(--red);
-        }
-
-        .equipment-card.lab .btn:hover {
-            background: var(--red);
-            border-color: var(--red);
-            color: var(--white);
-        }
-
-        .equipment-card.barclub .btn {
-            border-color: var(--blue);
-        }
-
-        .equipment-card.barclub .btn:hover {
-            background: var(--blue);
-            border-color: var(--blue);
-            color: var(--white);
-        }
-
-        .equipment-card.outdoor .btn {
-            border-color: var(--green);
-        }
-
-        .equipment-card.outdoor .btn:hover {
-            background: var(--green);
-            border-color: var(--green);
-            color: var(--white);
-        }
-
-        /* BACK LINK */
-        .back-link {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .back-link a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-            transition: all 0.3s ease;
-        }
-
-        .back-link a:hover {
-            color: var(--white);
-        }
-
-        /* GENERAL EQUIPMENT */
-        .general-equipment {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        .general-card {
-            background: var(--black);
-            border: 2px solid var(--border);
-            border-radius: 4px;
+        /* QUICK NAV */
+        .quick-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .quick-nav-item {
+            padding: 0.8rem 1.5rem;
+            background: var(--gray-light);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .quick-nav-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .quick-nav-item.hall:hover { border-color: var(--orange); color: var(--orange); }
+        .quick-nav-item.lab:hover { border-color: var(--red); color: var(--red); }
+        .quick-nav-item.barclub:hover { border-color: var(--blue); color: var(--blue); }
+        .quick-nav-item.outdoor:hover { border-color: var(--green); color: var(--green); }
+
+        /* ROOM CARDS */
+        .room-section {
+            margin-bottom: 6rem;
+            scroll-margin-top: 100px;
+        }
+
+        .room-card {
+            background: var(--gray-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .room-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .room-card.hall::before { background: var(--orange); }
+        .room-card.lab::before { background: var(--red); }
+        .room-card.barclub::before { background: var(--blue); }
+        .room-card.outdoor::before { background: var(--green); }
+
+        .room-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
             padding: 2.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .room-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: lowercase;
+        }
+
+        .room-card.hall .room-title { color: var(--orange); }
+        .room-card.lab .room-title { color: var(--red); }
+        .room-card.barclub .room-title { color: var(--blue); }
+        .room-card.outdoor .room-title { color: var(--green); }
+
+        .room-badges {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 0.5rem 1rem;
+            background: var(--gray-medium);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .room-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        /* FLOORPLAN SECTION */
+        .floorplan-section {
+            padding: 2.5rem;
+            border-right: 1px solid var(--border);
+        }
+
+        .floorplan-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .floorplan-placeholder {
+            background: var(--gray-medium);
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            aspect-ratio: 16/10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: rgba(255,255,255,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .floorplan-placeholder:hover {
+            border-color: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.6);
+        }
+
+        .floorplan-placeholder svg {
+            opacity: 0.5;
+        }
+
+        .floorplan-placeholder span {
+            font-size: 0.9rem;
+        }
+
+        .floorplan-image {
+            width: 100%;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .floorplan-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* DETAILS SECTION */
+        .details-section {
+            padding: 2.5rem;
+        }
+
+        .details-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* CAPACITY TABLE */
+        .capacity-table {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .capacity-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .capacity-row:last-child {
+            border-bottom: none;
+        }
+
+        .capacity-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+
+        .capacity-value {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* EQUIPMENT LIST */
+        .equipment-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .equipment-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+        }
+
+        .equipment-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .equipment-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .room-card.hall .equipment-list li::before { background: var(--orange); }
+        .room-card.lab .equipment-list li::before { background: var(--red); }
+        .room-card.barclub .equipment-list li::before { background: var(--blue); }
+        .room-card.outdoor .equipment-list li::before { background: var(--green); }
+
+        /* ROOM FOOTER */
+        .room-footer {
+            padding: 1.5rem 2.5rem;
+            background: var(--gray-medium);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .room-footer-info {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-stat {
+            text-align: center;
+        }
+
+        .footer-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .room-card.hall .footer-stat-value { color: var(--orange); }
+        .room-card.lab .footer-stat-value { color: var(--red); }
+        .room-card.barclub .footer-stat-value { color: var(--blue); }
+        .room-card.outdoor .footer-stat-value { color: var(--green); }
+
+        .footer-stat-label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-hall { background: var(--orange); color: var(--black); }
+        .btn-lab { background: var(--red); color: var(--white); }
+        .btn-barclub { background: var(--blue); color: var(--white); }
+        .btn-outdoor { background: var(--green); color: var(--black); }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* GENERAL EQUIPMENT SECTION */
+        .general-section {
+            background: linear-gradient(180deg, var(--gray-light) 0%, rgba(26,26,26,0.8) 100%);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            margin-top: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .general-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        .general-section .section-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .general-section .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--white) 0%, rgba(255,255,255,0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .general-section .section-subtitle {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.1rem;
+        }
+
+        .general-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .general-card {
+            background: rgba(30,30,30,0.6);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 2rem;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .general-card:nth-child(1) { animation-delay: 0.1s; }
+        .general-card:nth-child(2) { animation-delay: 0.2s; }
+        .general-card:nth-child(3) { animation-delay: 0.3s; }
+        .general-card:nth-child(4) { animation-delay: 0.4s; }
+        .general-card:nth-child(5) { animation-delay: 0.5s; }
+        .general-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .general-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transform: translateY(-8px);
+            background: rgba(40,40,40,0.8);
+            border-color: rgba(255,255,255,0.15);
         }
 
         .general-icon {
-            width: 70px;
-            height: 70px;
+            width: 64px;
+            height: 64px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid var(--border);
-            border-radius: 50%;
+            border-radius: 16px;
             margin-bottom: 1.5rem;
-            color: var(--white);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.8);
             transition: all 0.3s ease;
         }
 
         .general-card:hover .general-icon {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.2);
         }
 
-        .general-title {
-            font-size: 1.3rem;
+        .general-card-title {
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             color: var(--white);
         }
 
         .general-list {
             list-style: none;
-            padding: 0;
         }
 
         .general-list li {
-            padding: 0.8rem 0;
-            padding-left: 1.5rem;
+            padding: 0.6rem 0;
+            padding-left: 1.75rem;
             position: relative;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .general-card:hover .general-list li {
+            color: rgba(255, 255, 255, 0.85);
         }
 
         .general-list li::before {
-            content: "✓";
+            content: "";
             position: absolute;
             left: 0;
-            color: var(--orange);
-            font-weight: bold;
+            top: 1rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(252, 171, 20, 0.1), rgba(205, 17, 81, 0.1));
+            border-radius: 20px;
+            margin-top: 4rem;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--orange), var(--red));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(252, 171, 20, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 8px 25px rgba(252, 171, 20, 0.4);
         }
 
         /* FOOTER */
@@ -544,6 +730,7 @@
             background: var(--gray);
             padding: 3rem 2rem 2rem;
             border-top: 1px solid var(--border);
+            margin-top: 6rem;
         }
 
         .footer-content {
@@ -579,23 +766,30 @@
         }
 
         .social-link {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: var(--gray-medium);
             border: 1px solid var(--border);
+            border-radius: 10px;
             transition: all 0.3s ease;
         }
 
         .social-link:hover {
-            border-color: var(--white);
-            background: var(--white);
             transform: translateY(-3px);
         }
 
-        .social-link:hover svg {
-            fill: var(--black);
+        .social-link.facebook:hover { background: #1877F2; border-color: #1877F2; }
+        .social-link.instagram:hover { background: linear-gradient(45deg, #f09433, #dc2743); border-color: #dc2743; }
+        .social-link.whatsapp:hover { background: #25D366; border-color: #25D366; }
+
+        .social-link img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+            border-radius: 4px;
         }
 
         .footer-bottom {
@@ -654,8 +848,7 @@
         }
 
         .submenu li a:hover {
-            background: linear-gradient(90deg, rgba(252, 171, 20, 0.15), rgba(205, 17, 81, 0.15), rgba(0, 159, 226, 0.15), rgba(174, 198, 16, 0.15));
-            color: var(--white);
+            background: linear-gradient(90deg, rgba(252, 171, 20, 0.15), rgba(205, 17, 81, 0.15));
         }
 
         .has-submenu > a::after {
@@ -688,38 +881,74 @@
                 z-index: 1001;
             }
 
-            .general-equipment {
+            .room-content {
+                grid-template-columns: 1fr;
+            }
+
+            .floorplan-section {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .room-footer {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .equipment-list {
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 640px) {
             .section {
-                padding: 3rem 1rem;
+                padding: 4rem 1rem;
             }
 
-            .equipment-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .facts-list li {
+            .room-header {
                 flex-direction: column;
-                gap: 0.3rem;
+                align-items: flex-start;
+                gap: 1rem;
             }
 
-            .facts-list span {
-                text-align: left;
+            .room-footer-info {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .quick-nav {
+                gap: 0.5rem;
+            }
+
+            .quick-nav-item {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .general-section {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .general-section .section-title {
+                font-size: 2rem;
+            }
+
+            .general-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .general-card {
-                padding: 2rem 1.5rem;
+                padding: 1.75rem;
             }
         }
 
-        .icon-white {
-            filter: brightness(0) invert(1);
+        @media (max-width: 1200px) and (min-width: 641px) {
+            .general-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
-
     </style>
 </head>
 <body>
@@ -731,17 +960,17 @@
         </a>
 
         <ul class="nav-menu" id="navMenu">
-            <li><a href="index.html" data-de="area710" data-en="area710">area710</a></li>
+            <li><a href="index.html">area710</a></li>
             <li class="has-submenu">
                 <a href="raueme.html" data-de="Räume" data-en="Rooms">Räume</a>
                 <ul class="submenu">
-                    <li><a href="raueme.html#hall" data-de="Hall" data-en="Hall">Hall</a></li>
-                    <li><a href="raueme.html#lab" data-de="Lab" data-en="Lab">Lab</a></li>
-                    <li><a href="raueme.html#barclub" data-de="Bar & Club" data-en="Bar & Club">Bar & Club</a></li>
-                    <li><a href="raueme.html#outdoor" data-de="Bar & Club / Plaza" data-en="Bar & Club / Plaza">Bar & Club / Plaza</a></li>
+                    <li><a href="raueme.html#hall">Hall</a></li>
+                    <li><a href="raueme.html#lab">Lab</a></li>
+                    <li><a href="raueme.html#barclub">Bar & Club</a></li>
+                    <li><a href="raueme.html#outdoor">Bar & Club / Plaza</a></li>
                 </ul>
             </li>
-            <li><a href="events.html" data-de="Events" data-en="Events">Events</a></li>
+            <li><a href="events.html">Events</a></li>
             <li><a href="gallery.html" data-de="Galerie" data-en="Gallery">Galerie</a></li>
             <li><a href="about.html" data-de="Über Uns" data-en="About Us">Über Uns</a></li>
             <li><a href="booking.html" data-de="Buchungsanfrage" data-en="Booking Request">Buchungsanfrage</a></li>
@@ -765,364 +994,563 @@
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h1 class="lang-de">Ausstattung</h1>
-        <h1 class="lang-en" style="display:none;">Equipment</h1>
-        <p class="lang-de">Alle Details zu unseren Räumen im Überblick</p>
-        <p class="lang-en" style="display:none;">All details about our rooms at a glance</p>
+        <h1 data-de="Ausstattung & Raumpläne" data-en="Equipment & Floor Plans">Ausstattung & Raumpläne</h1>
+        <p data-de="Alle Details zu unseren Räumen im Überblick" data-en="All details about our rooms at a glance">Alle Details zu unseren Räumen im Überblick</p>
     </div>
 </section>
 
 <section class="section">
     <div class="container">
-        <div class="back-link">
-            <a href="raueme.html">
-                ← <span class="lang-de">Zurück zu Räume</span>
-                <span class="lang-en" style="display:none;">Back to Rooms</span>
-            </a>
+
+        <!-- Quick Navigation -->
+        <div class="quick-nav">
+            <a href="#hall" class="quick-nav-item hall">Hall</a>
+            <a href="#lab" class="quick-nav-item lab">Lab</a>
+            <a href="#barclub" class="quick-nav-item barclub">Bar & Club</a>
+            <a href="#outdoor" class="quick-nav-item outdoor">Bar & Club / Plaza</a>
         </div>
 
-        <h2 class="section-title lang-de">Raumspezifische Ausstattung</h2>
-        <h2 class="section-title lang-en" style="display:none;">Room-Specific Equipment</h2>
-        <p class="section-subtitle lang-de">Alle technischen Details und Ausstattungsmerkmale unserer Räume</p>
-        <p class="section-subtitle lang-en" style="display:none;">All technical details and equipment features of our
-            rooms</p>
-
-        <div class="equipment-grid">
-            <!-- HALL -->
-            <div class="equipment-card hall">
-                <div class="equipment-header">
-                    <h3 class="equipment-title">hall</h3>
+        <!-- HALL -->
+        <div class="room-section" id="hall">
+            <div class="room-card hall">
+                <div class="room-header">
+                    <h2 class="room-title">hall</h2>
+                    <div class="room-badges">
+                        <span class="badge">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            </svg>
+                            105 m² + 20 m² <span data-de="Balkon" data-en="Balcony">Balkon</span>
+                        </span>
+                        <span class="badge">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            <span data-de="bis 80 Personen" data-en="up to 80 people">bis 80 Personen</span>
+                        </span>
+                    </div>
                 </div>
 
-                <ul class="facts-list">
-                    <li>
-                        <strong class="lang-de">Fläche</strong>
-                        <strong class="lang-en" style="display:none;">Area</strong>
-                        <span>105 m² + 20 m² <span class="lang-de">Balkon</span><span class="lang-en"
-                                                                                      style="display:none;">Balcony</span></span>
-                    </li>
-                    <li>
-                        <strong class="lang-de">Ausstattung</strong>
-                        <strong class="lang-en" style="display:none;">Equipment</strong>
-                        <span class="lang-de">Beschallungsanlage</span>
-                        <span class="lang-en" style="display:none;">Sound system</span>
-                    </li>
-                    <li>
-                        <strong>Video</strong>
-                        <span>6 x 2 m Video Wall</span>
-                    </li>
-                    <li>
-                        <strong class="lang-de">Präsentation</strong>
-                        <strong class="lang-en" style="display:none;">Presentation</strong>
-                        <span class="lang-de">Beamer + Leinwand</span>
-                        <span class="lang-en" style="display:none;">Projector + Screen</span>
-                    </li>
-                    <li>
-                        <strong>Catering</strong>
-                        <span class="lang-de">Kühlschrank, Küchenzeile</span>
-                        <span class="lang-en" style="display:none;">Refrigerator, Kitchenette</span>
-                    </li>
-                </ul>
+                <div class="room-content">
+                    <div class="floorplan-section">
+                        <h3 class="floorplan-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
+                            <span data-de="Raumplan" data-en="Floor Plan">Raumplan</span>
+                        </h3>
+                        <!-- Platzhalter für Raumplan - ersetzen mit: <img src="img/floorplan-hall.jpg" alt="Raumplan Hall" class="floorplan-image"> -->
+                        <div class="floorplan-placeholder">
+                            <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                                <circle cx="15" cy="15" r="2"/>
+                            </svg>
+                            <span data-de="Raumplan wird geladen..." data-en="Floor plan loading...">Raumplan wird geladen...</span>
+                        </div>
+                    </div>
 
-                <div class="equipment-footer">
-                    <a href="booking.html?room=hall" class="btn lang-de">hall anfragen</a>
-                    <a href="booking.html?room=hall" class="btn lang-en" style="display:none;">Request hall</a>
-                </div>
-            </div>
+                    <div class="details-section">
+                        <h3 class="details-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                            </svg>
+                            <span data-de="Kapazitäten" data-en="Capacities">Kapazitäten</span>
+                        </h3>
+                        <div class="capacity-table">
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="Stehempfang" data-en="Standing reception">Stehempfang</span>
+                                <span class="capacity-value">80</span>
+                            </div>
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="Reihenbestuhlung" data-en="Theater seating">Reihenbestuhlung</span>
+                                <span class="capacity-value">60</span>
+                            </div>
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="Bankett" data-en="Banquet">Bankett</span>
+                                <span class="capacity-value">50</span>
+                            </div>
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="U-Form" data-en="U-Shape">U-Form</span>
+                                <span class="capacity-value">30</span>
+                            </div>
+                        </div>
 
-            <!-- LAB -->
-            <div class="equipment-card lab">
-                <div class="equipment-header">
-                    <h3 class="equipment-title">lab</h3>
-                </div>
-
-                <ul class="facts-list">
-                    <li>
-                        <strong class="lang-de">Fläche</strong>
-                        <strong class="lang-en" style="display:none;">Area</strong>
-                        <span>150 m²</span>
-                    </li>
-                    <li>
-                        <strong class="lang-de">Technik</strong>
-                        <strong class="lang-en" style="display:none;">Technology</strong>
-                        <span class="lang-de">Professionelle Ton- und Lichttechnik</span>
-                        <span class="lang-en" style="display:none;">Professional sound and lighting technology</span>
-                    </li>
-                    <li>
-                        <strong class="lang-de">LED-Wand</strong>
-                        <strong class="lang-en" style="display:none;">LED Wall</strong>
-                        <span class="lang-de">4,8 x 2,7 m individuell bespielbar</span>
-                        <span class="lang-en" style="display:none;">4.8 x 2.7 m individually customizable</span>
-                    </li>
-                    <li>
-                        <strong class="lang-de">Präsentation</strong>
-                        <strong class="lang-en" style="display:none;">Presentation</strong>
-                        <span class="lang-de">Beamer + Leinwand</span>
-                        <span class="lang-en" style="display:none;">Projector + Screen</span>
-                    </li>
-                    <li>
-                        <strong class="lang-de">Besonderheit</strong>
-                        <strong class="lang-en" style="display:none;">Special Feature</strong>
-                        <span class="lang-de">Farbige Lichtkuben</span>
-                        <span class="lang-en" style="display:none;">Colored light cubes</span>
-                    </li>
-                </ul>
-
-                <div class="equipment-footer">
-                    <a href="booking.html?room=lab" class="btn lang-de">lab anfragen</a>
-                    <a href="booking.html?room=lab" class="btn lang-en" style="display:none;">Request lab</a>
-                </div>
-            </div>
-
-            <!-- BAR & CLUB -->
-            <div class="equipment-card barclub">
-                <div class="equipment-header">
-                    <h3 class="equipment-title">bar & club</h3>
+                        <h4 class="equipment-title" data-de="Ausstattung" data-en="Equipment">Ausstattung</h4>
+                        <ul class="equipment-list">
+                            <li data-de="Beschallungsanlage" data-en="Sound system">Beschallungsanlage</li>
+                            <li data-de="6 x 2 m Video Wall" data-en="6 x 2 m Video Wall">6 x 2 m Video Wall</li>
+                            <li data-de="Beamer + Leinwand" data-en="Projector + Screen">Beamer + Leinwand</li>
+                            <li data-de="Kühlschrank" data-en="Refrigerator">Kühlschrank</li>
+                            <li data-de="Küchenzeile" data-en="Kitchenette">Küchenzeile</li>
+                            <li data-de="Balkon (20 m²)" data-en="Balcony (20 m²)">Balkon (20 m²)</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <ul class="facts-list">
-                    <li>
-                        <strong class="lang-de">Fläche</strong>
-                        <strong class="lang-en" style="display:none;">Area</strong>
-                        <span>65 m²</span>
-                    </li>
-                    <li>
-                        <strong class="lang-de">Technik</strong>
-                        <strong class="lang-en" style="display:none;">Technology</strong>
-                        <span class="lang-de">Ton- und Lichttechnik</span>
-                        <span class="lang-en" style="display:none;">Sound and lighting technology</span>
-                    </li>
-                    <li>
-                        <strong class="lang-de">Präsentation</strong>
-                        <strong class="lang-en" style="display:none;">Presentation</strong>
-                        <span class="lang-de">Beamer + Projektionsfläche</span>
-                        <span class="lang-en" style="display:none;">Projector + Projection surface</span>
-                    </li>
-                    <li>
-                        <strong>Bar</strong>
-                        <span class="lang-de">Professionell ausgestatteter Barbereich</span>
-                        <span class="lang-en" style="display:none;">Professionally equipped bar area</span>
-                    </li>
-                    <li>
-                        <strong class="lang-de">Möblierung</strong>
-                        <strong class="lang-en" style="display:none;">Furniture</strong>
-                        <span class="lang-de">Selbstangefertigte Biertischgarnituren</span>
-                        <span class="lang-en" style="display:none;">Custom-made beer table sets</span>
-                    </li>
-                </ul>
-
-                <div class="equipment-footer">
-                    <a href="booking.html?room=barclub" class="btn lang-de">bar & club anfragen</a>
-                    <a href="booking.html?room=barclub" class="btn lang-en" style="display:none;">Request bar & club</a>
-                </div>
-            </div>
-
-            <!-- OUTDOOR -->
-            <div class="equipment-card outdoor">
-                <div class="equipment-header">
-                    <h3 class="equipment-title">bar & club / plaza</h3>
-                </div>
-
-                <ul class="facts-list">
-                    <li>
-                        <strong class="lang-de">Fläche</strong>
-                        <strong class="lang-en" style="display:none;">Area</strong>
-                        <span class="lang-de">Bis zu 750 m²</span>
-                        <span class="lang-en" style="display:none;">Up to 750 m²</span>
-                    </li>
-                    <li>
-                        <strong class="lang-de">Beleuchtung</strong>
-                        <strong class="lang-en" style="display:none;">Lighting</strong>
-                        <span class="lang-de">Vollständig beleuchtet</span>
-                        <span class="lang-en" style="display:none;">Fully illuminated</span>
-                    </li>
-                    <li>
-                        <strong>Sound</strong>
-                        <span class="lang-de">Mobile Soundanlage</span>
-                        <span class="lang-en" style="display:none;">Mobile sound system</span>
-                    </li>
-                    <li>
-                        <strong class="lang-de">Ambiente</strong>
-                        <strong class="lang-en" style="display:none;">Ambience</strong>
-                        <span class="lang-de">Feuerschalen, Heizpilze</span>
-                        <span class="lang-en" style="display:none;">Fire bowls, patio heaters</span>
-                    </li>
-                    <li>
-                        <strong class="lang-de">Möblierung</strong>
-                        <strong class="lang-en" style="display:none;">Furniture</strong>
-                        <span class="lang-de">Selbstangefertigte Biertischgarnituren</span>
-                        <span class="lang-en" style="display:none;">Custom-made beer table sets</span>
-                    </li>
-                </ul>
-
-                <div class="equipment-footer">
-                    <a href="booking.html?room=outdoor" class="btn lang-de">bar & club / plaza anfragen</a>
-                    <a href="booking.html?room=outdoor" class="btn lang-en" style="display:none;">Request bar & club /
-                        plaza</a>
+                <div class="room-footer">
+                    <div class="room-footer-info">
+                        <div class="footer-stat">
+                            <div class="footer-stat-value">105 m²</div>
+                            <div class="footer-stat-label" data-de="Fläche" data-en="Area">Fläche</div>
+                        </div>
+                        <div class="footer-stat">
+                            <div class="footer-stat-value">6 x 2 m</div>
+                            <div class="footer-stat-label">Video Wall</div>
+                        </div>
+                        <div class="footer-stat">
+                            <div class="footer-stat-value">80</div>
+                            <div class="footer-stat-label" data-de="Max. Personen" data-en="Max. People">Max. Personen</div>
+                        </div>
+                    </div>
+                    <a href="booking.html?room=hall" class="btn btn-hall" data-de="Hall anfragen" data-en="Request Hall">Hall anfragen</a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- GENERAL EQUIPMENT SECTION -->
-<section class="section" style="background: var(--gray); padding-top: 5rem;">
-    <div class="container">
-        <h2 class="section-title lang-de">Allgemeine Ausstattung</h2>
-        <h2 class="section-title lang-en" style="display:none;">General Equipment</h2>
-        <p class="section-subtitle lang-de">Zusätzliche Services und Ausstattung für Ihre perfekte Veranstaltung</p>
-        <p class="section-subtitle lang-en" style="display:none;">Additional services and equipment for your perfect
-            event</p>
-
-        <div class="general-equipment">
-            <!-- Internet & IT -->
-            <div class="general-card">
-                <div class="general-icon">
-                    <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="2" y1="12" x2="22" y2="12"/>
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                    </svg>
+        <!-- LAB -->
+        <div class="room-section" id="lab">
+            <div class="room-card lab">
+                <div class="room-header">
+                    <h2 class="room-title">lab</h2>
+                    <div class="room-badges">
+                        <span class="badge">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            </svg>
+                            150 m²
+                        </span>
+                        <span class="badge">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            <span data-de="bis 120 Personen" data-en="up to 120 people">bis 120 Personen</span>
+                        </span>
+                    </div>
                 </div>
-                <h3 class="general-title lang-de">Internet & Netzwerk</h3>
-                <h3 class="general-title lang-en" style="display:none;">Internet & Network</h3>
-                <ul class="general-list">
-                    <li class="lang-de">Highspeed WLAN in allen Räumen</li>
-                    <li class="lang-en" style="display:none;">High-speed WiFi in all rooms</li>
-                    <li class="lang-de">Kabelgebundenes LAN auf Anfrage</li>
-                    <li class="lang-en" style="display:none;">Wired LAN on request</li>
-                    <li class="lang-de">Separate Gäste-Netzwerke verfügbar</li>
-                    <li class="lang-en" style="display:none;">Separate guest networks available</li>
-                    <li class="lang-de">IT-Support vor Ort</li>
-                    <li class="lang-en" style="display:none;">On-site IT support</li>
-                </ul>
-            </div>
 
-            <!-- Catering & Getränke -->
-            <div class="general-card">
-                <div class="general-icon">
-                    <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
-                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-                        <line x1="6" y1="1" x2="6" y2="4"/>
-                        <line x1="10" y1="1" x2="10" y2="4"/>
-                        <line x1="14" y1="1" x2="14" y2="4"/>
-                    </svg>
+                <div class="room-content">
+                    <div class="floorplan-section">
+                        <h3 class="floorplan-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
+                            <span data-de="Raumplan" data-en="Floor Plan">Raumplan</span>
+                        </h3>
+                        <!-- Platzhalter für Raumplan - ersetzen mit: <img src="img/floorplan-lab.jpg" alt="Raumplan Lab" class="floorplan-image"> -->
+                        <div class="floorplan-placeholder">
+                            <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                                <circle cx="15" cy="15" r="2"/>
+                            </svg>
+                            <span data-de="Raumplan wird geladen..." data-en="Floor plan loading...">Raumplan wird geladen...</span>
+                        </div>
+                    </div>
+
+                    <div class="details-section">
+                        <h3 class="details-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                            </svg>
+                            <span data-de="Kapazitäten" data-en="Capacities">Kapazitäten</span>
+                        </h3>
+                        <div class="capacity-table">
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="Stehempfang" data-en="Standing reception">Stehempfang</span>
+                                <span class="capacity-value">120</span>
+                            </div>
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="Reihenbestuhlung" data-en="Theater seating">Reihenbestuhlung</span>
+                                <span class="capacity-value">80</span>
+                            </div>
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="Bankett" data-en="Banquet">Bankett</span>
+                                <span class="capacity-value">70</span>
+                            </div>
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="U-Form" data-en="U-Shape">U-Form</span>
+                                <span class="capacity-value">40</span>
+                            </div>
+                        </div>
+
+                        <h4 class="equipment-title" data-de="Ausstattung" data-en="Equipment">Ausstattung</h4>
+                        <ul class="equipment-list">
+                            <li data-de="Professionelle Tontechnik" data-en="Professional sound system">Professionelle Tontechnik</li>
+                            <li data-de="4,8 x 2,7 m LED-Wand" data-en="4.8 x 2.7 m LED Wall">4,8 x 2,7 m LED-Wand</li>
+                            <li data-de="Beamer + Leinwand" data-en="Projector + Screen">Beamer + Leinwand</li>
+                            <li data-de="Lichttechnik" data-en="Lighting system">Lichttechnik</li>
+                            <li data-de="Farbige Lichtkuben" data-en="Colored light cubes">Farbige Lichtkuben</li>
+                            <li data-de="Flexible Bestuhlung" data-en="Flexible seating">Flexible Bestuhlung</li>
+                        </ul>
+                    </div>
                 </div>
-                <h3 class="general-title lang-de">Catering & Bewirtung</h3>
-                <h3 class="general-title lang-en" style="display:none;">Catering & Hospitality</h3>
-                <ul class="general-list">
-                    <li class="lang-de">Professionelle Cateringküche</li>
-                    <li class="lang-en" style="display:none;">Professional catering kitchen</li>
-                    <li class="lang-de">Partner-Caterer auf Wunsch</li>
-                    <li class="lang-en" style="display:none;">Partner caterers on request</li>
-                    <li class="lang-de">Getränke-Service und Barausstattung</li>
-                    <li class="lang-en" style="display:none;">Beverage service and bar equipment</li>
-                    <li class="lang-de">Geschirr, Gläser und Besteck</li>
-                    <li class="lang-en" style="display:none;">Dishes, glasses and cutlery</li>
-                </ul>
-            </div>
 
-            <!-- Möbel & Einrichtung -->
-            <div class="general-card">
-                <div class="general-icon">
-                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Stuhl Seitenansicht">
-                        <g fill="currentColor">
-                            <!-- Rückenlehne -->
-                            <rect x="18" y="10" width="6" height="28"/>
-
-                            <!-- Sitzfläche -->
-                            <rect x="18" y="32" width="26" height="6"/>
-
-                            <!-- Vorderes Bein -->
-                            <rect x="40" y="38" width="4" height="16"/>
-
-                            <!-- Hinteres Bein -->
-                            <rect x="18" y="38" width="4" height="16"/>
-                        </g>
-                    </svg>
-
+                <div class="room-footer">
+                    <div class="room-footer-info">
+                        <div class="footer-stat">
+                            <div class="footer-stat-value">150 m²</div>
+                            <div class="footer-stat-label" data-de="Fläche" data-en="Area">Fläche</div>
+                        </div>
+                        <div class="footer-stat">
+                            <div class="footer-stat-value">4,8 x 2,7 m</div>
+                            <div class="footer-stat-label">LED-Wand</div>
+                        </div>
+                        <div class="footer-stat">
+                            <div class="footer-stat-value">120</div>
+                            <div class="footer-stat-label" data-de="Max. Personen" data-en="Max. People">Max. Personen</div>
+                        </div>
+                    </div>
+                    <a href="booking.html?room=lab" class="btn btn-lab" data-de="Lab anfragen" data-en="Request Lab">Lab anfragen</a>
                 </div>
-                <h3 class="general-title lang-de">Möblierung & Einrichtung</h3>
-                <h3 class="general-title lang-en" style="display:none;">Furniture & Furnishings</h3>
-                <ul class="general-list">
-                    <li class="lang-de">Flexible Stuhl- und Tischkonfigurationen</li>
-                    <li class="lang-en" style="display:none;">Flexible chair and table configurations</li>
-                    <li class="lang-de">Lounge-Möbel verfügbar</li>
-                    <li class="lang-en" style="display:none;">Lounge furniture available</li>
-                    <li class="lang-de">Stehtische und Barhocker</li>
-                    <li class="lang-en" style="display:none;">Standing tables and bar stools</li>
-                    <li class="lang-de">Individuelle Raumgestaltung möglich</li>
-                    <li class="lang-en" style="display:none;">Individual room design possible</li>
-                </ul>
-            </div>
-
-            <!-- Technik & Equipment -->
-            <div class="general-card">
-                <div class="general-icon">
-                    <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                        <line x1="8" y1="21" x2="16" y2="21"/>
-                        <line x1="12" y1="17" x2="12" y2="21"/>
-                    </svg>
-                </div>
-                <h3 class="general-title lang-de">Veranstaltungstechnik</h3>
-                <h3 class="general-title lang-en" style="display:none;">Event Technology</h3>
-                <ul class="general-list">
-                    <li class="lang-de">Professionelle Mikrofonanlage</li>
-                    <li class="lang-en" style="display:none;">Professional microphone system</li>
-                    <li class="lang-de">Mischpult und Effektgeräte</li>
-                    <li class="lang-en" style="display:none;">Mixing console and effects equipment</li>
-                    <li class="lang-de">Streaming-Equipment verfügbar</li>
-                    <li class="lang-en" style="display:none;">Streaming equipment available</li>
-                    <li class="lang-de">Techniker auf Anfrage</li>
-                    <li class="lang-en" style="display:none;">Technician on request</li>
-                </ul>
-            </div>
-
-            <!-- Service & Support -->
-            <div class="general-card">
-                <div class="general-icon">
-                    <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                        <circle cx="9" cy="7" r="4"/>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                </div>
-                <h3 class="general-title lang-de">Service & Betreuung</h3>
-                <h3 class="general-title lang-en" style="display:none;">Service & Support</h3>
-                <ul class="general-list">
-                    <li class="lang-de">Event-Manager vor Ort</li>
-                    <li class="lang-en" style="display:none;">Event manager on site</li>
-                    <li class="lang-de">Auf- und Abbau-Service</li>
-                    <li class="lang-en" style="display:none;">Setup and breakdown service</li>
-                    <li class="lang-de">Garderobe und Empfang</li>
-                    <li class="lang-en" style="display:none;">Cloakroom and reception</li>
-                    <li class="lang-de">Reinigungsservice inklusive</li>
-                    <li class="lang-en" style="display:none;">Cleaning service included</li>
-                </ul>
-            </div>
-
-            <!-- Parking & Accessibility -->
-            <div class="general-card">
-                <div class="general-icon">
-                    <img src="img/parking-sign.png" alt="Auto" class="icon-white"/>
-                </div>
-                <h3 class="general-title lang-de">Parken & Erreichbarkeit</h3>
-                <h3 class="general-title lang-en" style="display:none;">Parking & Accessibility</h3>
-                <ul class="general-list">
-                    <li class="lang-de">Kostenlose Parkplätze vor Ort</li>
-                    <li class="lang-en" style="display:none;">Free parking on site</li>
-                    <li class="lang-de">Barrierefreier Zugang</li>
-                    <li class="lang-en" style="display:none;">Barrier-free access</li>
-                    <li class="lang-de">Gute Anbindung (Auto & ÖPNV)</li>
-                    <li class="lang-en" style="display:none;">Good connections (car & public transport)</li>
-                    <li class="lang-de">Entlademöglichkeiten für Equipment</li>
-                    <li class="lang-en" style="display:none;">Unloading facilities for equipment</li>
-                </ul>
             </div>
         </div>
+
+        <!-- BAR & CLUB -->
+        <div class="room-section" id="barclub">
+            <div class="room-card barclub">
+                <div class="room-header">
+                    <h2 class="room-title">bar & club</h2>
+                    <div class="room-badges">
+                        <span class="badge">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            </svg>
+                            65 m²
+                        </span>
+                        <span class="badge">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            <span data-de="bis 50 Personen" data-en="up to 50 people">bis 50 Personen</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="room-content">
+                    <div class="floorplan-section">
+                        <h3 class="floorplan-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
+                            <span data-de="Raumplan" data-en="Floor Plan">Raumplan</span>
+                        </h3>
+                        <!-- Platzhalter für Raumplan - ersetzen mit: <img src="img/floorplan-barclub.jpg" alt="Raumplan Bar & Club" class="floorplan-image"> -->
+                        <div class="floorplan-placeholder">
+                            <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                                <circle cx="15" cy="15" r="2"/>
+                            </svg>
+                            <span data-de="Raumplan wird geladen..." data-en="Floor plan loading...">Raumplan wird geladen...</span>
+                        </div>
+                    </div>
+
+                    <div class="details-section">
+                        <h3 class="details-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                            </svg>
+                            <span data-de="Kapazitäten" data-en="Capacities">Kapazitäten</span>
+                        </h3>
+                        <div class="capacity-table">
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="Stehempfang" data-en="Standing reception">Stehempfang</span>
+                                <span class="capacity-value">50</span>
+                            </div>
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="Lounge-Bestuhlung" data-en="Lounge seating">Lounge-Bestuhlung</span>
+                                <span class="capacity-value">35</span>
+                            </div>
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="Sitzend" data-en="Seated">Sitzend</span>
+                                <span class="capacity-value">30</span>
+                            </div>
+                        </div>
+
+                        <h4 class="equipment-title" data-de="Ausstattung" data-en="Equipment">Ausstattung</h4>
+                        <ul class="equipment-list">
+                            <li data-de="Ton- und Lichttechnik" data-en="Sound and lighting">Ton- und Lichttechnik</li>
+                            <li data-de="Beamer + Projektionsfläche" data-en="Projector + Screen">Beamer + Projektionsfläche</li>
+                            <li data-de="Professionelle Bar" data-en="Professional bar">Professionelle Bar</li>
+                            <li data-de="Barhocker" data-en="Bar stools">Barhocker</li>
+                            <li data-de="Lounge-Möbel" data-en="Lounge furniture">Lounge-Möbel</li>
+                            <li data-de="Club-Atmosphäre" data-en="Club atmosphere">Club-Atmosphäre</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="room-footer">
+                    <div class="room-footer-info">
+                        <div class="footer-stat">
+                            <div class="footer-stat-value">65 m²</div>
+                            <div class="footer-stat-label" data-de="Fläche" data-en="Area">Fläche</div>
+                        </div>
+                        <div class="footer-stat">
+                            <div class="footer-stat-value">Bar</div>
+                            <div class="footer-stat-label" data-de="Inklusive" data-en="Included">Inklusive</div>
+                        </div>
+                        <div class="footer-stat">
+                            <div class="footer-stat-value">50</div>
+                            <div class="footer-stat-label" data-de="Max. Personen" data-en="Max. People">Max. Personen</div>
+                        </div>
+                    </div>
+                    <a href="booking.html?room=barclub" class="btn btn-barclub" data-de="Bar & Club anfragen" data-en="Request Bar & Club">Bar & Club anfragen</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- OUTDOOR / PLAZA -->
+        <div class="room-section" id="outdoor">
+            <div class="room-card outdoor">
+                <div class="room-header">
+                    <h2 class="room-title">bar & club / plaza</h2>
+                    <div class="room-badges">
+                        <span class="badge">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            </svg>
+                            <span data-de="bis 750 m²" data-en="up to 750 m²">bis 750 m²</span>
+                        </span>
+                        <span class="badge">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            <span data-de="bis 500 Personen" data-en="up to 500 people">bis 500 Personen</span>
+                        </span>
+                        <span class="badge">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="5"/>
+                                <line x1="12" y1="1" x2="12" y2="3"/>
+                                <line x1="12" y1="21" x2="12" y2="23"/>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                                <line x1="1" y1="12" x2="3" y2="12"/>
+                                <line x1="21" y1="12" x2="23" y2="12"/>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                            </svg>
+                            Outdoor
+                        </span>
+                    </div>
+                </div>
+
+                <div class="room-content">
+                    <div class="floorplan-section">
+                        <h3 class="floorplan-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
+                            <span data-de="Lageplan" data-en="Site Plan">Lageplan</span>
+                        </h3>
+                        <!-- Platzhalter für Raumplan - ersetzen mit: <img src="img/floorplan-outdoor.jpg" alt="Lageplan Outdoor" class="floorplan-image"> -->
+                        <div class="floorplan-placeholder">
+                            <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                                <circle cx="15" cy="15" r="2"/>
+                            </svg>
+                            <span data-de="Lageplan wird geladen..." data-en="Site plan loading...">Lageplan wird geladen...</span>
+                        </div>
+                    </div>
+
+                    <div class="details-section">
+                        <h3 class="details-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                            </svg>
+                            <span data-de="Kapazitäten" data-en="Capacities">Kapazitäten</span>
+                        </h3>
+                        <div class="capacity-table">
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="Stehempfang" data-en="Standing reception">Stehempfang</span>
+                                <span class="capacity-value">500</span>
+                            </div>
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="Festival-Style" data-en="Festival style">Festival-Style</span>
+                                <span class="capacity-value">400</span>
+                            </div>
+                            <div class="capacity-row">
+                                <span class="capacity-label" data-de="Bankett (Biertische)" data-en="Banquet (beer tables)">Bankett (Biertische)</span>
+                                <span class="capacity-value">200</span>
+                            </div>
+                        </div>
+
+                        <h4 class="equipment-title" data-de="Ausstattung" data-en="Equipment">Ausstattung</h4>
+                        <ul class="equipment-list">
+                            <li data-de="Mobile Soundanlage" data-en="Mobile sound system">Mobile Soundanlage</li>
+                            <li data-de="Vollständige Beleuchtung" data-en="Full lighting">Vollständige Beleuchtung</li>
+                            <li data-de="Feuerschalen" data-en="Fire bowls">Feuerschalen</li>
+                            <li data-de="Heizpilze" data-en="Patio heaters">Heizpilze</li>
+                            <li data-de="Biertischgarnituren" data-en="Beer table sets">Biertischgarnituren</li>
+                            <li data-de="Outdoor-Bar möglich" data-en="Outdoor bar possible">Outdoor-Bar möglich</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="room-footer">
+                    <div class="room-footer-info">
+                        <div class="footer-stat">
+                            <div class="footer-stat-value">750 m²</div>
+                            <div class="footer-stat-label" data-de="Max. Fläche" data-en="Max. Area">Max. Fläche</div>
+                        </div>
+                        <div class="footer-stat">
+                            <div class="footer-stat-value">Outdoor</div>
+                            <div class="footer-stat-label" data-de="Bereich" data-en="Area">Bereich</div>
+                        </div>
+                        <div class="footer-stat">
+                            <div class="footer-stat-value">500</div>
+                            <div class="footer-stat-label" data-de="Max. Personen" data-en="Max. People">Max. Personen</div>
+                        </div>
+                    </div>
+                    <a href="booking.html?room=outdoor" class="btn btn-outdoor" data-de="Plaza anfragen" data-en="Request Plaza">Plaza anfragen</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- GENERAL EQUIPMENT -->
+        <div class="general-section">
+            <div class="section-header">
+                <h2 class="section-title" data-de="Allgemeine Ausstattung" data-en="General Equipment">Allgemeine Ausstattung</h2>
+                <p class="section-subtitle" data-de="Zusätzliche Services und Ausstattung für alle Räume" data-en="Additional services and equipment for all rooms">Zusätzliche Services und Ausstattung für alle Räume</p>
+            </div>
+
+            <div class="general-grid">
+                <div class="general-card">
+                    <div class="general-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h3 class="general-card-title" data-de="Internet & Netzwerk" data-en="Internet & Network">Internet & Netzwerk</h3>
+                    <ul class="general-list">
+                        <li data-de="Highspeed WLAN in allen Räumen" data-en="High-speed WiFi in all rooms">Highspeed WLAN in allen Räumen</li>
+                        <li data-de="Kabelgebundenes LAN auf Anfrage" data-en="Wired LAN on request">Kabelgebundenes LAN auf Anfrage</li>
+                        <li data-de="Separate Gäste-Netzwerke" data-en="Separate guest networks">Separate Gäste-Netzwerke</li>
+                    </ul>
+                </div>
+
+                <div class="general-card">
+                    <div class="general-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                            <line x1="6" y1="1" x2="6" y2="4"/>
+                            <line x1="10" y1="1" x2="10" y2="4"/>
+                            <line x1="14" y1="1" x2="14" y2="4"/>
+                        </svg>
+                    </div>
+                    <h3 class="general-card-title" data-de="Catering & Bewirtung" data-en="Catering & Hospitality">Catering & Bewirtung</h3>
+                    <ul class="general-list">
+                        <li data-de="Professionelle Cateringküche" data-en="Professional catering kitchen">Professionelle Cateringküche</li>
+                        <li data-de="Partner-Caterer auf Wunsch" data-en="Partner caterers on request">Partner-Caterer auf Wunsch</li>
+                        <li data-de="Getränke-Service und Barausstattung" data-en="Beverage service and bar equipment">Getränke-Service und Barausstattung</li>
+                    </ul>
+                </div>
+
+                <div class="general-card">
+                    <div class="general-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3 class="general-card-title" data-de="Veranstaltungstechnik" data-en="Event Technology">Veranstaltungstechnik</h3>
+                    <ul class="general-list">
+                        <li data-de="Professionelle Mikrofonanlage" data-en="Professional microphone system">Professionelle Mikrofonanlage</li>
+                        <li data-de="Streaming-Equipment verfügbar" data-en="Streaming equipment available">Streaming-Equipment verfügbar</li>
+                        <li data-de="Techniker auf Anfrage" data-en="Technician on request">Techniker auf Anfrage</li>
+                    </ul>
+                </div>
+
+                <div class="general-card">
+                    <div class="general-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="general-card-title" data-de="Service & Betreuung" data-en="Service & Support">Service & Betreuung</h3>
+                    <ul class="general-list">
+                        <li data-de="Event-Manager vor Ort" data-en="Event manager on site">Event-Manager vor Ort</li>
+                        <li data-de="Auf- und Abbau-Service" data-en="Setup and breakdown service">Auf- und Abbau-Service</li>
+                        <li data-de="Reinigungsservice inklusive" data-en="Cleaning service included">Reinigungsservice inklusive</li>
+                    </ul>
+                </div>
+
+                <div class="general-card">
+                    <div class="general-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="1" y="3" width="15" height="13" rx="2"/>
+                            <path d="M16 8h4a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1"/>
+                        </svg>
+                    </div>
+                    <h3 class="general-card-title" data-de="Möblierung" data-en="Furniture">Möblierung</h3>
+                    <ul class="general-list">
+                        <li data-de="Flexible Stuhl- und Tischkonfigurationen" data-en="Flexible chair and table configurations">Flexible Stuhl- und Tischkonfigurationen</li>
+                        <li data-de="Lounge-Möbel verfügbar" data-en="Lounge furniture available">Lounge-Möbel verfügbar</li>
+                        <li data-de="Stehtische und Barhocker" data-en="Standing tables and bar stools">Stehtische und Barhocker</li>
+                    </ul>
+                </div>
+
+                <div class="general-card">
+                    <div class="general-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+                            <circle cx="7" cy="17" r="2"/>
+                            <circle cx="17" cy="17" r="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="general-card-title" data-de="Parken & Erreichbarkeit" data-en="Parking & Accessibility">Parken & Erreichbarkeit</h3>
+                    <ul class="general-list">
+                        <li data-de="Kostenlose Parkplätze vor Ort" data-en="Free parking on site">Kostenlose Parkplätze vor Ort</li>
+                        <li data-de="Barrierefreier Zugang" data-en="Barrier-free access">Barrierefreier Zugang</li>
+                        <li data-de="Gute Anbindung (Auto & ÖPNV)" data-en="Good connections (car & public transport)">Gute Anbindung (Auto & ÖPNV)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2 class="cta-title" data-de="Haben Sie Fragen?" data-en="Have Questions?">Haben Sie Fragen?</h2>
+            <p class="cta-text" data-de="Gerne beraten wir Sie persönlich und erstellen Ihnen ein individuelles Angebot für Ihre Veranstaltung." data-en="We will be happy to advise you personally and create an individual offer for your event.">Gerne beraten wir Sie persönlich und erstellen Ihnen ein individuelles Angebot für Ihre Veranstaltung.</p>
+            <a href="booking.html" class="btn btn-primary" data-de="Buchungsanfrage senden" data-en="Send Booking Request">Buchungsanfrage senden</a>
+        </div>
+
     </div>
 </section>
 
@@ -1135,42 +1563,36 @@
         </div>
 
         <div class="footer-section">
-            <h3 class="lang-de">Öffnungszeiten Eventbüro</h3>
-            <h3 class="lang-en" style="display:none;">Office Hours</h3>
-            <p class="lang-de">Montag–Freitag</p>
-            <p class="lang-en" style="display:none;">Monday–Friday</p>
-            <p>10:00–18:00 Uhr</p>
+            <h3 data-de="Öffnungszeiten Eventbüro" data-en="Office Hours">Öffnungszeiten Eventbüro</h3>
+            <p data-de="Montag - Freitag" data-en="Monday - Friday">Montag - Freitag</p>
+            <p>10:00 - 18:00 Uhr</p>
         </div>
 
         <div class="footer-section">
-            <h3 class="lang-de">Kontakt</h3>
-            <h3 class="lang-en" style="display:none;">Contact</h3>
-            <p><a href="tel:+4870314107311">+49 7031 41073-11</a></p>
+            <h3 data-de="Kontakt" data-en="Contact">Kontakt</h3>
+            <p><a href="tel:+4970314107311">+49 7031 41073-11</a></p>
             <p><a href="mailto:info@area710.de">info@area710.de</a></p>
         </div>
 
         <div class="footer-section">
-            <h3 class="lang-de">Folge uns</h3>
-            <h3 class="lang-en" style="display:none;">Follow us</h3>
+            <h3 data-de="Folge uns" data-en="Follow us">Folge uns</h3>
             <div class="social-links">
-                <a href="https://www.facebook.com/profile.php?id=100086162780846" class="social-link" target="_blank">
+                <a href="https://www.facebook.com/profile.php?id=100086162780846" class="social-link facebook" target="_blank">
                     <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                     </svg>
                 </a>
-                <a href="https://www.instagram.com/area710_event/" class="social-link" target="_blank">
+                <a href="https://www.instagram.com/area710_event/" class="social-link instagram" target="_blank">
                     <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                     </svg>
                 </a>
-                <a href="https://bridebook.com/de/wedding-venues/area710-holzgerlingen-stuttgart-de0Y10vQwg?gad_source=1&gad_campaignid=20481448784&gbraid=0AAAAAog_qeuf2G-MQl8GmPC7ClS1fJ-xV&gclid=Cj0KCQiA-NHLBhDSARIsAIhe9X3mWJSxgpaGOJS1SvDJLO1h9gvexDESTfNoDKOcPAm8YgMN5yylyVMaAnoOEALw_wcB"
-                   class="social-link" target="_blank"
-                   aria-label="Bridebook">
+                <a href="https://bridebook.com/de/wedding-venues/area710-holzgerlingen-stuttgart-de0Y10vQwg" class="social-link" target="_blank" aria-label="Bridebook">
                     <img src="img/bridebook.png" alt="Bridebook">
                 </a>
-                <a href="https://wa.me/1713573288?text=area710" class="social-link" target="_blank">
+                <a href="https://wa.me/491713573288" class="social-link whatsapp" target="_blank">
                     <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                     </svg>
                 </a>
             </div>
@@ -1184,16 +1606,13 @@
             <a href="impressum.html" data-de="Impressum" data-en="Imprint">Impressum</a>
             <a href="datenschutz.html" data-de="Datenschutzerklärung" data-en="Privacy Policy">Datenschutzerklärung</a>
             <a href="booking.html" data-de="Buchungsanfrage" data-en="Booking Request">Buchungsanfrage</a>
-            <a href="https://ticket.area710.de" target="_blank" data-de="Ticket Verkauf" data-en="Ticket Sales">Ticket
-                Verkauf</a>
+            <a href="https://ticket.area710.de" target="_blank" data-de="Ticket Verkauf" data-en="Ticket Sales">Ticket Verkauf</a>
         </p>
     </div>
 </footer>
 
-<!-- Language Switcher Script -->
 <script src="language-switcher.js"></script>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
     // MOBILE MENU
     document.getElementById('mobileToggle').addEventListener('click', function () {
@@ -1212,16 +1631,39 @@
         header.classList.toggle('scrolled', window.pageYOffset > 100);
     });
 
-    // LANGUAGE SWITCHER - now handled by language-switcher.js
+    // LANGUAGE SWITCHER
+    let currentLang = 'de';
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const targetLang = this.dataset.lang;
+            if (targetLang === currentLang) return;
+
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentLang = targetLang;
+            translatePage(targetLang);
+        });
+    });
+
+    function translatePage(lang) {
+        document.querySelectorAll('[data-de]').forEach(el => {
+            const text = lang === 'de' ? el.dataset.de : el.dataset.en;
+            if (text) {
+                el.textContent = text;
+            }
+        });
+        document.documentElement.lang = lang;
+    }
 </script>
 
 <!-- Chatbot Button -->
 <button id="chatbot-button" aria-label="Chat öffnen">
     <img src="img/fav.png" alt="Chat Avatar">
     <span class="chatbot-hint">
-    <span class="hint-text lang-de">Chatte mit area710 – unserem Chatbot</span>
-    <span class="hint-text lang-en" style="display:none;">Chat with area710 – our chatbot</span>
-</span>
+        <span class="hint-text lang-de">Chatte mit area710 – unserem Chatbot</span>
+        <span class="hint-text lang-en" style="display:none;">Chat with area710 – our chatbot</span>
+    </span>
 </button>
 
 <!-- Chatbot Greeting Widget -->
@@ -1230,9 +1672,7 @@
         <img src="img/fav.png" alt="area710 Bot">
         <h4>area710</h4>
     </div>
-    <div class="widget-message" id="widget-message">
-        <!-- Message will be inserted here based on language -->
-    </div>
+    <div class="widget-message" id="widget-message"></div>
     <div class="widget-buttons">
         <button class="widget-btn decline" id="widget-decline" title="Ablehnen">✕</button>
         <button class="widget-btn accept" id="widget-accept" title="Chat öffnen">Chat</button>
@@ -1243,8 +1683,7 @@
 <div id="chatbot-window">
     <div class="chat-header">
         <div class="chat-header-left">
-            <img src="img/fav.png"
-                 alt="Bot Avatar">
+            <img src="img/fav.png" alt="Bot Avatar">
             <div class="chat-header-text">
                 <h3>area710</h3>
                 <p>Online</p>
@@ -1255,19 +1694,9 @@
             <button class="close-btn" id="close-chat">×</button>
         </div>
     </div>
-
-    <div class="chat-messages" id="chat-messages">
-        <!-- Messages will be added here -->
-    </div>
-
+    <div class="chat-messages" id="chat-messages"></div>
     <div class="chat-input">
-        <input
-                type="text"
-                id="user-input"
-                autocomplete="off"
-                data-placeholder-de="Schreibe eine Nachricht..."
-                data-placeholder-en="Write a message..."
-        >
+        <input type="text" id="user-input" autocomplete="off" data-placeholder-de="Schreibe eine Nachricht..." data-placeholder-en="Write a message...">
         <button id="send-btn">➤</button>
     </div>
 </div>
@@ -1276,10 +1705,8 @@
 <div id="cookie-banner">
     <div class="cookie-content">
         <div class="cookie-text">
-            <h3>Cookie-Einstellungen 🍪</h3>
-            <p>Wir verwenden Cookies, um den Chat-Verlauf und Ihre Spracheinstellung zu speichern und Ihnen ein besseres
-                Erlebnis zu bieten. Durch
-                das Akzeptieren von Cookies können wir Ihre Konversationen und Präferenzen speichern.</p>
+            <h3>Cookie-Einstellungen</h3>
+            <p>Wir verwenden Cookies, um den Chat-Verlauf und Ihre Spracheinstellung zu speichern.</p>
         </div>
         <div class="cookie-buttons">
             <button class="cookie-btn accept" onclick="acceptCookies()">Akzeptieren</button>
@@ -1289,7 +1716,6 @@
 </div>
 
 <script>
-    // CHATBOT Configuration - Disable greeting widget on non-index pages
     window.CHATBOT_CONFIG = { showGreetingWidget: false };
 </script>
 <script src="chatbot.js"></script>
