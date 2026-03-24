@@ -1126,21 +1126,21 @@ $message_customer = "
                                         <table role='presentation' cellspacing='0' cellpadding='0' border='0'>
                                             <tr>
                                                 <!-- Facebook -->
-                                                <td style='padding: 0 6px;'>
-                                                    <a href='https://www.facebook.com/profile.php?id=100086162780846' style='display: inline-block; width: 36px; height: 36px; background-color: #1a1a1a; border-radius: 50%; text-align: center; line-height: 36px; text-decoration: none; border: 1px solid #333333;'>
-                                                        <span style='color: #ffffff; font-size: 14px; font-weight: bold; font-family: Arial, sans-serif;'>f</span>
+                                                <td style='padding: 0 8px;'>
+                                                    <a href='https://www.facebook.com/profile.php?id=100086162780846' style='text-decoration: none;'>
+                                                        <img src='{$baseUrl}/img/mail/facebook.png' alt='Facebook' width='32' height='32' style='display: block; border: 0;'>
                                                     </a>
                                                 </td>
                                                 <!-- Instagram -->
-                                                <td style='padding: 0 6px;'>
-                                                    <a href='https://www.instagram.com/area710_event/' style='display: inline-block; width: 36px; height: 36px; background-color: #1a1a1a; border-radius: 50%; text-align: center; line-height: 36px; text-decoration: none; border: 1px solid #333333;'>
-                                                        <span style='color: #ffffff; font-size: 14px; font-weight: bold; font-family: Arial, sans-serif;'>in</span>
+                                                <td style='padding: 0 8px;'>
+                                                    <a href='https://www.instagram.com/area710_event/' style='text-decoration: none;'>
+                                                        <img src='{$baseUrl}/img/mail/instagram.png' alt='Instagram' width='32' height='32' style='display: block; border: 0;'>
                                                     </a>
                                                 </td>
                                                 <!-- WhatsApp -->
-                                                <td style='padding: 0 6px;'>
-                                                    <a href='https://wa.me/491713573288' style='display: inline-block; width: 36px; height: 36px; background-color: #1a1a1a; border-radius: 50%; text-align: center; line-height: 36px; text-decoration: none; border: 1px solid #333333;'>
-                                                        <span style='color: #ffffff; font-size: 14px; font-weight: bold; font-family: Arial, sans-serif;'>wa</span>
+                                                <td style='padding: 0 8px;'>
+                                                    <a href='https://wa.me/491713573288' style='text-decoration: none;'>
+                                                        <img src='{$baseUrl}/img/mail/whatsapp.png' alt='WhatsApp' width='32' height='32' style='display: block; border: 0;'>
                                                     </a>
                                                 </td>
                                             </tr>
