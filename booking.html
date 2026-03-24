@@ -252,18 +252,8 @@
             transition: all 0.4s ease;
         }
 
-        .booking-form::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green));
-        }
-
         .booking-form:hover {
-            box-shadow: 0 8px 32px rgba(252, 171, 20, 0.15);
+            box-shadow: 0 8px 32px rgba(255, 255, 255, 0.05);
         }
 
         .form-section {
@@ -279,8 +269,7 @@
             font-weight: 500;
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid;
-            border-image: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green)) 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .form-row {
@@ -320,9 +309,8 @@
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--orange);
-            background: rgba(252, 171, 20, 0.08);
-            box-shadow: 0 0 0 3px rgba(252, 171, 20, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            background: var(--gray-light);
         }
 
         input:hover:not(:focus), select:hover:not(:focus), textarea:hover:not(:focus) {
@@ -332,6 +320,75 @@
         textarea {
             resize: vertical;
             min-height: 120px;
+        }
+
+        /* TIME PICKER */
+        .time-picker {
+            background: var(--gray-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .time-picker:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .time-display {
+            padding: 0.9rem 1rem;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .time-display.selected {
+            color: var(--white);
+            background: rgba(205, 17, 81, 0.1);
+        }
+
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+            padding: 0.75rem;
+        }
+
+        .time-slot {
+            padding: 0.5rem 0.25rem;
+            text-align: center;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: transparent;
+            border: 1px solid transparent;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .time-slot:hover {
+            background: rgba(205, 17, 81, 0.15);
+            border-color: var(--red);
+            color: var(--white);
+        }
+
+        .time-slot.selected {
+            background: var(--red);
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .time-slot.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .time-slot.disabled:hover {
+            background: transparent;
+            border-color: transparent;
         }
 
         /* AVAILABILITY INFO */
@@ -533,7 +590,7 @@
             font-weight: 500;
             letter-spacing: 0.05em;
             border: none;
-            background: linear-gradient(135deg, var(--orange), var(--red));
+            background: var(--red);
             color: var(--white);
             cursor: pointer;
             border-radius: 12px;
@@ -561,7 +618,7 @@
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(252, 171, 20, 0.4);
+            box-shadow: 0 12px 35px rgba(205, 17, 81, 0.4);
         }
 
         .btn:disabled {
@@ -593,18 +650,8 @@
             transition: all 0.4s ease;
         }
 
-        .sidebar-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--orange), var(--red), var(--blue), var(--green));
-        }
-
         .sidebar-card:hover {
-            box-shadow: 0 8px 32px rgba(0, 159, 226, 0.15);
+            box-shadow: 0 8px 32px rgba(255, 255, 255, 0.05);
             transform: translateY(-2px);
         }
 
@@ -627,15 +674,15 @@
         }
 
         .contact-item:hover {
-            background: rgba(252, 171, 20, 0.08);
-            border-color: rgba(252, 171, 20, 0.2);
+            background: rgba(0, 159, 226, 0.08);
+            border-color: rgba(0, 159, 226, 0.2);
             transform: translateX(5px);
         }
 
         .contact-icon {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, var(--orange), var(--red));
+            background: var(--blue);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -647,7 +694,7 @@
 
         .contact-item:hover .contact-icon {
             transform: scale(1.1);
-            box-shadow: 0 4px 15px rgba(252, 171, 20, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 159, 226, 0.3);
         }
 
         .contact-info a {
@@ -687,7 +734,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--green), var(--blue));
+            background: var(--green);
         }
 
         .success-message.show {
@@ -703,7 +750,7 @@
         .success-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--green), var(--blue));
+            background: var(--green);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -740,7 +787,7 @@
         .mail-status-section h4 {
             font-size: 0.9rem;
             font-weight: 600;
-            color: var(--orange);
+            color: var(--blue);
             text-transform: uppercase;
             letter-spacing: 1px;
             margin: 0 0 1rem 0;
@@ -1587,33 +1634,39 @@
                             </div>
                         </div>
 
+                        <!-- Datum + Gäste nebeneinander -->
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="eventDate" class="required" data-de="Gewähltes Datum" data-en="Selected Date">Gewähltes Datum</label>
                                 <input type="date" id="eventDate" name="eventDate" required readonly style="cursor: pointer;">
-
                                 <!-- AVAILABILITY INFO -->
                                 <div class="availability-info" id="availabilityInfo"></div>
                             </div>
 
                             <div class="form-group">
-                                <label for="eventTime" class="required" data-de="Uhrzeit (von)" data-en="Time (from)">Uhrzeit
-                                    (von)</label>
-                                <input type="time" id="eventTime" name="eventTime" required>
+                                <label for="guests" class="required" data-de="Anzahl Gäste" data-en="Number of Guests">Anzahl Gäste</label>
+                                <input type="number" id="guests" name="guests" min="1" required>
                             </div>
                         </div>
 
+                        <!-- Startzeit + Endzeit nebeneinander -->
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="endTime" class="required" data-de="Uhrzeit (bis)"
-                                       data-en="Time (until)">Uhrzeit (bis)</label>
-                                <input type="time" id="endTime" name="endTime" required>
+                                <label for="eventTime" class="required" data-de="Uhrzeit (von)" data-en="Time (from)">Uhrzeit (von)</label>
+                                <input type="hidden" id="eventTime" name="eventTime" required>
+                                <div class="time-picker" id="startTimePicker">
+                                    <div class="time-display" id="startTimeDisplay" data-de="Startzeit wählen" data-en="Select start time">Startzeit wählen</div>
+                                    <div class="time-grid" id="startTimeGrid"></div>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="guests" class="required" data-de="Anzahl Gäste" data-en="Number of Guests">Anzahl
-                                    Gäste</label>
-                                <input type="number" id="guests" name="guests" min="1" required>
+                                <label for="endTime" class="required" data-de="Uhrzeit (bis)" data-en="Time (until)">Uhrzeit (bis)</label>
+                                <input type="hidden" id="endTime" name="endTime" required>
+                                <div class="time-picker" id="endTimePicker">
+                                    <div class="time-display" id="endTimeDisplay" data-de="Endzeit wählen" data-en="Select end time">Endzeit wählen</div>
+                                    <div class="time-grid" id="endTimeGrid"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2292,6 +2345,109 @@
     }
     
     initCalendar();
+
+    // ========================================
+    // TIME PICKER
+    // ========================================
+    const startTimes = [];
+    const endTimes = [];
+    
+    // Generate start times (08:00 - 22:00)
+    for (let h = 8; h <= 22; h++) {
+        startTimes.push(`${String(h).padStart(2, '0')}:00`);
+        if (h < 22) startTimes.push(`${String(h).padStart(2, '0')}:30`);
+    }
+    
+    // Generate end times (10:00 - 04:00 next day)
+    for (let h = 10; h <= 23; h++) {
+        endTimes.push(`${String(h).padStart(2, '0')}:00`);
+        endTimes.push(`${String(h).padStart(2, '0')}:30`);
+    }
+    for (let h = 0; h <= 4; h++) {
+        endTimes.push(`${String(h).padStart(2, '0')}:00`);
+        if (h < 4) endTimes.push(`${String(h).padStart(2, '0')}:30`);
+    }
+    
+    function renderTimePicker(gridId, times, inputId, displayId) {
+        const grid = document.getElementById(gridId);
+        const input = document.getElementById(inputId);
+        const display = document.getElementById(displayId);
+        
+        grid.innerHTML = times.map(time => 
+            `<div class="time-slot" data-time="${time}">${time}</div>`
+        ).join('');
+        
+        grid.querySelectorAll('.time-slot').forEach(slot => {
+            slot.addEventListener('click', function() {
+                const time = this.getAttribute('data-time');
+                
+                // Remove previous selection
+                grid.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                
+                // Select this slot
+                this.classList.add('selected');
+                
+                // Update hidden input
+                input.value = time;
+                
+                // Update display
+                display.textContent = time + ' Uhr';
+                display.classList.add('selected');
+                
+                // Trigger change event for validation
+                input.dispatchEvent(new Event('change'));
+                
+                // If this is start time, update end time grid
+                if (inputId === 'eventTime') {
+                    updateEndTimeGrid(time);
+                }
+            });
+        });
+    }
+    
+    function updateEndTimeGrid(startTime) {
+        const endGrid = document.getElementById('endTimeGrid');
+        const endInput = document.getElementById('endTime');
+        const endDisplay = document.getElementById('endTimeDisplay');
+        const startMinutes = timeToMinutes(startTime);
+        
+        // Check if current end time is still valid
+        const currentEndTime = endInput.value;
+        let currentEndInvalid = false;
+        
+        endGrid.querySelectorAll('.time-slot').forEach(slot => {
+            const slotTime = slot.getAttribute('data-time');
+            let slotMinutes = timeToMinutes(slotTime);
+            
+            // Handle times after midnight
+            if (slotMinutes < startMinutes && slotMinutes <= 4 * 60) {
+                slotMinutes += 24 * 60;
+            }
+            
+            // Minimum 1 hour duration
+            if (slotMinutes <= startMinutes + 60) {
+                slot.classList.add('disabled');
+                // Check if current selection is now invalid
+                if (currentEndTime === slotTime) {
+                    currentEndInvalid = true;
+                    slot.classList.remove('selected');
+                }
+            } else {
+                slot.classList.remove('disabled');
+            }
+        });
+        
+        // Reset end time if it's now invalid
+        if (currentEndInvalid) {
+            endInput.value = '';
+            endDisplay.textContent = currentLang === 'de' ? 'Endzeit wählen' : 'Select end time';
+            endDisplay.classList.remove('selected');
+        }
+    }
+    
+    // Initialize time pickers
+    renderTimePicker('startTimeGrid', startTimes, 'eventTime', 'startTimeDisplay');
+    renderTimePicker('endTimeGrid', endTimes, 'endTime', 'endTimeDisplay');
 
     // ========================================
     // FORM SUBMISSION
