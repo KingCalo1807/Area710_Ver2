@@ -249,7 +249,7 @@
 }
 
 .message.bot .message-avatar {
-    background: url('img/fav.png') no-repeat center center;
+    background: url('../img/fav.png') no-repeat center center;
     background-size: cover;
     border-radius: 50%;
 }

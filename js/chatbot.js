@@ -212,7 +212,7 @@ function getResponse(input) {
 
     if (consecutiveFailures >= MAX_FAILURES) {
         consecutiveFailures = 0;
-        return currentKB.maxFailuresMessage || "Es scheint, als könnte ich dir aktuell nicht weiterhelfen. Möchtest du direkt mit unserem Team sprechen? <a href='contact.html' style='color: #FCAB14; text-decoration: underline;'>Hier geht's zum Kontaktformular</a>";
+        return currentKB.maxFailuresMessage || "Es scheint, als könnte ich dir aktuell nicht weiterhelfen. Möchtest du direkt mit unserem Team sprechen? <a href='../contact.html' style='color: #FCAB14; text-decoration: underline;'>Hier geht's zum Kontaktformular</a>";
     }
 
     return currentKB.fallback;
