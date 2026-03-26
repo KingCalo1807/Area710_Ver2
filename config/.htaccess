@@ -1,13 +1,12 @@
 # Blockiere direkten Zugriff auf alle Dateien in diesem Ordner
 # Schützt sensible Konfigurationsdateien (SMTP-Credentials etc.)
 
+# Alle Dateien im Ordner blockieren
 <IfModule mod_authz_core.c>
-    # Apache 2.4+
     Require all denied
 </IfModule>
 
 <IfModule !mod_authz_core.c>
-    # Apache 2.2
     Order deny,allow
     Deny from all
 </IfModule>
